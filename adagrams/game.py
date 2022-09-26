@@ -84,7 +84,13 @@ def uses_available_letters(word, hand_of_ten_letters):
     return True
 
 def score_word(word):
-    pass
+    word = word.upper()
+    score = 0
+    for letter in word:
+        score += (SCORE_CHART[letter])
+    if len(word) >= 7:
+        score += 8
+    return(score)
 
 def get_highest_word_score(word_list):
     pass
