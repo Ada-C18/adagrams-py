@@ -1,5 +1,7 @@
 # AdaGrams
 
+# Plan of Action!
+
 ## Skills Assessed
 
 - Following directions and reading comprehension
