@@ -10,6 +10,7 @@ def draw_letters():
     
     
     print(letter_pool_list)
+  
 
     return letter_pool_list
 
