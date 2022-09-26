@@ -52,7 +52,27 @@ def score_word(word):
     return sum
 
 def get_highest_word_score(word_list):
-    pass
+    highest_score = 0
+    highest_scoring_words = []
+    for word in word_list:
+        score = score_word(word)
+        if score > highest_score:
+            highest_scoring_words.clear()
+            highest_score = score
+            highest_scoring_words.append(word)
+        elif score == highest_score:
+            highest_scoring_words.append(word)
+    
+    shortest_word_len = len(highest_scoring_words[0])
+    shortest_word = highest_scoring_words[0]
+    for word in highest_scoring_words:
+        if (len(word) == 10):
+            return (word, score_word(word))
+        else:
+            if len(word) < shortest_word_len:
+                shortest_word_len = len(word)
+                shortest_word = word
+    return (shortest_word, score_word(shortest_word))    
 
 LETTER_POOL = {
     'A': 9, 
