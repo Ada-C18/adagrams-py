@@ -19,7 +19,20 @@ def draw_letters():
     return output_list
 
 def uses_available_letters(word, letter_bank):
-    pass
+    letter_dict = {}
+    for letter in letter_bank:
+        if letter in letter_dict.keys():
+            letter_dict[letter] += 1
+        else:
+            letter_dict[letter] = 1
+    
+    for letter in word:
+        letter = letter.upper()
+        if letter not in letter_bank or letter_dict[letter] == 0:
+            return False
+        else:
+            letter_dict[letter] -= 1
+    return True
 
 def score_word(word):
     pass
