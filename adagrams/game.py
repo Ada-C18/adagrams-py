@@ -1,5 +1,3 @@
-from random import sample
-
 LETTER_POOL = {
     "A": 9,
     "N": 6,
@@ -41,15 +39,9 @@ LETTER_POINTS = {
 
 
 def draw_letters():
-    # draw ten random letters from the letter pool
-    # append them to an array and return
+    from random import sample
 
-    # pool = ""
-    # for letter, count in letter_pool.items():
-    #     pool += letter * count
-
-    draw = sample(LETTER_POOL.keys(), counts=LETTER_POOL.values(), k=10)
-    return draw
+    return sample(LETTER_POOL.keys(), counts=LETTER_POOL.values(), k=10)
 
 
 def uses_available_letters(word, letter_bank):
