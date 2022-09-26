@@ -94,6 +94,7 @@ def score_word(word):
             if letter == key:
                 score_total += SCORE_CHART[key]
     return score_total
+    
 def get_highest_word_score(word_list):
     best_word = []
     for i in range(len(word_list)):
