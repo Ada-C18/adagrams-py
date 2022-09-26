@@ -1,3 +1,5 @@
+# this is the first function 
+
 def draw_letters():
     pass
 
