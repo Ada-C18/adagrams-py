@@ -24,3 +24,5 @@ def test_score_extra_points_for_seven_or_longer():
     assert score_word("XXXXXXXX") == 72
     assert score_word("XXXXXXXXX") == 80
     
+    # Pair Programming Comment Section
+    # ----------------------------------
