@@ -87,8 +87,7 @@ def score_word(word):
     if len(word_list) >= 7 and len(word_list) <= 10:
         score_counter += 8
 
-    return score_counter 
-score_word('DOG')
+    return score_counter
 
 def get_highest_word_score(word_list):
     pass
