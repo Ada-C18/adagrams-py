@@ -1,5 +1,17 @@
 # AdaGrams
 
+## Pair Plan
+**Access Needs:** 
+Get home before dark, get as much work done at ada and take home work if neccesary.
+
+**Learning Style:**
+- LP - reading more than videos
+- Abby - trial and error 
+
+**Feedback:**
+- LP - talking in person rather than text/messaging, focusing on the team goals (rather than pointing fingers)
+- Abby - focusing on the team goals (rather than pointing fingers), consistent and relatively frequent feedback rather than long sessions of pent up feelings
+- Asking if you're open to feedback 
 ## Skills Assessed
 
 - Following directions and reading comprehension
