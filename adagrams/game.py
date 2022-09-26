@@ -105,13 +105,14 @@ def get_highest_word_score(word_list):
         elif score > best_word[1]:
             best_word[0] = word_list[i]
             best_word[1] = score
-        elif score == best_word[1]:         
-            if len(best_word[0]) < len(word_list[i]) or len(best_word[0]) == 10:
-                return best_word
-            elif len(best_word[0]) > len(word_list[i]) or len(word_list[i]) == 10:
-                best_word[0] = word_list[i]
-                
-                
-               
+        elif score == best_word[1]:  
+            if len(best_word[0]) == len(word_list[i]) or len(best_word[0]) == 10:
+                continue    
+            elif len(best_word[0]) > len(word_list[i]) or len(word_list[i]) == 10:  
+                best_word[0] = word_list[i] 
+            elif len(best_word[0]) < len(word_list[i]):
+                continue
+     
+
     return best_word
     
