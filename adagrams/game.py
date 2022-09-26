@@ -1,4 +1,6 @@
-LETTER_POOL = {
+# NOTE from Dainiz: I changed this variable name so I could use letter_pool in
+# draw_letters() but we can change things up if another way makes more sense to you!
+LETTER_DISTRIBUTION = {
     "A": 9,
     "B": 2,
     "C": 2,
@@ -28,6 +30,10 @@ LETTER_POOL = {
 }
 
 def draw_letters():
+    letter_pool = []
+    for letter, count in LETTER_DISTRIBUTION.items():
+        for i in range(count):
+            letter_pool.append(letter)
     pass
 
 def uses_available_letters(word, letter_bank):
