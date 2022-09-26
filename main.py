@@ -1,6 +1,7 @@
 import sys
 from adagrams.ui_helper import *
 from adagrams.game import draw_letters, uses_available_letters, score_word, get_highest_word_score
+# from tests.test_wave_01 import LETTER_POOL
 
 def wave_1_run_game():
     display_welcome_message()
