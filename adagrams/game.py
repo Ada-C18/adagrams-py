@@ -46,7 +46,12 @@ def draw_letters():
 
 def uses_available_letters(word, letter_bank):
     upper_word = word.upper()
-    return all([upper_word.count(letter) < letter_bank.count(letter) for letter in set(upper_word)])
+    return all(
+        [
+            upper_word.count(letter) <= letter_bank.count(letter)
+            for letter in set(upper_word)
+        ]
+    )
 
 
 def score_word(word):
