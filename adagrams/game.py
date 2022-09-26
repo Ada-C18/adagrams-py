@@ -38,7 +38,7 @@ SCORE_CHART = {
     'L': 1, 
     'N': 1, 
     'R': 1, 
-    'S':1, 
+    'S': 1, 
     'T': 1,
     'D': 2, 
     'G': 2,
@@ -95,4 +95,22 @@ def score_word(word):
                 score_total += SCORE_CHART[key]
     return score_total
 def get_highest_word_score(word_list):
-    pass
+    best_word = []
+    for i in range(len(word_list)):
+        score = score_word(word_list[i])
+        if len(best_word) == 0:
+            best_word.append(word_list[i])
+            best_word.append(score)
+        elif score > best_word[1]:
+            best_word[0] = word_list[i]
+            best_word[1] = score
+        elif score == best_word[1]:         
+            if len(best_word[0]) < len(word_list[i]) or len(best_word[0]) == 10:
+                return best_word
+            elif len(best_word[0]) > len(word_list[i]) or len(word_list[i]) == 10:
+                best_word[0] = word_list[i]
+                
+                
+               
+    return best_word
+    
