@@ -1,5 +1,6 @@
 def draw_letters():
     # comment
+    # We're gonna do great on this project! 
     pass
 
 def uses_available_letters(word, letter_bank):
