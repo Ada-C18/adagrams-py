@@ -11,9 +11,9 @@ def draw_letters():
     "V", "V", "W", "W", "X", "Y", "Y", "Z"]
 
     hand = []
+    game_pool = copy.deepcopy(ORIGINAL_POOL)
 
     while len(hand) < 10:
-        game_pool = copy.deepcopy(ORIGINAL_POOL)
         letter = random.choice(game_pool)
         hand.append(letter)
         game_pool.remove(letter)
