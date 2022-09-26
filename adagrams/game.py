@@ -1,5 +1,12 @@
+import random
 def draw_letters():
-    pass
+    alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M","N","O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" ]
+    gameletters = []
+    for letter in range(10):
+        number = random.randint(0, 27)
+        random_letter = alphabet[number]
+        gameletters.append(random_letter)
+    return gameletters
 
 def uses_available_letters(word, letter_bank):
     pass
