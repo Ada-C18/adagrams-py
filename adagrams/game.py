@@ -1,6 +1,7 @@
 def draw_letters():
     pass
 
+#wave 2
 def uses_available_letters(word, letter_bank):
     pass
 
