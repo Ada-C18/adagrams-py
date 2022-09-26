@@ -38,7 +38,8 @@ def draw_letters():
         for letter,value in LETTER_POOL.items():
             for i in range(value):
                 bag_of_letters.append(letter)
-        for letter in bag_of_letters:
+        hand.append(random.choice(bag_of_letters))
+        
             draw = random.choice(bag_of_letters)
             hand.append(draw)
             bag_of_letters.remove(draw)
