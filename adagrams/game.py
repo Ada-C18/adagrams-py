@@ -1,6 +1,6 @@
 from tests.test_wave_01 import LETTER_POOL
 
-
+import random
 def draw_letters():
     list_1= [k*v for k,v in LETTER_POOL.items()]
     letter_pool_list=[]
@@ -10,9 +10,14 @@ def draw_letters():
     
     
     print(letter_pool_list)
+<<<<<<< HEAD
   
+=======
+    user_hand= (random.choices(letter_pool_list,k=10))
+>>>>>>> 2048b8c72985c996d5a8e79a6c1b58db4112d8b9
 
-    return letter_pool_list
+    return user_hand 
+    
 
 
 
