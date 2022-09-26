@@ -2,7 +2,7 @@ def draw_letters():
     print("hello, world!")
 
 def uses_available_letters(word, letter_bank):
-    pass
+    print("testing git")
 
 def score_word(word):
     pass
