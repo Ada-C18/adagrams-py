@@ -1,5 +1,7 @@
 # AdaGrams
 
+Lindsey Butler & Leimomi B
+
 ## Skills Assessed
 
 - Following directions and reading comprehension
