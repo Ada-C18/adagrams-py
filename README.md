@@ -1,5 +1,5 @@
 # AdaGrams
-Snow Leopards - Aria
+Snow Leopards - Aria & Anika
 ## Skills Assessed
 
 - Following directions and reading comprehension
