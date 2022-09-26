@@ -38,7 +38,7 @@ def draw_letters():
     
     
     print(letter_pool_list)
-    user_hand= (random.choices(letter_pool_list,k=10))
+    user_hand= (random.sample(letter_pool_list,10))
 
     return user_hand 
     
