@@ -44,7 +44,17 @@ def draw_letters():
     return letter_list
 
 def uses_available_letters(word, letter_bank):
-    pass
+    new_list = letter_bank.copy()
+    word_upper = word.upper()
+    try:
+        for i in range(len(word)):
+            if word_upper[i] in new_list:
+                new_list.remove(word_upper[i])
+            else:
+                return False
+            return True
+    except KeyError:
+        return False
 
 def score_word(word):
     pass
