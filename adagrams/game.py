@@ -1,8 +1,5 @@
 
-from os import times
-
-# from tests.test_wave_01 import LETTER_POOL
-
+import copy
 import random
 
 LETTER_POOL = {
@@ -39,14 +36,14 @@ def draw_letters():
     pulls a random letter from LETTER_POOL and stores it
     in a list, returns list
     '''
-    
+    letter_pool_copy = copy.deepcopy(LETTER_POOL)
     user_hand = []
 
     while len(user_hand) < 10:
-        random_letter = random.choice(list(LETTER_POOL.keys()))
-        if LETTER_POOL[random_letter[0]] <= 0:
+        random_letter = random.choice(list(letter_pool_copy.keys()))
+        if letter_pool_copy[random_letter[0]] == 0:
             continue
-        LETTER_POOL[random_letter[0]] -= 1
+        letter_pool_copy[random_letter[0]] -= 1
         user_hand.extend(random_letter[0])
 
     return user_hand
