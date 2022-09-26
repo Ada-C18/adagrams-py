@@ -46,7 +46,15 @@ def draw_letters():
     return letter_list
 
 def uses_available_letters(word, letter_bank):
-    pass
+    upper_case_word = word.upper()
+    letter_bank_count = Counter(letter_bank)
+    for letter in upper_case_word:
+        if letter in letter_bank_count and letter_bank_count[letter] > 0:
+            letter_bank_count[letter] -= 1
+            continue
+        else:
+            return False
+    return True
 
 def score_word(word):
     pass
