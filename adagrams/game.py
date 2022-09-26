@@ -44,7 +44,15 @@ def draw_letters():
 
 def uses_available_letters(word, letter_bank):
     pass
-    # for letter in word, if letter not in letter_bank, return False
+
+    # make a dictionary with each of the letters in letter_bank
+    # with values of the number of that letter we have
+
+    # loop through the letters in the word
+    # if the letter is in the dictionary with a number, reduce that number by 1
+    # if the letter is in the dictionary with 0, return False
+    # if the letter is not in the dictionary, return False
+
     # return True
 
 def score_word(word):
