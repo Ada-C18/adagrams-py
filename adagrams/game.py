@@ -41,11 +41,8 @@ def draw_letters():
     while len(hand) != 10:
         draw = random.choice(bag_of_letters)
         hand.append(draw)
-            
-
-        # for letter in hand:
-        #     bag_of_letters.remove(letter)
-    # print(bag_of_letters)
+        bag_of_letters.remove(draw)
+   
     return hand
     
     
