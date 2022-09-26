@@ -38,16 +38,16 @@ def test_draw_letters_draws_ten():
     # Assert
     assert len(letters) == 10
 
-# def test_draw_letters_is_list_of_letter_strings():
-#     # Arrange/Act
-#     letters = draw_letters()
+def test_draw_letters_is_list_of_letter_strings():
+    # Arrange/Act
+    letters = draw_letters()
 
-#     # Assert
-#     assert len(letters) == 10
+    # Assert
+    assert len(letters) == 10
 
-#     for elem in letters:
-#         assert type(elem) == str
-#         assert len(elem) == 1
+    for elem in letters:
+        assert type(elem) == str
+        assert len(elem) == 1
 
 # def test_letter_not_selected_too_many_times():
 
