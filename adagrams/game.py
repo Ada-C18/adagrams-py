@@ -10,11 +10,7 @@ def draw_letters():
     
     
     print(letter_pool_list)
-<<<<<<< HEAD
-  
-=======
     user_hand= (random.choices(letter_pool_list,k=10))
->>>>>>> 2048b8c72985c996d5a8e79a6c1b58db4112d8b9
 
     return user_hand 
     
