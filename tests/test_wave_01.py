@@ -31,6 +31,7 @@ LETTER_POOL = {
     'Z': 1
 }
 
+# @pytest.mark.skip()
 def test_draw_letters_draws_ten():
     # Arrange/Act
     letters = draw_letters()
@@ -38,7 +39,7 @@ def test_draw_letters_draws_ten():
     # Assert
     assert len(letters) == 10
 
-@pytest.mark.skip()
+# @pytest.mark.skip()
 def test_draw_letters_is_list_of_letter_strings():
     # Arrange/Act
     letters = draw_letters()
