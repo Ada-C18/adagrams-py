@@ -1,5 +1,5 @@
 # AdaGrams
-<!-- Sunny: Mountain time. Marie: Eastern -->
+#-- Sunny: Mountain time. Marie: Eastern
 
 ## Skills Assessed
 
