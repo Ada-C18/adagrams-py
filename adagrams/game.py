@@ -37,9 +37,11 @@ def draw_letters():
 
 
 def uses_available_letters(word, letter_bank):
+    copy_bank = letter_bank.copy()
     for letter in word:
+        letter = letter.upper()
         try:
-            letter_bank.remove(letter)
+            copy_bank.remove(letter)
         except:
             return False
     return True
