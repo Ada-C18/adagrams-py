@@ -30,8 +30,19 @@ LETTER_POOL = {
 }
 
 def draw_letters():
-    return random.choices(list(LETTER_POOL.keys()), k=10)
+    # find way to use range in for loop to iterate 10 times
+    letters = []
+    for letter in LETTER_POOL.keys():
+        if len(letters) < 10:
+            random_letter = random.choice(list(LETTER_POOL.keys()))
+            print(random_letter)
+            if letters.count(random_letter) < LETTER_POOL[letter]:
+                letters.append(random_letter)
+                print(letters.count(random_letter))
 
+    return letters
+
+print(draw_letters())
 
 def uses_available_letters(word, letter_bank):
     pass
