@@ -1,5 +1,5 @@
 def draw_letters():
-    pass
+    print ("Hi Farrah :)")
 
 def uses_available_letters(word, letter_bank):
     print('Hi Aisha!')
