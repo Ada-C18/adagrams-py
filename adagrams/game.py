@@ -118,7 +118,6 @@ def score_word(word):
        
 
 def get_highest_word_score(word_list):
-# LEE SOLUTION STARTS HERE -- comment everything else out
     word_points = {}
     winner_list = []
     for word in word_list:
@@ -128,21 +127,15 @@ def get_highest_word_score(word_list):
     for key, value in word_points.items():
         if winner == value:
          winner_list.append((key, value))
-    # We sort backward here from largest to smallest from the value
+         
     winner_list.sort(reverse = True, key = lambda x:x[1])
-    # Since we sorted backwards, the first entry is the largest
     max_val = winner_list[0][1]
-    # We can then make a new list for all the values with the same max value
     tie_list = [tie for tie in winner_list if tie[1]==max_val]
-    # We can sort again, this time from the length of the smallest sentence to the largest
-    tie_list.sort(reverse=False, key = lambda x:len(x[0]))
-    # lastly, we make a for loop with an if statement, 
-    # checking for the first instance of len(10), 
-    # otherwise the first item is the shortest
+    tie_list.sort(key = lambda x:len(x[0]))
+
     for tie in tie_list:
         if len(tie[0])== 10:
             return tie
     return tie_list[0]
-# LEE SOLUTION ENDS
 
 
