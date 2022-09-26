@@ -43,22 +43,21 @@ def draw_letters():
 
 
 def uses_available_letters(word, letter_bank):
-    pass
+    available_letters = {}
 
-    # make a dictionary with each of the letters in letter_bank
-    # with values of the number of that letter we have
+    for letter in letter_bank:
+        available_letters[letter] = available_letters.get(letter, 0) + 1
 
-    # loop through the letters in the word
-    # if the letter is in the dictionary with a number, reduce that number by 1
-    # if the letter is in the dictionary with 0, return False
-    # if the letter is not in the dictionary, return False
+    for letter in word.upper():
+        if letter not in letter_bank or available_letters[letter] == 0:
+            return False
+        elif available_letters[letter] != 0:
+            available_letters[letter] -= 1
 
-    # return True
+    return True
 
 def score_word(word):
     pass
-    # have another constant dicitonary with the point values
-    # for letter in word, sum += point value
 
 def get_highest_word_score(word_list):
     pass
