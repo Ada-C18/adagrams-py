@@ -29,6 +29,15 @@ LETTER_POOL = {
     "Z": 1,
 }
 
+LETTER_POINTS = {
+"A, E, I, O, U, L, N, R, S, T": 1,
+"D, G": 2,
+"B, C, M, P": 3,
+"F, H, V, W, Y": 4,
+"K": 5,
+"J, X": 8,
+"Q, Z": 10
+}
 
 def draw_letters():
     # draw ten random letters from the letter pool
@@ -52,7 +61,12 @@ def uses_available_letters(word, letter_bank):
 
 
 def score_word(word):
-    pass
+    total_score = 0
+    for letter in word:
+        for key, score in LETTER_POINTS.items():
+            if letter in key:
+                total_score += score
+    return total_score
 
 
 def get_highest_word_score(word_list):
