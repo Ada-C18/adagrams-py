@@ -11,16 +11,36 @@ def draw_letters():
     hand = []
 
     for i in range(10):
-        letter = random.choice(flat_pool) # function that choose random letter from the flattened list 
+        letter = random.choice(flat_pool) # function that chooses a random letter from the flattened list 
         hand.append(letter)
-        flat_pool.remove(letter) # after appending each letter remove 
+        flat_pool.remove(letter) # after appending each letter remove that letter from letter pool
     return hand
     
 def uses_available_letters(word, letter_bank):
     pass
 
 def score_word(word):
-    pass
+    score_chart = {
+        1: 'AEIOULNRST',
+        2: 'DG',
+        3: 'BCMP',
+        4: 'FHVWY',
+        5: 'K',
+        8: 'JX',
+        10: 'QZ'
+    }
+
+    score = 0
+
+    if len(word) >= 7:
+        score += 8
+
+    for point, letters in score_chart.items():
+        for char in word.upper():
+            if char in letters:
+                score += point
+    return score
+
 
 def get_highest_word_score(word_list):
     pass
