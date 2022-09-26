@@ -1,5 +1,6 @@
 #Lee Reyes
 def draw_letters():
+    print("Hello There")
     pass
 
 def uses_available_letters(word, letter_bank):
