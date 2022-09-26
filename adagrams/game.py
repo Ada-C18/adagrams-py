@@ -43,10 +43,10 @@ def draw_letters():
 
 
 def uses_available_letters(word, letter_bank):
+    word = word.upper()
     for letter in set(word):
-        normal = letter.upper()
-        letter_freq = word.count(normal)
-        if letter_freq > letter_bank.count(normal):
+        letter_freq = word.count(letter)
+        if letter_freq > letter_bank.count(letter):
             return False
     return True
 
