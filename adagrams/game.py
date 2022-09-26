@@ -5,7 +5,10 @@ from collections import Counter
 
 
 def draw_letters():
+    adagrams_pool = []
     user_letter_list = []
+    adagrams_letter = []
+    adagrams_number = []
     #changed from a constant 
     pool_of_letters = {
         'A': 9, 
@@ -35,6 +38,27 @@ def draw_letters():
         'Y': 2, 
         'Z': 1
     }
+
+    # for let in pool_of_letters:
+    #     adagrams_letter.append(let)
+    # for num in pool_of_letters:
+    #     adagrams_number.append(pool_of_letters[num])
+
+
+    # for letter in adagrams_letter:
+    #     letter_index = adagrams_letter.index(letter)
+    # for i in range (0, adagrams_number[letter_index]):
+    #     adagrams_pool.append(adagrams_letter[letter_index])
+
+
+    # for num in range(10):
+    #     choice = random.choice(adagrams_pool)
+    #     user_letter_list.append(choice)
+    #     # if adagrams_pool != 0:
+    #     #     user_letter_list.append(choice)
+    #     # del choice
+    # return user_letter_list
+
     for num in range(10):
         choice = random.choice(list(pool_of_letters.keys()))
         if pool_of_letters[choice] != 0:
