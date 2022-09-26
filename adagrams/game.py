@@ -113,4 +113,12 @@ def score_word(word):
        
 
 def get_highest_word_score(word_list):
-    pass
+    word_points = {}
+    for word in word_list:
+        word_points[word] = score_word(word)
+    winner = max(word_points.values())
+    
+    for key, value in word_points.items():
+        if winner == value:
+            return (key,value)
+ 
