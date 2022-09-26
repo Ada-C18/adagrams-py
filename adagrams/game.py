@@ -118,13 +118,57 @@ def score_word(word):
        
 
 def get_highest_word_score(word_list):
+    # word_points = {}
+    # winner_list = []
+    
+    # for word in word_list:
+    #     word_points[word] = score_word(word)
+    # winner = max(word_points.values())
+
+    # for key, value in word_points.items():
+    #     if winner == value:
+    #         winner_list.append((key, value))
+    
+    # if len(winner_list) > 1:
+    #     smallest_len = len(winner_list[0][0])
+    #     shortest_win = winner_list[0]
+    #     for i in range(len(winner_list)):
+    #         if len(winner_list[i][0]) == 10:
+    #             return winner_list[i]
+    #         if len(winner_list[i][0]) < smallest_len:
+    #             smallest_len = len(winner_list[i][0])
+    #             shortest_win = winner_list[i]
+
+    #     return shortest_win
+
+    # return winner_list[0]  
+# LEE SOLUTION STARTS HERE -- comment everything else out
     word_points = {}
     winner_list = []
-    
     for word in word_list:
         word_points[word] = score_word(word)
     winner = max(word_points.values())
-    
+
+    for key, value in word_points.items():
+        if winner == value:
+         winner_list.append((key, value))
+    # We sort backward here from largest to smallest from the value
+    winner_list.sort(reverse = True, key = lambda x:x[1])
+    # Since we sorted backwards, the first entry is the largest
+    max_val = winner_list[0][1]
+    # We can then make a new list for all the values with the same max value
+    tie_list = [tie for tie in winner_list if tie[1]==max_val]
+    # We can sort again, this time from the length of the smallest sentence to the largest
+    tie_list.sort(reverse=False, key = lambda x:len(x[0]))
+    # lastly, we make a for loop with an if statement, 
+    # checking for the first instance of len(10), 
+    # otherwise the first item is the shortest
+    for tie in tie_list:
+        if len(tie[0])== 10:
+            return tie
+    return tie_list[0]
+# LEE SOLUTION ENDS
+
     # wordlen_list = []
     # for key, value in word_points.items():
     #     if winner == value:
@@ -144,25 +188,4 @@ def get_highest_word_score(word_list):
 
     # return winner_list[0]
     
-
-
-    for key, value in word_points.items():
-        if winner == value:
-            winner_list.append((key, value))
-
-    if len(winner_list) > 1:
-        smallest_len = len(winner_list[0][0])
-        shortest_win = winner_list[0]
-        for i in range(len(winner_list)):
-            if len(winner_list[i][0]) == 10:
-                return winner_list[i]
-            if len(winner_list[i][0]) < smallest_len:
-                smallest_len = len(winner_list[i][0])
-                shortest_win = winner_list[i]
-
-        return shortest_win
-
-    return winner_list[0]  
-        
- 
 
