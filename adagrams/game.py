@@ -63,4 +63,14 @@ def score_word(word):
     value_10 = ['Q', 'Z']
 
 def get_highest_word_score(word_list):
-    pass
+    word_score_dict = {}
+    for word in word_list:
+        score = score_word(word)
+        word_score_dict[word] = score
+    highest_score = max(word_score_dict.values)
+    highest_dict = {}
+    for word in word_score_dict:
+        if word_score_dict[word] == highest_score:
+            highest_dict[word] = word_score_dict[word]
+    
+    
