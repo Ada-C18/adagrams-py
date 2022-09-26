@@ -66,24 +66,30 @@ def draw_letters():
         random_letter = random.choice(list(LETTER_POOL.keys()))
         letters.append(random_letter)
         count += 1
-        print(letters)
+    print("Here is our hand of letter = ", letters)
 
-        # iterate through the list of letters being randomly pulled for the hand
-    # for letters in range(len(letters)):
-
-    # # for-loop updates the dictionary
-    #     for letter, value in LETTER_POOL.items():
-    #         # print(letter, value)
-    #         if letter == random_letter:
-    #             print(letter, value)
-    #             value -= 1
-    #             print(letter, value)
-    #             return value
-    
+    # psuedocode the the next loop
+    for letter in letters:
+        if that letter is in LETTER_POOL.items(): # I want to grab the key and value
+            for k, v in letter:
+                i want to update the value ---> v -= 1
+                return v
 
 
-        # counter? length of letters list, as we try to get 10 letter for the hand
+    # iterate through the list of letters being randomly pulled for the hand
+    # for letter in range(len(letters)):
+    #     print(letter)
+
+    # for-loop updates the dictionary
+        # for letter, value in LETTER_POOL.items():
+        #     # print(letter, value)
+        #     if letter == random_letter:
+        #         print(letter, value)
+        #         value -= 1
+        # print(letter, value)
+        # return value
         # return the value—so update the dictionary           
+
 
     # returns array of 10 strings - testing for len(letters) == 10
     return letters
@@ -91,7 +97,7 @@ def draw_letters():
     
     
     
-    pass
+    # pass
 
 def uses_available_letters(word, letter_bank):
     pass
