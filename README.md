@@ -1,4 +1,5 @@
 # AdaGrams
+<!-- Sunny: Mountain time. Marie: Eastern -->
 
 ## Skills Assessed
 
