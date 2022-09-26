@@ -54,6 +54,7 @@ def uses_available_letters(word, letter_bank):
         return False
 
 def score_word(word):
+    # point values for letters
     value_1 = ['A', 'E', 'I', 'O', 'U', 'L', 'N', 'R', 'S', 'T']
     value_2 = ['D', 'G']
     value_3 = ['B', 'C', 'M', 'P']
@@ -61,6 +62,32 @@ def score_word(word):
     value_5 = ['K']
     value_8 = ['J', 'X']
     value_10 = ['Q', 'Z']
+    
+    word_list = list(word.upper())
+    score_counter = 0
+    
+    for letter in word_list:
+        if letter in value_1:
+            score_counter += 1
+        elif letter in value_2:
+            score_counter += 2
+        elif letter in value_3:
+            score_counter += 3
+        elif letter in value_4:
+            score_counter += 4
+        elif letter in value_5:
+            score_counter += 5
+        elif letter in value_8:
+            score_counter += 8
+        elif letter in value_10:
+            score_counter += 10
+        else:
+            score_counter += 0
+    
+    if len(word_list) >= 7 and len(word_list) <= 10:
+        score_counter += 8
+
+    return score_counter
 
 def get_highest_word_score(word_list):
     word_score_dict = {}
