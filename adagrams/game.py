@@ -44,7 +44,20 @@ def draw_letters():
 
 
 def uses_available_letters(word, letter_bank):
-    pass
+    # aria *********
+    # copy letter bank list
+    copy_letter_bank = letter_bank.copy()
+    # make string all upper
+    # check to see if letter in word is in letter bank
+    for letter in word.upper():
+    # if letter is in letter bank, remove from letter bank 
+        if letter in copy_letter_bank:
+            copy_letter_bank.remove(letter)
+    # if letter is not in letter bank, return false
+        elif letter not in copy_letter_bank:
+            return False
+    # if loop finishes and doesn't return false, all the letters are in word, return true
+    return True
 
 def score_word(word):
     pass
