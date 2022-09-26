@@ -35,7 +35,6 @@ def draw_letters():
     letters = [] # the "hand" with 10 letters that we return
 
     # random drawing from letters in dictionary — random module***
-    
     """ 
     STEPS:
     begin to pull letters, randomly
@@ -50,16 +49,28 @@ def draw_letters():
     random get a key from —> calls the value
     return an updated value
     """
+
     # get a random letter
     random_letter = random.choice(list(LETTER_POOL.keys()))
+    # player_choice = list(LETTER_POOL.values()) # random piece of code we were thinking about using LOL
     print("Here's your letter = ", random_letter)
 
     # create a list with the letters chosen
     letters.append(random_letter)
     print("Here's your current hand =", letters)
 
-    player_choice = list(LETTER_POOL.values())
-    for random_letter in LETTER_POOL:
+    
+    
+    for letter, value in LETTER_POOL.items():
+        # print(letter, value)
+        if letter == random_letter:
+            print(letter, value)
+            value -= 1
+            print(letter, value)
+            return value
+    
+
+
         # we need to update the value of that random letter
         # counter? length of letters list, as we try to get 10 letter for the hand
         # return the value—so update the dictionary           
