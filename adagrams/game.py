@@ -38,8 +38,6 @@ def draw_letters():
     
     user_letters = random.sample(letter_pool, k=10)
 
-    print(user_letters)
-
     return user_letters
     
 
