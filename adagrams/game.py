@@ -2,7 +2,7 @@ def draw_letters():
     pass
 
 def uses_available_letters(word, letter_bank):
-    pass
+    print('Hi Aisha!')
 
 def score_word(word):
     pass
