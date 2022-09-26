@@ -1,5 +1,16 @@
 # AdaGrams
 
+## Collaboration Plan: 
+
+    - EST Time Zone/ Best time to meet are Ada Breaks & Evenings
+    - WRAP UP at 9PM. Hard Stop at 10 PM. 
+    - Preferred Method of Contact: Slack or Email(defer to Slack for contact details)
+    - Keep each other informed on time block status
+    - Body-Doubling w/ or w/o Music
+    - DUE FRIDAY 11:30 EST
+    - Meeting times shared via Google Calendar
+    - 
+
 ## Skills Assessed
 
 - Following directions and reading comprehension
