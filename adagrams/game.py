@@ -1,5 +1,7 @@
 # NOTE from Dainiz: I changed this variable name so I could use letter_pool in
 # draw_letters() but we can change things up if another way makes more sense to you!
+import random
+
 LETTER_DISTRIBUTION = {
     "A": 9,
     "B": 2,
@@ -31,10 +33,15 @@ LETTER_DISTRIBUTION = {
 
 def draw_letters():
     letter_pool = []
+    hand = []
     for letter, count in LETTER_DISTRIBUTION.items():
         for i in range(count):
             letter_pool.append(letter)
-    pass
+    for letter in range(10):
+        random_letter = random.choice(letter_pool)
+        hand.append(random_letter)
+        letter_pool.remove(random_letter)
+    return hand
 
 def uses_available_letters(word, letter_bank):
     pass
