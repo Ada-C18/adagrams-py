@@ -35,6 +35,8 @@ def draw_letters():
         if pool_of_letters[choice] != 0:
             user_list.append(choice)
             pool_of_letters[choice] -= 1
+        else:
+            i-=1
     return user_list
     
 
