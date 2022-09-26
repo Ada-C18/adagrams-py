@@ -1,3 +1,18 @@
+Partners: Tiff & Nilou
+
+Coworking Meetups: 
+- 9/26 Monday: 4-6pm PST (7-9pm EST)
+- 9/27 Tuesday: 7-9:30am PST (10-12:30pm EST)
+
+Tiff surgery on Wednesday 9/28/22, may be out Wednesday and Tuesday morning.  Check-in with Nilou for post-op updates.
+
+Tiff cell: 206-234-8617
+Nilou cell: 631-746-5052
+
+Learning Styles: 
+- Nilou: self-learn and read to understand first and does better on team than individual.
+- Tiff: self-learn and read to assess instructions, code individually, then teamwork to rubber duck solutions.
+  
 # AdaGrams
 
 ## Skills Assessed
