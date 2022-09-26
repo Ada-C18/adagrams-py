@@ -28,13 +28,32 @@ LETTER_POOL = {
 }
 
 LETTER_POINTS = {
-    "A, E, I, O, U, L, N, R, S, T": 1,
-    "D, G": 2,
-    "B, C, M, P": 3,
-    "F, H, V, W, Y": 4,
+    "A": 1,
+    "N": 1,
+    "B": 3,
+    "O": 1,
+    "C": 3,
+    "P": 3,
+    "D": 2,
+    "Q": 10,
+    "E": 1,
+    "R": 1,
+    "F": 4,
+    "S": 1,
+    "G": 2,
+    "T": 1,
+    "H": 4,
+    "U": 1,
+    "I": 1,
+    "V": 4,
+    "J": 8,
+    "W": 4,
     "K": 5,
-    "J, X": 8,
-    "Q, Z": 10,
+    "X": 8,
+    "L": 1,
+    "Y": 4,
+    "M": 3,
+    "Z": 10,
 }
 
 
@@ -60,9 +79,7 @@ def score_word(word):
     if len(word) > 6:
         total_score += 8
     for letter in word:
-        for key, score in LETTER_POINTS.items():
-            if letter in key:
-                total_score += score
+        total_score += LETTER_POINTS[letter]
     return total_score
 
 
