@@ -1,5 +1,14 @@
 # AdaGrams
 
+# Pair Plan
+- Mostly use VS code live share
+- Tami: would like to focus and follow along whilst someone else is driving
+- Margaret: develop more patience
+- Use co-working time to work on what we can and we can each take a function to work on out of class and reconvene Thursday
+- Margaret and Tami both prefer to talk about feedback
+- Margaret's learning style: random bullshit go
+- Tami's learning style: see it and then review it later
+
 ## Skills Assessed
 
 - Following directions and reading comprehension
