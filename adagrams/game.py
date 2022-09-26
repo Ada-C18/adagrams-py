@@ -34,11 +34,18 @@ def draw_letters():
     bag_of_letters = []
     hand = []
     # based on the value add the letter n times to alphabet list
-    while len(hand) < 11:
+    while len(hand) != 10:
         for letter,value in LETTER_POOL.items():
             for i in range(value):
                 bag_of_letters.append(letter)
-        hand.append(random.choice(bag_of_letters))
+        for letter in bag_of_letters:
+            draw = random.choice(bag_of_letters)
+            hand.append(draw)
+            bag_of_letters.remove(draw)
+
+        # for letter in hand:
+        #     bag_of_letters.remove(letter)
+    # print(bag_of_letters)
     return hand
     
     
