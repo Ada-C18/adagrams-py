@@ -1,3 +1,10 @@
+# Pair Plan:
+1) Access needs: Tuesday: we'll meet in the morning at 8am and meet after class in the afternoon.
+2) Your learning style: Visual learners. We will need white boarding a lot
+3) How you prefer to receive feedback: Open communication, feedback as we go. Constructive feedback for growth opportunities.
+4) One team communication skill you want to improve with this experience: (Minh) Algorithm thinking and explaining my thinking.(Melissa) quicker reflect in term of communicating 
+
+
 # AdaGrams
 
 ## Skills Assessed
