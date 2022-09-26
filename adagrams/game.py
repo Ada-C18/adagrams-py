@@ -99,16 +99,16 @@ def score_word(word):
         }
           
     word_upper = word.upper()
-    letter_list = []
-    
-    for letter in word_upper:
-        letter_list.append(letter)
+    letter_list = [letter for letter in word_upper]
+  
     for ele in letter_list:
         if ele in adagrams_dict:
             word_points += adagrams_dict[ele]
         else:
             word_points += 0
-    
+    if len(word_upper) >= 7:
+        word_points += 8
+
     return word_points
        
 
