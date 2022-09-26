@@ -11,6 +11,18 @@ def draw_letters():
         # E as a Z
     # Invoking this function should not change the pool of letters
         # Imagine that the user returns their hand to the pool before drawing new letters
+    
+    letters = []
+    for i in range(10):
+        letters.append(random.choice(list(LETTER_POOL.keys())))
+
+    dict_letters = {}
+    for letter in letters: 
+        dict_letters[letter] = dict_letters.get(letter, 0) + 1
+        
+    for letter, counts in dict_letters.items():
+        if counts > LETTER_POOL[letter]:
+            print(f"not enough letters {letter}")
 
 def uses_available_letters(word, letter_bank):
     print("testing git")
