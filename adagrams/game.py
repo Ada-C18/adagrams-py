@@ -79,12 +79,14 @@ def uses_available_letters(word, letter_bank):
     #check for correct letter availability in letter_bank
     #check if every letter in word is avail
     
+    letter_bank_copy = letter_bank.copy()
     for letter in word:
-        if letter not in letter_bank:
+        if letter not in letter_bank or len(word) > len(letter_bank):
             return False
         elif letter in letter_bank:
             pass
     return True
+    
 
 
 
