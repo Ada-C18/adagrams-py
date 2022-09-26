@@ -1,10 +1,43 @@
 import random
 def draw_letters():
-    alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M","N","O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" ]
+    allletters = []
+    alphabet = {
+        "A": 9,
+        "B": 2,
+        "C": 2,
+        "D": 4,
+        "E": 12,
+        "F": 2,
+        "G": 3,
+        "H": 2,
+        "I": 9,
+        "J": 1,
+        "K": 1,
+        "L": 4,
+        "M": 2, 
+        "N": 6,
+        "O": 8,
+        "P": 2,
+        "Q": 1,
+        "R": 6,
+        "S": 4,
+        "T": 6,
+        "U": 4,
+        "V": 2,
+        "W": 2,
+        "X": 1,
+        "Y": 2,
+        "Z": 1
+    }
+    for letter, number in alphabet.items():
+        for i in range(number):
+            allletters.append(letter)
+    
+
     gameletters = []
     for letter in range(10):
         number = random.randint(0, 27)
-        random_letter = alphabet[number]
+        random_letter = allletters[number]
         gameletters.append(random_letter)
     return gameletters
 
