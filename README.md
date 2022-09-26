@@ -1,5 +1,12 @@
 # AdaGrams
 
+## Kimia and Carina's Pair Plan
+- Kimia needs to leave at 3.
+- We both like to try working through something on our own and ask for help if there's something we don't understand.
+- Kimia likes to read and understand the problem first.
+- Both want to feel comfortable giving and receiving feedback.
+- Team communication skills: time management, be more open to active collaboration
+
 ## Skills Assessed
 
 - Following directions and reading comprehension

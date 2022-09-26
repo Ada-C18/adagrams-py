@@ -1,5 +1,8 @@
+def helper_function():
+    #put the helper function here
+    
 def draw_letters():
-    pass
+    #convert LETTER_POOL dict to list--helper function?
 
 def uses_available_letters(word, letter_bank):
     pass
