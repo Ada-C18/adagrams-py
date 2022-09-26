@@ -1,5 +1,11 @@
 # AdaGrams
 
+#Pair Plan!
+Learning styles: We both learn by doing. Once we learn a concept, we learn by applying.
+Prefer receiving feedback like: Upfront, honest, straightforward
+Communication skills we want to improve: Communicating ideas more, speaking up more
+After Tuesday afternoon co-working, we'll check in about progress and sync up schedules if needed and consider office hours if need. If we're really stuck or struggling then we should ask for help!
+
 ## Skills Assessed
 
 - Following directions and reading comprehension
