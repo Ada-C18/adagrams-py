@@ -54,11 +54,13 @@ def uses_available_letters(word, letter_bank):
 
     
     for ele in letter_list:
-        if freq_map[ele] == 0:
+        if freq_map[ele] == 0 or ele not in freq_map:
             return False
         if ele in letter_bank:
             freq_map[ele] -= 1 
             is_word_valid = True
+        else:
+            return False
 
     return is_word_valid
 
