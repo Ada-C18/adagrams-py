@@ -47,8 +47,12 @@ def draw_letters():
     return(hand_of_ten_letters)
 
 
-def uses_available_letters(word, letter_bank):
-    pass
+def uses_available_letters(word, hand_of_ten_letters):
+    word = word.upper()
+    for char in word:
+        if word.count(char) is not hand_of_ten_letters.count(char):
+            return False
+    return True
 
 def score_word(word):
     pass
