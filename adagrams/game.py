@@ -63,10 +63,30 @@ def draw_letters():
         
 
 
-draw_letters()
+# - Has two parameters:
+#    - `word`, the first parameter, describes some input word, and is a string
+#    - `letter_bank`, the second parameter, describes an array of drawn letters in a hand. You can expect this to be an array of ten strings, with each string representing a letter
+# - Returns either `True` or `False`
+# - Returns `True` if every letter in the `input` word is available (in the right quantities) in the `letter_bank`
+# - Returns `False` if not; if there is a letter in `input` that is not present in the `letter_bank` or has too much of compared to the `letter_bank`
 
 def uses_available_letters(word, letter_bank):
-    pass
+    #Check for len(word) is > len(letter_bank)
+    #change case to .upper()
+    #check if letter not in letter_bank
+        #return false
+    #check if letter is in letter_bank
+    #check for correct letter availability in letter_bank
+    #check if every letter in word is avail
+    
+    for letter in word:
+        if letter not in letter_bank:
+            return False
+        elif letter in letter_bank:
+            pass
+    return True
+
+
 
 def score_word(word):
     pass
