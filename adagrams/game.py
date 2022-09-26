@@ -1,4 +1,5 @@
 def draw_letters():
+    i+1 
     pass
 
 def uses_available_letters(word, letter_bank):
