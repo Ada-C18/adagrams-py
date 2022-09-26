@@ -1,5 +1,15 @@
 # AdaGrams
 
+## Tigers group 10 comments
+
+- Liat: EST; Lisa: PST
+- Goal: work during core hours and 8pm-10pmEST/5pm-7pmPST
+- Learning styles
+  - Liat: time to process --> agenda for sessions
+  - Lisa: time to read through and digest, get an idea of waves, expectations, plan to tackle
+- Feedback preferences: honesty, bluntness
+- Team communication skill to improve: practice driving/navigating pair programming
+
 ## Skills Assessed
 
 - Following directions and reading comprehension
