@@ -1,4 +1,5 @@
 import random
+from collections import Counter
 def draw_letters():
     user_letter_list = []
     #changed from a constant 
@@ -118,7 +119,13 @@ def get_highest_word_score(word_list):
         word_points[word] = score_word(word)
     winner = max(word_points.values())
     
+    # for word in word_points:
+    #     if winner.count > 1:
+    #         winner = min (len(word_points.key()))
+
+    
     for key, value in word_points.items():
         if winner == value:
             return (key,value)
  
+
