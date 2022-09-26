@@ -1,5 +1,6 @@
 def draw_letters():
-    pass
+    print("Test Merge conflict.")
+    return None
 
 def uses_available_letters(word, letter_bank):
     pass
