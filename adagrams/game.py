@@ -16,12 +16,34 @@ def draw_letters():
         "L" : 4, 	"Y" : 2,
         "M" : 2, 	"Z" : 1, 
     }
-    random_letters = [random.choice(list(letter_distribution)) for i in range(10)]
-    return random_letter
+    all_letters = []
+    
+    for letter in letter_distribution:
+        for i in range(letter_distribution[letter]):
+            all_letters.append(letter)
+    random_letters = []
+    for i in range(10):
+        random_letter = random.choice(all_letters)
+        all_letters.remove(random_letter)
+        random_letters.append(random_letter)
+
+
+    return random_letters
+    
+    
+    
+
+
 
 
 def uses_available_letters(word, letter_bank):
-    pass
+    for letter in word:
+        try:
+            letter_bank.remove(letter)
+        except:
+            return False
+    return True
+    
 
 def score_word(word):
     pass
