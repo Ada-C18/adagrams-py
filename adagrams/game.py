@@ -42,7 +42,9 @@ def draw_letters():
         if pool_of_letters_dict[choice] > 0:
             letters_in_hand.append(choice)
             counter+=1
-    print(letters_in_hand)  
+            pool_of_letters_dict[choice]-=1
+
+    # print(letters_in_hand)  
     return letters_in_hand 
 
 def uses_available_letters(word, letter_bank):
