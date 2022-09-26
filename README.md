@@ -1,5 +1,18 @@
 # AdaGrams
 
+## Pair Plan
+Max:
+  - Available most days/times, prefer to work in HQ
+  - Learns mostly through reading/visual/exercises
+  - Any type of feedback is welcome! Very used to constructive criticism
+  - Want to improve on explaining my thought processes
+
+Nancy:
+  - Available most days/times with a break in between, prefer to work in HQ
+  - Learns through visual, not so much reading, loves examples!
+  - Any type, any way, of feedback is welcome
+  - Want to learn to not be afraid to say something wrong, and just say it
+
 ## Skills Assessed
 
 - Following directions and reading comprehension
