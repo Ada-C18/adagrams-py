@@ -114,11 +114,29 @@ def score_word(word):
 
 def get_highest_word_score(word_list):
     word_points = {}
+    smallest_len = 0
+    winning_tup = ()
+    tie_list = []
     for word in word_list:
         word_points[word] = score_word(word)
     winner = max(word_points.values())
     
     for key, value in word_points.items():
         if winner == value:
-            return (key,value)
+            tie_list.append((key,value))
+
+    if len(tie_list) > 1:
+        smallest_len = len(tie_list[0][0])
+        shortest_win = tie_list[0]
+        for i in range(len(tie_list)):
+            if len(tie_list[i][0]) == 10:
+                return tie_list[i]
+            if len(tie_list[i][0]) < smallest_len:
+                smallest_len = len(tie_list[i][0])
+                shortest_win = tie_list[i]
+
+        return shortest_win
+
+    return tie_list[0]  
+        
  
