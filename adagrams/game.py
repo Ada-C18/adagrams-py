@@ -1,4 +1,5 @@
 def draw_letters():
+    # Alaere's section 
     pass
 
 def uses_available_letters(word, letter_bank):
