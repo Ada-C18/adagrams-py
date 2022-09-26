@@ -32,13 +32,17 @@ LETTER_POOL = {
 
 def draw_letters():
     count_dict = {}
-    for i in range(1, 11):
+    letter_list = []
+    while len(letter_list) < 10:
         new_letter = (random.choice(string.ascii_uppercase))
         if new_letter in count_dict and count_dict[new_letter] < LETTER_POOL[new_letter]:
             count_dict[new_letter] += 1
-        else:
+            letter_list.append(new_letter)
+        elif new_letter not in count_dict:
             count_dict[new_letter] = 1
-    letter_list = [*Counter(count_dict).elements()]
+            letter_list.append(new_letter)
+        else:
+            continue
     return letter_list
 
 def uses_available_letters(word, letter_bank):
