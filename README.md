@@ -106,16 +106,16 @@ $ pip install -r requirements.txt
 Summary of one-time project setup:
 
 One person:
-- [ ] Fork the project respository
-- [ ] Invite team members to the respository
+- [X] Fork the project respository
+- [X] Invite team members to the respository
 
 All team members:
-- [ ] `cd` into your `projects` folder
-- [ ] Clone the project onto your machine
-- [ ] `cd` into the `adagrams-py` folder
-- [ ] Create the virtual environment `venv`
-- [ ] Activate the virtual environment `venv`
-- [ ] Install the dependencies with `pip`
+- [X] `cd` into your `projects` folder
+- [X] Clone the project onto your machine
+- [X] `cd` into the `adagrams-py` folder
+- [X] Create the virtual environment `venv`
+- [X] Activate the virtual environment `venv`
+- [X] Install the dependencies with `pip`
 
 ## Project Development Workflow
 
