@@ -1,7 +1,8 @@
 import random
 def draw_letters():
     user_list = []
-    LETTER_POOL = {
+    #changed from a constant 
+    pool_of_letters = {
         'A': 9, 
         'B': 2, 
         'C': 2, 
@@ -30,9 +31,11 @@ def draw_letters():
         'Z': 1
     }
     for i in range(10):
-        choice = random.choice(LETTER_POOL.keys())
-        # user_list.append()
-    return choice
+        choice = random.choice(list(pool_of_letters.keys()))
+        if pool_of_letters[choice] != 0:
+            user_list.append(choice)
+            pool_of_letters[choice] -= 1
+    return user_list
     
 
 def uses_available_letters(word, letter_bank):
