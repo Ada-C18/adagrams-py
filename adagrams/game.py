@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # Tia's message for testing 
+=======
+#let's create a conflict
+>>>>>>> 0f525368ab2d9e20404e759470ce8710aedeba1a
 
 def draw_letters():
     pass
