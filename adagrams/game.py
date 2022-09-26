@@ -62,6 +62,9 @@ def uses_available_letters(word, letter_bank):
 
 def score_word(word):
     total_score = 0
+    word = word.upper()
+    if len(word) > 6:
+        total_score += 8
     for letter in word:
         for key, score in LETTER_POINTS.items():
             if letter in key:
