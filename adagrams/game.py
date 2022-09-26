@@ -59,8 +59,6 @@ def draw_letters():
             break
 
     return letter_bank
-    
-        
 
 
 # - Has two parameters:
@@ -79,13 +77,17 @@ def uses_available_letters(word, letter_bank):
     #check for correct letter availability in letter_bank
     #check if every letter in word is avail
     
-    letter_bank_copy = letter_bank.copy()
-    for letter in word:
-        if letter not in letter_bank or len(word) > len(letter_bank):
+    letter_bank_copy=letter_bank.copy()
+    upper_word=word.upper()
+    
+    if len(upper_word)>len(letter_bank_copy):
+        return False
+    for letter in upper_word:
+        if letter not in letter_bank_copy:
             return False
-        elif letter in letter_bank:
-            pass
-    return True
+        elif letter in letter_bank_copy:
+            letter_bank_copy.remove(letter)
+    return True 
     
 
 
@@ -96,17 +98,3 @@ def score_word(word):
 def get_highest_word_score(word_list):
     pass
 
-
-# | A : 9  | N : 6 |
-# | B : 2  | O : 8 |
-# | C : 2  | P : 2 |
-# | D : 4  | Q : 1 |
-# | E : 12 | R : 6 |
-# | F : 2  | S : 4 |
-# | G : 3  | T : 6 |
-# | H : 2  | U : 4 |
-# | I : 9  | V : 2 |
-# | J : 1  | W : 2 |
-# | K : 1  | X : 1 |
-# | L : 4  | Y : 2 |
-# | M : 2  | Z : 1 |
