@@ -1,5 +1,21 @@
+from tests.test_wave_01 import LETTER_POOL
+
+
 def draw_letters():
-    pass
+    list_1= [k*v for k,v in LETTER_POOL.items()]
+    letter_pool_list=[]
+    for string in list_1:
+        for letter in string:
+            letter_pool_list.append(letter)
+    
+    
+    print(letter_pool_list)
+
+    return letter_pool_list
+
+
+
+    
 
 def uses_available_letters(word, letter_bank):
     pass
