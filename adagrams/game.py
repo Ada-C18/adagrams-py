@@ -1,3 +1,4 @@
+from gzip import BadGzipFile
 import random
 
 LETTER_POOL = {
@@ -30,13 +31,20 @@ LETTER_POOL = {
 }
 
 def draw_letters():
-    alphabet = []
+    bag_of_letters = []
     hand = []
-    print("Hello")
+    # based on the value add the letter n times to alphabet list
     while len(hand) < 11:
-        for letter in LETTER_POOL:
-            #based on the value add the letter n times to alphabet list
-    # draw = random.choice(alphabet)
+        for letter,value in LETTER_POOL.items():
+            for i in range(value):
+                bag_of_letters.append(letter)
+        hand.append(random.choice(bag_of_letters))
+    return hand
+    
+    
+    
+    
+
 
     # pass
 
