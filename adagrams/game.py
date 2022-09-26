@@ -33,21 +33,40 @@ LETTER_DISTRIBUTION = {
 
 def draw_letters():
     letter_pool = []
-    hand = []
+    letter_bank = []
     for letter, count in LETTER_DISTRIBUTION.items():
         for i in range(count):
             letter_pool.append(letter)
     for letter in range(10):
         random_letter = random.choice(letter_pool)
-        hand.append(random_letter)
+        letter_bank.append(random_letter)
         letter_pool.remove(random_letter)
-    return hand
+    return letter_bank
 
 def uses_available_letters(word, letter_bank):
-    pass
+    bank_dict = {}
+    for item in letter_bank:
+        if item not in bank_dict:
+            bank_dict[item] = 1
+        else:
+            bank_dict[item] += 1
+    for letter in word.upper():
+        if letter not in bank_dict.keys():
+            return False
+        elif letter in bank_dict.keys():
+            bank_dict[letter] -= 1
+        
+        if bank_dict[letter] < 0:
+            return False
+    return True
+
+
+
 
 def score_word(word):
     pass
 
 def get_highest_word_score(word_list):
     pass
+
+draw_letters()
