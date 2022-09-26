@@ -194,6 +194,16 @@ First, come up with a "plan of action" for how you want to work as a pair. Discu
 
 We recommend spending at least a portion of the time pair programming and working collaboratively from the same machine.  Zoom and screen sharing or [VSCode Live Share](https://code.visualstudio.com/learn/collaboration/live-share) are good tools to consider.  Some teams will choose to pair program and work collaboratively from the same machine for the entire project.  Some teams will choose to divide a portion of the work and combine their code using git. 
 
+- Goal: 1 wave/day
+- Access Needs - vs code liveshare 
+- Learning style
+  -- Ariel:
+  -- Milena: 
+- Feedback
+- Communication skill 
+  -- git commits, conflicts
+  -- check in before working alone
+
 ### Get Familiar
 
 Take time to read through the Wave 1 implementation requirements and the tests for wave 1. Write down your questions, and spend some time going through your understanding of the requirements and tests with your pair. Make sure you both can run `$ pytest` and see the tests fail.
