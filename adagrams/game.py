@@ -94,10 +94,17 @@ def get_highest_word_score(word_list):
     for word in word_list:
         score = score_word(word)
         word_score_dict[word] = score
-    highest_score = max(word_score_dict.values)
+    highest_score = max(word_score_dict.values())
     highest_dict = {}
     for word in word_score_dict:
         if word_score_dict[word] == highest_score:
             highest_dict[word] = word_score_dict[word]
-    
-    
+    min_len_word = min(list(highest_dict.keys()), key=len)
+    for k, v in highest_dict.items():
+        if len(k) == 10:
+            return k, v
+    for k, v in highest_dict.items():
+        if k == min_len_word:
+            return k, v
+
+print(get_highest_word_score(["BBBBBB", "AAAAAAAAAA"]))
