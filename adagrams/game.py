@@ -1,3 +1,4 @@
+import random
 
 def build_letter_pool():
     
@@ -35,13 +36,16 @@ def build_letter_pool():
     for letter, frequency in LETTER_POOL.items():
         for num in range(frequency):
             letter_pool.append(letter)
-    print(letter_pool)
+    # print(letter_pool)
     return letter_pool
     
 
 def draw_letters():
-    # letter_pool = 
-    pass
+    letter_pool = build_letter_pool()
+    letters = random.sample(letter_pool, 10)
+    # print(letters)
+    return letters
+    # pass
 
 def uses_available_letters(word, letter_bank):
     pass
@@ -52,4 +56,5 @@ def score_word(word):
 def get_highest_word_score(word_list):
     pass
 
-build_letter_pool()
+
+draw_letters()
