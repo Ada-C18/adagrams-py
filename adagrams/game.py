@@ -3,6 +3,7 @@ def draw_letters():
     pass
 
 def uses_available_letters(word, letter_bank):
+    # We aren't here yet
     pass
 
 def score_word(word):
