@@ -1,5 +1,11 @@
 # AdaGrams
 
+#Pair Plan (Masi & Dominique)
+-no specific Access needs for us
+-Masi likes to process on her own and then process with others when she's learning something new. Dominique likes to process with others and then process on her own.
+-We both like verbal immediately after it's needed.
+-We both would like to work on talking about code, using the right vocabulary and being able to communicate what we're thinking.
+
 ## Skills Assessed
 
 - Following directions and reading comprehension
@@ -95,16 +101,16 @@ $ pip install -r requirements.txt
 Summary of one-time project setup:
 
 One person:
-- [ ] Fork the project respository
-- [ ] Invite team members to the respository
+- [x] Fork the project respository
+- [x] Invite team members to the respository
 
 All team members:
-- [ ] `cd` into your `projects` folder
-- [ ] Clone the project onto your machine
-- [ ] `cd` into the `adagrams-py` folder
-- [ ] Create the virtual environment `venv`
-- [ ] Activate the virtual environment `venv`
-- [ ] Install the dependencies with `pip`
+- [x] `cd` into your `projects` folder
+- [x] Clone the project onto your machine
+- [x] `cd` into the `adagrams-py` folder
+- [x] Create the virtual environment `venv`
+- [x] Activate the virtual environment `venv`
+- [x] Install the dependencies with `pip`
 
 ## Project Development Workflow
 
