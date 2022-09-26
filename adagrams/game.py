@@ -1,3 +1,4 @@
+from audioop import add
 import random
 
 LETTER_POOL = {
@@ -43,10 +44,19 @@ def draw_letters():
 
     return letters
 
-print(draw_letters())
+
 
 def uses_available_letters(word, letter_bank):
     pass
+
+#   Check if word is in random 10 letter list (Helper Funct)
+#       - it ignores letter case
+#   Make sure that each letter is only used as many times as
+#       it appears on the list of random letters.
+
+#   Returns True or False
+
+
 
 def score_word(word):
     pass
