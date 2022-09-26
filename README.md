@@ -2,6 +2,38 @@
 
 ## Skills Assessed
 
+Access Needs:
+Alexis:
+  - Flexible Schedule
+  - 8:00 pm cut off
+June:
+  - Dinner around 7:00
+  - 30 - 40 min commute by train
+  - Contact by phone (949) 306-5808
+Group:
+  - No work past 7:00
+
+Learning Style:
+Alexis:
+  - Have to see things and have them explained, then do the work in order to learn
+June:
+  - Learns well from example, and use cases.
+  - When stuck talking things through helps
+
+Preferred Feedback Style:
+Alexis:
+  - Straight-forward explanation
+June:
+  - Happy with receiving feedback, may need extra explanation
+
+One Team Communication Skill to Improve:
+Alexis:
+  - Asking for help
+June:
+  - Perfectionism / Asking for Help
+
+
+
 - Following directions and reading comprehension
 - Reading tests
 - Using git to maintain code
