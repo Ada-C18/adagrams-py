@@ -1,5 +1,9 @@
 import random
 from collections import Counter
+
+# Lee Reyes and Aviva Gars Adagrams Project 
+
+
 def draw_letters():
     user_letter_list = []
     #changed from a constant 
@@ -115,35 +119,50 @@ def score_word(word):
 
 def get_highest_word_score(word_list):
     word_points = {}
-    smallest_len = 0
-    winning_tup = ()
-    tie_list = []
+    winner_list = []
+    
     for word in word_list:
         word_points[word] = score_word(word)
     winner = max(word_points.values())
     
-    # for word in word_points:
-    #     if winner.count > 1:
-    #         winner = min (len(word_points.key()))
-
+    # wordlen_list = []
+    # for key, value in word_points.items():
+    #     if winner == value:
+    #         winner_list.append((key, value))
     
+    # if len(winner_list) > 1:
+    #     for wordlen in winner_list:
+    #         wordlen_list.append(wordlen[0])
+    
+    #     min_wordlen = min(wordlen_list, key=len)
+
+    #     for win in winner_list:
+    #         if len(win[0]) == 10:
+    #             return (win[0], win[1])
+    #         if win[0] == min_wordlen:
+    #             return (win[0], win[1])
+
+    # return winner_list[0]
+    
+
+
     for key, value in word_points.items():
         if winner == value:
-            tie_list.append((key,value))
+            winner_list.append((key, value))
 
-    if len(tie_list) > 1:
-        smallest_len = len(tie_list[0][0])
-        shortest_win = tie_list[0]
-        for i in range(len(tie_list)):
-            if len(tie_list[i][0]) == 10:
-                return tie_list[i]
-            if len(tie_list[i][0]) < smallest_len:
-                smallest_len = len(tie_list[i][0])
-                shortest_win = tie_list[i]
+    if len(winner_list) > 1:
+        smallest_len = len(winner_list[0][0])
+        shortest_win = winner_list[0]
+        for i in range(len(winner_list)):
+            if len(winner_list[i][0]) == 10:
+                return winner_list[i]
+            if len(winner_list[i][0]) < smallest_len:
+                smallest_len = len(winner_list[i][0])
+                shortest_win = winner_list[i]
 
         return shortest_win
 
-    return tie_list[0]  
+    return winner_list[0]  
         
  
 
