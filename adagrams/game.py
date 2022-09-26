@@ -1,3 +1,5 @@
+import random
+from random import choices
 LETTER_DICT = {
     'A': 9, 
     'B': 2, 
@@ -28,8 +30,15 @@ LETTER_DICT = {
 }
 
 def draw_letters():
+    letter_list = (list(LETTER_DICT))
+    weight_list = list(LETTER_DICT.values())
 
-    
+    letter_count = LETTER_DICT.values()
+    counter = 0 
+
+    while letter <= LETTER_DICT.values():
+        return random.choices(letter_list, weight_list ,k=10)
+
 
 def uses_available_letters(word, letter_bank):
     print('Hi Aisha!')
