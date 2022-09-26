@@ -27,13 +27,29 @@ LETTER_POOL20 = {
     'Y': 2, 
     'Z': 1
 }
-def draw_letters():
-    x = list(LETTER_POOL20.items())
+def picletterrandom():
+    x = list(LETTER_POOL20.keys())
     random_element =random.choice(x)
-    players_hand = []
+    return random_element
+def check_to_see_avail(random,LETTER_POOL20):
+    for letter_key, value in LETTER_POOL20.items():
+        if random == letter_key:
+            if value == 0:
+                return False
+            else:
+                LETTER_POOL20[letter_key] -= 1
+                return True
+def draw_letters():
+    players_hand = []            
+
     for num in range(10):
-        random_element =random.choice(x)
-        players_hand.append(random_element[0])
+        check = False
+        while not check:
+            random_letter = picletterrandom()
+            
+            check = check_to_see_avail(random_letter, LETTER_POOL20)
+            
+        players_hand.append(random_letter)
     return players_hand
     
 
