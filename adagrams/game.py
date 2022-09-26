@@ -44,13 +44,13 @@ def draw_letters():
 
 def uses_available_letters(word, letter_bank):
     uppercase_word = word.upper()
-    is_word_valid = False
     letter_list = []
     for letter in uppercase_word:
         letter_list.append(letter)
     for ele in letter_list:
         if ele in letter_bank:
             is_word_valid = True
+            # letter_bank.remove(ele)
         else:
             is_word_valid = False
             # delete the letter from the list... but what if the letter is there twice?
