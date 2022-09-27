@@ -30,13 +30,13 @@ letter_bank = {
 }
 
 def draw_letters():
-    pool = list(chain(*[random.choices(key, k = val) for key, val in letter_bank.items()]))
+    letter_pool = list(chain(*[random.choices(key, k = val) for key, val in letter_bank.items()]))
     hand = []
     
     for i in range(10):
-        letter = random.choice(pool)
+        letter = random.choice(letter_pool)
         hand.append(letter)
-        pool.remove(letter)
+        letter_pool.remove(letter)
     return hand 
 def uses_available_letters(word, letter_bank):
     pass
