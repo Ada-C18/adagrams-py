@@ -26,6 +26,7 @@ LETTER_POOL = {
     'Y': 2, 
     'Z': 1
 }
+
 import random
 import string
 
@@ -34,7 +35,7 @@ def draw_letters():
     keep_going = True
     while keep_going:
         letter = random.choice(string.ascii_uppercase)
-        if hand.count(letter) == LETTER_POOL[f"{letter}"]:
+        if hand.count(letter) == LETTER_POOL[letter]:
             continue
         else:
             hand.append(letter)
@@ -59,14 +60,15 @@ def uses_available_letters(word, letter_bank):
     letters = {}
     word = word.upper()
 
+
     for letter in string.ascii_uppercase:
-        letters[f"{letter}"] = 0
+        letters[letter] = 0
     
     for letter in letter_bank:
-        letters[f"{letter}"] += 1
+        letters[letter] += 1
     
     for letter in word:
-        if word.count(letter) > letters[f"{letter}"]:
+        if word.count(letter) > letters[letter]:
             return False
     
     return True
@@ -85,6 +87,7 @@ def score_word(word):
     word = word.upper()
 
     if len(word) == 0:
+<<<<<<< HEAD
         score.append(0)
     if len(word) > 6:
         score.append(8)
@@ -95,6 +98,17 @@ def score_word(word):
    
     return sum(score)
 
+=======
+        return score
+    
+    for letter in word:
+        for key, value in score_chart.items():
+            if letter in value:
+                score += key
+    if len(word)>= 7:
+        score += 8
+    return score
+>>>>>>> 6d262aa07f54933e30e7b9bb0d96e6d51221e104
 
 def get_highest_word_score(word_list):
 #   score_list = {}
