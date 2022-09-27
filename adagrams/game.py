@@ -1,5 +1,13 @@
+import random, string
+
+
 def draw_letters():
-    pass
+    english_letters = list(string.ascii_uppercase)
+    letters_frequency = [9, 2, 2, 4, 12, 2, 3, 2, 9, 1, 1, 4, 2, 6, 8, 2, 1, 6, 4, 6, 4, 2, 2, 1, 2, 1]
+    num_of_letters_draw = 10
+    letter_bank = random.choices(english_letters, weights=letters_frequency, k=num_of_letters_draw)
+    return letter_bank
+
 
 def uses_available_letters(word, letter_bank):
     upper_case_word = word.upper()
