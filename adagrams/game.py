@@ -61,20 +61,6 @@ def score_word(word):
         ('Q', 'Z'): 10
     }
 
-    # word_list = list(word.upper())
-    # score_counter = 0
-
-    # for letter in word_list:
-    #     for key, value in score_dict.items():
-    #         if letter in key:
-    #             score_counter += value
-        
-    # if len(word_list) >= 7 and len(word_list) <= 10:
-    #     score_counter += 8
-
-    # return score_counter
-
-    # This is my similar solution by not creating a list for word. 
     word_upper = word.upper()
     score = 0
     for letter in word_upper:
@@ -86,7 +72,7 @@ def score_word(word):
     return score
 
 def get_highest_word_score(word_list):
-    # create a dict which has word as key and its socre as value
+    # create a dict which has word as key and its score as value
     word_score_dict = {}
     for word in word_list:
         score = score_word(word)
