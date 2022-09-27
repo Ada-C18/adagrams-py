@@ -48,42 +48,27 @@ def uses_available_letters(word, letter_bank):
             return_list.append(letter)
             letter_bank_copy.remove(letter)
 
-    if word_list == return_list:
-        return True
-    else:
-        return False
+    return word_list == return_list
 
 def score_word(word):
-    # point values for letters
-    value_1 = ['A', 'E', 'I', 'O', 'U', 'L', 'N', 'R', 'S', 'T']
-    value_2 = ['D', 'G']
-    value_3 = ['B', 'C', 'M', 'P']
-    value_4 = ['F', 'H', 'V', 'W', 'Y']
-    value_5 = ['K']
-    value_8 = ['J', 'X']
-    value_10 = ['Q', 'Z']
-    
+    score_dict = {
+        ('A', 'E', 'I', 'O', 'U', 'L', 'N', 'R', 'S', 'T'): 1,
+        ('D', 'G'): 2,
+        ('B', 'C', 'M', 'P'): 3,
+        ('F', 'H', 'V', 'W', 'Y'): 4,
+        ('K'): 5,
+        ('J', 'X'): 8,
+        ('Q', 'Z'): 10
+    }
+
     word_list = list(word.upper())
     score_counter = 0
-    
+
     for letter in word_list:
-        if letter in value_1:
-            score_counter += 1
-        elif letter in value_2:
-            score_counter += 2
-        elif letter in value_3:
-            score_counter += 3
-        elif letter in value_4:
-            score_counter += 4
-        elif letter in value_5:
-            score_counter += 5
-        elif letter in value_8:
-            score_counter += 8
-        elif letter in value_10:
-            score_counter += 10
-        else:
-            score_counter += 0
-    
+        for key, value in score_dict.items():
+            if letter in key:
+                score_counter += value
+        
     if len(word_list) >= 7 and len(word_list) <= 10:
         score_counter += 8
 
@@ -95,10 +80,8 @@ def get_highest_word_score(word_list):
         score = score_word(word)
         word_score_dict[word] = score
     highest_score = max(word_score_dict.values())
-    highest_dict = {}
-    for word in word_score_dict:
-        if word_score_dict[word] == highest_score:
-            highest_dict[word] = word_score_dict[word]
+    highest_dict = {word: word_score_dict[word] for word, value in word_score_dict.items() if value == highest_score}
+
     min_len_word = min(list(highest_dict.keys()), key=len)
     for k, v in highest_dict.items():
         if len(k) == 10:
