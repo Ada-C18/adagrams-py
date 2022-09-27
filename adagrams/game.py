@@ -1,4 +1,5 @@
 import random
+
 def draw_letters():
     allletters = []
     alphabet = {
@@ -32,7 +33,6 @@ def draw_letters():
     for letter, number in alphabet.items():
         for i in range(number):
             allletters.append(letter)
-    
 
     gameletters = []
     for letter in range(10):
