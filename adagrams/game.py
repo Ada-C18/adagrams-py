@@ -1,6 +1,6 @@
 import random
 
-distribution_letters = {
+distribution_of_letters = {
     'A': 9, 
     'B': 2, 
     'C': 2, 
@@ -29,35 +29,25 @@ distribution_letters = {
     'Z': 1
 }
 
-def dic_to_list(dic):
+def dict_to_list(dict):
     adagrams_bag = []
-    for key,value in dic.items():
+    for key,value in dict.items():
         for i in range(value):
             adagrams_bag.append(key)
     return adagrams_bag
 
 def draw_letters():
-    """
-    create empty list
-    loop through between range 1,11
-    for each num we append a letter to epmpty list
-    return the list 
-
-    create dicitonary with 26 letters with 26 key pairs
-    loop through the dic and append the num of dic keys times the values 
-    radom int will return random num that will return index of list 
-
-     """
-    adagrams_bag = dic_to_list(distribution_letters)
-    hand = []
-    list_numbers = []
-
-    while len(hand)< 10:
+    
+    adagrams_bag = dict_to_list(distribution_of_letters)
+    hand_as_numbers = []
+    hand_as_letters = []
+    
+    while len(hand_as_letters) < 10:
         index = random.randint(0,len(adagrams_bag)-1)
-        if index not in list_numbers:
-            list_numbers.append(index)
-            hand.append(adagrams_bag[index])
-    return hand
+        if index not in hand_as_numbers:
+            hand_as_numbers.append(index)
+            hand_as_letters.append(adagrams_bag[index])
+    return hand_as_letters
 
     
 # SCORES = {"a": 1, "c": 3, "b": 3, "e": 1, "d": 2, "g": 2, 
