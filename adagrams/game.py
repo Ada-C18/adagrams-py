@@ -47,7 +47,15 @@ def draw_letters():
 
 
 def uses_available_letters(word, letter_bank):
-    
+
+    word_2 = word.upper()
+    letter_bank_copy = copy.deepcopy(letter_bank)
+    for letter in word_2:
+        if letter.upper() not in letter_bank_copy:
+            return False
+        elif letter.upper() in word_2:
+            letter_bank_copy.remove(letter)
+    return True
     
 
 def score_word(word):
