@@ -42,12 +42,18 @@ def draw_letters():
             letter_bank.append(letter)
         else:
             continue
-   
+
     return letter_bank
 
-
 def uses_available_letters(word, letter_bank):
-    pass
+    temp_letter_bank = copy.deepcopy(letter_bank)
+
+    for letter in word:
+        if letter.upper() in temp_letter_bank:
+            temp_letter_bank.remove(letter.upper())
+        else:
+            return False
+    return True
 
 def score_word(word):
     pass
