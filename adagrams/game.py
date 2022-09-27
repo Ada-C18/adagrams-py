@@ -59,10 +59,10 @@ SCORE_CHART = {
 }
 
 def draw_letters():
-    count_dict = {}
+    count_dict = {}  
     letter_list = []
-    while len(letter_list) < 10:
-        new_letter = (random.choice(string.ascii_uppercase))
+    while len(letter_list) < 10: #  time complexity is O(1)
+        new_letter = (random.choice(string.ascii_uppercase)) 
         if new_letter in count_dict and count_dict[new_letter] < LETTER_POOL[new_letter]:
             count_dict[new_letter] += 1
             letter_list.append(new_letter)
@@ -74,9 +74,17 @@ def draw_letters():
     return letter_list
 
 def uses_available_letters(word, letter_bank):
-    upper_case_word = word.upper()
-    letter_bank_count = Counter(letter_bank)
-    for letter in upper_case_word:
+    upper_case_word = word.upper() # O(N)
+    print(upper_case_word)
+    letter_bank_count = Counter(letter_bank) # O(N)
+    # letter_bank_count = {}
+    # for letter in letter_bank:
+    #     if letter in letter_bank_count:
+    #         letter_bank_count[letter] += 1
+    #     else:
+    #         letter_bank_count[letter] = 1
+            
+    for letter in upper_case_word: # O(N)
         if letter in letter_bank_count and letter_bank_count[letter] > 0:
             letter_bank_count[letter] -= 1
             continue
@@ -89,11 +97,16 @@ def score_word(word):
     score_total = 0
     if len(upper_case_word) >= 7:
         score_total += 8
+    # for letter in upper_case_word:
+    #     for key in SCORE_CHART:
+    #         if letter == key:
+    #             score_total += SCORE_CHART[key]
+    # return score_total
     for letter in upper_case_word:
-        for key in SCORE_CHART:
-            if letter == key:
-                score_total += SCORE_CHART[key]
+        if letter in SCORE_CHART:
+            score_total += SCORE_CHART[letter]
     return score_total
+
 def get_highest_word_score(word_list):
     best_word = []
     for i in range(len(word_list)):
@@ -111,7 +124,5 @@ def get_highest_word_score(word_list):
                 best_word[0] = word_list[i] 
             elif len(best_word[0]) < len(word_list[i]):
                 continue
-     
-
     return best_word
     
