@@ -92,14 +92,16 @@ def score_word(word):
     }
     points = 0
     new_word = word.upper()
+    special_lengths = [7, 8, 9, 10]
 
     for letter in new_word:
         if letter.isalpha():
             points += word_dict[letter]
         else:
             points += 0
-    if len(new_word) == 7 or 8 or 9 or 10:
-        points += 8
+    if len(new_word) in special_lengths:
+        if points != 0:
+            points += 8
     return points
 
 
