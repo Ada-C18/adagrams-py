@@ -88,7 +88,7 @@ def score_word(word):
     'Y': 4, 
     'Z': 10
 }
-    pass
+    
 
 def get_highest_word_score(word_list):
     pass
