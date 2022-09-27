@@ -35,10 +35,10 @@ def draw_letters():
     # use random.sample to draw 10 letters from the 
     # letter bank.
 
-    # get the list of letter and count for each letter
-    # as a list 
-    letter_list = LETTER_POOL.keys()
-    letter_count = LETTER_POOL.values()
+    # get the lists of letter and count for each letter
+    # as list (preferred by random.sample)
+    letter_list = list(LETTER_POOL.keys())
+    letter_count = list(LETTER_POOL.values())
 
     # sample draws k items from the list using counts 
     # to determine the frequency of each item. 

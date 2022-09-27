@@ -1,4 +1,7 @@
 import pytest
+from scipy import stats as stats
+from pprint import pprint
+from collections import Counter
 
 from adagrams.game import draw_letters
 
@@ -65,3 +68,54 @@ def test_letter_not_selected_too_many_times():
         # Assert
         for letter in letters:
             assert letter_freq[letter] <= LETTER_POOL[letter]
+
+def test_chi_square_frequencies():
+
+    # this *should* work 
+    # technique adapted from 
+    # http://practicalcryptography.com/cryptanalysis/text-characterisation/chi-squared-statistic/
+    # TODO: get someone with better stats experience to 
+    # double-check this
+
+    # arrange/act
+
+
+    # normalize LETTER_POOL frequencies
+    pool_sum = sum(LETTER_POOL.values())
+    pool_freqs = {}
+    for letter, value in LETTER_POOL.items():
+        pool_freqs[letter] = value / pool_sum
+    
+
+    # collect our sample
+    sample_counter = Counter()
+    for i in range (500): 
+        letters = draw_letters()
+        for letter in letters:
+            sample_counter[letter] += 1
+
+    # organize our expected and sample
+    # into parallel lists
+    expected = []
+    sample = []
+    total = sample_counter.total()
+    for letter, freq in pool_freqs.items():
+        expected.append(freq * total)
+        sample.append(sample_counter[letter])
+    
+    # pprint(sample)
+    # pprint(expected)
+    # pprint(sum(expected))
+    chi  = stats.chisquare(sample, expected)
+    pprint(chi.pvalue)
+
+    assert chi.pvalue > 0.05
+        
+
+        
+
+
+
+
+
+
