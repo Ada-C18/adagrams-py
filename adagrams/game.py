@@ -26,18 +26,30 @@ def draw_letters():
 	"X" : 1,
 	"Y" : 2,
 	"Z" : 1}
+    # make a copy of the dictionary so that original dictionary doesn't change
     pool_of_letters_copy = POOL_OF_LETTERS.copy()
+    # taking just the keys of the dictionary (all the letters)
     just_letters = list(pool_of_letters_copy)
+    # create an empty list to store the hand
     hand_list = []
+    # length of the hand
     while len(hand_list) < 10:
+        # use .choice to randomly select letters
         hand = random.choice(just_letters)
+        # if the letter has a value more than 0 in the dictionary copy, append to the empty list
+        # and decrement the value by 1 
         if pool_of_letters_copy[hand] >= 1:
             hand_list.append(hand)
             pool_of_letters_copy[hand] -= 1
     return hand_list
 
 def uses_available_letters(word, letter_bank):
+    # copy the letter bank so that original letter bank doesn't change
     letter_bank_copy = letter_bank.copy()
+    # for each letter in the word (it should be uppercase so use ".upper")
+    # if the letter is in the letter_bank_copy list, remove it from the lette_bank_copy
+    # after checking all the letters in the word, if all the letters in the word are in the letter_bank_copy
+    # return "True"
     for letter in word.upper():
         if letter in letter_bank_copy:
             letter_bank_copy.remove(letter)
