@@ -1,4 +1,3 @@
-
 import copy
 import random
 
@@ -36,17 +35,31 @@ def draw_letters():
     pulls a random letter from LETTER_POOL and stores it
     in a list, returns list
     '''
-    letter_pool_copy = copy.deepcopy(LETTER_POOL)
+    letter_list = generate_letter_list()
     user_hand = []
-
+    
     while len(user_hand) < 10:
-        random_letter = random.choice(list(letter_pool_copy.keys()))
-        if letter_pool_copy[random_letter[0]] == 0:
-            continue
-        letter_pool_copy[random_letter[0]] -= 1
-        user_hand.extend(random_letter[0])
+        random_letter = random.choice(letter_list)
+        user_hand.append(random_letter)
+        for letter in letter_list:
+            if letter == random_letter:
+                letter_list.remove(letter)
 
     return user_hand
+
+def generate_letter_list():
+    '''
+    helper function returns letter pool list
+    '''
+    letter_list = []
+
+    for letter in LETTER_POOL:
+        for i in range(LETTER_POOL[letter]):
+            letter_list.append(letter)
+    
+    return letter_list
+
+
 
 def uses_available_letters(word, letter_bank):
     pass
