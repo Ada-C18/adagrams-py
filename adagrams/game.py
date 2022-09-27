@@ -65,24 +65,40 @@ def draw_letters():
     return letters
     
     
-
-
-
-
-
-
-
-
+##-----------------------------------------##
+##-----------------WAVE 2------------------##
+##-----------------------------------------##
+"""
+2. You need a way to check if an input word (a word a player submits) only uses characters that 
+    are contained within a collection (or hand) of drawn letters
+-Has two parameters:
+    -word, the first parameter, describes some input word, and is a string
+    -letter_bank, the second parameter, describes an array of drawn letters in a hand. You can expect this to be an array of ten strings,
+    with each string representing a letter
+-Returns either True or False
+-Returns True if every letter in the input word is available (in the right quantities) in the letter_bank
+-Returns False if not; if there is a letter in input that is not present in the letter_bank or has too much of compared to the letter_bank
+reference: https://www.programiz.com/python-programming/methods/list/count
+"""
 
 def uses_available_letters(word, letter_bank):
+    # ensure consistent case
+    word = word.upper()
     # check input word is anagram within drawn letters
-    
-    # player_input = input(word)
+    #iterating over each letter in the word
     for letter in word:
-        if letter in letter_bank and len(letter):
-            return True
+        # check if that letter is in the letter bank
+        if letter in letter_bank:
+            word_count = word.count(letter)
+            # if word_count is in the right quantities in the letter bank, continue checking next letter
+            if word_count == letter_bank.count(letter):
+                continue
+            else:
+                return False
         else:
             return False
+
+    return True
 
 
 
