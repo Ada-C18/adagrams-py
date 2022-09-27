@@ -1,5 +1,6 @@
 import random
-from random import choices
+import copy
+
 LETTER_DICT = {
     'A': 9, 
     'B': 2, 
@@ -30,15 +31,18 @@ LETTER_DICT = {
 }
 
 def draw_letters():
-    letter_list = (list(LETTER_DICT))
-    weight_list = list(LETTER_DICT.values())
-
-    letter_count = LETTER_DICT.values()
-    counter = 0 
-
-    while letter <= LETTER_DICT.values():
-        return random.choices(letter_list, weight_list ,k=10)
-
+ 
+    result = []
+    letter_copy = copy.deepcopy(LETTER_DICT)
+   
+    while len(result) < 10:
+        key_list = list(letter_copy.keys())
+        rand_char = random.choice(key_list)
+        if letter_copy[rand_char] > 0:
+            result.append(rand_char)
+            letter_copy[rand_char] -= 1
+      
+    return result 
 
 def uses_available_letters(word, letter_bank):
     print('Hi Aisha!')
