@@ -26,10 +26,23 @@ def draw_letters():
     return drawn_letters
 
 def uses_available_letters(word, letter_bank):
-    pass
+    # make sure word is in all caps
+    # make a copy of letter bank
+    # iterate through letters in word
+    # for each letter, check if it's in the letter bank
+    # if so, remove that letter from the bank
+    # if not, return false
+    # after all letters have been checked, return true
 
 def score_word(word):
-    pass
+    # initialize score = 0
+    # initialize dictionary w/ each letter's value
+    # make sure word is in all caps
+    # remove non-alphabetic characters
+    # iterate through all letters in word
+    # look each letter up in score dict
+    # add each letter's value to score
+    # return score
 
 def get_highest_word_score(word_list):
     pass
