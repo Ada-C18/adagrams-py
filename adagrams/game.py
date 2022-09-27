@@ -44,12 +44,30 @@ def draw_letters():
     return letters
 
 
+def convert_to_ignore_case(word, letter_bank):
+    # convert all letters in word and letter_bank to ignore case
+    # use casefold() method to remove all distinctions in string (similar to .lower() but more "aggresive")
+    # use list comprehensions to use casefold() on each letter in letter_bank
+    
+    # print(f"word before converting: {word}")
+    # print(f"letter_bank before converting: {letter_bank}, \n")
+
+    word = word.casefold()
+    letter_bank = [letter.casefold() for letter in letter_bank]
+
+    # print(f"word after converting: {word}")
+    # print(f"letter_bank after converting: {letter_bank}, \n")
+    
+    return word, letter_bank
+
 def check_word_in_letter_bank(word, letter_bank):
     # check each letter in word if it is in letter bank
     # create variable to count each time letter is found in letter bank
     # compare count to len(word)
     # if count and len(word) are equal return True
     # if not equal, return False
+
+    word, letter_bank = convert_to_ignore_case(word, letter_bank)
 
     print(f"word is: {word}")
     print(f"letter bank is: {letter_bank}")
@@ -68,7 +86,7 @@ def check_word_in_letter_bank(word, letter_bank):
 
     return False
 
-# print(check_word_in_letter_bank("DOGF", ["D", "O", "G", "X", "X", "X", "X", "X", "X", "X"]))
+print(check_word_in_letter_bank("DOGF", ["D", "O", "G", "X", "X", "X", "X", "X", "X", "X"]))
 
 def uses_available_letters(word, letter_bank):
     pass
