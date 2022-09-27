@@ -49,6 +49,10 @@ def draw_letters():
     # print(letters_in_hand)  
     return letters_in_hand 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> e825556c50523adaf114b0c1f6e7827d033d65e0
 #another way to write wave 2
 #commenting this code as the other one is smaller
 
@@ -71,6 +75,22 @@ def draw_letters():
 #             return False
 #     return True
     
+<<<<<<< HEAD
+=======
+
+def uses_available_letters(word, letter_bank):
+    # make deep copy of letter bank after importing copy module
+    letters_copy = copy.deepcopy(letter_bank)
+
+    for letter in word:
+        try:
+            letters_copy.remove(letter)
+        except ValueError:
+            return False
+        
+        return True
+
+>>>>>>> e825556c50523adaf114b0c1f6e7827d033d65e0
 
 def score_word(word):
     pass
