@@ -27,7 +27,14 @@ def draw_letters():
     return return_list
 
 def uses_available_letters(word, letter_bank):
-    pass
+    word = word.upper()
+    for letter in word:
+        letter_bank_copy = letter_bank.copy()
+        try:
+            letter_bank_copy.remove(letter)
+        except ValueError:
+            return False
+    return True
 
 def score_word(word):
     letter_dict={
