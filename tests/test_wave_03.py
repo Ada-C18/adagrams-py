@@ -3,10 +3,18 @@ import pytest
 from adagrams.game import score_word
 
 def test_score_word_accurate():
+    #Act
+    word1 = "A"
+    word2 = "DOG"
+    word3 = "WHIMSY"
+    #Arrange
+    score1 = score_word(word1)
+    score2 = score_word(word2)
+    score3 = score_word(word3)
     # Assert
-    assert score_word("A") == 1
-    assert score_word("DOG") == 5
-    assert score_word("WHIMSY") == 17
+    assert score1 == 1
+    assert score2 == 5
+    assert score3 == 17
 
 def test_score_word_accurate_ignores_case():
     # Assert
