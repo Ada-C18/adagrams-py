@@ -97,7 +97,6 @@ def uses_available_letters(word, letter_bank):
                 return False
         else:
             return False
-
     return True
 
 
