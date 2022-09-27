@@ -29,6 +29,7 @@ LETTER_POOL = {
     'Z': 1
 }
 
+# =========== WAVE ONE ===========
 
 def draw_letters():
     # takes in no parameter
@@ -114,10 +115,56 @@ def draw_letters():
     
     # pass
 
-# ----WAVE TWO---
+# =========== WAVE TWO ===========
 
 def uses_available_letters(word, letter_bank):
-    pass
+
+    # check input-word only uses letters in hand
+    # word = "string"
+    # letter_bank = ["list", "of", "strings", "ie letters"]
+
+    word = word.upper()
+
+    word_letters = list(word)
+    print("List of letters from WORD = ", word_letters)
+    print("Letter Bank = ", letter_bank)
+
+    frequency = {}
+
+    for letter in word_letters:
+        if letter in frequency:
+            frequency[letter] += 1
+        else:
+            frequency[letter] = 1
+    print("Frequency of Letters in Word = ", frequency)
+
+    frequency2 = {}
+
+    for letter in letter_bank:
+        if letter in frequency2:
+            frequency2[letter] += 1
+        else:
+            frequency2[letter] = 1
+    print("Frequency of letters in Bank = ", frequency2)
+
+    # if every letter in word is in letter_bank
+    # return True
+
+    common = frequency.items() & frequency2.items()
+    print(common)
+
+    if len(common) == len(frequency):
+        return True
+    # if every letter in word is NOT in letter_bank
+    # return False
+    else:
+        return False
+    
+    print("Len of COMMON_key:values dict = ", len(common))
+    print("Len of HAND dict = ",len(frequency))
+    print("Len of LETTER_BANK dict = ", len(frequency2))
+
+
 
 # ---WAVE THREE---
 
