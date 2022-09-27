@@ -73,27 +73,28 @@ def score_word(word):
     #   - we can do if else or do lists of letters as value and points as they key in dictionary
     # - add appropriate points
     # - return score
+    point_values = {
+        "AEIOULNRST" : 1,
+        "DG": 2,
+        "BCMP": 3, 
+        "FHVWY": 4,
+        "K": 5,
+        "JX":8,
+        "QZ": 10
+    }
+    word_upper = word.upper()
     total = 0
 
-    if len(word) > 6:
+    for letter in word_upper:
+        for key in point_values:
+            if letter in key:
+                total += point_values[key]
+    
+    if 6 < len(word) < 11:
         total += 8
-
-    for letter in word:
-        if str.upper(letter) in ["A", "E", "I", "O","U", "L", "N", "R", "S", "T"]:
-            total += 1
-        elif str.upper(letter) in ["D","G"]:
-            total += 2
-        elif str.upper(letter) in ["B", "C", "M", "P"]:
-            total +=3
-        elif str.upper(letter) in ["F", "H", "V", "W", "Y"]:
-            total +=4
-        elif str.upper(letter) in ["K"]:
-            total +=5
-        elif str.upper(letter) in ["J", "X"]:
-            total +=8
-        elif str.upper(letter) in ["Q", "Z"]:
-            total +=10
     return total
+
+
 
 def get_highest_word_score(word_list):
     """
