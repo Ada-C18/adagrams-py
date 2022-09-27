@@ -115,6 +115,20 @@ def draw_letters():
     # pass
 
 # ----WAVE TWO---
+# word- input- is a string
+#letter_bank array of 10 strings(letters)
+
+#loop through letter_bank looking for the letters in word- if it is and in the right amount/
+#we'll return True
+
+# look for letters not in word- if not in word return False
+
+# count the amount of letters to check if it is in the right quantity\
+#possinly using frequency of each letter in word and compare frequency in list of arrays to letter_bank
+# convert word  & letter bank into dict- compare and if not same it is False
+# for every letter add 1 as the value in letter_dict
+#for every letter add 1 to word in dict
+#convert case to lowercase or ignore case using exceptions
 
 def uses_available_letters(word, letter_bank):
     pass
