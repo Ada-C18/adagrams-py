@@ -62,19 +62,39 @@ def draw_letters():
     # create a list that's 10 letters long
     count = 0
     
+    new_dict = LETTER_POOL.copy()
+
+    print("BEFORE: list of letters = ", letters)
+    print("BEFORE: dictionary = ", new_dict)
+
     while len(letters) < 10:
-        random_letter = random.choice(list(LETTER_POOL.keys()))
-        letters.append(random_letter)
-        count += 1
-    print("Here is our hand of letter = ", letters)
+        random_letter = random.choice(list(new_dict.keys()))
+
+        # ... conditional statement ...
+        for k, v in new_dict.items():
+            if k == random_letter and v > 1:
+                print("BEFORE change ", k, v)
+                letters.append(random_letter)
+                v -= 1 # this creates a new value for v, but how do we get it back to the dictionary?
+                new_dict[k] = v
+                print("AFTER change = ", k, v)
+            else:
+                continue
+        
+        count += 1 # we need to make this change to the dictionary
+
+    print("Count = ", count)
+    print("AFTER: list of letters = ", letters)
+    print("AFTER: dictionary = ", new_dict)
+    
+
 
     # psuedocode the the next loop
-    for letter in letters:
-        if that letter is in LETTER_POOL.items(): # I want to grab the key and value
-            for k, v in letter:
-                i want to update the value ---> v -= 1
-                return v
-
+    # for letter in letters:
+    #     if that letter is in LETTER_POOL.items(): # I want to grab the key and value
+    #         for k, v in letter:
+    #             i want to update the value ---> v -= 1
+    #             return v
 
     # iterate through the list of letters being randomly pulled for the hand
     # for letter in range(len(letters)):
