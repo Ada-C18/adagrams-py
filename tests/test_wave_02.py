@@ -48,12 +48,12 @@ def test_uses_available_letters_does_not_change_letter_bank():
     assert is_valid == True
     assert letters == letters_copy
 
-# def test_uses_available_letters_ignores_case():
-#     # Arrange
-#     letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]
+def test_uses_available_letters_ignores_case():
+    # Arrange
+    letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]
 
-#     # Act/Assert
-#     assert uses_available_letters("bEd", letters)
-#     assert uses_available_letters("fad", letters)
-#     assert uses_available_letters("a", letters)
-#     assert not uses_available_letters("aA", letters)
+    # Act/Assert
+    assert uses_available_letters("bEd", letters)
+    assert uses_available_letters("fad", letters)
+    assert uses_available_letters("a", letters)
+    assert not uses_available_letters("aA", letters)
