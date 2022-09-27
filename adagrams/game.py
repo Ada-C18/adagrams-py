@@ -1,7 +1,7 @@
 import random
 import copy
 
-distribution_of_letters = {
+LETTER_POOL = {
     'A': 9, 
     'B': 2, 
     'C': 2, 
@@ -30,55 +30,40 @@ distribution_of_letters = {
     'Z': 1
 }
 
-SCORE_CHART = {
-        1: ["A", "E", "I", "O", "U", "L", "N", "R", "S", "T"],
-        2: ["D", "G"],
-        3: ["B", "C", "M", "P"],
-        4: ["F", "H", "V", "W", "Y"],
-        5: ["K"],
-        8: ["J", "X"],
-        10:["Q", "Z"]		
-}
-
-
-
-#WAVE ONE
 def dict_to_list(dict):
-    adagrams_bag = []
-    for key,value in dict.items():
-        for i in range(value):
-            adagrams_bag.append(key)
-    return adagrams_bag
+    bag_of_letters = []
+    for key, value in dict.items():
+        new_letters = [key] * value
+        bag_of_letters.extend(new_letters)
+    
+    return bag_of_letters
 
 def draw_letters():
-    
-    adagrams_bag = dict_to_list(distribution_of_letters)
+    bag_of_letters = dict_to_list(LETTER_POOL)
     hand_as_numbers = []
     hand_as_letters = []
     
     while len(hand_as_letters) < 10:
-        index = random.randint(0,len(adagrams_bag)-1)
+        index = random.randint(0,len(bag_of_letters)-1)
         if index not in hand_as_numbers:
             hand_as_numbers.append(index)
-            hand_as_letters.append(adagrams_bag[index])
+            hand_as_letters.append(bag_of_letters[index])
+    
     return hand_as_letters
 
 
 
 #WAVE TWO
 def uses_available_letters(word, letter_bank):
-    #creates copy of drawn letters in a hand
-    letters_hand = copy.deepcopy(letter_bank)
-    all_caps = word.upper()
-    for letter in all_caps:
-        if letter not in letters_hand:
-            return False    
-        else: 
-            letters_hand.remove(letter)    
-    else:
-        return True
+    copy_of_letter_bank = copy.deepcopy(letter_bank)
+    all_caps_word = word.upper()
+    for letter in all_caps_word:
+        if letter not in copy_of_letter_bank:
+            return False
+        else:
+            copy_of_letter_bank.remove(letter)
+    return True
 
-    pass
 
 #WAVE THREE
 def score_word(word):
