@@ -75,9 +75,6 @@ def draw_letters() -> list:
     return hand
 
 
-<<<<<<< HEAD
-
-=======
 def uses_available_letters(word: str, letter_bank: list) -> bool:
     """
     Returns True if all letters from word are available in letter_bank, else returs False. 
@@ -91,4 +88,3 @@ def uses_available_letters(word: str, letter_bank: list) -> bool:
         else:
             return False
     return True
->>>>>>> 47a67e6e7651d4bda1756ba48e672de640f37814
