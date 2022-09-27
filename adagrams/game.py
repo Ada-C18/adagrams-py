@@ -71,15 +71,14 @@ def uses_available_letters(word, letter_bank):
     return True
 
 def score_word(word):
-    score = 0
-    for letter in word.upper():
-        # if letter in SCORE_CHART:
-            # find the key that matches the letter
-            # add the key to the score
-        pass
+    total_score = 0
+    for character in word.upper():
+        for tally, letters in SCORE_CHART.items():
+            if character in letters:
+                total_score += tally
     if len(word) >= 7:
-        score += 8
-    return score
+        total_score += 8
+    return total_score
 
 def get_highest_word_score(word_list):
     pass
