@@ -62,6 +62,9 @@ def uses_available_letters(word, letter_bank):
     return True
 
 def score_word(word):
+    """
+    Returns the score of a given word as defined by the Adagrams game.
+    """
     value_dic = {
         'A': 1, 'E': 1, 'I': 1, 'O': 1, 'U': 1, 'L': 1, 'N': 1, 'R': 1, 'S': 1, 'T': 1,
         'D': 2, 'G': 2,
@@ -71,9 +74,15 @@ def score_word(word):
         'J': 8, 'X': 8,
         'Q': 10, 'Z': 10
     }
+
+    # Initialize a variable called sum at 0
     sum = 0
+
+    # Iterate over each letter in the given word and add its corresponding score to the sum
     for letter in word:
         sum += value_dic[letter.upper()]
+    
+    # If the word length is 7, 8, 9 or 10, add an addtional 8 score to the sum
     if 7 <= len(word) <= 10:
         sum += 8
     return sum
