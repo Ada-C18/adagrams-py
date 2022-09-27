@@ -86,7 +86,7 @@ def check_word_in_letter_bank(word, letter_bank):
 
     return False
 
-print(check_word_in_letter_bank("DOGF", ["D", "O", "G", "X", "X", "X", "X", "X", "X", "X"]))
+# print(check_word_in_letter_bank("DOGF", ["D", "O", "G", "X", "X", "X", "X", "X", "X", "X"]))
 
 def uses_available_letters(word, letter_bank):
     pass
