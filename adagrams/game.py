@@ -107,4 +107,54 @@ def score_word(word):
 
 # WAVE 4
 def get_highest_word_score(word_list):
-    pass
+    ''' 
+    Input: list of strings
+    Output: a tuple with (word str, score of that word)
+    '''
+
+    # 1. Create a dict for word scores
+    word_score_dict = {}
+
+    # 2. Calculate score for each word in word_list with score_word function
+    for word in word_list:
+        score = score_word(word)
+    # 3. Add score to words_score_dict
+        word_score_dict[word] = score
+
+    # 4. Find highest score
+    highest_score = 0
+    highest_score_words = []
+
+    for word, score in word_score_dict.items():
+        if score > highest_score:
+            highest_score = score
+            highest_score_words = [word]
+        elif score == highest_score:
+            highest_score_words.append(word)
+
+    # print(f"highest_score {highest_score}")
+    # print(f"highest_score_words {highest_score_words}")
+
+    if len(highest_score_words) == 1:
+        return (highest_score_words[0], highest_score)
+    elif len(highest_score_words) == 0:
+        return None
+
+    # 5. If multiple highest -> Tie breaking rule
+    # else:
+    # -- if len(word1) == len(word2), return word1
+    if len(highest_score_words[0]) == len(highest_score_words[1]):
+        return (highest_score_words[0], highest_score)
+    else:
+        # -- if len(word) == 10, return word with 10 letters
+        if len(highest_score_words[0]) == 10:
+            return (highest_score_words[0], highest_score)
+
+        elif len(highest_score_words[1]) == 10:
+            return (highest_score_words[1], highest_score)
+
+    # -- compare len of words, return word with fewest letter
+    if len(highest_score_words[0]) < len(highest_score_words[1]):
+        return (highest_score_words[0], highest_score)
+    elif len(highest_score_words[1]) < len(highest_score_words[0]):
+        return (highest_score_words[1], highest_score)
