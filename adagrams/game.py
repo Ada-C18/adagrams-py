@@ -48,7 +48,7 @@ def draw_letters():
     return letter_list
 
 def uses_available_letters(word, letter_bank):
-    pass
+    return None
 
 def score_word(word):
     pass
