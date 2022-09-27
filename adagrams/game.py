@@ -30,9 +30,14 @@ import random
 def draw_letters():
     hand = []
     letter_pool_list = list(LETTER_POOL)
-    letter = random.randint(0,27)
     for letter in range(0,10):
-        hand.append(letter_pool_list[letter])
+        letter = random.randint(0,27)
+        if letter in hand:
+            if hand.count(letter) == letter_pool_list["letter"]:
+                continue
+
+        else:
+            hand.append(letter)
     return hand
 
 def uses_available_letters(word, letter_bank):
