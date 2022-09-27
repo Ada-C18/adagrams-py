@@ -87,8 +87,16 @@ def score_word(word):
     'X': 8, 
     'Y': 4, 
     'Z': 10
-}
-    
+    }
+
+    score = 0
+    for letter in word.upper():
+        score += score_chart[letter]
+
+    if len(word) > 6 :
+        score += 8
+
+    return score
 
 def get_highest_word_score(word_list):
     pass
