@@ -48,10 +48,24 @@ def draw_letters():
     return letter_list
 
 def uses_available_letters(word, letter_bank):
+<<<<<<< HEAD
     return None
+=======
+    is_anagram = True
+
+    copy_letter_bank = letter_bank[:]
+
+    word = word.upper()
+
+    for letter in word:
+        if letter not in copy_letter_bank:
+            is_anagram = False
+        else:
+            copy_letter_bank.remove(letter)
+    return is_anagram
+>>>>>>> c456d313e428f3ee17b7915731b2dc9c5b21c8e2
 
 def score_word(word):
     pass
 
 def get_highest_word_score(word_list):
-    pass
