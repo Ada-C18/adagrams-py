@@ -185,5 +185,18 @@ def score_word(word):
 # =========== WAVE FOUR ===========
 # =================================
 
+
+
+
 def get_highest_word_score(word_list):
-    pass
+#This function looks at Word List(list of string) and calculates the highest scored word
+
+
+#we will use tie breaking logic
+# the tie will prefer the shorter word- unless the word is 10 letters then 10 is preferred. if\
+# it is the same length and score, pick the first one in the list
+
+
+
+#return Tuple = () that represents the data of a winning word and it's score- includes index 0\
+#string of a word and index 1 the score of that word
