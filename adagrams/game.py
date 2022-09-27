@@ -47,8 +47,28 @@ def draw_letters():
     # print(letters_in_hand)  
     return letters_in_hand 
 
-def uses_available_letters(word, letter_bank):
-    pass
+#another way to write wave 2
+#commenting this code as the other one is smaller
+
+#checks to see if a particular letter is in a list and if
+# we get the letter, removes it and returns True
+# if we dont get it at the end of the list, return False
+
+# def check_if_letter_in_letter_bank(letter, letter_bank):
+#     for i in range(0, len(letter_bank)):
+#         if letter == letter_bank[i]:
+#             letter_bank.remove(letter_bank[i])
+#             return True
+#     return False
+
+# def uses_available_letters(word, letter_bank):
+#     for i in range(0, len(word)):
+#         if check_if_letter_in_letter_bank(word[i], letter_bank):
+#             continue
+#         else:
+#             return False
+#     return True
+    
 
 def score_word(word):
     pass
