@@ -53,12 +53,14 @@ def uses_available_letters(word, letter_bank):
     print(word_list)
     for character in word:
         for string in letter_bank:
-            if character in letter_bank and character == string:
-                if word.count(character) <= letter_bank.count(string):
-                    print('True')
-                    return True
-            print('False')
-            return False
+            if character not in letter_bank:
+                return False
+            elif character in letter_bank: #and character == string:
+                if word.count(character) > letter_bank.count(string):
+                    # print('False')
+                    return False
+    # print('True')
+    return True
 
 def score_word(word):
     pass
