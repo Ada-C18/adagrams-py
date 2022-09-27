@@ -37,7 +37,17 @@ def uses_available_letters(word, letter_bank):
     #initialize a list to hold all present letters from the letter_bank 
     #if the letter is in the bank, add it to the new list and remove it from the letter bank
     #if the len of new list == len word return true else false 
-    
+    available_letters = []
+    letter_bank_copy = letter_bank[:]
+    for char in word.upper():
+        if char not in letter_bank_copy:
+            return False
+        else:
+            available_letters.append(char)
+            letter_bank_copy.remove(char)
+            if len(available_letters) == len(word):
+                return True
+
 
 def score_word(word):
     pass
