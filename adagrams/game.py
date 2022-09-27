@@ -91,7 +91,7 @@ def score_word(word):
     word=word.upper()
     word_list=[letter for letter in word]
     score=0
-    if len(word_list)<8:
+    if len(word_list)<7:
         score=0
         
     else:
