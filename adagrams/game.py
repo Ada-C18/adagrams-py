@@ -99,19 +99,15 @@ def get_highest_word_score(word_list):
         if highest_score < score:
             highest_score = score
             highest_scoring_word = word
-        if highest_score == score:
-            current_highest_length = len(highest_scoring_word)
+        elif highest_score == score:
+            highest_scoring_word_length = len(highest_scoring_word)
             current_word_length = len(word)
-            if current_highest_length == 10:
-                highest_scoring_word = highest_scoring_word
-            elif current_word_length == 10:
-                highest_scoring_word = word 
-            elif current_highest_length < current_word_length:
-                highest_scoring_word = highest_scoring_word
-            elif current_highest_length > current_word_length:
-                highest_scoring_word = word
-            elif current_highest_length == current_word_length:
-                highest_scoring_word = highest_scoring_word
+            if highest_scoring_word_length != current_word_length:
+                if current_word_length == 10:
+                    highest_scoring_word = word
+                elif highest_scoring_word_length > current_word_length and highest_scoring_word_length != 10:
+                    highest_scoring_word = word
+        
     highest_score_tuple = highest_scoring_word,highest_score
     return(highest_score_tuple)
             
