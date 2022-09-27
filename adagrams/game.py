@@ -53,7 +53,27 @@ def draw_letters():
 
 # WAVE 2
 def uses_available_letters(word, letter_bank):
-    pass
+    # 1. Turn letter_bank into a dict (letter: frq)
+    word_dict = {}
+    letter_bank_dict = {}
+
+    for letter in letter_bank:
+        letter_bank_dict[letter] = letter_bank.count(letter)
+
+    # 2. Turn word into dict (letter: frq)
+    word = word.upper()
+
+    for letter in word:
+        word_dict[letter] = word.count(letter)
+        if letter not in letter_bank_dict:
+            return False
+
+    # 3. Create a for loop to compare freq
+    for letter, freq in word_dict.items():
+        if freq <= letter_bank_dict[letter]:
+            return True
+        else:
+            return False
 
 
 # WAVE 3

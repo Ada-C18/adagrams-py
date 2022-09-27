@@ -2,38 +2,42 @@ import pytest
 
 from adagrams.game import uses_available_letters
 
+
 def test_uses_available_letters_true_word_in_letter_bank():
     # Arrange
     letters = ["D", "O", "G", "X", "X", "X", "X", "X", "X", "X"]
     word = "DOG"
-    
+
     # Act
     is_valid = uses_available_letters(word, letters)
 
     # Assert
     assert is_valid == True
 
+
 def test_uses_available_letters_false_word_in_letter_bank():
     # Arrange
     letters = ["D", "O", "X", "X", "X", "X", "X", "X", "X", "X"]
     word = "DOG"
-    
+
     # Act
     is_valid = uses_available_letters(word, letters)
 
     # Assert
     assert is_valid == False
+
 
 def test_uses_available_letters_false_word_overuses_letter():
     # Arrange
     letters = ["A", "X", "X", "X", "X", "X", "X", "X", "X", "X"]
     word = "AAA"
-    
+
     # Act
     is_valid = uses_available_letters(word, letters)
 
     # Assert
     assert is_valid == False
+
 
 def test_uses_available_letters_does_not_change_letter_bank():
     # Arrange
@@ -47,6 +51,7 @@ def test_uses_available_letters_does_not_change_letter_bank():
     # Assert
     assert is_valid == True
     assert letters == letters_copy
+
 
 def test_uses_available_letters_ignores_case():
     # Arrange
