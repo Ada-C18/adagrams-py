@@ -64,7 +64,7 @@ def generate_letter_list():
 
 def uses_available_letters(word, letter_bank):
     '''
-    function takes 2 arguments word and letter_bank and 
+    takes 2 arguments word and letter_bank and 
     checks that all letters in word are in letter_bank
     returns boolean value
     '''
@@ -85,7 +85,31 @@ def uses_available_letters(word, letter_bank):
     return True
 
 def score_word(word):
-    pass
+    points_dict = {
+        1: ["A", "E", "I", "O", "U", "L", "N", "R", "S", "T"],
+        2: ["D", "G"],
+        3: ["B", "C", "M", "P"],
+        4: ["F", "H", "V", "W", "Y"],
+        5: ["K"],
+        8: ["J", "X"],
+        10: ["Q", "Z"]
+    }
+
+    final_score = 0
+    word = word.upper()
+
+    if len(word) >= 7:
+        final_score += 8
+
+    for score, letter_list in points_dict.items():
+        for letter in word:
+            if letter in letter_list:
+                final_score += score
+
+    return final_score
+
+
+
 
 def get_highest_word_score(word_list):
     pass
