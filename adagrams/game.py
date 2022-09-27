@@ -125,19 +125,33 @@ def score_word(word):
 def get_highest_word_score(word_list):
     # word_ list = ["apple", "banana", "orange"]
 
-    # winner_arr = []
+    winner_arr = [{"word": word_list[0], "score": score_word(word_list[0])}]
     # {word: "apple", score: 5}
     # iterate over words, calculate score using score_word
-    # set winners_ arr = [first element]
-    # if each element score is > score first element, update array.
-    # if equal, append
-    # [{word: "apple", score: 5}, {word: "banana", score: 5}]
+    for word in word_list:
+        word_score = score_word(word)
+        if word_score > winner_arr[0]["score"]:
+            winner_arr = [{"word": word, "score": word_score}]
+        elif word_score == winner_arr[0]["score"]:
+            winner_arr.append([{"word": word, "score": word_score}])
 
     # if len(winner_arr) == 1:
     # return as tuple
+    if len(winner_arr) == 1:
+        return (winner_arr[0]["word"], winner_arr[0]["score"])
+    
+
 
     # if more than 1 element in winner_arr:
     # check if any has 10 letters, return the first that has 10 letters
+    winner = (winner_arr[0]["word"], winner_arr[0]["score"])
+    for word in winner_arr:
+        if len(word["word"]) == 10:
+            return (word["word"], word["score"])
+        elif len(word["word"]) < len(winner[0]):
+            winner = (word["word"], word["score"])
 
+
+    return winner
     # winner variable
     # else: return the one with the fewest letters
