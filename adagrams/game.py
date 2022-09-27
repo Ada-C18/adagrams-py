@@ -95,5 +95,3 @@ def get_highest_word_score(word_list):
     highest_score = max(word_scores.values())
     tied_words = [word for word, score in word_scores.items() if score == highest_score]
     return break_tie(tied_words), highest_score
-
-#TESTTESTTEST
