@@ -1,3 +1,16 @@
+**#Plan of Action**
+  **Available Times:**
+  Google Calendar Invites
+  Collaboration preferred time: 3 PM - 8 PM (up until 11 PM for emergencies)
+  If wave is not finished by the end of google meeting, can discuss plans further.
+  **Goal:**
+  Aim for one wave per day; complete by end of Thursday
+  **Communication:**
+  By Slack for longer code-related messages
+  By text - to ping
+  **Feedback:**
+  Check-in before going home everything/ending meeting whether collaboration methods should be changed
+
 # AdaGrams
 
 ## Skills Assessed
