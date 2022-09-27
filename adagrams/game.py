@@ -37,8 +37,6 @@ def draw_letters():
     while len(hand_list) < 10:
         random.shuffle(letter_pool_list)
         hand_list.append(letter_pool_list.pop())
-    print("letter pool", letter_pool_list)
-    print("return list", hand_list)
     return hand_list
 
 def uses_available_letters(word, letter_bank):
