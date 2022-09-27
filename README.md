@@ -1,5 +1,5 @@
 # AdaGrams
-
+Utilizing time in Ada, Okay with working on our own separately
 ## Skills Assessed
 
 - Following directions and reading comprehension
