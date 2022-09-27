@@ -56,8 +56,8 @@ def draw_letters():
 #WAVE TWO
 def uses_available_letters(word, letter_bank):
     copy_of_letter_bank = copy.deepcopy(letter_bank)
-    all_caps_word = word.upper()
-    for letter in all_caps_word:
+    word = word.upper()
+    for letter in word:
         if letter not in copy_of_letter_bank:
             return False
         else:
@@ -66,10 +66,30 @@ def uses_available_letters(word, letter_bank):
 
 
 #WAVE THREE
+
+SCORING = {
+    1: ['A', 'E', 'I', 'O', 'U', 'L', 'N', 'R', 'S', 'T'],
+    2: ['D', 'G'],
+    3: ['B', 'C', 'M', 'P'],
+    4: ['F', 'H', 'V', 'M', 'Y'],
+    5: ['K'],
+    8: ['J', 'X'],
+    10: ['Q', 'Z']
+}
+
 def score_word(word):
+    score = 0
+    word = word.upper()
 
+    if len(word) >= 7:
+        score += 8
 
+    for letter in word:
+        for key, value in SCORING.items():
+            if letter in value:
+                score += key
 
+    return score
 
 #def get_highest_word_score(word_list):
 
