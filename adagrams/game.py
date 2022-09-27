@@ -26,13 +26,20 @@ LETTER_POOL = {
     'Y': 2, 
     'Z': 1
 }
-import random 
+import random
+import string
+
 def draw_letters():
     hand = []
-    letter_pool_list = list(LETTER_POOL)
-    letter = random.randint(0,27)
-    for letter in range(0,10):
-        hand.append(letter_pool_list[letter])
+    keep_going = True
+    while keep_going:
+        letter = random.choice(string.ascii_uppercase)
+        if hand.count(letter) == LETTER_POOL[f"{letter}"]:
+            continue
+        else:
+            hand.append(letter)
+        if len(hand) == 10:
+            keep_going = False
     return hand
 
 def uses_available_letters(word, letter_bank):
