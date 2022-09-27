@@ -86,7 +86,6 @@ def score_word(word):
 
 
 def break_tie(words):
-    # key lambda returns 0 "length" to win if word uses all 10 letters
     return min(words, key=lambda w: 0 if len(w) == 10 else len(w))
 
 
