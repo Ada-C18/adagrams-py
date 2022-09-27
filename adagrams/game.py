@@ -1,5 +1,3 @@
-# NOTE from Dainiz: I changed this variable name so I could use letter_pool in
-# draw_letters() but we can change things up if another way makes more sense to you!
 import random
 
 LETTER_DISTRIBUTION = {
@@ -81,4 +79,26 @@ def score_word(word):
     return total_score
 
 def get_highest_word_score(word_list):
-    pass
+    word_dict = {}
+    highest_score = tuple([None, 0])
+    for word in word_list:
+        word_score = score_word(word)
+        word_dict[word] = word_score
+        if word_score > highest_score[1]:
+            highest_score = (word, word_score)
+    
+    tie_breaker = [word for word, score in word_dict.items()
+                    if score == highest_score[1]]
+    tie_breaker_word_length = [len(word) for word in tie_breaker]
+
+    if len(tie_breaker) > 1:
+        smallest_word_len = min(tie_breaker_word_length)
+        for word in tie_breaker:
+            if len(word) == 10:
+                highest_score = word, word_dict[word]
+                break
+            elif len(word) == smallest_word_len:
+                highest_score = word, word_dict[word]
+                break
+
+    return highest_score
