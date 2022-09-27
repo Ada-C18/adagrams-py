@@ -31,7 +31,6 @@ LETTER_POOL = {
 }
 
 def draw_letters():
-    # find way to use range in for loop to iterate 10 times
     letters = []
         
     for i in range(11):
@@ -44,6 +43,30 @@ def draw_letters():
 
     return letters
 
+
+def check_word_in_letter_bank(word, letter_bank):
+    # check each letter in word if it is in letter bank
+    # create variable to count each time letter is found in letter bank
+    # compare count to len(word)
+    # if count and len(word) are equal return True
+    # if not equal, return False
+
+    print(f"word is: {word}")
+    print(f"letter bank is: {letter_bank}")
+
+    letter_count = 0
+
+    for letter in word:
+        if letter in letter_bank:
+            letter_count +=1
+
+    print(f"letter count: {letter_count}")
+    print(f"word lenth: {len(word)}")
+
+    if letter_count == len(word):
+        return True
+
+    return False
 
 
 def uses_available_letters(word, letter_bank):
