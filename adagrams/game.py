@@ -71,7 +71,7 @@ SCORING = {
     1: ['A', 'E', 'I', 'O', 'U', 'L', 'N', 'R', 'S', 'T'],
     2: ['D', 'G'],
     3: ['B', 'C', 'M', 'P'],
-    4: ['F', 'H', 'V', 'M', 'Y'],
+    4: ['F', 'H', 'V', 'W', 'Y'],
     5: ['K'],
     8: ['J', 'X'],
     10: ['Q', 'Z']
@@ -91,6 +91,33 @@ def score_word(word):
 
     return score
 
-#def get_highest_word_score(word_list):
+def get_highest_word_score(word_list):
+    words_and_scores = {}
+
+    for word in word_list:
+        words_and_scores[word] = score_word(word)
+    highest_score = max(words_and_scores.values())
+
+    words_with_highest_scores = []
+
+    for word,score in words_and_scores.items():
+        if score == highest_score:
+            words_with_highest_scores.append(word)
+
+    winning_word = words_with_highest_scores[0]
+    target_length = len(min(words_with_highest_scores, key = len))
+    words_with_10 = [word for word in words_with_highest_scores if len(word) == 10]
+    if words_with_10:
+        target_length = 10 
+
+    if len(words_with_highest_scores) != 1:
+        for word in words_with_highest_scores:
+            if len(word) == target_length:
+                winning_word = word
+                break 
+    return (winning_word,words_and_scores[winning_word])    
+
+
+
 
     pass
