@@ -79,7 +79,8 @@ def score_word(word):
     if len(word) > 6:
         total_score += 8
     for letter in word:
-        total_score += LETTER_POINTS[letter]
+        if letter.isalpha():
+            total_score += LETTER_POINTS[letter]
     return total_score
 
 
