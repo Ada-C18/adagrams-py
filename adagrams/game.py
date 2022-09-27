@@ -57,33 +57,35 @@ def draw_letters():
 # we get the letter, removes it and returns True
 # if we dont get it at the end of the list, return False
 
-# def check_if_letter_in_letter_bank(letter, letter_bank):
-#     for i in range(0, len(letter_bank)):
-#         if letter == letter_bank[i]:
-#             letter_bank.remove(letter_bank[i])
-#             return True
-#     return False
+def check_if_letter_in_letter_bank(letter, letter_bank):
+    # letters_copy = copy.deepcopy(letter_bank)
 
-# def uses_available_letters(word, letter_bank):
-#     for i in range(0, len(word)):
-#         if check_if_letter_in_letter_bank(word[i], letter_bank):
-#             continue
-#         else:
-#             return False
-#     return True
-    
+    for i in range(0, len(letter_bank)):
+        if letter == letter_bank[i]:
+            letter_bank.remove(letter_bank[i])
+            return True
+    return False
 
 def uses_available_letters(word, letter_bank):
-    # make deep copy of letter bank after importing copy module
-    letters_copy = copy.deepcopy(letter_bank)
-
-    for letter in word:
-        try:
-            letters_copy.remove(letter)
-        except ValueError:
+    for i in range(0, len(word)):
+        if check_if_letter_in_letter_bank(word[i], letter_bank):
+            continue
+        else:
             return False
+    return True
+    
+
+# def uses_available_letters(word, letter_bank):
+#     # make deep copy of letter bank after importing copy module
+#     letters_copy = copy.deepcopy(letter_bank)
+
+#     for letter in word:
+#         try:
+#             letters_copy.remove(letter)
+#         except ValueError:
+#             return False
         
-        return True
+#         return True
 
 
 def score_word(word):
