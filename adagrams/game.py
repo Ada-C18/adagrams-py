@@ -6,10 +6,6 @@ def draw_letters():
     #create a pool for all the letters, using a list
     #import random
     # use random.choices to randomly generate 10 letters from the letter pool 
-    
-    # LETTER_POOL = ["A","A","A","A","A","A","A","A","A", "B","B", "C","C","D","D","D","D","E","E","E","E","E","E","E","E","E","E",
-    # "E","E","F","F","G","G","G","H","H","I","I","I","I","I","I","I","I","I","J","K","L","L","L","L","M","M","N","N","N","N","N","N","O"
-    # ,"O","O","O","O","O","O","O","O","P","P","Q","R","R","R","R","R","R","S","S","S","S","T","T","T","T","T","T","U","U","U","U","V","V","W","W","X","Y","Y","Z"]
     LETTER_POOL_COUNT = {
     'A': 9, 
     'B': 2, 
@@ -39,37 +35,15 @@ def draw_letters():
     'Z': 1
 }
     hand = []
-    while len(hand) < 11:
+    while len(hand) < 10:
         random_letter = random.choice(string.ascii_uppercase)
         if hand.count(random_letter) < LETTER_POOL_COUNT[random_letter]:
             hand.append(random_letter)
+            continue
         else:
             continue
             
     return hand
-
-    # # random_letter = random.choice(string.ascii_uppercase)
-    # random_letter = random.choice(LETTER_POOL_COUNT.keys())
-    # # if random_letter in hand:
-    # hand.append(random_letter)
-    # if hand.count(draw_letters) > LETTER_POOL_COUNT[draw_letters]:
-    #     hand.pop()
-
-    # and hand.count(draw_letter) <= LETTER_POOL_COUNT[draw_letter]:
-    #     draw_letter = random.choice(LETTER_POOL_COUNT.keys())
-    #     hand.append(draw_letter)
-    
-    # return hand
-    
-    # letter_list = LETTER_POOL_COUNT.keys()
-    
-    # for letter in letter_list:
-        
-        
-    #     for i in range (LETTER_POOL_COUNT[letter]):
-    #         LETTER_POOL.append(letter)
-
-    # return random.choices(LETTER_POOL_COUNT,k=10)
     
 def uses_available_letters(word, letter_bank):
     word_case = word.upper()
