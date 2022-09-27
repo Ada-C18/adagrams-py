@@ -40,6 +40,7 @@ def draw_letters():
             hand.append(letter)
         if len(hand) == 10:
             keep_going = False
+
     return hand
 
 def uses_available_letters(word, letter_bank):
