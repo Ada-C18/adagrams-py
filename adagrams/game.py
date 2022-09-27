@@ -30,6 +30,7 @@ LETTER_POOL = {
 }
 def draw_letters():
 
+
     num_letters = []
     random_hands = []
 
