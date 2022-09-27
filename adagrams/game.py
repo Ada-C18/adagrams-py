@@ -29,27 +29,37 @@ LETTER_POOL = {
 }
 
 
+
 def draw_letters():
     letter_pool_list = []
     my_ten_letters = [] 
 
     for letter in LETTER_POOL:
-        for num in range(0,(LETTER_POOL[letter])):
+        for num in range(0,(LETTER_POOL[letter])): #letter_pool[letter] accesses the integer values of each letter
             letter_pool_list.append(letter)
 
-    while len(my_ten_letters) < 10: 
+    while len(my_ten_letters) < 10: #loop will not stop until we have a ten letter string 
         for num in range(0,10):
-            random_letter = random.choice(letter_pool_list)
-            my_ten_letters.append(random_letter)
-            my_string_count = my_ten_letters.count(random_letter)
-            word_pool_count = letter_pool_list.count(random_letter) 
-            if my_string_count > word_pool_count:
+            random_letter = random.choice(letter_pool_list) #selects a random letter from letter pool 
+            my_ten_letters.append(random_letter) # adds the random letter to a list 
+            my_string_count = my_ten_letters.count(random_letter) #counts how many times our random letter appears in our ten letter string
+            word_pool_count = letter_pool_list.count(random_letter) # counts how many times our random letter appears in our letter pool
+            if my_string_count > word_pool_count: # if the count for a letter in our ten letter strings exceeds the count for the same letter in letter pool we remove it. 
                 my_ten_letters.remove(random_letter) 
 
     return my_ten_letters
 
 def uses_available_letters(word, letter_bank):
-    pass
+
+    letter_results = [] 
+    for letter in word:
+        if letter not in letter_bank:
+            letter_results.append("f") # "f" in my head stands for false 
+            
+    if "f" in letter_results:
+        return False
+    else:
+        return True
 
 def score_word(word):
     pass
