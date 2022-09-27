@@ -1,4 +1,14 @@
 import random
+<<<<<<< HEAD
+=======
+from lib2to3.pgen2.pgen import DFAState
+
+# initiate the empty list 
+# to keep the original pool - make a copy of dictionary
+# get letter from the copy dict/pool  random.ran()
+# draw one letter a time, x 10, for loop (0, 10),  
+# also update the qty. of the letter in each loop
+>>>>>>> 01dbe421854afc74ed68bf40f0e343de4b820f09
 LETTER_POOL = {
     'A': 9, 
     'B': 2, 
@@ -28,32 +38,23 @@ LETTER_POOL = {
     'Z': 1
 }
 
-# to keep the original pool - make a copy of dictionary
-# initiate the empty list 
-# get letter from the copy dict/pool  random.ran()
-# draw one letter a time, x 10, for loop (0, 10),  
-# also update the qty. of the letter in each loop
-
-def copy_letter_bank_dict(pool_dict):
+def copy_letter_from_original(pool):
     pool_dict_copy = {}
-    for key, value in pool_dict.items():
+    for key, value in pool.items():
         pool_dict_copy[key] = value
     return pool_dict_copy
-# print(copy_letter_bank_dict(LETTER_POOL))
-print(f"pool before function {LETTER_POOL}")
 
-def draw_letters():
-    
-    letters = []
-    letter_bank_dict = copy_letter_bank_dict(LETTER_POOL)
-    for i in range(10): #to do while loop instead since the quantity can be 0
+def draw_letters():   
+    res_letters = []
+    letter_bank_dict = copy_letter_from_original(LETTER_POOL)
+    while len(res_letters) < 10:   
         letter = random.choice(list(letter_bank_dict.keys()))
-        # check if there is quantity, append, else > continue
-        letters.append(letter)
-        # reduce quantity by one from letetr bank
-    print(letters)
-    return letters
-print(f"pool after function {LETTER_POOL}")  
+        if letter_bank_dict[letter] > 0:
+            res_letters.append(letter)
+            letter_bank_dict[letter] -= 1
+    #print(res_letters)
+    return res_letters
+
 
 def uses_available_letters(word, letter_bank):
     pass

@@ -2,6 +2,7 @@ import pytest
 
 from adagrams.game import score_word
 
+
 def test_score_word_accurate():
     # Assert
     assert score_word("A") == 1
@@ -24,3 +25,4 @@ def test_score_extra_points_for_seven_or_longer():
     assert score_word("XXXXXXXX") == 72
     assert score_word("XXXXXXXXX") == 80
     
+
