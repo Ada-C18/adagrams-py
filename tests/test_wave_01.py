@@ -94,6 +94,18 @@ def test_chi_square_frequencies():
         for letter in letters:
             sample_counter[letter] += 1
 
+    # -------------
+    # Test the test
+    # -------------
+    #
+    # Uncomment for big fail!
+
+    # Add a bunch of extra "Q" tiles!
+    # sample_counter['Q'] *= 2
+    
+    # Take away some "E" tiles! 
+    # sample_counter['E'] /= 2
+
     # organize our expected and sample
     # into parallel lists
     expected = []
@@ -109,6 +121,7 @@ def test_chi_square_frequencies():
     chi  = stats.chisquare(sample, expected)
     pprint(chi.pvalue)
 
+    # low is bad, high is good 
     assert chi.pvalue > 0.05
         
 
