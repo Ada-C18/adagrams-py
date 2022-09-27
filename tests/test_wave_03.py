@@ -8,7 +8,7 @@ def test_score_word_accurate():
     assert score_word("DOG") == 5
     assert score_word("WHIMSY") == 17
 
-def test_score_word_accurate_ignores_case():
+def test_ ():
     # Assert
     assert score_word("a") == 1
     assert score_word("dog") == 5
