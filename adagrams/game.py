@@ -55,11 +55,25 @@ def uses_available_letters(word, letter_bank):
     for letter in word:
         if letter not in letter_bank:
             letter_results.append("f") # "f" in my head stands for false 
-            
+            if "f" in letter_results:
+                return False
+            else:
+                return True
+
+    for letter in word:
+        count_pool_letter = letter_bank.count(letter)
+        count_word_letter = word.count(letter)
+        if count_word_letter > count_pool_letter:
+            return False
+        else:
+            return True
+
+
     if "f" in letter_results:
         return False
     else:
         return True
+
 
 def score_word(word):
     pass
