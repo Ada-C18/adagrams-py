@@ -12,6 +12,31 @@ Get home before dark, get as much work done at ada and take home work if neccesa
 - LP - talking in person rather than text/messaging, focusing on the team goals (rather than pointing fingers)
 - Abby - focusing on the team goals (rather than pointing fingers), consistent and relatively frequent feedback rather than long sessions of pent up feelings
 - Asking if you're open to feedback 
+
+**Wave 2:**
+Our Notes for Wave 2
+Create a function use_available_letters
+check if the word is in the letter bank.
+- iterate through the letters
+- if we have multiple letter, how do we keep track of it. 
+- we could remove the letter from the letter bank.
+- it's better to not edit the original list inside of a function.
+- we could create a dictionary of the letter bank:
+like -count!  making a dictionary of the letters and how often they happen.
+
+**Wave 3:**
+Create a function score_word 
+- create dictionary (each key = letter, each value = point) 
+  - score_dict = {"letter" : point (int value)}
+- score_list = [] stores points per character 
+  - if len(score_list) >= 7: add 8 points
+- drop any characters that aren't letters, uppercase them = cleaned word 
+- getting the score (summing score values)
+- return score 
+
+
+**Wave 4:**
+
 ## Skills Assessed
 
 - Following directions and reading comprehension

@@ -1,6 +1,6 @@
 import random
 
-def build_letter_pool():
+def build_letter_pool(): # wave 1
     
     LETTER_POOL = {
     'A': 9, 
@@ -40,21 +40,40 @@ def build_letter_pool():
     return letter_pool
     
 
-def draw_letters():
+def draw_letters(): #wave 1
     letter_pool = build_letter_pool()
     letters = random.sample(letter_pool, 10)
     # print(letters)
     return letters
     # pass
 
-def uses_available_letters(word, letter_bank):
-    pass
+def uses_available_letters(word, letter_bank): #wave 2
+    result = True
+    letter_bank_dict = {}
+    
+    for letter in letter_bank: 
+        letter_bank_dict[letter] = letter_bank.count(letter)
+    
+    word = word.upper()
+    
+    for character in word: 
+        if character in letter_bank_dict:
+            if letter_bank_dict[character] == 0:
+                result = False
+            letter_bank_dict[character] -= 1
+        else:
+            result = False
+    return result
+    # pass
 
 def score_word(word):
     pass
 
 def get_highest_word_score(word_list):
     pass
+
+
+
 
 
 draw_letters()
