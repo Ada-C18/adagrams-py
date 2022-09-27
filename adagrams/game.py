@@ -36,7 +36,6 @@ def draw_letters():
             for key, value in dict.items():
                 if key not in remaining_letters_pool and value > 0:
                     remaining_letters_pool[key] = value
-  
     while len(letters) < 10:
         random_letter = random.choice(list(remaining_letters_pool))
         for letter in list(remaining_letters_pool):
@@ -47,10 +46,40 @@ def draw_letters():
                 letters.append(random_letter)
                 
     return letters
-    
+
 
 def uses_available_letters(word, letter_bank):
-    pass
+    dict_word={}
+    word=word.upper()
+    word_list=[]
+    values_dict=[]
+    
+    for letter in word:
+        dict_word[letter]=False
+    for letter in word:
+        word_list.append(letter)
+    for letter in word_list:
+        if letter in letter_bank:
+            freq_letter=word_list.count(letter)
+            freq_letter_bank=letter_bank.count(letter)
+            if freq_letter == freq_letter_bank:
+                dict_word[letter]=True
+            elif freq_letter>freq_letter_bank:
+                dict_word[letter]=False
+            elif freq_letter<freq_letter_bank:
+                dict_word[letter]=True
+        else:
+            dict_word[letter]=False
+    for key,value in dict_word.items():
+        values_dict.append(value)
+    if False in values_dict:
+        return False
+    else:
+        return True
+
+
+
+
 
 def score_word(word):
     pass
