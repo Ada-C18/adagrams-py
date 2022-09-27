@@ -98,5 +98,36 @@ def score_word(word):
 
     return score
 
+
+def get_word_score_dictionary(word_list):
+    '''
+    Input: word_list, which is a list of strings
+    Output: dictionary of word and scores
+    '''
+    
+
+def find_high_score_word_length(words_score):
+    '''
+    Input: dictionary of word and scores
+    Output: A dictionary of all the words as keys and their length as values
+    '''
+
 def get_highest_word_score(word_list):
-    pass
+    '''
+    Input: word_list, which is a list of strings
+    Output: tuple of highest scoring word (word, score)
+    '''
+
+    words_score = {}
+    for word in word_list:
+        score = score_word(word)
+        words_score[word] = score
+
+    highest_score = max(words_score.values())
+
+    tie_dict = {}
+    for key,value in words_score.items():
+        if value == highest_score:
+            tie_dict[key] = len(key)
+    
+    
