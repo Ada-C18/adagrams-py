@@ -50,7 +50,14 @@ def uses_available_letters(word, letter_bank):
     Input: Word is user input of a word. letter_bank is a list of 10 strings (each a letter)
     Output: Returns True or False if word contains letters within letter_bank
     '''
-    pass
+    letter_bank_copy = letter_bank[:]
+    for letter in word.upper() :
+        if letter not in letter_bank_copy :
+            return False
+        else :
+            letter_bank_copy.remove(letter)
+    return True
+
 
 def score_word(word):
     pass
