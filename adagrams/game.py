@@ -1,5 +1,7 @@
 import copy
+from multiprocessing.sharedctypes import Value
 import random
+from tokenize import blank_re
 
 LETTER_POOL = {
     'A': 9, 
@@ -37,7 +39,7 @@ def draw_letters():
     '''
     letter_list = generate_letter_list()
     user_hand = []
-    
+
     while len(user_hand) < 10:
         random_letter = random.choice(letter_list)
         user_hand.append(random_letter)
@@ -60,9 +62,27 @@ def generate_letter_list():
     return letter_list
 
 
-
 def uses_available_letters(word, letter_bank):
-    pass
+    '''
+    function takes 2 arguments word and letter_bank and 
+    checks that all letters in word are in letter_bank
+    returns boolean value
+    '''
+    hand_dict = {}
+    word = word.upper()
+
+    for letter in letter_bank:
+        if letter not in hand_dict.keys():
+            hand_dict[letter] = 0
+        hand_dict[letter] += 1
+    #print("hand_dict1: ", hand_dict)
+
+    for letter in word:
+        if letter not in letter_bank or hand_dict[letter] == 0:
+            return False
+        hand_dict[letter] -= 1
+    
+    return True
 
 def score_word(word):
     pass
