@@ -50,7 +50,7 @@ def draw_letters():
     return my_ten_letters
 
 def uses_available_letters(word, letter_bank):
-
+    
     letter_results = [] 
     for letter in word:
         if letter not in letter_bank:
@@ -67,13 +67,9 @@ def uses_available_letters(word, letter_bank):
             return False
         else:
             return True
-
-
-    if "f" in letter_results:
-        return False
-    else:
-        return True
-
+    
+    #word_all_caps = word.upper() 
+    #return word_all_caps 
 
 def score_word(word):
     pass
