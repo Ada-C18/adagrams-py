@@ -1,6 +1,6 @@
 import random
 import string
-# from collections import Counter
+from collections import Counter
 
 def draw_letters():
     #create a pool for all the letters, using a list
@@ -72,13 +72,17 @@ def draw_letters():
     # return random.choices(LETTER_POOL_COUNT,k=10)
     
 def uses_available_letters(word, letter_bank):
-    word_case = word.capitalize()
+    word_case = word.upper()
+    letter_count_dict = Counter(letter_bank)
     for letter in word_case:
-        while letter in letter_bank:
-            if word.count(letter) <= letter_bank.count(letter):
-                return True
+        if letter in letter_count_dict and letter_count_dict[letter] > 0:
+            letter_count_dict[letter] -= 1
+            continue
+        else:
             return False
-        return False
+        
+            
+    return True
 
 
 def score_word(word):
