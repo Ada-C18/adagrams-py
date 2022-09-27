@@ -74,3 +74,17 @@ def draw_letters() -> list:
 
     return hand
 
+
+def uses_available_letters(word: str, letter_bank: list) -> bool:
+    """
+    Returns True if all letters from word are available in letter_bank, else returs False. 
+    """
+    letters_count = Counter(letter_bank)
+    word = word.upper()
+    for letter in word:
+        if letters_count[letter] > 0:
+            letters_count[letter] -= 1
+            continue
+        else:
+            return False
+    return True
