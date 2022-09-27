@@ -20,22 +20,24 @@ def draw_letters():
 
     for i in (range(10)):
         rand_num = random.randint(0, 25)
-        letter_dict = letter_pool_copy[rand_num] #maybe we need to extract the value and save it into another variable?  
+        letter_dict = letter_pool_copy[rand_num] 
         key = list(letter_dict.keys())[0]
         val = list(letter_dict.values())[0]
-        # rand_freq = random.randint(1, val)
+
         if val != 0: 
             hand_list.append(key)
             letter_dict[key] -= 1 
-        # hand_list.extend([key for i in range(rand_freq)])
-        # print(rand_num)
-        # print(val)
-        # print(rand_freq)
     return hand_list
 
 
 def uses_available_letters(word, letter_bank):
-    pass
+    #loop through the letters in the word and check if its in the letter bank
+    #if its not in the letter bank, return false
+    #potentially write a helper function
+    #initialize a list to hold all present letters from the letter_bank 
+    #if the letter is in the bank, add it to the new list and remove it from the letter bank
+    #if the len of new list == len word return true else false 
+    
 
 def score_word(word):
     pass
