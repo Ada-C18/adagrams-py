@@ -1,3 +1,6 @@
+from tkinter import W
+
+
 LETTER_POOL = {
     "A": 9,
     "N": 6,
@@ -74,28 +77,24 @@ def uses_available_letters(word, letter_bank):
 
 
 def score_word(word):
-    total_score = 0
-    word = word.upper()
+    total_score = sum([LETTER_POINTS.get(letter, 0) for letter in word.upper()])
     if len(word) > 6:
         total_score += 8
-    for letter in word:
-        if letter.isalpha():
-            total_score += LETTER_POINTS[letter]
     return total_score
 
 
+# The tuple must contain the following elements:
+# index 0 ([0]): a string of a word
+# index 1 ([1]): the score of that word
+
+
 def break_tie(words):
-    for word in words:
-        if len(word) == 10:
-            return word
-    return min(words, key=len)
+    # key lambda returns 0 "length" to win if word uses all 10 letters
+    return min(words, key=lambda w: 0 if len(w) == 10 else len(w))
 
 
 def get_highest_word_score(word_list):
     word_scores = {word: score_word(word) for word in word_list}
-    # The tuple must contain the following elements:
-    # index 0 ([0]): a string of a word
-    # index 1 ([1]): the score of that word
     highest_score = max(word_scores.values())
     tied_words = [word for word, score in word_scores.items() if score == highest_score]
     return break_tie(tied_words), highest_score
