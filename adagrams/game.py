@@ -74,4 +74,44 @@ def score_word(word):
 
 
 def get_highest_word_score(word_list):
-    pass
+    
+    final_tuple = ()
+
+    final_dict = {}
+
+    for word in word_list:
+        word = word.upper()
+        word_score = score_word(word)
+        print(f"the word is {word}, the score is {word_score}")
+        final_dict[word] = word_score
+
+    winner_score = max(final_dict.values())
+    print("winner score is ", winner_score)
+    winning_words = []
+
+    for key in final_dict:
+        if winner_score == final_dict[key]:
+            print("winner score is", winner_score)
+            print("final_dict[key] is", final_dict[key])
+            winning_words.append(key)
+            print(winning_words)
+
+    current_length = 10 #len(winning_words[0])
+
+    the_winner = ""
+    for word in winning_words:
+        print("the word is ", word)
+        
+        if len(word) == 10:
+            the_winner = word
+        else:
+            if len(word) < current_length:
+                current_length = len(word)
+                the_winner = word
+    print("result: ", the_winner , winner_score)
+    return the_winner , winner_score
+
+words = ["X", "XX", "XXX", "XXXX"]
+
+# Act
+best_word = get_highest_word_score(words)
