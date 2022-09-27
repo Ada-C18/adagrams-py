@@ -2,15 +2,7 @@ import random
 from collections import Counter
 
 # Lee Reyes and Aviva Gars Adagrams Project 
-
-
-def draw_letters():
-    adagrams_pool = []
-    user_letter_list = []
-    adagrams_letter = []
-    adagrams_number = []
-    #changed from a constant 
-    pool_of_letters = {
+LETTER_POOL =  {
         'A': 9, 
         'B': 2, 
         'C': 2, 
@@ -39,6 +31,14 @@ def draw_letters():
         'Z': 1
     }
 
+
+def draw_letters():
+    user_letter_list = []
+    #changed from a constant 
+    pool_of_letters = LETTER_POOL.copy()
+    # adagrams_pool = []
+    # adagrams_letter = []
+    # adagrams_number = []
     # for let in pool_of_letters:
     #     adagrams_letter.append(let)
     # for num in pool_of_letters:
@@ -155,11 +155,9 @@ def get_highest_word_score(word_list):
     winner_list.sort(reverse = True, key = lambda x:x[1])
     max_val = winner_list[0][1]
     tie_list = [tie for tie in winner_list if tie[1]==max_val]
-    tie_list.sort(key = lambda x:len(x[0]))
-
+    tie_list.sort(key = lambda tie:len(tie[0]))
     for tie in tie_list:
         if len(tie[0])== 10:
             return tie
     return tie_list[0]
-
 
