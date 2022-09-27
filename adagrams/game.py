@@ -28,30 +28,27 @@ LETTER_POOL = {
     'Y': 2, 
     'Z': 1
 }
+
 def draw_letters():
 
-
-    num_letters = []
-    random_hands = []
+    random_hand = []
 
     for letter in LETTER_POOL:
-        if letter not in num_letters:
-            num_letters = list(LETTER_POOL.keys())
-            
-    for i in range(0, len(num_letters)):
-        num_letters.extend(num_letters[i] * LETTER_POOL[num_letters[i]])
-    del num_letters[:26]
-
-    # for i in range(0,10):
-    #     if len(random_hands) < 10:
-    #         random_letter = random.choice(num_letters)
-    #         random_hands.append(random_letter)
+        for _ in range(LETTER_POOL[letter]):
+            random_hand += letter
     
-    return (random.sample(num_letters,10))
+    return (random.sample(random_hand,10))
 
 
 def uses_available_letters(word, letter_bank):
-    pass
+
+    word_1 = word.upper()
+
+    for letter in word_1:
+        for i in letter_bank:
+            if letter not in letter_bank or word_1.count(letter) > letter_bank.count(i):
+                return False
+    return True 
 
 def score_word(word):
     pass
