@@ -1,4 +1,9 @@
 # AdaGrams
+#Pair Plan (Masi & Dominique)
+-no specific Access needs for us
+-Masi likes to process on her own and then process with others when she's learning something new. Dominique likes to process with others and then process on her own.
+-We both like verbal immediately after it's needed.
+-We both would like to work on talking about code, using the right vocabulary and being able to communicate what we're thinking.
 
 #Pair Plan (Masi & Dominique)
 -no specific Access needs for us
