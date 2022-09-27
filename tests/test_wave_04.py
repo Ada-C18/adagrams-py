@@ -2,17 +2,17 @@ import pytest
 
 from adagrams.game import score_word, get_highest_word_score
 
-# def test_get_highest_word_score_accurate():
-#     # Arrange
-#     words = ["X", "XX", "XXX", "XXXX"]
+def test_get_highest_word_score_accurate():
+    # Arrange
+    words = ["X", "XX", "XXX", "XXXX"]
 
-#     # Act
-#     best_word = get_highest_word_score(words)
-#     # NOTE: best_word can be a tuple or a list
+    # Act
+    best_word = get_highest_word_score(words)
+    # NOTE: best_word can be a tuple or a list
 
-#     # Assert
-#     assert best_word[0] == "XXXX"
-#     assert best_word[1] == 32
+    # Assert
+    assert best_word[0] == "XXXX"
+    assert best_word[1] == 32
 
 # def test_get_highest_word_score_accurate_unsorted_list():
 #     # Arrange
