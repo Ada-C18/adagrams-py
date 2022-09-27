@@ -49,12 +49,39 @@ def draw_letters():
         if letter_bank_dict[letter] > 0:
             res_letters.append(letter)
             letter_bank_dict[letter] -= 1
-    #print(res_letters)
+    print(res_letters)
     return res_letters
 
+def create_dict(data):
+    # initiatite word_dict 
+    data_dict = {}
+    for element in data:
+        if element not in data_dict:
+            data_dict[element] = 1
+        else:
+            data_dict[element] += 1
+    return data_dict
 
 def uses_available_letters(word, letter_bank):
-    pass
+    # convert word to capital
+    # for each key, value in word dict.items()
+    # check if key of word_dict <= key of letetr_bank dict
+    # return True
+    # else: return False
+    word = word.upper()
+    word_dict = create_dict(word)
+    letter_bank_dict = create_dict(letter_bank)
+
+    for letter, quantity in word_dict.items():
+        if letter not in letter_bank_dict:
+            return False
+        else:
+            if quantity > letter_bank_dict[letter]:
+                return False        
+    return True
+
+   
+
 
 def score_word(word):
     pass
