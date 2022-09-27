@@ -43,19 +43,26 @@ def draw_letters():
     return hand
 
 def uses_available_letters(word, letter_bank):
-    letters_count = 0
-    letters = []
+    letters = {}
+    word = word.upper()
+
+    # for letter in word:
+    #     if letter in letter_bank:
+    #         continue
+    #     else:
+    #         return False
+
+    for letter in string.ascii_uppercase:
+        letters[f"{letter}"] = 0
+    
+    for letter in letter_bank:
+        letters[f"{letter}"] += 1
     
     for letter in word:
-      letter = letter.upper() or letter.lower()
-      if letter in letter_bank:
-        if letter not in letters:
-            letters_count += 1
-            letters.append(letter)
+        if word.count(letter) > letters[f"{letter}"]:
+            return False
     
-    if letters_count == len(word):
-        return True
-    return False
+    return True
 
         
 def score_word(word):
@@ -67,16 +74,23 @@ def score_word(word):
         5: ["K"],
         8: ["J", "X"],
         10: ["Q", "Z"]
-
     }
-    score= []
-    for letter in word:
-        if letter in score_chart.values :
-            letter_value = score_chart["letter"]
-            score.append(letter_value)
+
+    word = word.upper()
+    score = 0
+
+    if len(word) == 0:
+        return score
+    
+    score = {{value for (key, value) in score_chart if value == letter} for letter in word}
+    # for letter in word:
+    #     if letter in score_chart.values:
+    #         score += score_chart["letter"]
+    #         score.append(letter_value)
     if len(word)>= 7:
-        score + 8
-    return sum(score)
+        score.append(8)
+    score = sum(score)
+    return score
 
 def get_highest_word_score(word_list):
     pass
