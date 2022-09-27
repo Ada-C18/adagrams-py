@@ -65,7 +65,6 @@ def check_if_letter_in_letter_bank(letter, letter_bank):
             letter_bank.remove(letter_bank[i])
             return True
     return False
-
 def uses_available_letters(word, letter_bank):
     for i in range(0, len(word)):
         if check_if_letter_in_letter_bank(word[i], letter_bank):
@@ -73,6 +72,7 @@ def uses_available_letters(word, letter_bank):
         else:
             return False
     return True
+    
     
 
 # def uses_available_letters(word, letter_bank):
@@ -86,6 +86,7 @@ def uses_available_letters(word, letter_bank):
 #             return False
         
 #         return True
+
 
 
 def score_word(word):
