@@ -1,6 +1,7 @@
 import random
+import copy
 
-distribution_of_letters = {
+LETTER_POOL = {
     'A': 9, 
     'B': 2, 
     'C': 2, 
@@ -30,36 +31,42 @@ distribution_of_letters = {
 }
 
 def dict_to_list(dict):
-    adagrams_bag = []
-    for key,value in dict.items():
-        for i in range(value):
-            adagrams_bag.append(key)
-    return adagrams_bag
+    bag_of_letters = []
+    for key, value in dict.items():
+        new_letters = [key] * value
+        bag_of_letters.extend(new_letters)
+    
+    return bag_of_letters
 
 def draw_letters():
-    
-    adagrams_bag = dict_to_list(distribution_of_letters)
+    bag_of_letters = dict_to_list(LETTER_POOL)
     hand_as_numbers = []
     hand_as_letters = []
     
     while len(hand_as_letters) < 10:
-        index = random.randint(0,len(adagrams_bag)-1)
+        index = random.randint(0,len(bag_of_letters)-1)
         if index not in hand_as_numbers:
             hand_as_numbers.append(index)
-            hand_as_letters.append(adagrams_bag[index])
+            hand_as_letters.append(bag_of_letters[index])
+    
     return hand_as_letters
 
+
+def uses_available_letters(word, letter_bank):
+    copy_of_letter_bank = copy.deepcopy(letter_bank)
+    all_caps_word = word.upper()
+    for letter in all_caps_word:
+        if letter not in copy_of_letter_bank:
+            return False
+        else:
+            copy_of_letter_bank.remove(letter)
+    return True
     
 # SCORES = {"a": 1, "c": 3, "b": 3, "e": 1, "d": 2, "g": 2, 
 #           "f": 4, "i": 1, "h": 4, "k": 5, "j": 8, "m": 3, 
 #           "l": 1, "o": 1, "n": 1, "q": 10, "p": 3, "s": 1, 
 #           "r": 1, "u": 1, "t": 1, "w": 4, "v": 4, "y": 4, 
 #           "x": 8, "z": 10}
-
-
-def uses_available_letters(word, letter_bank):
-    pass
-
 
 def get_highest_word_score(word_list):
     pass
