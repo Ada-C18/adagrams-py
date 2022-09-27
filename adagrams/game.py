@@ -1,5 +1,7 @@
+from operator import le
 import string
 import random
+import copy
 
 def draw_letters():
     
@@ -48,7 +50,17 @@ def draw_letters():
     return letters_in_hand 
 
 def uses_available_letters(word, letter_bank):
-    pass
+    # make deep copy of letter bank after importing copy module
+    letters_copy = copy.deepcopy(letter_bank)
+
+    for letter in word:
+        try:
+            letters_copy.remove(letter)
+        except ValueError:
+            return False
+        
+        return True
+
 
 def score_word(word):
     pass
