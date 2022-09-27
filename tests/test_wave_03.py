@@ -4,6 +4,8 @@ from adagrams.game import score_word
 
 def test_score_word_accurate():
     # Arrange
+    word = "DOG"
+    word = "A"
     # Act
     # Assert
     assert score_word("A") == 1

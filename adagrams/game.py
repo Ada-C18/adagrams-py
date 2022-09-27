@@ -1,5 +1,6 @@
 import random
 import copy
+from collections import Counter
 
 LETTER_POOL = {
     'A': 9, 
@@ -30,10 +31,27 @@ LETTER_POOL = {
     'Z': 1
 }
 
+# score_table = {
+#     ("A","E","I","O","U","L","N","R","S","T"):1,
+#     ("D","G"):2,
+#     ("B","C","M","P"):3,
+#     ("F","H","V","W","Y"):4,
+#     ("K"):5,
+#     ("J","X"):8,
+#     ("Q","Z"):10
+# }
 
+score_table = {
+    1:["A","E","I","O","U","L","N","R","S","T"],
+    2:["D","G"],
+    3:["B","C","M","P"],
+    4:["F","H","V","W","Y"],
+    5:["K"],
+    8:["J","X"],
+    10:["Q","Z"]
+}
 def draw_letters():
     random_list = []
-    user_hand = []
     for letter, frequency in LETTER_POOL.items():
         string = (letter * frequency)
         tiles = list(string)
@@ -52,7 +70,18 @@ def uses_available_letters(word, letter_bank):
     return True
 
 def score_word(word):
-    pass
+    score = 0
+    letter_count = dict(Counter(word))
+    # if letter in letter_count in score_table.  
+score_word("dogg")
+list(dogg) ['d','o','g', 'g']
+        
+    # Iterate over the letters in word, match it with the score table dict
+    # Add up to the sum
+    # Also give bonus points for length of word 7, 8, 9, or 10, then the word += 8 points
+    # Return everything
+
+    #return points
 
 
 def get_highest_word_score(word_list):
