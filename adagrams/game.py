@@ -1,11 +1,11 @@
 import random
 import string
 
+
 # WAVE 1
 def draw_letters():
-    # 1. Create empty list variable
     hand = []
-    # 2. Create dictionary of letter pool
+
     pool = {
         "A": 9,
         "B": 2,
@@ -35,16 +35,12 @@ def draw_letters():
         "Z": 1,
     }
 
-    # 3. Use loop to keep track of # of letters in hand
     while len(hand) < 10:
-
-        # 4. Randomly select a letter
         random_letter = random.choice(string.ascii_uppercase)
 
         if random_letter in hand:
             letter_count = hand.count(random_letter)
-            # Check pool letter count
-            # If letter quantity less than number of letters in hand
+
             if letter_count < pool[random_letter]:
                 # append letter to list
                 hand.append(random_letter)
@@ -52,16 +48,10 @@ def draw_letters():
                 continue
         else:
             hand.append(random_letter)
-
-        # If not, pick a new letter
-
-    # 5. Return list of lists
-
     return hand
 
+
 # WAVE 2
-
-
 def uses_available_letters(word, letter_bank):
     pass
 
