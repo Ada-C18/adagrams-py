@@ -108,17 +108,17 @@ LETTER_POOL = {
     'Z': 1
 }
 
-def draw_letters():
-    # aria *********
-    # add letter and frequency to their own lists
-    letters = []
-    frequency_of_letters = []
-    for letter, frequency in LETTER_POOL.items():
-        letters.append(letter)
-        frequency_of_letters.append(frequency)
-    # return list of 10 random letters using random.sample
-    random_letters_list = random.sample(letters, counts=frequency_of_letters, k=10)
-    return random_letters_list
+# def draw_letters():
+#     # aria *********
+#     # add letter and frequency to their own lists
+#     letters = []
+#     frequency_of_letters = []
+#     for letter, frequency in LETTER_POOL.items():
+#         letters.append(letter)
+#         frequency_of_letters.append(frequency)
+#     # return list of 10 random letters using random.sample
+#     random_letters_list = random.sample(letters, counts=frequency_of_letters, k=10)
+#     return random_letters_list
 
 
 
