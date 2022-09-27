@@ -114,29 +114,30 @@ def score_word(word):
     # 10: ["Q", "Z"]
     # }
 
-    score = []
     word = word.upper()
 
-    if len(word) == 0:
+    # score = []
+    # if len(word) == 0:
 
-        score.append(0)
-    if len(word) > 6:
-        score.append(8)
+    #     score.append(0)
+    # if len(word) > 6:
+    #     score.append(8)
+    # # for letter in word:
+    # #     for key, value in score_chart.items():
+    # #         if letter in value:
+    # #             score.append(key)   
+
+    # # return sum(score)
+
+    score = 0
     for letter in word:
         for key in score_chart.keys():
             if letter == key:
                 score += score_chart[key]
-    if len(word)>= 7:
+    if len(word) >= 7:
         score += 8
     return score
-    # for letter in word:
-    #     for key, value in score_chart.items():
-    #         if letter in value:
-    #             score.append(key)   
 
-    # return sum(score)
-
-    
     # for letter in word:
     #     for key, value in score_chart.items():
     #         if letter in value:
@@ -165,3 +166,4 @@ def get_highest_word_score(word_list):
 #   print(highest_score)
 #   print(val)
 # #   return highest_score
+    pass
