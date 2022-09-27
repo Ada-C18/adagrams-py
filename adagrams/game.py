@@ -34,12 +34,8 @@ def draw_letters():
     for letter, number in alphabet.items():
         for i in range(number):
             allletters.append(letter)
-<<<<<<< HEAD
-
-=======
     
     #picking 10 random letters from expanded dictionary
->>>>>>> 4ce1b22f209d98b0bd4915516b9c1b862c64ebe4
     gameletters = []
     for letter in range(10):
         number = random.randint(0, 27)
