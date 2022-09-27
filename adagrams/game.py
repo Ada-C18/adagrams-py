@@ -1,4 +1,3 @@
-
 import random
 
 LETTER_POOL = {
@@ -30,10 +29,9 @@ LETTER_POOL = {
     'Z': 1
 }
 
-
 def draw_letters():
     letters = []
-    for i in range(10):
+    while len(letters) < 10:
         letter = random.choice(list(LETTER_POOL.keys()))
         if letters.count(letter) < LETTER_POOL[letter]:
             letters.append(letter)
@@ -47,5 +45,3 @@ def score_word(word):
 
 def get_highest_word_score(word_list):
     pass
-
-draw_letters()
