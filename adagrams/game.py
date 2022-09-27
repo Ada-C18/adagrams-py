@@ -1,6 +1,7 @@
 import random
 from random import choices
 import copy
+
 LETTER_DICT = {
     'A': 9, 
     'B': 2, 
@@ -31,37 +32,32 @@ LETTER_DICT = {
 }
 
 def draw_letters():
-    letter_list = (list(LETTER_DICT))
-    weight_list = list(LETTER_DICT.values())
-    letter_bank = random.choices(letter_list, weight_list ,k=10)
 
-    dict_copy = copy.deepcopy(LETTER_DICT)
+    letter_bank = []
+    letter_copy = copy.deepcopy(LETTER_DICT)
 
-    for letter in letter_bank:
-        letter_count =letter_bank.count(letter)
-        if letter in LETTER_DICT.keys():
-            print(letter)
-        print (letter_count)
-    print (letter_bank)
-    # return letter_bank
-
-
-    letter_freq = {}
-    for letter in letter_bank:
-        if letter in letter_freq:
-            letter_freq[letter] += 1
-        else:
-            letter_freq[letter] = 1
+    while len(letter_bank) < 10:
+        key_list = list(letter_copy.keys())
+        random_letter = random.choice(key_list)
+        if letter_copy[random_letter] > 0:
+            letter_bank.append(random_letter)
+            letter_copy[random_letter] -= 1
+    print(letter_bank)
+    return letter_bank 
 
 
 def uses_available_letters(word, letter_bank):
-    for letter in word:
-        if letter in letter_bank:
-            return True
+    
+    word_2 = word.upper()
+    letter_bank_copy = copy.deepcopy(letter_bank)
 
-
-
-
+    for letter in word_2:
+        if letter.upper() not in letter_bank_copy:
+            return False
+        elif letter.upper() in word_2:   
+            letter_bank_copy.remove(letter)
+    return True
+    
 def score_word(word):
     
     pass
