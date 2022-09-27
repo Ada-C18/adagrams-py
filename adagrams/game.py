@@ -106,5 +106,3 @@ def get_highest_word_score(word_list):
     for k, v in highest_dict.items():
         if k == min_len_word:
             return k, v
-
-print(get_highest_word_score(["BBBBBB", "AAAAAAAAAA"]))
