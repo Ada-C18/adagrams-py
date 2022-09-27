@@ -54,7 +54,16 @@ def draw_letters():
     return this_hand
 
 def uses_available_letters(word, letter_bank):
-    pass
+    word = word.upper()
+
+    seperate_word = set(list(word))
+    print(seperate_word)
+    letter_bank_set = set(letter_bank)
+
+    letter_bank_set.intersection(seperate_word)
+    print(letter_bank_set)
+    # if seperate_word in letter_bank:
+    #     return True
 
 def score_word(word):
     pass
