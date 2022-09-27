@@ -33,6 +33,15 @@ def draw_letters():
     return output_list
 
 def uses_available_letters(word, letter_bank):
+    """ 
+    Returns True if every letter in the input word is available 
+    (in the right quantities) in the letter_bank.
+    Returns False if not; if there is a letter in input that 
+    is not present in the letter_bank or has too much of compared 
+    to the letter_bank.
+    """
+    # create a dictionary to calculate the quantity 
+    # of each letter in the given letter_bank.
     letter_dict = {}
     for letter in letter_bank:
         if letter in letter_dict.keys():
@@ -40,6 +49,10 @@ def uses_available_letters(word, letter_bank):
         else:
             letter_dict[letter] = 1
     
+    # iterate through each letter in the given word.
+    # returns True if all letters are in the letter_bank within correct quantity
+    # returns False otherwise 
+
     for letter in word:
         letter = letter.upper()
         if letter not in letter_bank or letter_dict[letter] == 0:
