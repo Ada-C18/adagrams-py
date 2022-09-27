@@ -48,18 +48,7 @@ def draw_letters():
     return letter_list
 
 def uses_available_letters(word, letter_bank):
-    is_anagram = True
-
-    copy_letter_bank = letter_bank[:]
-
-    word = word.upper()
-
-    for letter in word:
-        if letter not in copy_letter_bank:
-            is_anagram = False
-        else:
-            copy_letter_bank.remove(letter)
-    return is_anagram
+    pass
 
 def score_word(word):
     pass
