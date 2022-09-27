@@ -1,4 +1,5 @@
 import random
+from collections import Counter
 LETTER_POOL20 = {
     'A': 9, 
     'B': 2, 
@@ -48,11 +49,11 @@ def check_available(random, players_hand, LETTER_POOL20):
 def draw_letters():
     players_hand = []            
     i=0
+    if all(LETTER_POOL20.values()) == 0:
+        return []
     random_selection()
     available = True
     while available and len(players_hand)<10 and i <26:
-        if all(LETTER_POOL20.values()) == 0:
-            return []
         letter = random_selection()
         check_available(letter, players_hand,LETTER_POOL20)
         i +=1
@@ -60,11 +61,20 @@ def draw_letters():
     
 
 def uses_available_letters(word, letter_bank):
+    list_bool = []
+    word = word.upper()
+    amount_bank = Counter(letter_bank)
     for letter in word:
-        if letter in letter_bank:
-            return True
+        if letter in letter_bank and amount_bank[letter] > 0 :
+            amount_bank[letter] -= 1
+            list_bool.append(True)
         else:
-            return False
+            list_bool.append(False)
+    if False in list_bool:
+        return False
+    else:
+        return True
+
 
 def score_word(word):
     pass
