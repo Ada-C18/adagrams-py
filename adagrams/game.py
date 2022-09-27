@@ -45,8 +45,9 @@ def draw_letters():
     return result 
 
 def uses_available_letters(word, letter_bank):
-    print('Hi Aisha!')
-    pass
+    
+    
+
 def score_word(word):
     
     pass
