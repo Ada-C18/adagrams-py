@@ -1,18 +1,9 @@
 import random
-import copy
 
 def draw_letters():
     """
     build a hand of 10 letters for the user
     """
-    # -Create a global variable dictionary with key:letters and value:frequency of letter.
-    # -Create list to store drawn letters
-    # -Make a copy of that dictionary
-    # -random random.choice(list(d.keys()))
-    # -Use values as a counter and subtract 1 each time letter is used
-    #- append to list of drawn letter is  counter  > 0
-    # -Refresh dictionary each time we play again
-    #- return list of individual letters 
     LETTER_POOL = {
     'A': 9, 
     'B': 2, 
@@ -53,15 +44,23 @@ def draw_letters():
     return hand
 
 
-
-
 def uses_available_letters(word, letter_bank):
     """
     Check if an input word (a word a player submits) only uses characters that are contained within a collection (or hand) of drawn letters
     """
+    hand = letter_bank[:]
+    word = word.upper()
+    for letter in word:
+        if letter not in hand:
+            return False
+        else:
+            hand.remove(letter)
+            
+    return True
     # - for loop to check if letters in word are in the string of letter bank
     # - Remove  from letter bank if it is in there
     # -return false if it isn't in the letter bank
+    
 
 
 def score_word(word):
