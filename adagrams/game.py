@@ -31,12 +31,16 @@ letter_bank = {
 
 def draw_letters():
     letter_pool = list(chain(*[random.choices(key, k = val) for key, val in letter_bank.items()]))
+    last_index = len(letter_pool) - 1
     hand = []
     
+    while last_index > 0:
+        rand_index = random.randint(0, last_index)
+        letter_pool[last_index], letter_pool[rand_index] = letter_pool[rand_index], letter_pool[last_index]
+        last_index -= 1
+        
     for i in range(10):
-        letter = random.choice(letter_pool)
-        hand.append(letter)
-        letter_pool.remove(letter)
+        hand.append(letter_pool[i])
     return hand 
 def uses_available_letters(word, letter_bank):
     pass
@@ -55,10 +59,10 @@ def score_word(word):
     if len(word) >= 7:
         score += 8
 
-    for point, letters in score_chart.items():
+    for points, letters in score_chart.items():
         for char in word.upper():
             if char in letters:
-                score += point
+                score += points
     return score
 
 def get_highest_word_score(word_list):
