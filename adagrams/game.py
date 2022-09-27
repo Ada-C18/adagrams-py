@@ -27,6 +27,15 @@ LETTER_POOL = {
     'Y': 2, 
     'Z': 1
 }
+score_chart ={
+    ('A', 'E', 'I', 'O', 'U', 'L', 'N', 'R', 'S', 'T'): 1,
+    ('D', 'G'): 2,
+    ('B', 'C', 'M', 'P'): 3,
+    ('F', 'H', 'V', 'W', 'Y'): 4,
+    ('K'): 5,
+    ('J', 'X'): 8,
+    ('Q', 'Z'): 10
+}
 
 
 
@@ -37,6 +46,7 @@ def draw_letters():
     for letter in LETTER_POOL:
         for num in range(0,(LETTER_POOL[letter])): #letter_pool[letter] accesses the integer values of each letter
             letter_pool_list.append(letter)
+
 
     while len(my_ten_letters) < 10: #loop will not stop until we have a ten letter string 
         for num in range(0,10):
@@ -51,6 +61,7 @@ def draw_letters():
 
 def uses_available_letters(word, letter_bank):
     
+    word = word.upper()
     letter_results = [] 
     for letter in word:
         if letter not in letter_bank:
@@ -68,11 +79,24 @@ def uses_available_letters(word, letter_bank):
         else:
             return True
     
-    #word_all_caps = word.upper() 
-    #return word_all_caps 
+    # word_all_caps = word.upper() 
+    # return word_all_caps 
 
 def score_word(word):
-    pass
+    word_score = 0
+    word = word.upper()
+
+    if len(word) == 0:
+        return word_score
+
+    if len(word) in range(7, 11):
+        word_score += 8
+    
+    for letter in word:
+        for key in score_chart:
+            if letter in key:
+                word_score += score_chart.get(key)
+    return word_score
 
 def get_highest_word_score(word_list):
     pass
