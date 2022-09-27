@@ -89,3 +89,11 @@ def uses_available_letters(word: str, letter_bank: list) -> bool:
             return False
     return True
 
+def score_word(word: str) -> int:
+    score = 0
+    for letter in word:
+        score += LETTER_VALUES[letter.upper()]
+    if len(word) > 6:
+        score += 8
+    
+    return score
