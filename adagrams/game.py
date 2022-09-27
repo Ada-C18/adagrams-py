@@ -1,6 +1,5 @@
 import random
 
-def draw_letters():
     # return an array of ten strings
         # each str should contain exactly 1 letter
         # these represent the hand of letters that the player has drawn
@@ -11,7 +10,7 @@ def draw_letters():
         # E as a Z
     # Invoking this function should not change the pool of letters
         # Imagine that the user returns their hand to the pool before drawing new letters
-    LETTER_POOL = {
+LETTER_POOL = {
     'A': 9, 
     'B': 2, 
     'C': 2, 
@@ -39,17 +38,21 @@ def draw_letters():
     'Y': 2, 
     'Z': 1
 }
+    
+    
+def draw_letters():
     letters = []
-    for i in range(10):
-        letters.append(random.choice(list(LETTER_POOL.keys())))
+    i = 0
+    
+    while i < 10: 
+        rand_letter = random.choice(list(LETTER_POOL.keys()))
+        count = letters.count(rand_letter)
+        # print(f"iteration {i}, rand_letter:{rand_letter}, count:{count}")
 
-    dict_letters = {}
-    for letter in letters: 
-        dict_letters[letter] = dict_letters.get(letter, 0) + 1
-        
-    for letter, counts in dict_letters.items():
-        if counts > LETTER_POOL[letter]:
-            print(f"not enough letters {letter}")
+        if count < LETTER_POOL[rand_letter]:
+            # print(f"BEFORE APPEND if: rand_letter:{rand_letter}, count:{count}")
+            letters.append(rand_letter)
+            i += 1      
 
     return letters
 
