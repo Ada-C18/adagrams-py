@@ -1,19 +1,6 @@
 from collections import Counter
 import random
 
-<<<<<<< HEAD
-    # return an array of ten strings
-        # each str should contain exactly 1 letter
-        # these represent the hand of letters that the player has drawn
-    # the letters should be randomly drawn from LETTER_POOL
-        # This letter pool should reflect the distribution of letters as described in the table below
-        # There are only 2 available C letters, so draw_letters cannot ever return more than 2 Cs
-        # Since there are 12 Es but only 1 Z, it should be 12 times as likely for the user to draw an 
-        # E as a Z
-    # Invoking this function should not change the pool of letters
-        # Imagine that the user returns their hand to the pool before drawing new letters
-=======
->>>>>>> 964e28e3cceb1c5502fb750f77eff9a68b0e2727
 LETTER_POOL = {
     'A': 9, 
     'B': 2, 
