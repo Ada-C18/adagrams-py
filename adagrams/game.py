@@ -28,36 +28,6 @@ LETTER_POOL20 = {
     'Y': 2, 
     'Z': 1
 }
-# def random_selection():
-#     values = list(LETTER_POOL20.values())
-#     keys = list(LETTER_POOL20.keys())
-#     percentages= []
-#     for num in values:
-#         percentages.append(num)
-#     tup = tuple(percentages)
-#     random_l = random.choices(keys , weights = tup)
-#     return ''.join(random_l)
-    
-# def check_available(random, players_hand, LETTER_POOL20):
-#     if random in LETTER_POOL20:  
-#         if LETTER_POOL20[random] == 0:     
-#             return False
-#         else:
-#             LETTER_POOL20[random] -=1   
-#             players_hand.append(random)
-#             return True
-# def draw_letters():
-#     players_hand = []            
-#     i=0
-#     if all(LETTER_POOL20.values()) == 0:
-#         return []
-#     random_selection()
-#     available = True
-#     while available and len(players_hand)<10 and i <26:
-#         letter = random_selection()
-#         check_available(letter, players_hand,LETTER_POOL20)
-#         i +=1
-#     return players_hand
 def draw_letters():
     values = list(LETTER_POOL20.values())
     keys = list(LETTER_POOL20.keys())
@@ -77,22 +47,33 @@ def draw_letters():
 #         return False
 #     else:
 #         return True
+# def uses_available_letters(word, letter_bank):
+#     list_bool = []
+#     word = word.upper()
+#     available_bank = Counter(letter_bank)
+#     for letter in word:
+#         if letter in letter_bank and available_bank[letter] > 0:
+#             available_bank[letter] -= 1
+#             list_bool.append(True)
+#         else:
+#             list_bool.append(False)
+#     if False in list_bool:
+#         return False
+#     else:
+#         return True
 def uses_available_letters(word, letter_bank):
-    list_bool = []
     word = word.upper()
     available_bank = Counter(letter_bank)
     for letter in word:
         if letter in letter_bank and available_bank[letter] > 0:
             available_bank[letter] -= 1
-            list_bool.append(True)
+            available = True
         else:
-            list_bool.append(False)
-    if False in list_bool:
-        return False
-    else:
-        return True
-
+            return False
+    return available
+            
 def score_word(word):
+    word = word.upper()
     point_system = {
         ("A", "E", "I", "O", "U", "L", "N", "R", "S", "T") : 1,
         ("D","G"): 2,
@@ -102,15 +83,33 @@ def score_word(word):
         ("J","X"):8,
         ("Q","Z"):10
     }
-    word = word.upper()
     score = 0
     for letter in word:
         for key, point in point_system.items():
             if letter in key:
                 score += point
     if 6 < len(word) <= 10:
-        score+=8
+        score += 8
     return score
+# def score_word(word):
+#     point_system = {
+#         ("A", "E", "I", "O", "U", "L", "N", "R", "S", "T") : 1,
+#         ("D","G"): 2,
+#         ("B", "C", "M", "P"):3,
+#         ("F", "H", "V", "W", "Y"):4,
+#         ("K"): 5,
+#         ("J","X"):8,
+#         ("Q","Z"):10
+#     }
+#     word = word.upper()
+#     score = 0
+#     for letter in word:
+#         for key, point in point_system.items():
+#             if letter in key:
+#                 score += point
+#     if 6 < len(word) <= 10:
+#         score+=8
+#     return score
 
 def get_highest_word_score(word_list):
     score_sheet = []
