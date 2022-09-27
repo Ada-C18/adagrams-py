@@ -1,5 +1,6 @@
+import random
 def draw_letters():
-    pool_of_letters = {"A" : 9,
+    POOL_OF_LETTERS = {"A" : 9,
     "B" : 2,
     "C" : 2, 
     "D" : 4, 
@@ -25,8 +26,15 @@ def draw_letters():
 	"X" : 1,
 	"Y" : 2,
 	"Z" : 1}
-    pool_of_letters_copy = pool_of_letters.copy()
+    pool_of_letters_copy = POOL_OF_LETTERS.copy()
     just_letters = list(pool_of_letters_copy)
+    hand_list = []
+    while len(hand_list) < 10:
+        hand = random.choice(just_letters)
+        if pool_of_letters_copy[hand] >= 1:
+            hand_list.append(hand)
+            pool_of_letters_copy[hand] -= 1
+    return hand_list
 
 def uses_available_letters(word, letter_bank):
     pass
