@@ -64,16 +64,26 @@ def draw_letters():
     
     while len(letters) < 10:
         random_letter = random.choice(list(LETTER_POOL.keys()))
-        letters.append(random_letter)
+
+        letters.append(random_letter)            
         count += 1
+    
     print("Here is our hand of letter = ", letters)
+    # print(count)
+
+
 
     # psuedocode the the next loop
-    for letter in letters:
-        if that letter is in LETTER_POOL.items(): # I want to grab the key and value
-            for k, v in letter:
-                i want to update the value ---> v -= 1
-                return v
+    # for letter in range(len(letters)):
+    #     if letter in LETTER_POOL.items(): # I want to grab the key and value
+    #         for k, v in letter:
+    #             print("Before", k, v)
+                # if v == 0:
+                #     return 0 # should we return None or skip the letter
+                # else:
+                #     v -= 1
+                # print("After", k, v)
+            # return v
 
 
     # iterate through the list of letters being randomly pulled for the hand
@@ -92,7 +102,7 @@ def draw_letters():
 
 
     # returns array of 10 strings - testing for len(letters) == 10
-    return letters
+    # return letters
 
     
     
