@@ -96,11 +96,16 @@ def uses_available_letters(word, letter_bank):
         else:
             frequency2[letter] = 1
     print("Frequency of letters in Bank = ", frequency2)
+    
+    # REFACTOR: can we refactor these two loops into one?
 
     # if every letter in word is in letter_bank
     # return True
 
     common = frequency.items() & frequency2.items() 
+    print("Len of COMMON_key:values dict = ", len(common))
+    print("Len of HAND dict = ",len(frequency))
+    print("Len of LETTER_BANK dict = ", len(frequency2))
 
     if len(common) == len(frequency):
         return True
@@ -108,10 +113,6 @@ def uses_available_letters(word, letter_bank):
     # return False
     else:
         return False
-    
-    print("Len of COMMON_key:values dict = ", len(common))
-    print("Len of HAND dict = ",len(frequency))
-    print("Len of LETTER_BANK dict = ", len(frequency2))
 
 
 
@@ -142,7 +143,7 @@ def score_word(word):
 
 
 
-    # pass
+    pass
 
 
 

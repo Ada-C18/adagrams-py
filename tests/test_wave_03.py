@@ -2,7 +2,7 @@ import pytest
 
 from adagrams.game import score_word
 
-# @pytest.mark.skip()
+@pytest.mark.skip()
 def test_score_word_accurate():
     # Assert
     assert score_word("A") == 1
