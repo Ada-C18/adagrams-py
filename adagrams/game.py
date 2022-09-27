@@ -106,7 +106,11 @@ def score_word(word):
         if letter in SCORE_CHART:
             score_total += SCORE_CHART[letter]
     return score_total
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> e02206d1bc21820ae185f63fa93022d51b5e627a
 def get_highest_word_score(word_list):
     best_word = []
     for i in range(len(word_list)):
