@@ -56,7 +56,7 @@ LETTER_VALUES = {"A": 1,
                  "X": 8,
                  "Y": 4,
                  "Z": 10,
-                 "#": 0,
+                 
 }
 
 
@@ -88,3 +88,4 @@ def uses_available_letters(word: str, letter_bank: list) -> bool:
         else:
             return False
     return True
+
