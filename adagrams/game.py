@@ -87,7 +87,7 @@ def score_word(word):
     word = word.upper()
 
     if len(word) == 0:
-<<<<<<< HEAD
+
         score.append(0)
     if len(word) > 6:
         score.append(8)
@@ -98,17 +98,15 @@ def score_word(word):
    
     return sum(score)
 
-=======
-        return score
     
-    for letter in word:
-        for key, value in score_chart.items():
-            if letter in value:
-                score += key
-    if len(word)>= 7:
-        score += 8
-    return score
->>>>>>> 6d262aa07f54933e30e7b9bb0d96e6d51221e104
+    # for letter in word:
+    #     for key, value in score_chart.items():
+    #         if letter in value:
+    #             score += key
+    # if len(word)>= 7:
+    #     score += 8
+    # return score
+
 
 def get_highest_word_score(word_list):
 #   score_list = {}
