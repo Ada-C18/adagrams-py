@@ -1,4 +1,3 @@
-# from tests.test_wave_01 import LETTER_POOL
 import random
 LETTER_POOL = {
     'A': 9, 
