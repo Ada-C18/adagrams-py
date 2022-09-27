@@ -99,6 +99,5 @@ def get_highest_word_score(word_list):
                 break
             elif len(word) == smallest_word_len:
                 highest_score = word, word_dict[word]
-                break
 
     return highest_score
