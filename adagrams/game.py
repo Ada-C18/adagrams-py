@@ -17,7 +17,7 @@ def draw_letters():
 # | K : 1  | X : 1 |
 # | L : 4  | Y : 2 |
 # | M : 2  | Z : 1 |
-    bag_of_letters = {
+    bag_of_letters_dict = {
     'A': 9, 
     'B': 2, 
     'C': 2, 
@@ -45,15 +45,20 @@ def draw_letters():
     'Y': 2, 
     'Z': 1
 }
-    num_of_letter = bag_of_letters
+    bag_of_letters_list = []
+    for key, value in bag_of_letters_dict.items():
+        for letter in range(value):
+            bag_of_letters_list.append(key)
+
     hand = []
+
     while len(hand) < 10:
-        for letter in bag_of_letters:
+        for letter in bag_of_letters_list:
             hand.append(letter)
+            letter_of_index = bag_of_letters_list.index(letter)
+            bag_of_letters_list.pop(letter_of_index)
             break
     return hand
-
-print(draw_letters())
 
 def uses_available_letters(word, letter_bank):
     pass
