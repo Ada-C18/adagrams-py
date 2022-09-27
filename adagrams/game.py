@@ -1,5 +1,9 @@
+import random
+
 def draw_letters():
-    letter_pool = []
+    pool_count = 98 # number of letters in pool overall
+    drawn_letters = []
+    letter_pool = [] # list of letters available draw from
     letter_pool_amounts = {
         'A': 9, 'B': 2, 'C': 2, 'D': 4, 'E': 12,
         'F': 2, 'G': 3, 'H': 2, 'I': 9, 'J': 1,
@@ -13,8 +17,13 @@ def draw_letters():
     # for each key, add it [value] number of times to letter_pool list
         for value in range(number):
             letter_pool.append(letter)
-
     # use random.randint w/ index 10 times to draw 10 random letters
+    for value in range(10):
+        letter_index = random.randint(0, pool_count - 1)
+        chosen_letter = letter_pool.pop(letter_index)
+        drawn_letters.append(chosen_letter)
+        pool_count -= 1
+    return drawn_letters
 
 def uses_available_letters(word, letter_bank):
     pass
