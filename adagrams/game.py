@@ -1,5 +1,6 @@
 from gzip import BadGzipFile
 import random
+from collections import Counter
 
 LETTER_POOL = {
     'A': 9, 
@@ -32,33 +33,32 @@ LETTER_POOL = {
 
 def draw_letters():
     bag_of_letters = []
-    hand = []
+    letter_bank = []
     # based on the value add the letter n times to alphabet list
     for letter,value in LETTER_POOL.items():
         for i in range(value):
             bag_of_letters.append(letter)
 
-    while len(hand) != 10:
+    while len(letter_bank) != 10:
         draw = random.choice(bag_of_letters)
-        hand.append(draw)
-            
-
-        #     bag_of_letters.remove(letter)
-    # print(bag_of_letters)
-    return hand
+        letter_bank.append(draw)
+        bag_of_letters.remove(draw)
     
+    return letter_bank
     
-    
-    
-
-
-    # pass
-
     
 
 
 def uses_available_letters(word, letter_bank):
-    pass
+    print(letter_bank)
+    # word = "DOG" #input("Make a word out of the letter bank. ")
+    c = Counter(letter_bank)
+    for char in word:
+        c[char.upper()] -= 1
+        if char.upper() not in letter_bank or c[char.upper] == -1:
+            return False
+    return True
+
 
 def score_word(word):
     pass
