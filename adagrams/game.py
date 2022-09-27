@@ -22,4 +22,4 @@ def score_word(word):
     pass
 
 def get_highest_word_score(word_list):
-    pass
+    pass 
