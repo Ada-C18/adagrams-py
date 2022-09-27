@@ -1,3 +1,5 @@
+import copy
+
 LETTER_POOL = {
     'A': 9, 
     'B': 2, 
@@ -43,7 +45,15 @@ def draw_letters():
 
 
 def uses_available_letters(word, letter_bank):
-    pass
+    copy_bank = copy.deepcopy(letter_bank)
+    word = word.upper()
+    for char in word:
+        if char in copy_bank:
+            copy_bank.remove(char)
+            
+        else:
+            return False
+    return True
 
 def score_word(word):
     pass
