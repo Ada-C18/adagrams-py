@@ -1,11 +1,15 @@
-<<<<<<< HEAD
-# Tia's message for testing 
-=======
-#let's create a conflict
->>>>>>> 0f525368ab2d9e20404e759470ce8710aedeba1a
+
 
 def draw_letters():
-    pass
+    #create empty hand_array
+    #hand_array=[] or {}…
+
+    #randomly select from letter_pool
+        #hand_array.append(randomly_selected_letter)
+        #repeat 10
+
+    #return hand_array
+
 
 def uses_available_letters(word, letter_bank):
     pass
