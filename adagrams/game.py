@@ -27,32 +27,19 @@ def draw_letters():
         print(hand)
     return hand
 
-    # upper_word = word.upper()
-    # A = True
-
-    # for letter in upper_word:
-    #     if letter in letter_bank:
-    #         letter_bank.remove(letter)
-    #         A = True
-    #     else:
-    #         A = None
-    # return A
-
-
-
-
-
 
 def uses_available_letters(word, letter_bank):
     upper_word = word.upper()
-    letter_list = []
+    copy_bank = copy.deepcopy(letter_bank)
+    A = True
 
     for letter in upper_word:
-        letter_list.append(letter)
-    if letter_list in letter_bank:
-        return True
-    else:
-        return False
+        if letter in copy_bank:
+            copy_bank.remove(letter)
+            A = True
+        else:
+            A = False
+    return A
 
 def score_word(word):
     pass
