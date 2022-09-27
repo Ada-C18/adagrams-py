@@ -44,12 +44,22 @@ def draw_letters():
     return hand
 
 def uses_available_letters(word, letter_bank):
-    pass
+    bank = letter_bank.copy()
+    for letter in word.upper():
+        if letter in bank:
+            bank.remove(letter)
+        else:
+            return False
+
+    return True
     # for i in word:
     #     if i in letter_bank:
     #         letter_bank.remove(i)
     #     else:
-    #         return False
+            # return False
+    
+        
+        
         
 
 
