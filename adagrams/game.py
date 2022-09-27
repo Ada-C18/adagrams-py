@@ -44,49 +44,75 @@ def draw_letters():
     return hand
 
 def uses_available_letters(word, letter_bank):
-    letters_dict = {}
-    letters = []
-    count = 0  
-    for letter in word: 
-      letter = letter.upper() or letter.lower()
-      if letter in letter_bank:
-        letters.append(letter)
-        if letters.count(letter) <= LETTER_POOL[f"{letter}"]:
-            return True
-      return False
-    
-      
+    # letters_count = 0
+    # letters = []
 
-        
-
+    # for letter in word:
+    #   letter = letter.upper() or letter.lower()
+    #   if letter in letter_bank:
     #     if letter not in letters:
     #         letters_count += 1
     #         letters.append(letter)
-    
     # if letters_count == len(word):
     #     return True
     # return False
+    letters = {}
+    word = word.upper()
 
-        
+    for letter in string.ascii_uppercase:
+        letters[f"{letter}"] = 0
+    
+    for letter in letter_bank:
+        letters[f"{letter}"] += 1
+    
+    for letter in word:
+        if word.count(letter) > letters[f"{letter}"]:
+            return False
+    
+    return True
+
 def score_word(word):
     score_chart = {
         1:["A", "E", "I", "O", "U", "L", "N", "R", "S", "T"],
         2:["D", "G"],
-        3: ["B, C, M, P"],
-        4: ["F", "H", "V", "W" "Y"],
+        3: ["B", "C", "M", "P"],
+        4: ["F", "H", "V", "W", "Y"],
         5: ["K"],
         8: ["J", "X"],
         10: ["Q", "Z"]
-
     }
-    score= []
+    score = []
+    word = word.upper()
+
+    if len(word) == 0:
+        score.append(0)
+    if len(word) > 6:
+        score.append(8)
     for letter in word:
-        if letter in score_chart.values :
-            letter_value = score_chart["letter"]
-            score.append(letter_value)
-    if len(word)>= 7:
-        score + 8
+      for key, value in score_chart.items():
+        if letter in value:
+            score.append(key)   
+   
     return sum(score)
 
+
 def get_highest_word_score(word_list):
-    pass
+#   score_list = {}
+#   highest_score = []
+#   for word in word_list:
+#     word_value = score_word(word)
+#     score_list[word] = word_value
+#   print(score_list)
+#   for key,value in score_list.items():
+#     val = max(score_list.values())
+#     if value == val:
+#         value = value
+#         highest_score.append(key)
+        
+
+    
+#   print(word)
+#   print(highest_score)
+#   print(val)
+# #   return highest_score
+    
