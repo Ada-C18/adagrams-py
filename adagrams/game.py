@@ -164,8 +164,7 @@ def get_highest_word_score(word_list):
 #   print(word)
 #   print(highest_score)
 #   print(val)
-<<<<<<< HEAD
-# #   return highest_score
-=======
-# #   return highest_score
->>>>>>> 93f5a56405c8f532656c82d1d624ffb41766e249
+
+# return highest_score
+
+#return highest_score
