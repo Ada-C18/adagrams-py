@@ -30,18 +30,12 @@ LETTER_POOL = {
 }
 
 def draw_letters():
-    '''
-    (0) input: LETTER_POOL in dict as global parameter
-    (1) access LETTER_POOL: (key, value) = (letter, how many)
-    (2) list of n * letter, e.g. [...'Y', 'Y', 'Z']
-    (3) sampling 10 letters from the list ! choice can repeat for the same index !
-    '''
-
-    letter_list = []
-    for letter, n in LETTER_POOL.items(): 
-        letter_list.extend(n * letter)
-    letters = random.sample(letter_list, k=10)
-    return letters 
+    letters = []
+    for i in range(10):
+        letter = random.choice(list(LETTER_POOL.keys()))
+        if letters.count(letter) < LETTER_POOL[letter]:
+            letters.append(letter)
+    return letters
 
 def uses_available_letters(word, letter_bank):
     pass
