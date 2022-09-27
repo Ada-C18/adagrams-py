@@ -40,7 +40,16 @@ def draw_letters():
     return hand_list
 
 def uses_available_letters(word, letter_bank):
-    pass
+    word = word.upper()
+    new_letter_bank = []
+    new_letter_bank.extend(letter_bank)
+    for letter in word:
+        if letter in new_letter_bank:
+            new_letter_bank.remove(letter)
+        else:
+            return False
+    return True
+
 
 def score_word(word):
     pass
