@@ -127,4 +127,3 @@ def get_highest_word_score(word_list):
 #   print(highest_score)
 #   print(val)
 # #   return highest_score
-    
