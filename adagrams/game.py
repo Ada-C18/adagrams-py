@@ -1,4 +1,5 @@
 import random
+from operator import itemgetter
 
 def build_letter_pool(): # wave 1
     
@@ -66,23 +67,6 @@ def uses_available_letters(word, letter_bank): #wave 2
     return result
     # pass
 
-# def score_word(word): #Abby
-#     score_values = []
-#     score_dict = { 1: ["A","E", "I", "O", "U", "L", "N", "R", "S", "T"], 2: ["D", "G"], 3: ["B", "C", "M", "P"], 4: ["F","H", "V", "W", "Y"], 5: ["K"], 8: ["J", "X"], 10: ["Q", "Z"]}
-#     word = word.upper()
-
-#     if len(word) >= 7: 
-#         score_values.append(8)
-#     for character in word:
-#         for letter_value, letters in score_dict.items():
-#             for letter in letters:
-#                 if letter == character: 
-#                     score_values.append(letter_value)
-    
-#     return sum(score_values)
-
-def get_highest_word_score(word_list):
-    pass
 
 #-----wave 03 ------------ #
      #LP's version (with coworking!)
@@ -128,9 +112,81 @@ def get_score(word, letter_scores):
             
     return score
 
-        
+# def score_word(word): #Abby
+#     score_values = []
+#     score_dict = { 1: ["A","E", "I", "O", "U", "L", "N", "R", "S", "T"], 2: ["D", "G"], 3: ["B", "C", "M", "P"], 4: ["F","H", "V", "W", "Y"], 5: ["K"], 8: ["J", "X"], 10: ["Q", "Z"]}
+#     word = word.upper()
+
+#     if len(word) >= 7: 
+#         score_values.append(8)
+#     for character in word:
+#         for letter_value, letters in score_dict.items():
+#             for letter in letters:
+#                 if letter == character: 
+#                     score_values.append(letter_value)
+    
+#     return sum(score_values)
+
 #-------------end wave 3---------
 
 
+#------ Begin Wave 4------------
 
-draw_letters()
+"""
+Notes wave 4:
+
+-We're going to have to save the words, maybe with their scores.
+  - (oh this is taken care of for us)
+-word_list will be list of words , the output will be a tuple that has 
+the word as the 0th element and the score as the second element.
+
+-idea: we make tuples for every word (with the word and the score), then
+we sort the tuples by their [1]th element.  We'll use itemgetter to do this.
+then we sort them by their length.
+we make logic to deal with tie-breakers if the top score is highest.
+
+"""
+def get_highest_word_score(word_list):
+    """this gets the word with the highest score"""
+    words_scores_list = []
+    #this will be a list of tuples (word, score) of type (str, int)
+    #this can be a helper function.
+
+    for word in word_list: 
+        words_scores_list.append((word, score_word(word)))
+    sorted_words_scores_list = sorted(words_scores_list, key=itemgetter(1), reverse=True)
+
+    #find the max score: (this can be a helper function)
+
+    max_score = sorted_words_scores_list[0][1]
+    potential_winners = []
+    for word, score in sorted_words_scores_list:
+        if score == max_score:
+            potential_winners.append((word, score))
+    
+    if len(potential_winners) == 1:
+        return potential_winners[0]
+
+    #if we get here, there's a tie.
+    #tie-breaking helper function.
+
+    #sort potential_winners by length of word ascending
+    #sorted_potential_winners = sorted(potential_winners)
+
+    #if one has 10 letter and the other doesn't, that one wins.
+    
+    # for word, score in potential_winners:
+    #     if len(word) == 10:
+    #         return (word, score)
+        
+    
+
+
+    # fewest letters wins
+    # then pick the first one if it's still a tie.    
+
+
+
+    # print(sorted_words_scores_list)
+
+# get_highest_word_score(["Heloooo", "ifweo", "idfosj"])
