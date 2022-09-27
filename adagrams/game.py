@@ -26,6 +26,7 @@ LETTER_POOL = {
     'Y': 2, 
     'Z': 1
 }
+
 import random
 import string
 
@@ -34,7 +35,7 @@ def draw_letters():
     keep_going = True
     while keep_going:
         letter = random.choice(string.ascii_uppercase)
-        if hand.count(letter) == LETTER_POOL[f"{letter}"]:
+        if hand.count(letter) == LETTER_POOL[letter]:
             continue
         else:
             hand.append(letter)
@@ -48,19 +49,17 @@ def uses_available_letters(word, letter_bank):
     word = word.upper()
 
     # for letter in word:
-    #     if letter in letter_bank:
-    #         continue
-    #     else:
+    #     if letter not in letter_bank:
     #         return False
 
     for letter in string.ascii_uppercase:
-        letters[f"{letter}"] = 0
+        letters[letter] = 0
     
     for letter in letter_bank:
-        letters[f"{letter}"] += 1
+        letters[letter] += 1
     
     for letter in word:
-        if word.count(letter) > letters[f"{letter}"]:
+        if word.count(letter) > letters[letter]:
             return False
     
     return True
@@ -70,8 +69,8 @@ def score_word(word):
     score_chart = {
         1:["A", "E", "I", "O", "U", "L", "N", "R", "S", "T"],
         2:["D", "G"],
-        3: ["B, C, M, P"],
-        4: ["F", "H", "V", "W" "Y"],
+        3: ["B", "C", "M", "P"],
+        4: ["F", "H", "V", "W", "Y"],
         5: ["K"],
         8: ["J", "X"],
         10: ["Q", "Z"]
@@ -83,14 +82,12 @@ def score_word(word):
     if len(word) == 0:
         return score
     
-    score = {{value for (key, value) in score_chart if value == letter} for letter in word}
-    # for letter in word:
-    #     if letter in score_chart.values:
-    #         score += score_chart["letter"]
-    #         score.append(letter_value)
+    for letter in word:
+        for key, value in score_chart.items():
+            if letter in value:
+                score += key
     if len(word)>= 7:
-        score.append(8)
-    score = sum(score)
+        score += 8
     return score
 
 def get_highest_word_score(word_list):
