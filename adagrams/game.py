@@ -97,4 +97,33 @@ def score_word(word):
     return score
 
 def get_highest_word_score(word_list):
-    pass
+    score_sheet = []
+    high_score = 0
+    top_players_tie=[]
+    top_player = ("",0)
+
+    for word in word_list:
+        score = score_word(word)
+        score_info = (word,score)
+        score_sheet.append(score_info)
+        if score > high_score:
+            high_score = score
+    for player in score_sheet:
+        if player[1] == high_score:
+            top_players_tie.append(player)
+            top_player = player
+
+    if len(top_players_tie)>1:
+        for player in top_players_tie:
+            if len(player[0]) == len(top_player[0]) and player is not top_player:
+                return top_players_tie[0]
+            elif len(player[0]) == 10:
+                top_player = player
+                return top_player
+                
+            elif len(player[0]) < len(top_player[0]):
+                top_player = player
+
+    
+    return top_player
+
