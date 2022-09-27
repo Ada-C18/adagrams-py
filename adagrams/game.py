@@ -115,8 +115,6 @@ def get_highest_word_score(word_list):
         word_score_dict[word] = score_word(word)
         if score_word(word) > max_score:
             max_score = score_word(word)
-            if len(word) < min_word_length:
-                min_word_length = len(word)
     
     winning_word = ()
     min_word_length = 11
