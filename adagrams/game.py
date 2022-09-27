@@ -28,6 +28,15 @@ LETTER_POOL = {
     'Y': 2, 
     'Z': 1
 }
+points = {
+      **dict.fromkeys(["A", "E", "I", "O", "U", "L", "N", "R", "S", "T"], 1),
+      **dict.fromkeys(["D", "G"], 2),
+      **dict.fromkeys(["B", "C", "M", "P"], 3),
+      **dict.fromkeys(["F", "H", "V", "W", "Y"], 4),
+    "K" : 5,
+      **dict.fromkeys(["J", "X"], 8),
+      **dict.fromkeys(["Q", "Z"], 10)
+    }
 def draw_letters():
     letter_list = []
     letter_count = {}
@@ -52,12 +61,21 @@ def uses_available_letters(word, letter_bank):
                 new_list.remove(word_upper[i])
             else:
                 return False
-            return True
+        return True
     except KeyError:
         return False
 
 def score_word(word):
-    pass
+    score = 0
+    word_upper = word.upper()
+    if word == "":
+        return score
+    for letter in word_upper:
+        score += points[letter]
+    if len(word)>= 7:
+        score += 8
+    return score
+    
 
 def get_highest_word_score(word_list):
     pass
