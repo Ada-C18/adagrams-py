@@ -1,4 +1,5 @@
 import random
+
 def draw_letters():
     allletters = []
     alphabet = {
@@ -47,13 +48,17 @@ def draw_letters():
 
 
 def uses_available_letters(word, letter_bank):
-    new_list = []
-    for letter in letter_bank:
-        if letter in word:
-            new_list.append(letter)
-            return True 
-        else:
+    letter_bank_copy = letter_bank[:]
+    for letter in word:
+        letter = letter.capitalize()
+        if letter not in letter_bank_copy:
             return False
+        else:
+            letter_bank_copy.remove(letter)
+    return True
+
+
+    
         
 
 def score_word(word):
