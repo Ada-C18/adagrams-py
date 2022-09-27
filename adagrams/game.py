@@ -1,6 +1,3 @@
-from tkinter import W
-
-
 LETTER_POOL = {
     "A": 9,
     "N": 6,
