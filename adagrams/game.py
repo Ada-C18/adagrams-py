@@ -30,37 +30,12 @@ LETTER_POOL = {
 }
 
 # =========== WAVE ONE ===========
+# ================================
 
 def draw_letters():
     # takes in no parameter
     letters = [] # the "hand" with 10 letters that we return
-
-    # random drawing from letters in dictionary — random module***
-    """ 
-    STEPS:
-    begin to pull letters, randomly
-        iterate through dict, key:value pair
-        as we iterate, update the value
-        update a list of letters, .append()
-    return the hand
-    """
-    # Our thoughts on making a loop
-    """
-    LOOP:
-    random get a key from —> calls the value
-    return an updated value
-    """
-
-    # get a random letter
-    # random_letter = random.choice(list(LETTER_POOL.keys()))
-    # # player_choice = list(LETTER_POOL.values()) # random piece of code we were thinking about using LOL
-    # print("Here's your letter = ", random_letter)
-
-    # # create a list with the letters chosen
-    # letters.append(random_letter)
-    # print("Here's your current hand =", letters)
-
-    # create a list that's 10 letters long
+    
     count = 0
     
     new_dict = LETTER_POOL.copy()
@@ -68,6 +43,8 @@ def draw_letters():
     # print("BEFORE: list of letters = ", letters)
     # print("BEFORE: dictionary = ", new_dict)
 
+    # create a list that's 10 letters long
+    # random drawing from letters in dictionary — import random module
     while len(letters) < 10:
         random_letter = random.choice(list(new_dict.keys()))
 
@@ -76,46 +53,19 @@ def draw_letters():
             if k == random_letter and v > 1:
                 # print("BEFORE change ", k, v)
                 letters.append(random_letter)
-                v -= 1 # this creates a new value for v, but how do we get it back to the dictionary?
-                new_dict[k] = v
+                v -= 1 # this creates a new value for v
+                new_dict[k] = v # this syntax adds updates the value of the dictionary w/in the loop
                 # print("AFTER change = ", k, v)
             else:
                 continue
         count += 1 # we need to make this change to the dictionary
+    # print("Letters list = ", letters)
     return letters
 
-    # print("Count = ", count)
-    # print("AFTER: list of letters = ", letters)
-    # print("AFTER: dictionary = ", new_dict)
-    
-    # psuedocode the the next loop
-    # for letter in letters:
-    #     if that letter is in LETTER_POOL.items(): # I want to grab the key and value
-    #         for k, v in letter:
-    #             i want to update the value ---> v -= 1
-    #             return v
-
-    # iterate through the list of letters being randomly pulled for the hand
-    # for letter in range(len(letters)):
-    #     print(letter)
-
-    # for-loop updates the dictionary
-        # for letter, value in LETTER_POOL.items():
-        #     # print(letter, value)
-        #     if letter == random_letter:
-        #         print(letter, value)
-        #         value -= 1
-        # print(letter, value)
-        # return value
-        # return the value—so update the dictionary           
-
-
-    # returns array of 10 strings - testing for len(letters) == 10
-    return letters
-    
-    # pass
 
 # =========== WAVE TWO ===========
+# ================================
+
 
 def uses_available_letters(word, letter_bank):
 
@@ -150,8 +100,7 @@ def uses_available_letters(word, letter_bank):
     # if every letter in word is in letter_bank
     # return True
 
-    common = frequency.items() & frequency2.items()
-    print(common)
+    common = frequency.items() & frequency2.items() 
 
     if len(common) == len(frequency):
         return True
@@ -166,12 +115,40 @@ def uses_available_letters(word, letter_bank):
 
 
 
-# ---WAVE THREE---
+# =========== WAVE THREE ===========
+# ==================================
 
 def score_word(word):
-    pass
 
-# ---WAVE FOUR---
+    # GOAL: return the score of given word defined by Adagram
+    # word = "string of characters"
+
+    print("Word list = ", word, ",", type(word))
+
+    sum = 0
+
+    # if length of word is 7, 8, 9, or 10 -->
+        # then the word gets 8 extra points
+    if len(word) >= 7 and len(word) <= 10:
+        sum += 8
+
+    # each letter withing word has a point value
+    # sum up the total number of points for the word
+
+    
+
+    # return an integer representing the number of points
+    # return <int>
+
+
+
+    # pass
+
+
+
+
+# =========== WAVE FOUR ===========
+# =================================
 
 def get_highest_word_score(word_list):
     pass
