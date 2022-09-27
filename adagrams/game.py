@@ -77,66 +77,67 @@ def uses_available_letters(word, letter_bank):
 
     return True
 
+
 def score_word(word):
     # PSE 2
     # dict of letters
     letters_dict = {
-    'A': 1,
-    'B': 3,
-    'C': 3,
-    'D': 2,
-    'E': 1,
-    'F': 4,
-    'G': 2,
-    'H': 4,
-    'I': 1,
-    'J': 9,
-    'K': 5,
-    'L': 1,
-    'M': 3,
-    'N': 1,
-    'O': 1,
-    'P': 3,
-    'Q': 10,
-    'R': 1,
-    'S': 1,
-    'T': 1,
-    'U': 1,
-    'V': 4,
-    'W': 4,
-    'X': 8,
-    'Y': 4,
-    'Z': 10
-}
+        'A': 1,
+        'B': 3,
+        'C': 3,
+        'D': 2,
+        'E': 1,
+        'F': 4,
+        'G': 2,
+        'H': 4,
+        'I': 1,
+        'J': 9,
+        'K': 5,
+        'L': 1,
+        'M': 3,
+        'N': 1,
+        'O': 1,
+        'P': 3,
+        'Q': 10,
+        'R': 1,
+        'S': 1,
+        'T': 1,
+        'U': 1,
+        'V': 4,
+        'W': 4,
+        'X': 8,
+        'Y': 4,
+        'Z': 10
+    }
     # initialize sum
     sum = 0
 
     for letter in word:
         value = letters_dict[letter.upper()]
         sum += value
-        
-    if len(word) > 6: 
+
+    if len(word) > 6:
         sum += 8
     # if len(word) > 6: sum += 8
     return sum
 
 
 def get_highest_word_score(word_list):
-    # return tuple with winning word and its score
-    # iterate over words, calculate score using helper function
+    # word_ list = ["apple", "banana", "orange"]
+
+    # winner_arr = []
+    # {word: "apple", score: 5}
+    # iterate over words, calculate score using score_word
     # set winners_ arr = [first element]
     # if each element score is > score first element, update array.
     # if equal, append
+    # [{word: "apple", score: 5}, {word: "banana", score: 5}]
 
-    # if winners array is length of 1, return first element
+    # if len(winner_arr) == 1:
+    # return as tuple
 
-    # winner = None
-    # if score tie:
+    # if more than 1 element in winner_arr:
     # check if any has 10 letters, return the first that has 10 letters
+
+    # winner variable
     # else: return the one with the fewest letters
-
-    # #     prefer the word with the fewest letters...
-    # ...unless one word has 10 letters. If the top score is tied between multiple words and one is 10 letters long, choose the one with 10 letters over the one with fewer tiles
-    # If the there are multiple words that are the same score and the same length, pick the first one in the supplied list
-
-    pass
