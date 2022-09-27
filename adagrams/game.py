@@ -85,6 +85,15 @@ def get_highest_word_score(word_list):
         print(f"the word is {word}, the score is {word_score}")
         final_dict[word] = word_score
 
+    the_winner = ""
+    winner_score = 0
+    for word in final_dict:
+        if len(word) == 10:
+            the_winner = word
+            winner_score = final_dict[word]
+            break
+        return the_winner, winner_score
+
     winner_score = max(final_dict.values())
     print("winner score is ", winner_score)
     winning_words = []
@@ -98,16 +107,15 @@ def get_highest_word_score(word_list):
 
     current_length = 10 #len(winning_words[0])
 
-    the_winner = ""
     for word in winning_words:
         print("the word is ", word)
         
-        if len(word) == 10:
+        # if len(word) == 10:
+        #     the_winner = word
+        # else:
+        if len(word) < current_length:
+            current_length = len(word)
             the_winner = word
-        else:
-            if len(word) < current_length:
-                current_length = len(word)
-                the_winner = word
     print("result: ", the_winner , winner_score)
     return the_winner , winner_score
 
