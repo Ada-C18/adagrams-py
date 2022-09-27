@@ -88,8 +88,21 @@ def score_word(word):
     return sum
 
 def get_highest_word_score(word_list):
+    """
+    Looks at the list of word_list and calculates which of these words has 
+    the highest score, applies any tie-breaking logic, 
+    and returns the winning word in a tuple.
+    """
+
+    # initializing a variable "highest_score" to track highest score 
+    # and a list "highest_scoring_words" to track highest_scoring words.
+
     highest_score = 0
     highest_scoring_words = []
+
+    # iterate over each word inside word_list to 
+    # compute that word's score and update the highest_score variable
+    # and highest_scoring_words list 
     for word in word_list:
         score = score_word(word)
         if score > highest_score:
@@ -99,6 +112,11 @@ def get_highest_word_score(word_list):
         elif score == highest_score:
             highest_scoring_words.append(word)
     
+    # initialize the variables "shortest_word_length" and "shortest_word" 
+    # to track highest-scoring word with shortest length for applying 
+    # tie-breaker rules (Winning word is the first spotted 10-letter word. 
+    # If there is no 10 letter word, the shortest word wins.)
+
     shortest_word_len = len(highest_scoring_words[0])
     shortest_word = highest_scoring_words[0]
     for word in highest_scoring_words:
@@ -108,8 +126,9 @@ def get_highest_word_score(word_list):
             if len(word) < shortest_word_len:
                 shortest_word_len = len(word)
                 shortest_word = word
-    return (shortest_word, score_word(shortest_word))    
+    return (shortest_word, score_word(shortest_word)) 
 
+#***==================================================***
 LETTER_POOL = {
     'A': 9, 
     'B': 2, 
