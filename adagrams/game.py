@@ -30,13 +30,14 @@ LETTER_POOL = {
     'Z': 1
 }
 
+
 def draw_letters():
     random_list = []
+    user_hand = []
     for letter, frequency in LETTER_POOL.items():
         string = (letter * frequency)
         tiles = list(string)
         random_list += tiles
-    
     return random.sample(random_list, 10)
 
 
@@ -53,6 +54,6 @@ def uses_available_letters(word, letter_bank):
 def score_word(word):
     pass
 
+
 def get_highest_word_score(word_list):
     pass
-
