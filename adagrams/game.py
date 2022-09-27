@@ -14,6 +14,18 @@ LETTER_POOL = {
     'Y': 2, 'Z': 1
 }
 
+
+# letter_score = {
+#      1: ['A', 'E', 'I', 'O', 'U', 'L', 'N', 'R','S', 'T'],
+#      2: ['D', 'G'],
+#      3: ['B', 'C', 'M', 'P'],
+#      4: ['F', 'H', 'V', 'W', 'Y'],
+#      5: ['K'],
+#      8: ['J', 'X'],
+#      10:['Q', 'Z']
+# }
+
+
 ###### wave 1 ########
 def build_letter_pool_list():
     letter_pool_list = []
@@ -82,10 +94,37 @@ present in the `letter_bank` or has too much of compared to the `letter_bank`
     print(word_dict)
 
 
-
+letter_score = {
+     1: ['A', 'E', 'I', 'O', 'U', 'L', 'N', 'R','S', 'T'],
+     2: ['D', 'G'],
+     3: ['B', 'C', 'M', 'P'],
+     4: ['F', 'H', 'V', 'W', 'Y'],
+     5: ['K'],
+     8: ['J', 'X'],
+     10:['Q', 'Z']
+}
 
 def score_word(word):
-    pass
+    '''
+- Has one parameter: `word`, which is a string of characters
+- Returns an integer representing the number of points
+- Each letter within `word` has a point value. The number of points of each letter is summed up to represent the total score of `word`
+- Each letter's point value is described in the table below
+- If the length of the word is 7, 8, 9, or 10, then the word gets an additional 8 points
+    '''
+
+    word = word.upper()    
+    sum_score = 0
+    if len(word) > 6:
+        sum_score += 8
+    for letter in word:
+        for score, apl in letter_score.items():
+             if letter in apl:
+                sum_score += score
+    return sum_score
+
+
+
 
 def get_highest_word_score(word_list):
     pass
