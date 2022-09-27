@@ -1,3 +1,20 @@
+##-----------------------------------------##
+##-----------------WAVE 1------------------##
+##-----------------------------------------##
+"""
+1. Your first task is to build a hand of 10 letters for the user. 
+-No parameters
+-Returns an array of ten strings
+    -Each string should contain exactly one letter
+    -These represent the hand of letters that the player has drawn
+-The letters should be randomly drawn from a pool of letters
+    -This letter pool should reflect the distribution of letters as described in the table below
+    -There are only 2 available C letters, so draw_letters cannot ever return more than 2 Cs
+    -Since there are 12 Es but only 1 Z, it should be 12 times as likely for the user to draw an E as a Z
+-Invoking this function should not change the pool of letters
+    -Imagine that the user returns their hand to the pool before drawing new letters
+    reference: https://theprogrammingexpert.com/get-random-value-from-dictionary-python/
+"""
 import random
 
 def draw_letters():
@@ -48,16 +65,24 @@ def draw_letters():
     return letters
     
     
-
-
-
-
-
-
-
-
+##-----------------------------------------##
+##-----------------WAVE 2------------------##
+##-----------------------------------------##
+"""
+2. You need a way to check if an input word (a word a player submits) only uses characters that 
+    are contained within a collection (or hand) of drawn letters
+-Has two parameters:
+    -word, the first parameter, describes some input word, and is a string
+    -letter_bank, the second parameter, describes an array of drawn letters in a hand. You can expect this to be an array of ten strings,
+    with each string representing a letter
+-Returns either True or False
+-Returns True if every letter in the input word is available (in the right quantities) in the letter_bank
+-Returns False if not; if there is a letter in input that is not present in the letter_bank or has too much of compared to the letter_bank
+reference: https://www.programiz.com/python-programming/methods/list/count
+"""
 
 def uses_available_letters(word, letter_bank):
+<<<<<<< HEAD
     pass
 #     # check input word is anagram within drawn letters   
 #     for letter in word:
@@ -65,6 +90,25 @@ def uses_available_letters(word, letter_bank):
 #             return True
 #         else:
 #             return False
+=======
+    # ensure consistent case
+    word = word.upper()
+    # check input word is anagram within drawn letters
+    #iterating over each letter in the word
+    for letter in word:
+        # check if that letter is in the letter bank
+        if letter in letter_bank:
+            word_count = word.count(letter)
+            # if word_count is in the right quantities in the letter bank, continue checking next letter
+            if word_count == letter_bank.count(letter):
+                continue
+            else:
+                return False
+        else:
+            return False
+>>>>>>> bfca547ebb57dced0447909d4b8a02fd2a993942
+
+    return True
 
 
 
