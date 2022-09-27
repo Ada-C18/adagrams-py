@@ -275,6 +275,16 @@ Implement the function `score_word` in `game.py`. This method should have the fo
 - Each letter's point value is described in the table below
 - If the length of the word is 7, 8, 9, or 10, then the word gets an additional 8 points
 
+#Pseudocde Wave 3
+-Create a function score_word with word as a parameter.
+-create a dictionary with a key as letters and value is the associated points.
+-create a counter score and set it up to zero
+-word list split the word into a list. 
+-iterate in word list and get the value for each letter 
+-Add the value to the counter score.
+
+
+
 #### Score chart
 
 |Letter                        | Value|
