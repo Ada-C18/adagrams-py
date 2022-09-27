@@ -61,12 +61,8 @@ def uses_available_letters(word, letter_bank):
         else:
             copy_of_letter_bank.remove(letter)
     return True
-    
-# SCORES = {"a": 1, "c": 3, "b": 3, "e": 1, "d": 2, "g": 2, 
-#           "f": 4, "i": 1, "h": 4, "k": 5, "j": 8, "m": 3, 
-#           "l": 1, "o": 1, "n": 1, "q": 10, "p": 3, "s": 1, 
-#           "r": 1, "u": 1, "t": 1, "w": 4, "v": 4, "y": 4, 
-#           "x": 8, "z": 10}
+
+
 
 def get_highest_word_score(word_list):
     pass
