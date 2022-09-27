@@ -1,7 +1,4 @@
-# Tests
-# draw 10 letters from letterpool
-# list of 10 letters is letter strings
-# letter not selected too many times
+
 import random
 
 LETTER_POOL = {
