@@ -64,8 +64,8 @@ def draw_letters():
     
     new_dict = LETTER_POOL.copy()
 
-    print("BEFORE: list of letters = ", letters)
-    print("BEFORE: dictionary = ", new_dict)
+    # print("BEFORE: list of letters = ", letters)
+    # print("BEFORE: dictionary = ", new_dict)
 
     while len(letters) < 10:
         random_letter = random.choice(list(new_dict.keys()))
@@ -73,22 +73,20 @@ def draw_letters():
         # ... conditional statement ...
         for k, v in new_dict.items():
             if k == random_letter and v > 1:
-                print("BEFORE change ", k, v)
+                # print("BEFORE change ", k, v)
                 letters.append(random_letter)
                 v -= 1 # this creates a new value for v, but how do we get it back to the dictionary?
                 new_dict[k] = v
-                print("AFTER change = ", k, v)
+                # print("AFTER change = ", k, v)
             else:
                 continue
-        
         count += 1 # we need to make this change to the dictionary
+    return letters
 
-    print("Count = ", count)
-    print("AFTER: list of letters = ", letters)
-    print("AFTER: dictionary = ", new_dict)
+    # print("Count = ", count)
+    # print("AFTER: list of letters = ", letters)
+    # print("AFTER: dictionary = ", new_dict)
     
-
-
     # psuedocode the the next loop
     # for letter in letters:
     #     if that letter is in LETTER_POOL.items(): # I want to grab the key and value
@@ -113,17 +111,20 @@ def draw_letters():
 
     # returns array of 10 strings - testing for len(letters) == 10
     return letters
-
-    
-    
     
     # pass
+
+# ----WAVE TWO---
 
 def uses_available_letters(word, letter_bank):
     pass
 
+# ---WAVE THREE---
+
 def score_word(word):
     pass
+
+# ---WAVE FOUR---
 
 def get_highest_word_score(word_list):
     pass
