@@ -58,14 +58,13 @@ def draw_letters():
 
 
 def uses_available_letters(word, letter_bank):
-    # check input word is anagram within drawn letters
-    
-    # player_input = input(word)
-    for letter in word:
-        if letter in letter_bank and len(letter):
-            return True
-        else:
-            return False
+    pass
+#     # check input word is anagram within drawn letters   
+#     for letter in word:
+#         if letter in letter_bank:
+#             return True
+#         else:
+#             return False
 
 
 
