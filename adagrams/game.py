@@ -52,6 +52,8 @@ def draw_letters():
     return hand_as_letters
 
 
+
+#WAVE TWO
 def uses_available_letters(word, letter_bank):
     copy_of_letter_bank = copy.deepcopy(letter_bank)
     all_caps_word = word.upper()
@@ -63,5 +65,12 @@ def uses_available_letters(word, letter_bank):
     return True
 
 
-def get_highest_word_score(word_list):
+#WAVE THREE
+def score_word(word):
+
+
+
+
+#def get_highest_word_score(word_list):
+
     pass
