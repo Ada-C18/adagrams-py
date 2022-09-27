@@ -27,34 +27,44 @@ LETTER_POOL20 = {
     'Y': 2, 
     'Z': 1
 }
-def picletterrandom():
-    x = list(LETTER_POOL20.keys())
-    random_element =random.choice(x)
-    return random_element
-def check_to_see_avail(random,LETTER_POOL20):
-    for letter_key, value in LETTER_POOL20.items():
-        if random == letter_key:
-            if value == 0:
-                return False
-            else:
-                LETTER_POOL20[letter_key] -= 1
-                return True
+def random_selection():
+    values = list(LETTER_POOL20.values())
+    keys = list(LETTER_POOL20.keys())
+    percentages= []
+    for num in values:
+        percentages.append(num)
+    tup = tuple(percentages)
+    random_l = random.choices(keys , weights = tup)
+    return ''.join(random_l)
+    
+def check_available(random, players_hand, LETTER_POOL20):
+    if random in LETTER_POOL20:  
+        if LETTER_POOL20[random] == 0:     
+            return False
+        else:
+            LETTER_POOL20[random] -=1   
+            players_hand.append(random)
+            return True
 def draw_letters():
     players_hand = []            
-
-    for num in range(10):
-        check = False
-        while not check:
-            random_letter = picletterrandom()
-            
-            check = check_to_see_avail(random_letter, LETTER_POOL20)
-            
-        players_hand.append(random_letter)
+    i=0
+    random_selection()
+    available = True
+    while available and len(players_hand)<10 and i <26:
+        if all(LETTER_POOL20.values()) == 0:
+            return []
+        letter = random_selection()
+        check_available(letter, players_hand,LETTER_POOL20)
+        i +=1
     return players_hand
     
 
 def uses_available_letters(word, letter_bank):
-    pass
+    for letter in word:
+        if letter in letter_bank:
+            return True
+        else:
+            return False
 
 def score_word(word):
     pass
