@@ -43,6 +43,10 @@ def draw_letters():
     return letter_bank
 
 def uses_available_letters(word, letter_bank):
+    '''
+    Input: Word is user input of a word. letter_bank is a list of 10 strings (each a letter)
+    Output: Returns True or False if word contains letters within letter_bank
+    '''
     pass
 
 def score_word(word):
