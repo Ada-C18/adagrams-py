@@ -1,5 +1,7 @@
+from operator import le
 import string
 import random
+import copy
 
 def draw_letters():
     
@@ -47,6 +49,7 @@ def draw_letters():
     # print(letters_in_hand)  
     return letters_in_hand 
 
+<<<<<<< HEAD
 #another way to write wave 2
 #commenting this code as the other one is smaller
 
@@ -69,6 +72,20 @@ def draw_letters():
 #             return False
 #     return True
     
+=======
+def uses_available_letters(word, letter_bank):
+    # make deep copy of letter bank after importing copy module
+    letters_copy = copy.deepcopy(letter_bank)
+
+    for letter in word:
+        try:
+            letters_copy.remove(letter)
+        except ValueError:
+            return False
+        
+        return True
+
+>>>>>>> aa95cbd40527e14aa80f77cb489d14dc16b079f7
 
 def score_word(word):
     pass
