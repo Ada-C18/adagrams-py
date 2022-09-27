@@ -1,4 +1,5 @@
 import random
+from random import choices
 import copy
 
 LETTER_DICT = {
@@ -31,18 +32,19 @@ LETTER_DICT = {
 }
 
 def draw_letters():
- 
-    result = []
+
+    letter_bank = []
     letter_copy = copy.deepcopy(LETTER_DICT)
-   
-    while len(result) < 10:
+
+    while len(letter_bank) < 10:
         key_list = list(letter_copy.keys())
-        rand_char = random.choice(key_list)
-        if letter_copy[rand_char] > 0:
-            result.append(rand_char)
-            letter_copy[rand_char] -= 1
-      
-    return result 
+        random_letter = random.choice(key_list)
+        if letter_copy[random_letter] > 0:
+            letter_bank.append(random_letter)
+            letter_copy[random_letter] -= 1
+    print(letter_bank)
+    return letter_bank 
+
 
 def uses_available_letters(word, letter_bank):
     
