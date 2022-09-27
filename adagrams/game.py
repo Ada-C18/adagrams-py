@@ -55,14 +55,20 @@ present in the `letter_bank` or has too much of compared to the `letter_bank`
     word_dict = {element: word.count(element) for element in word}
 
     for letter,num in word_dict.items():
-        if letter not in letter_bank_dict.keys():
-            return False
-        elif letter in letter_bank_dict:
+        if letter in letter_bank_dict:
             letter_bank_dict[letter] -= num
             if letter_bank_dict[letter] < 0:
                 return False
-        # else:
+        else:
+            return False
+        
+        # if letter not in letter_bank_dict.keys():
         #     return False
+        # elif letter in letter_bank_dict:
+        #     letter_bank_dict[letter] -= num
+        #     if letter_bank_dict[letter] < 0:
+        #         return False
+    
         
         
     return True
