@@ -77,12 +77,27 @@ def score_word(word):
 
 def get_highest_word_score(word_list):
     score_list = []
+    tied_words = []
+    winner_word = ""
+
     for word in word_list:
         score = score_word(word)
         score_list.append(score)
+
     highest_score = max(score_list)
 
     for word in word_list:
         score = score_word(word)
         if score == highest_score:
-            return (word, score)
+            tied_words.append(word)
+
+    for word in tied_words:
+        longest_word = max(tied_words, key=len)
+
+        if len(longest_word) == 10:
+            winner_word = longest_word
+        else:
+            winner_word = min(tied_words, key=len)
+
+        return (winner_word, highest_score)
+
