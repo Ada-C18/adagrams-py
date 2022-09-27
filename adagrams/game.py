@@ -1,4 +1,5 @@
 import random
+import copy
 
 LETTER_POOL = {
     'A': 9, 
@@ -40,11 +41,18 @@ def draw_letters():
 
 
 def uses_available_letters(word, letter_bank):
-    # We aren't here yet
-    pass
+    copy_letter_bank = copy.deepcopy(letter_bank)
+    word = word.upper()
+    for letter in word:
+        if letter in copy_letter_bank:
+            copy_letter_bank.remove(letter)
+        else:
+            return False
+    return True
 
 def score_word(word):
     pass
 
 def get_highest_word_score(word_list):
     pass
+
