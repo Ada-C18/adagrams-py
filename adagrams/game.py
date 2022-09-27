@@ -37,6 +37,7 @@ points = {
       **dict.fromkeys(["J", "X"], 8),
       **dict.fromkeys(["Q", "Z"], 10)
     }
+
 def draw_letters():
     letter_list = []
     letter_count = {}
@@ -44,8 +45,6 @@ def draw_letters():
         letter = random.choice(list(LETTER_POOL.keys())) 
         if letter not in letter_count:
             letter_count[letter] = 1
-            print(letter)
-            print(letter_count)
         else:
             letter_count[letter] +=1 
         if letter_count[letter] <= LETTER_POOL[letter]:
@@ -93,8 +92,6 @@ def get_highest_word_score(word_list):
             elif len(word) == 10 and len(highest_word) != 10:
                 highest_score = score
                 highest_word = word
-            elif len(word) == len(highest_word):
-                pass
     word_score = (highest_word, highest_score)
     print(word_score)
     return word_score
