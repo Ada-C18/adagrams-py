@@ -1,17 +1,5 @@
-<<<<<<< HEAD
-import sys
-from adagrams.ui_helper import *
-from adagrams.game import draw_letters, uses_available_letters, score_word, get_highest_word_score
 import random
-
-from tests.test_wave_01 import LETTER_POOL
-import random
-
-    return draw_letters   
-    
-=======
-import random
-
+import copy
 LETTER_POOL = {
     'A': 9, 
     'B': 2, 
@@ -42,35 +30,82 @@ LETTER_POOL = {
 }
 
 def draw_letters():
-    # hand = ["B", "B"]
     hand = []
     while len(hand) < 10 or not hand:
         letter = random.choice(list(LETTER_POOL))
-        # letter = 'B'
         if hand.count(letter) < LETTER_POOL[letter]:
             hand.append(letter)
 
     return hand
->>>>>>> 787b57a1f7b9a9f6d5e5d079e1cda7e9cd722d84
 
 def uses_available_letters(word, letter_bank):
-    letter_bank=draw_letters()
-    word_list=[]
+    # get input from user = word (string)
+    # letter_bank = draw_letters()
+    # return True or False
+    # TRUE: if letter in letter bank and available in right qty
+    # FALSE: if not in letter bank and not right qty
+
+    # make empty list to hold each element of word
+
+    word_list = []
+    letter_bank_copy = copy.deepcopy(letter_bank)
+
     for each in word:
-        alphas=each
-        word_list.append(alphas)
-    
-    if all(item in word_list for item in letter_bank ):
-        return True
-    else:
-        return False
-    
-    
-    
+        word_list.append(each.upper())
+
+    check_list =[]
+
+    for letter in range(len(word_list)):
+        if word_list[letter] in letter_bank_copy:
+            letter_bank_copy.remove(word_list[letter])
+            check_list.append(True)
+        else:
+            check_list.append(False)
+
+    return all(check_list)
     
 
 def score_word(word):
-    pass
+    word_list = []
+    word_score=0
+    score_chart={'A':1,'E':1, 'I':1, 
+                 'O':1, 'U':1,'L':1, 'N':1,
+                 'R':1,'S':1,'T':1, 
+                 'D':2, 'G':2,
+                 'B':3,
+                 'C':3,'M':3,'P':3,
+                 'F':4,'H':4 ,'V':4,'W':4,'Y':4,
+                'K':5,
+                'J':8 , 'X':8,
+                'Q':10 , 'Z':10}
+    for each in word:
+        word_list.append(each.upper())
+    for k,v in score_chart.items():
+        for i in word_list:
+            if i==k:
+                word_score+=score_chart[k]
+    if 7<=len(word_list)<=10 :
+        word_score+=8
+    return word_score
 
 def get_highest_word_score(word_list):
     pass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
