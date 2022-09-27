@@ -31,15 +31,6 @@ LETTER_POOL = {
     'Z': 1
 }
 
-# score_table = {
-#     ("A","E","I","O","U","L","N","R","S","T"):1,
-#     ("D","G"):2,
-#     ("B","C","M","P"):3,
-#     ("F","H","V","W","Y"):4,
-#     ("K"):5,
-#     ("J","X"):8,
-#     ("Q","Z"):10
-# }
 
 score_table = {
     1: ["A", "E", "I", "O", "U", "L", "N", "R", "S", "T"],
@@ -85,18 +76,47 @@ def score_word(word):
     return total_score
 
 
-print(score_word("dog"))
-# if letter in letter_count in score_table.
-
-
-# score_word("dogg")
-# list(dogg) ['d','o','g', 'g']
-
-# Iterate over the letters in word, match it with the score table dict
-# Add up to the sum
-# Also give bonus points for length of word 7, 8, 9, or 10, then the word += 8 points
-# Return everything
-
-
 def get_highest_word_score(word_list):
-    pass
+    winning_word = ("string", 5)
+    # sort word_list by str length 
+    # if 
+    # return winning_word
+
+    # Jamie's pseudocode:
+    for word in word_list:
+        word_score = score_word(word)
+        word_and_score = (word, word_score)
+        winning_word = word_and_score[0]
+        # might be easier to do this as a dict?
+        # word_and_score = {word, word_score}
+        compare_words_list = []
+        compare_words_list.append(word_and_score)
+        if len(word_and_score) == 1:
+            return word_and_score[0]
+        if len(word_and_score) > 1:
+            for word in word_and_score
+
+
+    # Emily's pseudo code:
+    # So we want to look at the word_list
+    # And then get the score of each word
+    # Then choose the highest value
+    # Also do some handling for ties
+    # IF some words are tied, choose which has the shorter len
+    # HOWEVER, if a word is 10 letters long, use that instead
+    # If the words are the same len, then use whatever came first (maybe use index func)
+
+    # highest_score = 0
+    # winning_word is None
+    # for word in word_list:
+        # if score_word(word) > highest_score:
+            # highest_score = score_word(word)
+            # winning_word = word
+        # elif score_word(word) == highest_score:
+            # if len(word) == len(winning_word):
+                # continue
+            # elif len(word) == 10:  <-- might be an issue if prev winning_word is already 10?
+                # winning_word = word
+            # elif len(word) < len(winning_word):
+                # winning_word = word
+    # best_word = (winning_word, highest_score)
