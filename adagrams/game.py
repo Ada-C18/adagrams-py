@@ -28,26 +28,15 @@ LETTER_POOL = {
 }
 
 def draw_letters():
-    # Draw 10 letters
-    # From the letter pool, we want to select 10 random letters
-    # However, not each letter has the same chance of being pulled
-    # Need to figure out a way to do letter : qty
-    # random_list = []
-    # for letter in LETTER_POOL
-    # for frequency in letter:
-    # random_list.append(letter)
-    # then do a random and select from the list. Pop from the pool list and add to player_hand_list?
-
-    # OR, do a rand from 1 - 12
-    # Get all the keys that have a value equal to the rand
-    # then randomly select if more than 1 key, that's your letter
-    # Hmm but then how do we keep track of how many times a letter is used? Maybe update a copy of the dict
     random_list = []
     user_hand = []
-    for letter in LETTER_POOL:
-        for frequency in letter:
-            random_list.append(letter)
-    pass
+    for letter, frequency in LETTER_POOL.items():
+        string = (letter * frequency)
+        tiles = list(string)
+        random_list += tiles
+    print(random_list)
+
+draw_letters()
 
 def uses_available_letters(word, letter_bank):
     # We aren't here yet
