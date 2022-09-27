@@ -1,3 +1,11 @@
+Puja-
+Access needs- Dont have any access needs as such. Pretty available and flexible anytime and anyday.
+Your learning style- Try to ask for instructor or TA help as less as possible. If we are stuck on a problem for more than 20 mins,then I...
+like to ask for help. That way we can learn more.
+How you prefer to receive feedback- On the face feedback about what I need to improve is preferred by me.
+One team communication skill you want to improve with this experience- Conveying clearly what is in my mind about the code
+
+
 # AdaGrams
 
 ## Skills Assessed
