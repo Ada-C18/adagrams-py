@@ -37,9 +37,6 @@ def uses_available_letters(word, letter_bank):
     #initialize a list to hold all present letters from the letter_bank 
     #if the letter is in the bank, add it to the new list and remove it from the letter bank
     #if the len of new list == len word return true else false 
-<<<<<<< HEAD
-    pass
-=======
     available_letters = []
     letter_bank_copy = letter_bank[:]
     for char in word.upper():
@@ -51,10 +48,69 @@ def uses_available_letters(word, letter_bank):
             if len(available_letters) == len(word):
                 return True
 
->>>>>>> bd739cbbbd72fa3da27884c92bd5d040725d5534
 
 def score_word(word):
-    pass
+    #create 7 lists of points
+    #for each letter in the word, use a conditional to find corresponding point
+    #   make a score variable and add to it as we loop through the char of the word
+    # if len of word >= 7 add 8 more points
+    # return score 
+
+    list_1 = ["A", "E", "I", "O", "U", "L", "N", "R", "S", "T"]
+    list_2 = ["D", "G"]
+    list_3 = ["B", "C", "M", "P"]
+    list_4 = ["F", "H", "V", "W", "Y"]
+    list_5 = ["K"]
+    list_8 = ["J", "X"]
+    list_10 = ["Q", "Z"]
+    
+    score = 0 
+    
+    for char in word.upper():
+        if char in list_1:
+            score += 1
+        elif char in list_2:
+            score += 2
+        elif char in list_3:
+            score += 3
+        elif char in list_4:
+            score += 4
+        elif char in list_5:
+            score += 5
+        elif char in list_8:
+            score += 8
+        elif char in list_10:
+            score += 10
+    if len(word) >= 7:
+        score += 8
+    return score
 
 def get_highest_word_score(word_list):
-    pass
+    #set up an empty string that holds the higherst score word
+    #have a highest score variable starting at zero
+    #loop through the word_list and for each word we call the function above to get score
+        # compare it to the higheset_score_var and it's replaced if it is higher
+        # add the highest score word to the string var
+        # as we loop through replace them using conditionals
+            # if tie compare len of words with len of highest word place holder (if its less than highest word it replaces current one)
+                # if len(word) > len(string_var) and len(strint_var) is not 10 then replace with new word
+                #elif len(word) == len(string_var) then string_var will remain
+        # return tuple 
+    highest_score = 0
+    highest_str = ""
+    
+    for word in word_list:
+        word_score = score_word(word)
+        if word_score > highest_score:
+            highest_score = word_score 
+            highest_str = word
+        elif word_score == highest_score:
+            if len(word) < len(highest_str) and len(highest_str) != 10:
+                highest_str = word
+            elif len(word) == 10 and len(highest_str) != 10:
+                highest_str = word
+ 
+    return (highest_str, highest_score)
+
+        
+
