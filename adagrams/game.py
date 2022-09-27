@@ -1,5 +1,5 @@
 import random
-from itertools import chain
+
 letter_bank = {
     'A': 9, 
     'B': 2, 
@@ -30,7 +30,7 @@ letter_bank = {
 }
 
 def draw_letters():
-    letter_pool = list(chain(*[random.choices(key, k = val) for key, val in letter_bank.items()]))
+    letter_pool = list(letter_bank.keys())
     last_index = len(letter_pool) - 1
     hand = []
     
