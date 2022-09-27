@@ -54,6 +54,8 @@ def draw_letters():
 
 
 def uses_available_letters(word, letter_bank):
+    
+    
     pass
 
 
