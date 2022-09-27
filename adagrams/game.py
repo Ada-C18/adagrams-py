@@ -1,6 +1,5 @@
 import random
 
-
 LETTER_POOL = {
     'A': 9,
     'B': 2,
@@ -32,7 +31,7 @@ LETTER_POOL = {
 
 
 def draw_letters():
-    hand = []  # renamed res to hand
+    hand = []
     letters = []
 
     for k, v in LETTER_POOL.items():
@@ -40,11 +39,10 @@ def draw_letters():
             letters.append(k)
             v -= 1
 
-    for i in range(10):  # do code below 10 times
-        letter = ""  # set letter to be empty so while loop runs
+    for i in range(10):
+        letter = ""
 
-        while not letter:  # check if index in our letters is used/empty, if not, get another random integer
-            # hoping to get a random integer between 0 and 97
+        while not letter:
             index = random.randint(0, 97)
             letter = letters[index]
 
@@ -57,16 +55,14 @@ def draw_letters():
 def uses_available_letters(word, letter_bank):
 
     word = word.upper()
-    # make dictionary of letter_bank
     letter_bank_dict = {}
 
-# ["a", "b", "c"]
     for letter in letter_bank:
         if letter in letter_bank_dict:
             letter_bank_dict[letter.upper()] += 1
         else:
             letter_bank_dict[letter.upper()] = 1
-# "banana"
+
     for letter in word:
         if letter not in letter_bank_dict:
             return False
@@ -79,8 +75,7 @@ def uses_available_letters(word, letter_bank):
 
 
 def score_word(word):
-    # PSE 2
-    # dict of letters
+
     letters_dict = {
         'A': 1,
         'B': 3,
@@ -109,7 +104,6 @@ def score_word(word):
         'Y': 4,
         'Z': 10
     }
-    # initialize sum
     sum = 0
 
     for letter in word:
@@ -118,40 +112,33 @@ def score_word(word):
 
     if len(word) > 6:
         sum += 8
-    # if len(word) > 6: sum += 8
+
     return sum
 
 
 def get_highest_word_score(word_list):
-    # word_ list = ["apple", "banana", "orange"]
 
     winner_arr = [{"word": word_list[0], "score": score_word(word_list[0])}]
-    # {word: "apple", score: 5}
-    # iterate over words, calculate score using score_word
-    for word in word_list:
+
+# changed to word_list[1:] so that we can skip the first element in the array
+    for word in word_list[1:]:
         word_score = score_word(word)
         if word_score > winner_arr[0]["score"]:
             winner_arr = [{"word": word, "score": word_score}]
         elif word_score == winner_arr[0]["score"]:
-            winner_arr.append([{"word": word, "score": word_score}])
+            # error was here
+            winner_arr.append({"word": word, "score": word_score})
 
-    # if len(winner_arr) == 1:
-    # return as tuple
     if len(winner_arr) == 1:
         return (winner_arr[0]["word"], winner_arr[0]["score"])
-    
 
-
-    # if more than 1 element in winner_arr:
-    # check if any has 10 letters, return the first that has 10 letters
     winner = (winner_arr[0]["word"], winner_arr[0]["score"])
+
     for word in winner_arr:
         if len(word["word"]) == 10:
             return (word["word"], word["score"])
         elif len(word["word"]) < len(winner[0]):
             winner = (word["word"], word["score"])
-
+            print(f"updated loop winner: {winner}")
 
     return winner
-    # winner variable
-    # else: return the one with the fewest letters
