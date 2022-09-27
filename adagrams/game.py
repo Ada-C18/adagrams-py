@@ -78,7 +78,31 @@ def uses_available_letters(word, letter_bank):
 
 # WAVE 3
 def score_word(word):
-    pass
+    # 1. Create score chart dict (score as key, letters as list in value)
+    score_chart = {
+        1: ["A", "E", "I", "O", "U", "L", "N", "R", "S", "T"],
+        2: ["D", "G"],
+        3: ["B", "C", "M", "P"],
+        4: ["F", "H", "V", "W", "Y"],
+        5: ["K"],
+        8: ["J", "X"],
+        10: ["Q", "Z"],
+    }
+    # 2. Create a variable for points which will be returned
+    points = 0
+    # 3. Loop through each letter in word
+    word = word.upper()
+    for letter in word:
+        for point, letter_list in score_chart.items():
+            if letter in letter_list:
+                points += point
+
+    # 4.     Find letter in score_dict and add key to points
+    # 5. If length of word is greater than 7 and less than 10, add 8 to total points
+    if len(word) > 6 and len(word) < 10:
+        points += 8
+    # 6. Return points
+    return points
 
 
 # WAVE 4
