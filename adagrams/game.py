@@ -1,6 +1,5 @@
 import random
 
-
 def draw_letters():
 
     LETTER_POOL = {
@@ -37,12 +36,23 @@ def draw_letters():
         for i in range(value):
             the_letters.append(key)
 
-#print(the_letters)
+    # use random to pick an index of the length of the_letters 
+    # the element is in the list then remove it -- add it to the hand and remove it from letters
 
-    the_hand = [random.choice(list(the_letters)) for i in range(10)]
+    #the_hand = [random.choice(list(the_letters)) for i in range(10)]
+    # where in the letters list we are going to pull from
+    the_hand = []
+    for i in range(10):
+        random_letter_index = random.randint(0,len(the_letters)-1)
+        the_hand.append(the_letters[random_letter_index])
+        the_letters.remove(the_letters[random_letter_index])
+
+
+    # use random in my owm words----  
+    # create a dict 
+    
+    
     return the_hand
-
-
 
 
 
