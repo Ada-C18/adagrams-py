@@ -28,7 +28,7 @@ def uses_available_letters(word, letter_bank):
     word = 
     return False
 
-    key_list = list(letter_copy.keys())
+key_list = list(letter_copy.keys())
 # decrease quantity until letter gets to 0 don't check anymore
 # check that all letters in word are in letter bank
 # while len of letter bank is less than 10 
