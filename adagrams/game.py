@@ -4,6 +4,8 @@ def draw_letters():
     """
     build a hand of 10 letters for the user
     """
+
+    # Letter Pool could be better in global field to easily change game
     LETTER_POOL = {
     'A': 9, 
     'B': 2, 
@@ -39,7 +41,6 @@ def draw_letters():
     
     hand = []
     while len(hand) < 10:
-        # drawn_letter = letter_list.pop()
         hand.append(letter_list.pop(random.randint(0,len(letter_list)-1)))
     return hand
 
@@ -57,9 +58,6 @@ def uses_available_letters(word, letter_bank):
             hand.remove(letter)
             
     return True
-    # - for loop to check if letters in word are in the string of letter bank
-    # - Remove  from letter bank if it is in there
-    # -return false if it isn't in the letter bank
     
 
 
@@ -67,12 +65,6 @@ def score_word(word):
     """
     function returns the score of a given word as defined by the Adagrams game
     """
-    # - make total variable
-    # - if len(word) 7,8,9,10 add 8 to total
-    # - inside if statement, put for loop through letter in word
-    #   - we can do if else or do lists of letters as value and points as they key in dictionary
-    # - add appropriate points
-    # - return score
     point_values = {
         "AEIOULNRST" : 1,
         "DG": 2,
@@ -106,13 +98,15 @@ def get_highest_word_score(word_list):
     - index 0 ([0]): a string of a word
     - index 1 ([1]): the score of that word
     """
-    # - create a list to store our tuples
-    # - create a for loop to go through all of the words in word_list, len word_list
-    #   - use helper function score word on each list. 
-    #   - store word as 1st object in tuple and score in second
-    # - use max to find the highest scores 
-        # 
-        #- if there are multiple highest then choose the len that is smaller
-        #- if they have same len and score, return the one that comes first in word_list
-    #- return the tuple of the winning word
-    
+    winning_word = ""
+    winning_score = -1
+    for word in word_list:
+        score = score_word(word)
+        if score > winning_score:
+            winning_word = word
+            winning_score = score
+        elif score == winning_score and len(winning_word) != 10:
+            if len(word) == 10 or len(word) < len(winning_word):
+                winning_word = word           
+
+    return (winning_word, winning_score)
