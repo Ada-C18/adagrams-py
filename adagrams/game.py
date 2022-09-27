@@ -9,8 +9,10 @@ def draw_letters():
     }
 
     # iterate through letter_pool_amounts keys and values
-    
+    for letter, number in letter_pool_amounts.items():
     # for each key, add it [value] number of times to letter_pool list
+        for value in range(number):
+            letter_pool.append(letter)
 
     # use random.randint w/ index 10 times to draw 10 random letters
 
