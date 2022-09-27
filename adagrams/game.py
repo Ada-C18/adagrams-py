@@ -1,4 +1,5 @@
 import random
+from collections import defaultdict
 
 LETTER_POOL = {
     'A': 9, 
@@ -32,11 +33,11 @@ LETTER_POOL = {
 def draw_letters():
 
     letter_list = []
-    letter_freq = {}
+    letter_freq = defaultdict(int)
 
     while len(letter_list) < 10:
         letter = random.choice(list(LETTER_POOL.keys()))
-        if letter_freq[letter] <= LETTER_POOL[letter]:
+        if letter_freq[letter] < LETTER_POOL[letter]:
             letter_list.append(letter)
 
             if letter in letter_freq:
