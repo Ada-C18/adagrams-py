@@ -119,32 +119,66 @@ def uses_available_letters(word, letter_bank):
 # =========== WAVE THREE ===========
 # ==================================
 
+
 def score_word(word):
+
+    # POINTS
+    score_chart = {
+    'A': 1,
+    'E': 1,
+    'I': 1,
+    'O': 1,
+    'U': 1,
+    'L': 1,
+    'N': 1,
+    'R': 1,
+    'S': 1,
+    'T': 1,
+    'D': 2,
+    'G': 2,
+    'B': 3,
+    'C': 3,
+    'M': 3,
+    'P': 3,
+    'F': 4, 
+    'H': 4,
+    'V': 4,
+    'W': 4,
+    'Y': 4,
+    'K': 5,
+    'J': 8,
+    'X': 8,
+    'Q': 10,
+    'Z': 10,
+    }
 
     # GOAL: return the score of given word defined by Adagram
     # word = "string of characters"
-
-    print("Word list = ", word, ",", type(word))
+    word = word.upper()
+    print("Word list = ", word, ",", type(word), len(word))
+    # if the word is 1 letter, return the point
 
     sum = 0
+    print("Sum = ", sum)
 
     # if length of word is 7, 8, 9, or 10 -->
         # then the word gets 8 extra points
     if len(word) >= 7 and len(word) <= 10:
         sum += 8
 
-    # each letter withing word has a point value
+    # each letter within word has a point value
     # sum up the total number of points for the word
 
-    
-
+    for letter in word:
+        if letter in score_chart.keys():
+            print("BEFORE: sum changes", sum)
+            sum += score_chart[letter]
+            print("The letter's value = ", letter, score_chart[letter])
+            print("AFTER: sum changes", sum)
     # return an integer representing the number of points
     # return <int>
-
-
-
-    pass
-
+    return sum
+    print("Total after iteration = ", sum)
 
 
 
