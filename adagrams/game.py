@@ -67,12 +67,10 @@ def score_word(word):
     for letter in word:
         letter = letter.upper()
         total += letter_score[letter]
-        
     if len(word) == 0:
             return total
     elif len(word) >= 7 and len(word) <= 10:
         total += 8
-        return total
     return total
    
         
@@ -84,6 +82,9 @@ def get_highest_word_score(word_list):
     for word in word_list:
         if score_word(word) > highest_score:
             highest_score = score_word(word)
-            words_with_scores.append([word,highest_score])
+            words_with_scores.append(word)
+            if len(word) == 10:
+                return ([word,highest_score])
+
     return ([word,highest_score])
     
