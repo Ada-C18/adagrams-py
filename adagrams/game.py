@@ -29,16 +29,17 @@ LETTER_POOL = {
 
 
 def draw_letters():
-    #this is the first comment ever!
+    import random
     list_of_all_letter = []
     for key, value in LETTER_POOL.items():
         for i in range(value):
             list_of_all_letter.append(key)
-    
-    print("here's the list: ", list_of_all_letter)
 
-list = draw_letters()
+    ten_letters = []
+    for i in range(10):
+        ten_letters.append(list_of_all_letter.pop(random.randrange(0, len(list_of_all_letter))))
     
+    return ten_letters
 
 
 def uses_available_letters(word, letter_bank):
