@@ -50,12 +50,12 @@ def draw_letters():
 
 
 def uses_available_letters(word, letter_bank):
-    print(letter_bank)
+    #print(letter_bank)
     # word = "DOG" #input("Make a word out of the letter bank. ")
     c = Counter(letter_bank)
     for char in word:
         c[char.upper()] -= 1
-        if char.upper() not in letter_bank or c[char.upper] == -1:
+        if char.upper() not in letter_bank or c[char.upper()] < 0:
             return False
     return True
 
