@@ -1,17 +1,46 @@
-# Make POOL_OF_LETTERS dictionary (it's a constant variable) based on the README
+import random
+
+POOL_OF_LETTERS = {
+    "A" : 9,
+    "B": 2,
+    "C" : 2, 
+    "D" : 4,
+    "E": 12,
+    "F": 2,
+    "G": 3,
+    "H": 2,
+    "I": 9,
+    "J": 1,
+    "K": 1,
+    "L": 4,
+    "M": 2,
+    "N": 6,
+    "O": 8,
+    "P": 2,
+    "Q": 1,
+    "R": 6,
+    "S": 4,
+    "T": 6,
+    "U": 4,
+    "V": 2,
+    "W": 2,
+    "X": 1,
+    "Y": 2,
+    "Z":1
+}
 
 def draw_letters():
-    # Make an empty list called letter_bank
-    # Create empty dictionary called letter_count_dict
-    # develop for loop that iterates over sequence 10 times and appends to letter_bank
-        # assign letter to random.choice taking in the keys of the POOL_OF_LETTERS dictionary
-            # if letter doesn't match a key in letter_count_dict then add it with value of 1
-            # elif letter matches
-                # Check if value in letter_count_dict is less than POOL_OF_LETTERS
-                    # If True, add one count to letter_count_dict
-                    # Else, minus one from "i" or whatever our for loop variable is 
-    # return letter_bank
-    pass
+    letter_bank = []
+    all_the_letters = []
+    for key,value in POOL_OF_LETTERS.items():
+        for count in range(value):
+            all_the_letters.append(key)
+    
+    while len(letter_bank) < 10:
+        letter = random.choice(all_the_letters)
+        letter_bank.append(letter)
+        all_the_letters.remove(letter)
+    return letter_bank
 
 def uses_available_letters(word, letter_bank):
     pass
