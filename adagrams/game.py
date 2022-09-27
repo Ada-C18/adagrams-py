@@ -1,3 +1,6 @@
+import random
+import copy
+
 def draw_letters():
     """
     build a hand of 10 letters for the user
@@ -5,7 +8,6 @@ def draw_letters():
     # -Create a global variable dictionary with key:letters and value:frequency of letter.
     # -Create list to store drawn letters
     # -Make a copy of that dictionary
-    # -while loop for 10 drawings
     # -random random.choice(list(d.keys()))
     # -Use values as a counter and subtract 1 each time letter is used
     #- append to list of drawn letter is  counter  > 0
@@ -39,6 +41,18 @@ def draw_letters():
     'Y': 2, 
     'Z': 1
 }
+    letter_list =  []
+    for letter, freq in LETTER_POOL.items():
+        for i in range(freq):
+            letter_list.append(letter)
+    
+    hand = []
+    while len(hand) < 10:
+        # drawn_letter = letter_list.pop()
+        hand.append(letter_list.pop(random.randint(0,len(letter_list)-1)))
+    return hand
+
+
 
 
 def uses_available_letters(word, letter_bank):
