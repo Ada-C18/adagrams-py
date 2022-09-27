@@ -85,6 +85,11 @@ def uses_available_letters(word, letter_bank):
     return True
 
 def score_word(word):
+    '''
+    takes one argument, word, and finds the a final score
+    based on the point value of all of the letters in that word
+    adds 8 for any 7-10 letter word and returns final score
+    '''
     points_dict = {
         1: ["A", "E", "I", "O", "U", "L", "N", "R", "S", "T"],
         2: ["D", "G"],
