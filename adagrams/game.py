@@ -37,12 +37,19 @@ def draw_letters():
     while len(hand_list) < 10:
         random.shuffle(letter_pool_list)
         hand_list.append(letter_pool_list.pop())
-    print("letter pool", letter_pool_list)
-    print("return list", hand_list)
     return hand_list
 
 def uses_available_letters(word, letter_bank):
-    pass
+    word = word.upper()
+    new_letter_bank = []
+    new_letter_bank.extend(letter_bank)
+    for letter in word:
+        if letter in new_letter_bank:
+            new_letter_bank.remove(letter)
+        else:
+            return False
+    return True
+
 
 def score_word(word):
     pass
