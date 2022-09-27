@@ -1,6 +1,4 @@
 import random
-<<<<<<< HEAD
-=======
 from lib2to3.pgen2.pgen import DFAState
 
 # initiate the empty list 
@@ -8,7 +6,6 @@ from lib2to3.pgen2.pgen import DFAState
 # get letter from the copy dict/pool  random.ran()
 # draw one letter a time, x 10, for loop (0, 10),  
 # also update the qty. of the letter in each loop
->>>>>>> 01dbe421854afc74ed68bf40f0e343de4b820f09
 LETTER_POOL = {
     'A': 9, 
     'B': 2, 
