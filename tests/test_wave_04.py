@@ -85,3 +85,16 @@ def test_get_highest_word_tie_same_length_prefers_first():
     assert score_word(words[1]) == 18
     assert best_word[0] == words[0]
     assert best_word[1] == 18
+
+def test_get_highest_word_tie_same_length_prefers_first_extra_word():
+    # Arrange
+    words = ["AAAAAAAAA", "EEEEEEEEE", "DGAAAAA"]
+
+    # Act
+    best_word = get_highest_word_score(words)
+
+    # Assert
+    assert score_word(words[0]) == 17
+    assert score_word(words[1]) == 17
+    assert best_word[0] == "DGAAAAA"
+    assert best_word[1] == 17

@@ -98,19 +98,9 @@ def get_highest_word_score(word_list):
         return (words_with_max_score_list[0], max_score)
     elif len(words_with_max_score_list) > 1:
         longest_word = max(words_with_max_score_list, key=len)
-        print(f"longest word: {longest_word}")
         shortest_word = min(words_with_max_score_list, key=len)
-        print(f"shortest word: {shortest_word}")
+        # the below is sufficient because max() and min() are pulling lowest index in case of ties
         if len(longest_word) == 10:
             return (longest_word, max_score)
         elif len(longest_word) < 10:
             return (shortest_word, max_score)
-        else:
-            return (words_with_max_score_list[0], max_score)
-            # for word in word_list:
-            #     for max_score_word in words_with_max_score_list:
-            #         if max_score_word == word:
-            #             return (max_score_word, max_score)
-    # print("!!!!!!!!!!!")
-    # print(scores_dict)
-    # print(max_score)
