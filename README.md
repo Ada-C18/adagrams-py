@@ -256,6 +256,13 @@ To do so, implement the function called `uses_available_letters` in `game.py`. T
 - Returns `True` if every letter in the `input` word is available (in the right quantities) in the `letter_bank`
 - Returns `False` if not; if there is a letter in `input` that is not present in the `letter_bank` or has too much of compared to the `letter_bank`
 
+##Pseudocode wave2
+Create user_availavle_letters function with 'word' and 'letter bank' are parameters
+Create a variable called 'letter bank' and call draw_letter function
+Capitalize the word
+Create a word list, split all charactera from that word and store the characters in the list
+iterate character from the word list and compare it against letter_bank list. If all letters are in letter_bank with <= the counts for the allowed character, return 'True', otherwise return False
+
 ### Wave 3: score_word
 
 Now you need a function returns the score of a given word as defined by the Adagrams game.
