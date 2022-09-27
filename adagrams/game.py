@@ -1,6 +1,7 @@
 import random
+import copy
 
-distribution_letters = {
+distribution_of_letters = {
     'A': 9, 
     'B': 2, 
     'C': 2, 
@@ -29,47 +30,62 @@ distribution_letters = {
     'Z': 1
 }
 
-def dic_to_list(dic):
+SCORE_CHART = {
+        1: ["A", "E", "I", "O", "U", "L", "N", "R", "S", "T"],
+        2: ["D", "G"],
+        3: ["B", "C", "M", "P"],
+        4: ["F", "H", "V", "W", "Y"],
+        5: ["K"],
+        8: ["J", "X"],
+        10:["Q", "Z"]		
+}
+
+
+
+#WAVE ONE
+def dict_to_list(dict):
     adagrams_bag = []
-    for key,value in dic.items():
+    for key,value in dict.items():
         for i in range(value):
             adagrams_bag.append(key)
     return adagrams_bag
 
 def draw_letters():
-    """
-    create empty list
-    loop through between range 1,11
-    for each num we append a letter to epmpty list
-    return the list 
-
-    create dicitonary with 26 letters with 26 key pairs
-    loop through the dic and append the num of dic keys times the values 
-    radom int will return random num that will return index of list 
-
-     """
-    adagrams_bag = dic_to_list(distribution_letters)
-    hand = []
-    list_numbers = []
-
-    while len(hand)< 10:
-        index = random.randint(0,len(adagrams_bag)-1)
-        if index not in list_numbers:
-            list_numbers.append(index)
-            hand.append(adagrams_bag[index])
-    return hand
-
     
-# SCORES = {"a": 1, "c": 3, "b": 3, "e": 1, "d": 2, "g": 2, 
-#           "f": 4, "i": 1, "h": 4, "k": 5, "j": 8, "m": 3, 
-#           "l": 1, "o": 1, "n": 1, "q": 10, "p": 3, "s": 1, 
-#           "r": 1, "u": 1, "t": 1, "w": 4, "v": 4, "y": 4, 
-#           "x": 8, "z": 10}
+    adagrams_bag = dict_to_list(distribution_of_letters)
+    hand_as_numbers = []
+    hand_as_letters = []
+    
+    while len(hand_as_letters) < 10:
+        index = random.randint(0,len(adagrams_bag)-1)
+        if index not in hand_as_numbers:
+            hand_as_numbers.append(index)
+            hand_as_letters.append(adagrams_bag[index])
+    return hand_as_letters
 
 
+
+#WAVE TWO
 def uses_available_letters(word, letter_bank):
+    #creates copy of drawn letters in a hand
+    letters_hand = copy.deepcopy(letter_bank)
+    all_caps = word.upper()
+    for letter in all_caps:
+        if letter not in letters_hand:
+            return False    
+        else: 
+            letters_hand.remove(letter)    
+    else:
+        return True
+
     pass
 
+#WAVE THREE
+def score_word(word):
 
-def get_highest_word_score(word_list):
+
+
+
+#def get_highest_word_score(word_list):
+
     pass
