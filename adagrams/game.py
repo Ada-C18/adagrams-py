@@ -62,7 +62,13 @@ def draw_letters():
     # create a list that's 10 letters long
     count = 0
     
+    new_dict = LETTER_POOL.copy()
+
+    # print("BEFORE: list of letters = ", letters)
+    # print("BEFORE: dictionary = ", new_dict)
+
     while len(letters) < 10:
+<<<<<<< HEAD
         random_letter = random.choice(list(LETTER_POOL.keys()))
 
         letters.append(random_letter)            
@@ -72,8 +78,29 @@ def draw_letters():
     # print(count)
 
 
+=======
+        random_letter = random.choice(list(new_dict.keys()))
+>>>>>>> 1d28594eb7cfa650c729fa1ea38f675fdda1eb03
 
+        # ... conditional statement ...
+        for k, v in new_dict.items():
+            if k == random_letter and v > 1:
+                # print("BEFORE change ", k, v)
+                letters.append(random_letter)
+                v -= 1 # this creates a new value for v, but how do we get it back to the dictionary?
+                new_dict[k] = v
+                # print("AFTER change = ", k, v)
+            else:
+                continue
+        count += 1 # we need to make this change to the dictionary
+    return letters
+
+    # print("Count = ", count)
+    # print("AFTER: list of letters = ", letters)
+    # print("AFTER: dictionary = ", new_dict)
+    
     # psuedocode the the next loop
+<<<<<<< HEAD
     # for letter in range(len(letters)):
     #     if letter in LETTER_POOL.items(): # I want to grab the key and value
     #         for k, v in letter:
@@ -85,6 +112,13 @@ def draw_letters():
                 # print("After", k, v)
             # return v
 
+=======
+    # for letter in letters:
+    #     if that letter is in LETTER_POOL.items(): # I want to grab the key and value
+    #         for k, v in letter:
+    #             i want to update the value ---> v -= 1
+    #             return v
+>>>>>>> 1d28594eb7cfa650c729fa1ea38f675fdda1eb03
 
     # iterate through the list of letters being randomly pulled for the hand
     # for letter in range(len(letters)):
@@ -102,18 +136,28 @@ def draw_letters():
 
 
     # returns array of 10 strings - testing for len(letters) == 10
+<<<<<<< HEAD
     # return letters
 
     
     
+=======
+    return letters
+>>>>>>> 1d28594eb7cfa650c729fa1ea38f675fdda1eb03
     
     # pass
+
+# ----WAVE TWO---
 
 def uses_available_letters(word, letter_bank):
     pass
 
+# ---WAVE THREE---
+
 def score_word(word):
     pass
+
+# ---WAVE FOUR---
 
 def get_highest_word_score(word_list):
     pass
