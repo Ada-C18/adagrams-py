@@ -48,13 +48,10 @@ def uses_available_letters(word, letter_bank):
             return_list.append(letter)
             letter_bank_copy.remove(letter)
 
-    if word_list == return_list:
-        return True
-    else:
-        return False
+    return word_list == return_list
 
 def score_word(word):
-    my_dict = {
+    score_dict = {
         ('A', 'E', 'I', 'O', 'U', 'L', 'N', 'R', 'S', 'T'): 1,
         ('D', 'G'): 2,
         ('B', 'C', 'M', 'P'): 3,
@@ -68,7 +65,7 @@ def score_word(word):
     score_counter = 0
 
     for letter in word_list:
-        for key, value in my_dict.items():
+        for key, value in score_dict.items():
             if letter in key:
                 score_counter += value
         
