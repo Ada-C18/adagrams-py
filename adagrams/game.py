@@ -1,3 +1,5 @@
+import random
+
 LETTER_POOL = {
     'A': 9, 
     'B': 2, 
@@ -29,14 +31,13 @@ LETTER_POOL = {
 
 def draw_letters():
     random_list = []
-    user_hand = []
     for letter, frequency in LETTER_POOL.items():
         string = (letter * frequency)
         tiles = list(string)
         random_list += tiles
-    print(random_list)
+    
+    return random.sample(random_list, 10)
 
-draw_letters()
 
 def uses_available_letters(word, letter_bank):
     # We aren't here yet
