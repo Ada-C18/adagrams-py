@@ -82,15 +82,6 @@ reference: https://www.programiz.com/python-programming/methods/list/count
 """
 
 def uses_available_letters(word, letter_bank):
-<<<<<<< HEAD
-    pass
-#     # check input word is anagram within drawn letters   
-#     for letter in word:
-#         if letter in letter_bank:
-#             return True
-#         else:
-#             return False
-=======
     # ensure consistent case
     word = word.upper()
     # check input word is anagram within drawn letters
@@ -106,7 +97,6 @@ def uses_available_letters(word, letter_bank):
                 return False
         else:
             return False
->>>>>>> bfca547ebb57dced0447909d4b8a02fd2a993942
 
     return True
 
