@@ -44,19 +44,28 @@ def draw_letters():
     return hand
 
 def uses_available_letters(word, letter_bank):
-    letters_count = 0
+    letters_dict = {}
     letters = []
-    
-    for letter in word:
+    count = 0  
+    for letter in word: 
       letter = letter.upper() or letter.lower()
       if letter in letter_bank:
-        if letter not in letters:
-            letters_count += 1
-            letters.append(letter)
+        letters.append(letter)
+        if letters.count(letter) <= LETTER_POOL[f"{letter}"]:
+            return True
+      return False
     
-    if letters_count == len(word):
-        return True
-    return False
+      
+
+        
+
+    #     if letter not in letters:
+    #         letters_count += 1
+    #         letters.append(letter)
+    
+    # if letters_count == len(word):
+    #     return True
+    # return False
 
         
 def score_word(word):
