@@ -30,6 +30,9 @@ POOL_OF_LETTERS = {
 }
 
 def draw_letters():
+    '''
+    Returns a list of strings, each string contains one letter
+    '''
     letter_bank = []
     all_the_letters = []
     for key,value in POOL_OF_LETTERS.items():
