@@ -31,14 +31,28 @@ LETTER_POOL = {
 
 def draw_letters():
     letters = []
-    for i in range(10):
+    while len(letters) < 10:
         letter = random.choice(list(LETTER_POOL.keys()))
         if letters.count(letter) < LETTER_POOL[letter]:
             letters.append(letter)
     return letters
 
 def uses_available_letters(word, letter_bank):
-    pass
+    '''
+    (1) read letter from word (in list) from user
+    (2) read letter_bank from the output of draw_letters()
+    (3) check if each letter in the letter_bank
+    '''
+
+    letters = letter_bank.copy()
+    word = word.upper()
+    for letter in word:
+        if letter in letters:
+            letters.remove(letter)
+            continue
+        else:
+            return False
+    return True
 
 def score_word(word):
     pass
