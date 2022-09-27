@@ -48,7 +48,18 @@ def draw_letters():
 
 
 def uses_available_letters(word, letter_bank):
-    pass
+    word = word.upper()
+    letter_bank_copy = []
+    for letter in letter_bank:
+        letter_bank_copy.append(letter)
+
+    for letter in word: 
+        if letter in letter_bank_copy:
+            letter_bank_copy.remove(letter)
+        else:
+            return False 
+    return True
+
 
 def score_word(word):
     LETTER_SCORE = {
@@ -94,4 +105,33 @@ def score_word(word):
     return score
 
 def get_highest_word_score(word_list):
-    pass
+    high_score = 0 
+    high_score_word = None
+    high_score_words = []
+    for word in word_list:
+        if high_score < score_word(word):
+            high_score = score_word(word)
+            high_score_word = word
+
+    for word in word_list:
+        if score_word(word) == high_score:
+            high_score_words.append(word)
+    highest_word_length = 0 
+
+    for word in high_score_words:
+        if len(word) == 10:
+            high_score_word = word
+            return "Winner"
+
+    word_value_dic = {}
+    for word in high_score_word:
+        word[word] = len(word)
+        if len(word) > high_score_words:
+            min(word_value_dic.values())
+                return word_value_dic
+            
+            
+
+
+        return(high_score_word , high_score)
+        
