@@ -68,19 +68,7 @@ def draw_letters():
     # print("BEFORE: dictionary = ", new_dict)
 
     while len(letters) < 10:
-<<<<<<< HEAD
-        random_letter = random.choice(list(LETTER_POOL.keys()))
-
-        letters.append(random_letter)            
-        count += 1
-    
-    print("Here is our hand of letter = ", letters)
-    # print(count)
-
-
-=======
         random_letter = random.choice(list(new_dict.keys()))
->>>>>>> 1d28594eb7cfa650c729fa1ea38f675fdda1eb03
 
         # ... conditional statement ...
         for k, v in new_dict.items():
@@ -100,25 +88,11 @@ def draw_letters():
     # print("AFTER: dictionary = ", new_dict)
     
     # psuedocode the the next loop
-<<<<<<< HEAD
-    # for letter in range(len(letters)):
-    #     if letter in LETTER_POOL.items(): # I want to grab the key and value
-    #         for k, v in letter:
-    #             print("Before", k, v)
-                # if v == 0:
-                #     return 0 # should we return None or skip the letter
-                # else:
-                #     v -= 1
-                # print("After", k, v)
-            # return v
-
-=======
     # for letter in letters:
     #     if that letter is in LETTER_POOL.items(): # I want to grab the key and value
     #         for k, v in letter:
     #             i want to update the value ---> v -= 1
     #             return v
->>>>>>> 1d28594eb7cfa650c729fa1ea38f675fdda1eb03
 
     # iterate through the list of letters being randomly pulled for the hand
     # for letter in range(len(letters)):
@@ -136,14 +110,7 @@ def draw_letters():
 
 
     # returns array of 10 strings - testing for len(letters) == 10
-<<<<<<< HEAD
-    # return letters
-
-    
-    
-=======
     return letters
->>>>>>> 1d28594eb7cfa650c729fa1ea38f675fdda1eb03
     
     # pass
 
