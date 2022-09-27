@@ -43,6 +43,7 @@ def draw_letters():
     return user_hand 
     
 
+
 def uses_available_letters(word, letter_bank):
     word = word.upper()
     word_list = [letter for letter in word]
