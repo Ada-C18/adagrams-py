@@ -61,7 +61,24 @@ def draw_letters():
     return hand
 
 def uses_available_letters(word, letter_bank):
-    pass
+    true_false = []
+    word = word.upper()
+    word_list = []
+    print(letter_bank)
+    print("-------")
+    print(word)
+    for letter in word:
+        word_list.append(letter)
+        if letter in letter_bank and word_list.count(letter) == letter_bank.count(letter):
+            true_false.append(True)
+            # letter_of_index = letter_bank.index(letter)
+            # letter_bank.pop(letter_of_index)
+        else:
+            true_false.append(False)
+    if False in true_false:
+        return False
+    else:
+        return True
 
 def score_word(word):
     pass
