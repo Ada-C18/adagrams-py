@@ -42,7 +42,14 @@ def draw_letters():
     return gameletters
 
 def uses_available_letters(word, letter_bank):
-    pass
+    new_list = []
+    for letter in letter_bank:
+        if letter in word:
+            new_list.append(letter)
+            return True 
+        else:
+            return False
+        
 
 def score_word(word):
     pass
