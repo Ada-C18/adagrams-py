@@ -11,7 +11,7 @@ LETTER_POOL = {
     'F': 2, 
     'G': 3, 
     'H': 2, 
-    'I': 9, 
+    'I': 9,
     'J': 1, 
     'K': 1, 
     'L': 4, 
@@ -52,10 +52,8 @@ def test_draw_letters_is_list_of_letter_strings():
 def test_letter_not_selected_too_many_times():
 
     for i in range(1000):
-        print(i)
         # Arrange/Act
         letters = draw_letters()
-        print(letters)
         letter_freq = {}
         for letter in letters:
             if letter in letter_freq:
