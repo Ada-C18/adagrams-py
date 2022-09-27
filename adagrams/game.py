@@ -94,8 +94,6 @@ def score_word(word):
         score += 8
     
     return score
-    
-score_word("DOGDOGDOG")
 
 def get_highest_word_score(word_list):
     pass
