@@ -104,15 +104,5 @@ def score_word(word):
     return score
             
 
-#         return score 
-# def score_lenght(word):
-#     score=0
-#     if len(word)>= 7:
-#         score +=8
-#     else:
-#         return score
-    
-
-
 def get_highest_word_score(word_list):
     pass
