@@ -1,8 +1,8 @@
 # from tests.test_wave_01 import LETTER_POOL
 
-import random
 
-## WAVE 1
+# Wave 1
+import random
 LETTER_POOL = {
     'A': 9, 
     'B': 2, 
@@ -32,10 +32,6 @@ LETTER_POOL = {
     'Z': 1
 }
 def draw_letters():
-    """Function to build a hand of 10 letters for the user
-    Input: Letter pool which include all the letters and their frequency
-    Output: Return 10 random letters from the letter pool
-    """
     list_1= [k*v for k,v in LETTER_POOL.items()]
     letter_pool_list=[]
     for string in list_1:
@@ -49,12 +45,8 @@ def draw_letters():
     return user_hand 
     
 
-## WAVE 2##
+
 def uses_available_letters(word, letter_bank):
-    """ Function to check if the word the user provided is in the the letter bank
-    Input: user's word and letter bank
-    Output: True (if all the letter in the word is in the letter bank with the right counts of letter) or False (if any letter in the word is NOT in the letter bank or if the user uses more than allowed)
-    """
     word = word.upper()
     word_list = [letter for letter in word]
     print(word_list)
@@ -64,15 +56,12 @@ def uses_available_letters(word, letter_bank):
                 return False
             elif character in letter_bank: #and character == string:
                 if word.count(character) > letter_bank.count(string):
+                    # print('False')
                     return False
+    # print('True')
     return True
 
-## WAVE 3 ##
 def score_word(word):
-    """ Function to return the score of the word that the user input
-    Input: user's word and the score chart
-    Output: the score of user's word
-    """
     SCORE_CHART = {
     'A': 1, 
     'B': 3, 
@@ -116,12 +105,8 @@ def score_word(word):
     
     return score
             
-## WAVE 4 ##
+
 def get_highest_word_score(word_list):
-    """ Function that chooses the word with the highest score, or highest score with fewest letter or with 10 letters
-    Input: word_list
-    Output: word and score in tuple type
-    """
     highest_score=0
     highest_score_list= []
     for word in word_list:
