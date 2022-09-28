@@ -30,50 +30,52 @@ LETTERS = {
     "Z" : [10, 1]
 }
 
+
 def draw_letters():
 
+    # creates a pool of letters given distribution
     letter_pool = []
-
     for letter, stats in LETTERS.items():
         letter_distribution = stats[1]
         letter_pool += letter * letter_distribution
     
+    # selects 10 letters from pool
     user_letters = random.sample(letter_pool, k=10)
 
     return user_letters
     
 
-
 def uses_available_letters(word, letter_bank):
 
-    # create a dictionary with available letter counts
+    # create a dictionary counting available letters
     available_letters = {}
     for letter in letter_bank:
         available_letters[letter] = available_letters.get(letter, 0) + 1
 
     for letter in word.upper():
-        # if letter not provided or already used up, return False
+        # if letter is not available in bank, return False
         if letter not in letter_bank or available_letters[letter] == 0:
             return False
         # if letter still available, subtract 1 from letter count
         elif available_letters[letter] != 0:
             available_letters[letter] -= 1
 
+    # return True if all used letters were available
     return True
+
 
 def score_word(word):
 
     score = 0
-    for character in word.upper():
-        for letter, stats in LETTERS.items():
-            letter_value = stats[0]
-            if character == letter:
-                score += letter_value
+    for letter in word.upper():
+        letter_value = LETTERS[letter][0]
+        score += letter_value
 
     if len(word) >= 7:
         score += 8
         
     return score
+
 
 def get_highest_word_score(word_list):
     word_scores = {}
