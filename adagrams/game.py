@@ -48,11 +48,10 @@ def draw_letters():
   letter_soup = []
 
   for data in alphabet_data_list:
-    for keys, values in data.items():
-      runner = 0
-      while runner < data['quantity']:
-        letter_soup.append(data['letter'])
-        runner += 1
+    runner = 0
+    while runner < data['quantity']:
+      letter_soup.append(data['letter'])
+      runner += 1
 
   user_letter_pool = []
   
