@@ -54,7 +54,6 @@ def uses_available_letters(word, letter_bank):
     return True
 
 def score_word(word):
-
     word_dict = {
         "A" : 1, 
         "E" : 1, 
@@ -85,7 +84,6 @@ def score_word(word):
     }
     points = 0
     new_word = word.upper()
-
     for letter in new_word:
         if letter.isalpha():
             points += word_dict[letter]
