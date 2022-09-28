@@ -138,3 +138,37 @@ def get_highest_word_score_lisa_play(word_list):
     return tuple([highest_word_score["word"], highest_word_score["score"]])
 
 get_highest_word_score_lisa_play(["XZ", "OOOOOOOOOO"])
+
+""" Here's what I've been working on and trying to figure out: 
+
+    highest_score_list = []
+
+    for word in list_scores:
+        if word['score'] == highest_score:
+            highest_score_list.append(word)
+
+    if len(highest_score_list) == 1:
+        return highest_score_list
+    else:
+        for word in highest_score_list:
+            if word['len'] == 10:
+                print(word['word'], word['score'])
+            else: 
+                smallest_len = min(highest_score_list, key = lambda word: word["len"])
+                print(smallest_len['word'])
+                print(smallest_len['score'])
+                #print(tuple([smallest_len["word"], smallest_len["score"]]))
+    
+
+get_highest_word_score_lisa_play(["CCX", "AAAA"])
+
+
+
+
+    
+
+
+
+
+
+"""
