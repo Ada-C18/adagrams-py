@@ -27,12 +27,20 @@ def draw_letters():
 
 def uses_available_letters(word, letter_bank):
     # make sure word is in all caps
+    caps_word = word.upper()
     # make a copy of letter bank
+    temp_letter_bank = letter_bank.copy()
     # iterate through letters in word
+    for letter in caps_word:
     # for each letter, check if it's in the letter bank
-    # if so, remove that letter from the bank
+        if letter in temp_letter_bank:
+    # if so, remove that letter from the bank using remove()
+            temp_letter_bank.remove(letter)
     # if not, return false
+        else:
+            return False
     # after all letters have been checked, return true
+    return True
 
 def score_word(word):
     # initialize score = 0
@@ -43,6 +51,7 @@ def score_word(word):
     # look each letter up in score dict
     # add each letter's value to score
     # return score
+    pass
 
 def get_highest_word_score(word_list):
     pass
