@@ -116,3 +116,5 @@ def get_highest_word_score(word_list):
             top_word = word
     the_winner = (top_word, highest_score)
     return the_winner
+
+    
