@@ -141,7 +141,7 @@ def score_word(word):
         score += 8
     return score
 
-def get_highest_word_score():
+def get_highest_word_score(word_list):
     # list to store tuples
     word_tuple_list = []
     # make a tuple with word, score and length
