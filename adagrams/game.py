@@ -92,16 +92,17 @@ def score_word(word):
     }
     points = 0
     new_word = word.upper()
-    special_lengths = [7, 8, 9, 10]
+    # special_lengths = [7, 8, 9, 10]
 
     for letter in new_word:
         if letter.isalpha():
             points += word_dict[letter]
         else:
             points += 0
-    if len(new_word) in special_lengths:
-        if points != 0:
-            points += 8
+    if len(new_word) in [7, 8, 9, 10]:
+    # if len(new_word) ==7 or len(new_word) == 8 or len(new_word) == 9 or len(new_word) == 10:
+        # if points != 0:
+        points += 8
     return points
 
 def get_highest_word_score(word_list):
