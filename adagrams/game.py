@@ -210,7 +210,7 @@ def get_highest_word_score(word_list):
             if len(element[0]) == 10:
                 highest_score_tuple = element
                 return highest_score_tuple
-            if element[2] < shortest_word_length:
+            elif element[2] < shortest_word_length:
                 highest_score_tuple = element
 
     return highest_score_tuple
