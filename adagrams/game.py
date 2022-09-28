@@ -35,6 +35,35 @@ LETTER_POOL = {
     'Z': 1
 }
 
+SCORE_POOL = {
+    'A': 1, 
+    'B': 3, 
+    'C': 3, 
+    'D': 2, 
+    'E': 1, 
+    'F': 4, 
+    'G': 2, 
+    'H': 4, 
+    'I': 1, 
+    'J': 8, 
+    'K': 5, 
+    'L': 1, 
+    'M': 3, 
+    'N': 1, 
+    'O': 1, 
+    'P': 3, 
+    'Q': 10, 
+    'R': 1, 
+    'S': 1, 
+    'T': 1, 
+    'U': 1, 
+    'V': 4, 
+    'W': 4, 
+    'X': 8, 
+    'Y': 4, 
+    'Z': 10    
+}
+
 def copy_letter_from_original(pool):
     pool_dict_copy = {}
     for key, value in pool.items():
@@ -78,11 +107,7 @@ def uses_available_letters(word, letter_bank):
         else:
             if quantity > letter_bank_dict[letter]:
                 return False        
-    return True
-
-#def update_dict(key, value, score_dict):
-#    return score_dict.update(dict.fromkeys([key], value))
-     
+    return True    
 
 def score_word(word):   
 # word as string
@@ -95,7 +120,8 @@ def score_word(word):
     word = word.upper()
     if len(word) >= 7 and len(word) <= 10:
         total_score += 8
-    
+    '''
+    # time complexity :O(n)
     score_dict = dict.fromkeys(['A', 'E', 'I', 'O', 'U', 'L', 'N', 'R', 'S', 'T'], 1)
     score_dict.update(dict.fromkeys (['D', 'G'], 2))
     score_dict.update(dict.fromkeys(['B', 'C', 'M', 'P'], 3))
@@ -103,12 +129,14 @@ def score_word(word):
     score_dict.update(dict.fromkeys (['K'], 5))
     score_dict.update(dict.fromkeys (['J', 'X'], 8))
     score_dict.update(dict.fromkeys (['Q','Z'], 10))
-        
+    '''
+
     for letter in word:
-        if letter in score_dict.keys():
-            total_score += score_dict[letter]
+        if letter in SCORE_POOL.keys():
+            total_score += SCORE_POOL[letter]
     return total_score
 
 
 def get_highest_word_score(word_list):
-    pass
+    # return tuple (word, total_score)
+    
