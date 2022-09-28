@@ -21,6 +21,7 @@ def uses_available_letters(word, letter_bank):
 
     return True
 
+
 def score_word(word):
     score_chart_dict = {
         1: ["A", "E", "I", "O", "U", "L", "N", "R", "S", "T"],
@@ -42,36 +43,19 @@ def score_word(word):
     
     return score
 
+
 def get_highest_word_score(word_list):
-    scores_dict = {}
+    words_dict = {}
+    max_score_words_list= []
     for word in word_list:
         score = score_word(word)
-        scores_dict[word] = score
-
-    max_score = max(scores_dict.values())
-    words_with_max_score_list = []
-
-    for word, score in scores_dict.items():
+        words_dict[word] = score
+    max_score = max(words_dict.values())
+    for word, score in words_dict.items():
         if score == max_score:
-            words_with_max_score_list.append(word)
-    
-    if len(words_with_max_score_list) == 1:
-        return (words_with_max_score_list[0], max_score)
-    elif len(words_with_max_score_list) > 1:
-        longest_word = max(words_with_max_score_list, key=len)
-        print(f"longest word: {longest_word}")
-        shortest_word = min(words_with_max_score_list, key=len)
-        print(f"shortest word: {shortest_word}")
-        if len(longest_word) == 10:
-            return (longest_word, max_score)
-        elif len(longest_word) < 10:
-            return (shortest_word, max_score)
-        else:
-            return (words_with_max_score_list[0], max_score)
-            # for word in word_list:
-            #     for max_score_word in words_with_max_score_list:
-            #         if max_score_word == word:
-            #             return (max_score_word, max_score)
-    # print("!!!!!!!!!!!")
-    # print(scores_dict)
-    # print(max_score)
+            if len(word) == 10:
+                return (word, score)
+            max_score_words_list.append(word)
+    sorted_max_score_words = sorted(max_score_words_list, key=len)
+    return (sorted_max_score_words[0], max_score)
+
