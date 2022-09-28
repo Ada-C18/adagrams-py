@@ -37,6 +37,18 @@ Create a function score_word
 
 **Wave 4:**
 
+-We're going to have to save the words, maybe with their scores.
+  - (oh this is taken care of for us)
+-word_list will be list of words , the output will be a tuple that has 
+the word as the 0th element and the score as the second element.
+
+-idea: we make tuples for every word (with the word and the score), then
+we sort the tuples by their [1]th element.  We'll use itemgetter to do this.
+then we sort them by their length.
+we make logic to deal with tie-breakers if the top score is highest.
+
+
+
 ## Skills Assessed
 
 - Following directions and reading comprehension
