@@ -167,11 +167,4 @@ def get_highest_word_score(word_list):
                 return highest_scores[i]
         return highest_scores[0]
 
-    
 
-
-##-----------------------------------------##
-##-----------------HELPERS-----------------##
-##-----------------------------------------##
-def standardize_word_case(word):
-    return word.upper()
