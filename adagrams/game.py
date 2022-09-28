@@ -114,5 +114,5 @@ def get_highest_word_score(word_list):
     combination_list=(list(combination))
     
     return max(combination_list)
-
+    
     
