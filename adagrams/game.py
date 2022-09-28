@@ -141,7 +141,7 @@ def score_word(word):
         score += 8
     return score
 
-def get_highest_word_score(word_list):
+def get_highest_word_score():
     # list to store tuples
     word_tuple_list = []
     # make a tuple with word, score and length
@@ -151,25 +151,36 @@ def get_highest_word_score(word_list):
         length = len(word)
         word_tuple = (word, score, length)
         word_tuple_list.append(word_tuple)
-
-    highest_score_tuple = (word_tuple_list[0])
+    
+    highest_score_tuple = word_tuple_list[0]
     highest_score = word_tuple_list[0][1]
-    shortest_word_length = word_tuple_list[0][2]
-
+    
     # element[1] is score in each tuple
     # element[2] is len of each word in each tuple
     # determine highest tuple
     # loops over each tuple in word tuple list
     for element in word_tuple_list:
+        # element has score higher than current highest score
         if element[1] > highest_score:
             highest_score = element[1]
             highest_score_tuple = element
-    # tie breaker
+        # tie breaker
         elif element[1] == highest_score:
-            if element[2] == 10:
-                highest_score_tuple = element
-                return highest_score_tuple
-            elif element[2] < shortest_word_length:
-                highest_score_tuple = element
-
+            # one word has 10 tiles; 10 tiles wins
+            if element[2] == 10 or highest_score_tuple[2] == 10:
+                # highest score tuple remains unchanged (first option) if
+                # highest score tuple and element both have 10 tiles
+                if highest_score_tuple[2] == 10:
+                    continue
+                else:
+                    highest_score_tuple = element
+            # no word has 10 tiles; shorter word wins
+            elif element[2] < highest_score_tuple[2]:
+                highest_score_tuple = element    
+            # obligatory else; highest score tuple remains unchanged
+            else:    
+                continue
+        # obligatory else; highest score tuple remains unchanged
+        else:
+            continue
     return highest_score_tuple
