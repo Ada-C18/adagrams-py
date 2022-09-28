@@ -34,10 +34,12 @@ LETTER_POOL = {
 #WAVE ONE
 def dict_to_list(dict):
     '''
-    Hannah
+    Create a list using the key-value pairs from the inputted dictionary.
+    1. Start with an empty list.
+    2. Add each key-value pair, add the key to the list n times, with n being the associated value to the key. 
+    3. Return the list.
     '''
     bag_of_letters = []
-    # O(n)
     for key, value in dict.items():
         new_letters = [key] * value
         bag_of_letters.extend(new_letters)
@@ -87,27 +89,48 @@ def uses_available_letters(word, letter_bank):
 # }
 
 SCORING = {
-   'A':1,'E':1,'I':1,'O':1,'U':1,'L':1,
-   'N':1,'R':1,'S':1,'T':1,
-   'D':2,'G':2,
-   'B':3,'C':3,'M':3,'P':3,
-   'F':4,'H':4, 'V':4,'W':4,'Y':4,
-   'K':5,
-   'J':8, 'X':8,
-   'Q':10,'Z':10
+    'A': 1,
+    'E': 1,
+    'I': 1,
+    'O': 1,
+    'U': 1,
+    'L': 1,
+    'N': 1,
+    'R': 1,
+    'S': 1,
+    'T': 1,
+    'D': 2,
+    'G': 2,
+    'B': 3,
+    'C': 3,
+    'M': 3,
+    'P': 3,
+    'F': 4,
+    'H': 4,
+    'V': 4,
+    'W': 4,
+    'Y': 4,
+    'K': 5,
+    'J': 8,
+    'X': 8,
+    'Q': 10,
+    'Z': 10
 }
 
 def score_word(word):
     '''
-    Hannah
+    Calculate the score of the word
+    1. Iterate through each character in the word, adding the associated value of each letter per the SCORING dictionary
+    2. If the length of the word is 7, 8, 9, or 10, add an additional 8 points to the score
+    3. Return score
     '''
     score = 0
-    
-    if 7 <= len(word) <= 10:
-        score += 8
-
     for letter in word.upper():
         score += SCORING[letter]
+        
+    if 7 <= len(word) <= 10:
+        score += 8
+    
     return score
 
     # O(n^3) ****************************** WORK ON THIS ***************************
@@ -117,8 +140,6 @@ def score_word(word):
     #             score += key
 
     # return score
-
-
 
 
 #WAVE FOUR
