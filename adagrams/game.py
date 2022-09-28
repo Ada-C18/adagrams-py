@@ -1,7 +1,4 @@
-import copy
-from multiprocessing.sharedctypes import Value
 import random
-from tokenize import blank_re
 
 LETTER_POOL = {
     'A': 9, 
@@ -117,4 +114,50 @@ def score_word(word):
 
 
 def get_highest_word_score(word_list):
-    pass
+    '''
+    returns a tuple that contains highest scoring word
+    and its corresponding score. contains logic to 
+    account for ties
+    '''
+    word_score_list = get_high_score_tuple(word_list)
+    score = 0
+    final_word = ""
+    final_list = []
+
+    for score_tuple in word_score_list:
+        #tie resolution
+        if score_tuple[1] == score:
+            if len(score_tuple[0]) == 10 and len(final_word) != 10:
+                final_word = score_tuple[0]
+                score = score_tuple[1]            
+            elif len(score_tuple[0]) < len(final_word) and len(final_word) != 10:
+                final_word = score_tuple[0]
+                score = score_tuple[1]
+        elif score_tuple[1] > score:
+                final_word = score_tuple[0]
+                score = score_tuple[1]
+
+    while len(final_list) < 2:
+        final_list.append(final_word)
+        final_list.append(score)
+    
+    return tuple(final_list)
+
+def get_high_score_tuple(word_list):
+    '''
+    helper function - returns list of tuples, tuples contain word 
+    from word_list and score of that word
+    '''
+    
+    word_score_list = []
+
+    for word in word_list:
+        score_list = []
+        word_score = score_word(word)
+        while len(score_list) < 2:
+            score_list.append(word)
+            score_list.append(word_score)
+        score_tuple = tuple(score_list)
+        word_score_list.append(score_tuple)
+    
+    return word_score_list
