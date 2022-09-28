@@ -1,4 +1,5 @@
 from random import sample
+from collections import Counter
 
 
 
@@ -56,14 +57,22 @@ def draw_letters():
 def uses_available_letters(word, letter_bank):
     word = word.upper()
 
-    seperate_word = set(list(word))
-    print(seperate_word)
-    letter_bank_set = set(letter_bank)
+    # create a counter for letter_bank
+    letter_bank_counts = Counter()
 
-    letter_bank_set.intersection(seperate_word)
-    print(letter_bank_set)
-    # if seperate_word in letter_bank:
-    #     return True
+    for letter in letter_bank:
+        letter_bank_counts[letter] += 1
+
+    # print("Loaded counter: ", letter_bank_counts)
+
+    for letter in list(word):
+        if letter_bank_counts[letter] == 0:
+            return False
+        else:
+            letter_bank_counts[letter] -= 1
+    
+    return True 
+
 
 def score_word(word):
     pass
