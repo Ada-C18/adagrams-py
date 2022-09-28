@@ -142,3 +142,25 @@ def get_highest_word_score(word_list):
             print(f"updated loop winner: {winner}")
 
     return winner
+
+
+# alternate implementation
+# def get_highest_word_score(word_list):
+
+#     words_dict = {}
+
+#     for word in word_list:
+#         words_dict[word] = score_word(word)
+
+#     winner = (word_list[0], words_dict[word_list[0]])
+
+#     for k, v in words_dict.items():
+#         if v > winner[1]:
+#             winner = (k, v)
+#         if v == winner[1] and len(winner[0]) < 10:
+#             if len(k) == 10:
+#                 winner = (k, v)
+#             elif len(k) < len(winner[0]):
+#                 winner = (k, v)
+
+#     return winner
