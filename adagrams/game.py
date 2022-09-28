@@ -12,41 +12,35 @@ def draw_letters():
         'U': 4, 'V': 2, 'W': 2, 'X': 1, 'Y': 2, 'Z': 1
     }
 
-    # iterate through letter_pool_amounts keys and values
+    # creates a list of individual letters to draw from
     for letter, number in letter_pool_amounts.items():
-    # for each key, add it [value] number of times to letter_pool list
-        for value in range(number):
+        for x in range(number):
             letter_pool.append(letter)
-    # use random.randint w/ index 10 times to draw 10 random letters
-    for value in range(10):
+    # draws 10 random letters and returns them as a list
+    for x in range(10):
         letter_index = random.randint(0, pool_count - 1)
-        chosen_letter = letter_pool.pop(letter_index)
-        drawn_letters.append(chosen_letter)
+        drawn_letters.append(letter_pool.pop(letter_index))
         pool_count -= 1
     return drawn_letters
 
 def uses_available_letters(word, letter_bank):
-    # make sure word is in all caps
-    caps_word = word.upper()
-    # make a copy of letter bank
     temp_letter_bank = letter_bank.copy()
-    # iterate through letters in word
-    for letter in caps_word:
-    # for each letter, check if it's in the letter bank
+    # checks each letter in the word
+    # if it's in the letter bank, removes that letter from the bank to avoid duplicate checking
+    for letter in word.upper():
         if letter in temp_letter_bank:
-    # if so, remove that letter from the bank using remove()
             temp_letter_bank.remove(letter)
-    # if not, return false
         else:
             return False
-    # after all letters have been checked, return true
+
     return True
 
 def score_word(word):
     # initialize score = 0
     # initialize dictionary w/ each letter's value
-    # make sure word is in all caps
-    # remove non-alphabetic characters
+    # make sure word is in all caps and remove non-alphabetic characters
+    # if length of word >= 7 and <= 10
+    # add 8 points to score
     # iterate through all letters in word
     # look each letter up in score dict
     # add each letter's value to score
@@ -54,4 +48,18 @@ def score_word(word):
     pass
 
 def get_highest_word_score(word_list):
+    # highest score = -1
+    # shortest length = 999
+    # shortest words = []
+    # iterate over words in word_list
+    # get word's score using score_word()
+    # if score > highest score
+    # highest score = score
+    # if length of word < shortest length
+    # shortest length = length
+
+    # iterate over word_list again
+    # if a word's score == highest score and length == 10, it wins immediately
+    # else if score == highest score and length == shortest length, add word to shortest words list
+    # first entry in shortest words list wins
     pass
