@@ -109,6 +109,7 @@ def get_highest_word_score(word_list):
     '''
     highest_score = 0
     top_word = ""
+    
     tie_list = []
     for word in word_list:
         score = score_word(word)
@@ -121,4 +122,3 @@ def get_highest_word_score(word_list):
     the_winner = (top_word, highest_score)
     return the_winner
 
-    
