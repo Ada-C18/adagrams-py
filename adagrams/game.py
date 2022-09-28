@@ -92,4 +92,27 @@ def score_word(word):
 
 
 def get_highest_word_score(word_list):
-    pass
+    #pass
+    highest_score = 0
+    tuple_list = []
+    tie_list = []
+
+    for word in word_list:
+        tuple_list.append((word, score_word(word)))
+    
+    for item in tuple_list:
+        if item[1] > highest_score:
+            highest_score = item[1]
+            #if item[1] == highest_score:
+               #if len(item[0]) < 
+    #for item in tie_list:
+        #if len(item[0]) == 10 or min(len(item[0])):
+            #return item
+    for item in tuple_list:
+        if len(item[0]) == 10 and item[1] == highest_score or min(len(item[0])) and item[1] == highest_score:
+
+            return item
+         
+            
+
+    
