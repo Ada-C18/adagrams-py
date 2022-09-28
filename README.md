@@ -1,4 +1,6 @@
 # AdaGrams
+- Sam notes: Learning style: Hands on, whiteboarding the problem out, talking it out. Best works in quiet environments where communication can be clear. Prefers subtitles in audio/video calls.
+- Yang notes: Learning style: Hands on, breaking down the problem to work one step at a time. Best works in coworking and learning from peers. Prefer in person and direct communication with people.
 
 ## Skills Assessed
 

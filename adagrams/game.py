@@ -60,20 +60,21 @@ SCORE_CHART = {
 
 def draw_letters():
     count_dict = {}  
-    letter_list = []
-    while len(letter_list) < 10: #  time complexity is O(1)
+    letter_list = [] 
+    while len(letter_list) < 10: 
         new_letter = (random.choice(string.ascii_uppercase)) 
-        if new_letter in count_dict and count_dict[new_letter] < LETTER_POOL[new_letter]:
+        if new_letter in count_dict and count_dict[new_letter] < LETTER_POOL[new_letter]: 
             count_dict[new_letter] += 1
-            letter_list.append(new_letter)
-        elif new_letter not in count_dict:
-            count_dict[new_letter] = 1
-            letter_list.append(new_letter)
-        else:
-            continue
-    return letter_list
+            letter_list.append(new_letter) 
+        elif new_letter not in count_dict: 
+            count_dict[new_letter] = 1 
+            letter_list.append(new_letter) 
+        else: 
+            continue 
+    return letter_list   
 
 def uses_available_letters(word, letter_bank):
+<<<<<<< HEAD
     upper_case_word = word.upper() # O(n)
     print(upper_case_word)
     letter_bank_count = Counter(letter_bank) # O(n)
@@ -85,6 +86,11 @@ def uses_available_letters(word, letter_bank):
     #         letter_bank_count[letter] = 1
             
     for letter in upper_case_word: # O(N)
+=======
+    upper_case_word = word.upper() 
+    letter_bank_count = Counter(letter_bank) 
+    for letter in upper_case_word: 
+>>>>>>> 2b0272d05b780a3641355ace1153686daa194a31
         if letter in letter_bank_count and letter_bank_count[letter] > 0:
             letter_bank_count[letter] -= 1
             continue
@@ -95,8 +101,14 @@ def uses_available_letters(word, letter_bank):
 def score_word(word):
     upper_case_word = word.upper() #O(n)
     score_total = 0
+<<<<<<< HEAD
     if len(upper_case_word) >= 7: #O(1)
         score_total += 8 #O(1)
+=======
+    if len(upper_case_word) >= 7:
+        score_total += 8
+    # Original for loop, realized could be better with new loop.
+>>>>>>> 2b0272d05b780a3641355ace1153686daa194a31
     # for letter in upper_case_word:
     #     for key in SCORE_CHART:
     #         if letter == key:
@@ -107,7 +119,11 @@ def score_word(word):
             score_total += SCORE_CHART[letter] #O(1)
     return score_total
 
+<<<<<<< HEAD
 def get_highest_word_score(word_list):  #O（n^2）
+=======
+def get_highest_word_score(word_list):
+>>>>>>> 2b0272d05b780a3641355ace1153686daa194a31
     best_word = []
     for i in range(len(word_list)): # O(n)
         score = score_word(word_list[i])# O(n)
