@@ -115,8 +115,20 @@ def get_highest_word_score(word_list):
         if score > highest_score:
             highest_score = score
             top_word = word
+        # if score == highest_score:
+        #     tie_list.append(word)
+    for word in word_list:
+        score = score_word(word)
         if score == highest_score:
             tie_list.append(word)
+
+    for word in tie_list:
+        if len(word) == len(top_word):
+            top_word = tie_list[0]
+        elif len(word) == 10:
+            top_word = word
+        elif len(word) < len(top_word) and len(top_word) != 10:
+            top_word = word
 
     the_winner = (top_word, highest_score)
     return the_winner
