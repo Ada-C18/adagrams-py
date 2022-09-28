@@ -89,8 +89,6 @@ def score_word(word):
     for letter in new_word:
         if letter.isalpha():
             points += word_dict[letter]
-        else:
-            points += 0
     if len(new_word) in range(7,11):
         points += 8
     return points
