@@ -61,6 +61,8 @@ def draw_letters():
             letter_frequency[letter] = 1
         if letter_frequency[letter] <= LETTER_POOL[letter]:
             letters.append(letter)
+        if len(letters) == 10:
+            break
     print(len(letters))
     return letters
     
@@ -106,7 +108,38 @@ def uses_available_letters(word, letter_bank):
 
 
 def score_word(word):
-    pass
+    score_chart = {"A":1, "E":1, "I":1, "O":1, "U":1, "L":1, "N":1, "R":1, "S":1, "T":1, "D":2,
+    "G":2, "B":3, "C":3, "M":3, "P":3, "F":4, "H":4, "V":4, "W":4, "Y":4, "K":5, "J":8, "X":8,
+    "Q":10, "Z":10
+    }
+    score = 0
+    if len(word) >=7:
+            score += 8
+    for letter in word:
+        score += score_chart[letter.upper()]
+            
+    return score
+
+
 
 def get_highest_word_score(word_list):
-    pass
+    scores = 0 
+    max_score = 0
+    result = ()  
+    
+    for word in word_list:
+        result[word] = scores
+
+    return result       
+
+
+    # word, pos = max(word_list, key=highest_score)
+    # tuple_highest_word.append(word, pos)
+    # return tuple_highest_word
+
+
+
+# return max(word_list, key=get_value)
+# def get_value(word):
+#     """Return word letter score."""
+#     return sum(score_chart[letter] for letter in word)
