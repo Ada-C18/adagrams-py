@@ -72,14 +72,24 @@ def score_word(word):
             score += 8
     return score
 
-    # iterate over the word and add scores, value = dict["keys"]
-    # check len(word) == 7, 8, 9, or 10, then score += 8 points
-
-
 def get_highest_word_score(word_list):
-    pass
-    # word_list: stores all words user submitted
-    # build a list/dict for all words & scores: {"word1" : score1; "word2" : score2; ... etc}
-    # find the max value in the dict/list dict.values, append to winning_dict
-    #     handling ties: len(word)==10 > smalles len(word) > len1==len2: word1 wins
-    # return a tuple for the highest score words (word, score)
+    sorted_word_list = sorted(word_list, key=len)
+    score_list = []
+    word_score_dict = {}
+    for word in sorted_word_list:
+        word_score = score_word(word)
+        score_list.append(word_score)
+        word_score_dict[word] = word_score
+
+    highest_word_score = max(set(score_list))
+    highest_word_dict = {}
+    for word, score in word_score_dict.items():
+        if score == highest_word_score:
+            highest_word_dict[word] = score
+    for word, score in highest_word_dict.items():
+        if len(word) == 10:
+            winning_tuple = (word, score)
+            break
+        else:
+            winning_tuple = list(highest_word_dict.items())[0]
+    return winning_tuple
