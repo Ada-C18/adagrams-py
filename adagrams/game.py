@@ -87,4 +87,38 @@ def score_word(word):
 
 
 def get_highest_word_score(word_list):
-    pass
+    # word_scores = []
+    # for word in word_list:
+    #     word_scores.append(score_word(word))
+    # words_and_scores = zip(word_list, word_scores)
+
+    word_scores_dict = {}
+    max_scores_dict = {}
+
+    for word in word_list:
+        word_scores_dict[word] = score_word(word)
+    
+    highest_score = max(word_scores_dict.values())
+
+    for word, score in word_scores_dict.items():
+        if score == highest_score:
+            max_scores_dict[word] = score
+
+    if len(max_scores_dict) <= 1:
+        for key, value in max_scores_dict.items(): 
+            return key, value
+
+    max_scores_dict_lengths = []
+    for word in max_scores_dict.keys():
+        max_scores_dict_lengths.append(len(word))
+    shortest_max_score_word = min(max_scores_dict_lengths)
+
+    for key, value in max_scores_dict.items(): 
+        if len(key) == 10:
+            return key, value
+
+    for key, value in max_scores_dict.items():
+        if len(key) == shortest_max_score_word:
+                return key, value
+
+    
