@@ -106,12 +106,28 @@ def score_word(word):
 
 def get_highest_word_score(word_list):
     highest_score=0
-    higest_score_list= []
+    highest_score_list= []
     for word in word_list:
         score= score_word(word) 
         if score > highest_score:
             highest_score= score
-            higest_score_list= higest_score_list.clear()
-            higest_score_list.append(word)
+            highest_score_list.clear()
+            highest_score_list.append(word)
+        elif score == highest_score:
+            highest_score_list.append(word)
+
+    fewest_letter = highest_score_list[0]
+    len_fewest_letter= len(highest_score_list[0])
+
+    for word in highest_score_list:
+        if len(word)== 10:
+            return (word,highest_score)
+        elif len(word)< len_fewest_letter:
+            fewest_letter= word
+            len_fewest_letter= len(word)
+    return (highest_score_list[0],highest_score)
     
-    print("HIGHEST SCORE LIST HEREp-------",higest_score_list)
+    
+    
+    
+    print("HIGHEST SCORE LIST HEREp-------",highest_score_list)
