@@ -92,30 +92,26 @@ def score_word(word):
     return total_score
             
 def get_highest_word_score(word_list):
-    #find score
+    
     scored_words = {}
     for word in word_list:
-        score_calculator = score_word(word)
-        scored_words[word] = score_calculator
+        score_calculated = score_word(word)
+        scored_words[word] = score_calculated
 
-    #find_max score
     for scores in scored_words:     
         winning_word = max(scored_words, key = scored_words.get)
-        winning_score=scored_words.get(winning_word)
+        winning_score = scored_words.get(winning_word)
 
-    #look for ties
     tie_list=[]
     for word, score in scored_words.items():
         if winning_score == score:
             tie_list.append(word)
-            #print (word)
         
     #if we have a tie, apply tie_breaker logic
     if len(tie_list)>1:
-        #find max and min, useful detail this grabs the FIRST max and FIRST min
+        
         max_tie_word=max(tie_list, key=len)
         min_tie_word=min(tie_list, key=len)
-        print(max_tie_word, min_tie_word)
 
         if len(max_tie_word)==len(min_tie_word):
             winning_word=tie_list[0]
