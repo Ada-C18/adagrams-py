@@ -75,28 +75,26 @@ def score_word(word):
         total_score += 8
     return total_score
 
-
-def get_highest_word_score(word_list):
-    # sort word_list by str length
-    # Jamie's pseudocode:
-    compare_words_list = []
-    for word in word_list:
-        word_score = score_word(word)
-        word_and_score_dict = {"word":word,"word_score":word_score}       
-        compare_words_list.append(word_and_score_dict)
+# Jamie's pseudocode:
+# def get_highest_word_score(word_list):
+#     # sort word_list by str length
+#     compare_words_list = []
+#     for word in word_list:
+#         word_score = score_word(word)
+#         word_and_score_dict = {"word":word,"word_score":word_score}       
+#         compare_words_list.append(word_and_score_dict)
         
-    winning_word = compare_words_list[0]
-    winning_word_list = []
-    for word in compare_words_list:
-        print(word)
-        # if compare_words_list["word_score"]>winning_word['word_score']:
-        #     winning_word = word
-        #     winning_word_list.clear()
-        #     winning_word_list.append(word)
-        # elif compare_words_list[word]==winning_word_list[0]:
-        #     winning_word_list.append(word)
-                  
-get_highest_word_score(['dog','zoo','dog','aaaaazqpoi'])
+#     winning_word = compare_words_list[0]
+#     winning_word_list = []
+#     for word in compare_words_list:
+#         print(word)
+#         if compare_words_list["word_score"]>winning_word['word_score']:
+#             winning_word = word
+#             winning_word_list.clear()
+#             winning_word_list.append(word)
+#         elif compare_words_list[word]==winning_word_list[0]:
+#             winning_word_list.append(word)
+# get_highest_word_score(['dog','zoo','dog','aaaaazqpoi'])
 
     # Emily's pseudo code:
     # So we want to look at the word_list
@@ -106,18 +104,26 @@ get_highest_word_score(['dog','zoo','dog','aaaaazqpoi'])
     # IF some words are tied, choose which has the shorter len
     # HOWEVER, if a word is 10 letters long, use that instead
     # If the words are the same len, then use whatever came first (maybe use index func)
+# def get_highest_word_score(word_list):
+#     highest_score = 0
+#     winning_word = None
+#     for word in word_list:
+#         if score_word(word) > highest_score:
+#             highest_score = score_word(word)
+#             winning_word = word
+#         elif score_word(word) == highest_score:
+#             if (len(word) == len(winning_word)
+#             or len(winning_word) == 10):
+#                 continue
+#             elif len(word) == 10:
+#                 winning_word = word
+#             elif len(word) < len(winning_word):
+#                 winning_word = word
+#     best_word = (winning_word, highest_score)
+#     return best_word
 
-    # highest_score = 0
-    # winning_word is None
-    # for word in word_list:
-        # if score_word(word) > highest_score:
-            # highest_score = score_word(word)
-            # winning_word = word
-        # elif score_word(word) == highest_score:
-            # if len(word) == len(winning_word):
-                # continue
-            # elif len(word) == 10:  <-- might be an issue if prev winning_word is already 10?
-                # winning_word = word
-            # elif len(word) < len(winning_word):
-                # winning_word = word
-    # best_word = (winning_word, highest_score)
+
+# Bianca's notes:
+# Emily's code passes all tests except one: test_get_highest_word_tie_prefers_ten_letters()
+# I added line 116 ('or len(winning_word) == 10')  
+# This correction helps us get past that last test
