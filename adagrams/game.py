@@ -99,4 +99,15 @@ def score_word(word):
     return word_score
 
 def get_highest_word_score(word_list):
-    pass
+    
+    score_dict = {}  
+    for word in word_list:
+        score = score_word(word) #this returns an int 
+        score_dict[word] = score
+
+    highest_score_value = max(score_dict.values())
+    highest_score_key = max(score_dict, key=score_dict.get)
+    
+    word_tupl = (highest_score_key, highest_score_value) 
+    
+    return word_tupl
