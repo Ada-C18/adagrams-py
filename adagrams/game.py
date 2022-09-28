@@ -141,47 +141,35 @@ def score_word(word):
         score += 8
     return score
 
-# def get_highest_word_score(word_list):
-#     word_tuple_list = []
-#     highest_score = word_tuple_list[0][1]
-#     for word in word_list:
-#         score = score_word(word)
-#         length = len(word)
-#         tuple = (word, score, length)
-#         word_tuple_list.append(tuple)
-#         if tuple[1] > highest_score:
-#             highest_score = tuple[1]
-
-# ****** also talk about wave 3 test stuff from slack #study-habits channel
-
-# work in progress *******
 def get_highest_word_score(word_list):
-    # need to update variable "tuple" to "word_tuple" or similar
+    # list to store tuples
     word_tuple_list = []
-    # we can eliminate the next two lines if we sort the word_tuple_list
-    # in such a way that the highest score is always the 0th tuple
-    highest_score_tuple = ()
-    highest_score = 0
-
+    # make a tuple with word, score and length
+    # append the tuples to word_tuple_list
     for word in word_list:
         score = score_word(word)
         length = len(word)
         word_tuple = (word, score, length)
         word_tuple_list.append(word_tuple)
-        if word_tuple[1] > highest_score:
-            highest_score_tuple = word_tuple
-            highest_score = word_tuple[1]
-        elif word_tuple[1] == highest_score:
-            if word_tuple[2] == 10 and highest_score_tuple[2] == 10:
-                break 
-            elif word_tuple[2] == 10:
-                highest_score_tuple = word_tuple
-                highest_score = word_tuple[1]
-            elif highest_score_tuple[2] == 10:
-                break
-            elif word_tuple[2] < highest_score_tuple[2]:
-                highest_score_tuple = word_tuple
-                highest_score = word_tuple[1]
-        else:
-            continue
+
+    highest_score_tuple = (word_tuple_list[0])
+    highest_score = word_tuple_list[0][1]
+    shortest_word_length = word_tuple_list[0][2]
+
+    # element[1] is score in each tuple
+    # element[2] is len of each word in each tuple
+    # determine highest tuple
+    # loops over each tuple in word tuple list
+    for element in word_tuple_list:
+        if element[1] > highest_score:
+            highest_score = element[1]
+            highest_score_tuple = element
+    # tie breaker
+        elif element[1] == highest_score:
+            if element[2] == 10:
+                highest_score_tuple = element
+                return highest_score_tuple
+            elif element[2] < shortest_word_length:
+                highest_score_tuple = element
+
     return highest_score_tuple
