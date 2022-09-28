@@ -4,13 +4,7 @@ from adagrams.game import score_word
 
 def test_score_word_accurate():
 
-    #Arrange
-    word = "WHIMSY"
 
-    #Act
-
-    word_score = score_word(word)
-    
     # Arrange
     #create a variable that represents a word
     word_test = "word"
@@ -26,12 +20,6 @@ def test_score_word_accurate():
 
 def test_score_word_accurate_ignores_case():
 
-    #Act
-
-
-    #Arrange
-    
-    
 
     # Arrange
     word = "AqUaphoBia"
@@ -48,13 +36,6 @@ def test_score_word_accurate_ignores_case():
 
 def test_score_zero_for_empty():
 
-    #Act
-
-
-    #Arrange 
-
-
-
     # Arrange
     word = ""
     
@@ -65,12 +46,6 @@ def test_score_zero_for_empty():
     assert word_score == 0
 
 def test_score_extra_points_for_seven_or_longer():
-
-    #Act
-
-
-    #Arrange
-
 
     # Arrange
     word = "DICTIONARY"
