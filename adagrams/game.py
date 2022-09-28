@@ -1,6 +1,5 @@
 def draw_letters():
     import random
-    # create letter pool
     LETTER_POOL = {
     'A': 9, 
     'B': 2, 
@@ -29,12 +28,10 @@ def draw_letters():
     'Y': 2, 
     'Z': 1
     }
-    # create temporary letter pool for selection process
     draw_pool = []
     for letter, frequency in LETTER_POOL.items():
         for i in range(frequency):
           draw_pool.append(letter)
-    # randomly draw 10 from temp letter pool and assign to hand 
     hand = []
     for i in range(10):
         piece_index = random.randint(0,len(draw_pool)-1)
