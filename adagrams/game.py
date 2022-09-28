@@ -105,7 +105,42 @@ def score_word(word):
 
 
 def get_highest_word_score(word_list):
-   pass
+    highest_score = 0
+    winning_word = None
+    for word in word_list:
+        score = score_word(word)
+    
+        # no ties
+        if score > highest_score:
+            highest_score = score
+            winning_word = word
+
+
+        # handle ties
+        if score == highest_score:
+            if len(word) == 10 and len(winning_word) != 10:
+                winning_word = word
+            elif len(word) < len(winning_word) and len(winning_word) != 10:
+                winning_word = word
+
+    return winning_word, highest_score
+
+
+
+
+
+
+
+        
+# get_highest_word_score(["apple", "orange"])
+
+    
+    
+
+
+
+
+
                 
  
                 
