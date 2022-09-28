@@ -53,6 +53,11 @@ LETTER_POINTS= {
     "Q" : 10,
     "Z" : 10,
     }
+
+#===========================================
+#                  WAVE 1
+#=========================================== 
+
 def draw_letters():    
     # make a copy of the dictionary so that original dictionary doesn't change
     pool_of_letters_copy = POOL_OF_LETTERS.copy()
@@ -71,6 +76,10 @@ def draw_letters():
             pool_of_letters_copy[hand] -= 1
     return hand_list
 
+#===========================================
+#                  WAVE 2
+#=========================================== 
+
 def uses_available_letters(word, letter_bank):
     # copy the letter bank so that original letter bank doesn't change
     letter_bank_copy =letter_bank.copy()
@@ -84,7 +93,11 @@ def uses_available_letters(word, letter_bank):
         else:
             return False    
     return True
-    
+
+#===========================================
+#                  WAVE 3
+#===========================================
+
 def score_word(word):
     score = 0
     for letter in word:
@@ -93,18 +106,25 @@ def score_word(word):
         score += 8
     return score
 
+#===========================================
+#                  WAVE 4
+#===========================================
+
 def get_highest_word_score(word_list):
+    # initialize highest_score and highest_word
     highest_score = 0
     highest_word = ()
     for word in word_list:
+        # conditionals if 2 or more words have the same score
         if score_word(word) == highest_score:
             if len(highest_word) == 10:
                 continue
+            # conditional if the word has 10 letters prioritize it but if it doesn't have 10 letters 
+            # prioritize a shorter word
             elif len(word) == 10 or len(word) < len(highest_word):
                 highest_word = word
         else:         
             if score_word(word) > highest_score:
                 highest_score = score_word(word)
-                highest_word = word
-            
+                highest_word = word            
     return (highest_word, highest_score) 
