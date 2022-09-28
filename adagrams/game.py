@@ -36,7 +36,7 @@ SCORE_CHART = {
     'A': 1, 
     'B': 3, 
     'C': 3, 
-    'D': 4, 
+    'D': 2, 
     'E': 1, 
     'F': 4, 
     'G': 2, 
@@ -111,8 +111,8 @@ def score_word(word):
     word = word.upper()
 
     letters_from_word = list(word)
-    
-    if length_of_word > 7 and length_of_word < 10:
+
+    if 7 <= length_of_word <= 10:    
         score_total += extra_points
 
     for letter in letters_from_word: 
@@ -120,6 +120,8 @@ def score_word(word):
             score_total += SCORE_CHART[letter]
 
     print(score_total)
+
+    return(score_total)
     
 
 def get_highest_word_score(word_list):
