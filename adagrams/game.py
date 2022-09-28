@@ -99,7 +99,7 @@ def score_word(word):
 
     # 4.     Find letter in score_dict and add key to points
     # 5. If length of word is greater than 7 and less than 10, add 8 to total points
-    if len(word) > 6 and len(word) < 10:
+    if len(word) > 6 and len(word) < 11: ##### MADE CHANGE HEREEEEEE #######
         points += 8
     # 6. Return points
     return points
