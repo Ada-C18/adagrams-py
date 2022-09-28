@@ -102,23 +102,25 @@ def uses_available_letters(word, letter_bank):
     return True
 
 
-print(uses_available_letters)
+# print(uses_available_letters)
 
 def score_word(word):
     score_total = 0
     extra_points = 8
-    length_of_word = len(letters_from_word)
+    length_of_word = len(word)
+    word = word.upper()
 
     letters_from_word = list(word)
     
     if length_of_word > 7 and length_of_word < 10:
         score_total += extra_points
 
-    for key,value in SCORE_CHART.items():
-        if letters_from_word in key:
-            score_total += value
+    for letter in letters_from_word: 
+        if letter in SCORE_CHART.keys():
+            score_total += SCORE_CHART[letter]
 
-    return score_total
+    print(score_total)
+    
 
 def get_highest_word_score(word_list):
     pass
