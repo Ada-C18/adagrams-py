@@ -18,7 +18,7 @@ def draw_letters():
     letter_pool_copy = letter_pool[:]
     hand_list = []
 
-    for i in (range(10)):
+    while len(hand_list) < 10:
         rand_num = random.randint(0, 25)
         letter_dict = letter_pool_copy[rand_num] 
         key = list(letter_dict.keys())[0]
