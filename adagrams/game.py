@@ -59,8 +59,6 @@ def uses_available_letters(word, letter_bank):
 
 
 def score_word(word):
-    # pass
-    total_points = 0
     point_value = [["A", "E", "I", "O", "U", "L", "N", "R", "S", "T"],
     ["D", "G"],
     ["B", "C", "M", "P"],
@@ -71,6 +69,9 @@ def score_word(word):
 
     if len(word) >= 7:
         total_points = 8
+    else:
+        total_points = 0
+
     for letter in word.upper():
         if letter in point_value[0]:
             total_points += 1
