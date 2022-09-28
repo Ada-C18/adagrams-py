@@ -166,12 +166,3 @@ def get_highest_word_score(word_list):
             if len(highest_scores[i][0]) >= 10:
                 return highest_scores[i]
         return highest_scores[0]
-
-    
-
-
-##-----------------------------------------##
-##-----------------HELPERS-----------------##
-##-----------------------------------------##
-def standardize_word_case(word):
-    return word.upper()
