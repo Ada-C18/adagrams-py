@@ -25,6 +25,7 @@ POOL_OF_LETTERS = {"A" : 9,
 	"X" : 1,
 	"Y" : 2,
 	"Z" : 1}
+
 LETTER_POINTS= {
     "A": 1,
     "E" : 1, 
@@ -52,8 +53,7 @@ LETTER_POINTS= {
     "Q" : 10,
     "Z" : 10,
     }
-def draw_letters():
-    
+def draw_letters():    
     # make a copy of the dictionary so that original dictionary doesn't change
     pool_of_letters_copy = POOL_OF_LETTERS.copy()
     # taking just the keys of the dictionary (all the letters)
@@ -94,4 +94,17 @@ def score_word(word):
     return score
 
 def get_highest_word_score(word_list):
-    pass
+    highest_score = 0
+    highest_word = ()
+    for word in word_list:
+        if score_word(word) == highest_score:
+            if len(highest_word) == 10:
+                continue
+            elif len(word) == 10 or len(word) < len(highest_word):
+                highest_word = word
+        else:         
+            if score_word(word) > highest_score:
+                highest_score = score_word(word)
+                highest_word = word
+            
+    return (highest_word, highest_score) 
