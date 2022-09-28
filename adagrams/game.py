@@ -95,27 +95,53 @@ def score_word(word):
     
     return score
 
+def replace_highest_values(high_word, high_score, new_word, new_score):
+    high_word = new_word
+    high_score= new_score
+    
+    return high_word, high_score
+
 def get_highest_word_score(word_list):
     highest_score = 0
     highest_word = ""
     for word in word_list:
         score_of_word = score_word(word)
         if score_of_word > highest_score:
-            highest_score = score_of_word
-            highest_word = word
+            highest_word, highest_score = replace_highest_values(highest_word, highest_score, word, score_of_word)
         elif score_of_word == highest_score:
             if len(word) == 10 and len(highest_word) !=10:
-                highest_score = score_of_word
-                highest_word = word
+                highest_word, highest_score = replace_highest_values(highest_word, highest_score, word, score_of_word)
             elif len(word) <len(highest_word) and len(highest_word) != 10:
-                highest_score = score_of_word
-                highest_word = word
+                highest_word, highest_score = replace_highest_values(highest_word, highest_score, word, score_of_word)
         print(score_of_word)
     return tuple([highest_word, highest_score])
 
 
 
-def get_highest_word_score_lisa_play(word_list):
+
+
+# def get_highest_word_score_working(word_list):
+#     highest_score = 0
+#     highest_word = ""
+#     for word in word_list:
+#         score_of_word = score_word(word)
+#         if score_of_word > highest_score:
+#             highest_score = score_of_word
+#             highest_word = word
+#         elif score_of_word == highest_score:
+#             if len(word) == 10 and len(highest_word) !=10:
+#                 highest_score = score_of_word
+#                 highest_word = word
+#             elif len(word) <len(highest_word) and len(highest_word) != 10:
+#                 highest_score = score_of_word
+#                 highest_word = word
+#         print(score_of_word)
+#     return tuple([highest_word, highest_score])
+
+
+# A less efficient, but more awesome solution: 
+"""
+def get_highest_word_score(word_list):
     list_scores = []
 
     # checking for empty word_list input
@@ -132,43 +158,24 @@ def get_highest_word_score_lisa_play(word_list):
         list_scores.append(word_score_dict)
                  
     # print(list_scores)    
-    highest_word_score = max(list_scores, key = lambda word: word["score"])
-        
-    print(tuple([highest_word_score["word"], highest_word_score["score"]]))
-    return tuple([highest_word_score["word"], highest_word_score["score"]])
-
-get_highest_word_score_lisa_play(["XZ", "OOOOOOOOOO"])
-
-""" Here's what I've been working on and trying to figure out: 
+    highest_word_element = max(list_scores, key = lambda word: word["score"])
+    highest_score = highest_word_element["score"]
 
     highest_score_list = []
 
     for word in list_scores:
         if word['score'] == highest_score:
             highest_score_list.append(word)
-
+    
     if len(highest_score_list) == 1:
-        return highest_score_list
+        return tuple([highest_score_list[0]['word'], highest_score_list[0]['score']])
+        
     else:
         for word in highest_score_list:
             if word['len'] == 10:
-                print(word['word'], word['score'])
-            else: 
-                smallest_len = min(highest_score_list, key = lambda word: word["len"])
-                print(smallest_len['word'])
-                print(smallest_len['score'])
-                #print(tuple([smallest_len["word"], smallest_len["score"]]))
+                print(tuple([word['word'], word['score']])) 
+                return tuple([word['word'], word['score']]) 
+        smallest_len = min(highest_score_list, key = lambda word: word["len"])
+        return tuple([smallest_len['word'], smallest_len['score']]) # need to double-check tuple return
     
-
-get_highest_word_score_lisa_play(["CCX", "AAAA"])
-
-
-
-
-    
-
-
-
-
-
 """
