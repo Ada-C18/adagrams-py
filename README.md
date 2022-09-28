@@ -312,6 +312,22 @@ Implement a function called `get_highest_word_score` in `game.py`. This method s
     - ...unless one word has 10 letters. If the top score is tied between multiple words and one is 10 letters long, choose the one with 10 letters over the one with fewer tiles
     - If the there are multiple words that are the same score and the same length, pick the first one in the supplied list
 
+    #Pseudocode
+    -Create a variable set_core. Set it uo to zero.
+    -Empty list higest-score_list=[]
+    -For loop to iterarte in every word in wors_list
+    -call the function score_word for each word to get the score
+    -compare the score of the word with higest_score.
+    - if score > higest_score. Then, higest_score= score
+    -Clear the list before appending the word to the higest_score_list
+    Handeling tie!
+    - Create variable smallest_word. Assumes is the first item in higest_score_list
+    -Create a variable smallet_word_len. Assumes is the len of the first item in hisgest_score_list
+    -iterate in higest_score_list 
+    - if the len(word)== 10. The word wins
+    - if the len(word)< smallest_word_len. Replace smallest_word= word
+    
+
 
 
 

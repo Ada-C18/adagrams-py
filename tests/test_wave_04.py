@@ -1,42 +1,42 @@
-# import pytest
+import pytest
 
-# from adagrams.game import score_word, get_highest_word_score
+from adagrams.game import score_word, get_highest_word_score
 
-# def test_get_highest_word_score_accurate():
-#     # Arrange
-#     words = ["X", "XX", "XXX", "XXXX"]
+def test_get_highest_word_score_accurate():
+    # Arrange
+    words = ["X", "XX", "XXX", "XXXX"]
 
-#     # Act
-#     best_word = get_highest_word_score(words)
-#     # NOTE: best_word can be a tuple or a list
+    # Act
+    best_word = get_highest_word_score(words)
+    # NOTE: best_word can be a tuple or a list
 
-#     # Assert
-#     assert best_word[0] == "XXXX"
-#     assert best_word[1] == 32
+    # Assert
+    assert best_word[0] == "XXXX"
+    assert best_word[1] == 32
 
-# def test_get_highest_word_score_accurate_unsorted_list():
-#     # Arrange
-#     words = ["XXX", "XXXX", "XX", "X"]
+def test_get_highest_word_score_accurate_unsorted_list():
+    # Arrange
+    words = ["XXX", "XXXX", "XX", "X"]
 
-#     # Act
-#     best_word = get_highest_word_score(words)
+    # Act
+    best_word = get_highest_word_score(words)
 
-#     # Assert
-#     assert best_word[0] == "XXXX"
-#     assert best_word[1] == 32
+    # Assert
+    assert best_word[0] == "XXXX"
+    assert best_word[1] == 32
 
-# def test_get_highest_word_tie_prefers_shorter_word():
-#     # Arrange
-#     words = ["MMMM", "WWW"]
+def test_get_highest_word_tie_prefers_shorter_word():
+    # Arrange
+    words = ["MMMM", "WWW"]
 
-#     # Act
-#     best_word = get_highest_word_score(words)
+    # Act
+    best_word = get_highest_word_score(words)
 
-#     # Assert
-#     assert score_word(words[0]) == 12
-#     assert score_word(words[1]) == 12
-#     assert best_word[0] == "WWW"
-#     assert best_word[1] == 12
+    # Assert
+    assert score_word(words[0]) == 12
+    assert score_word(words[1]) == 12
+    assert best_word[0] == "WWW"
+    assert best_word[1] == 12
 
 # def test_get_highest_word_tie_prefers_shorter_word_unsorted_list():
 #     # Arrange
