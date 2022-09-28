@@ -64,15 +64,11 @@ def uses_available_letters(word, letter_bank):
     true_false = []
     word = word.upper()
     word_list = []
-    print(letter_bank)
-    print("-------")
-    print(word)
+
     for letter in word:
         word_list.append(letter)
         if letter in letter_bank and word_list.count(letter) == letter_bank.count(letter):
             true_false.append(True)
-            # letter_of_index = letter_bank.index(letter)
-            # letter_bank.pop(letter_of_index)
         else:
             true_false.append(False)
     if False in true_false:
@@ -81,7 +77,28 @@ def uses_available_letters(word, letter_bank):
         return True
 
 def score_word(word):
-    pass
+    scoreboard = {
+        1 : "A, E, I, O, U, L, N, R, S, T",
+        2 : "D, G",
+        3 : "B, C, M, P",
+        4 : "F, H, V, W, Y",
+        5 : "K",
+        8 : "J, X",
+        10 : "Q, Z"
+    }
+    word = word.upper()
+    #- If the length of the word is 7, 8, 9, or 10, 
+    # then the word gets an additional 8 points
+    score = 0
+    for letter in word:
+        for key, value in scoreboard.items():
+            if letter in value:
+                score += key
+    if len(word) > 6:
+        score += 8
+    return score
+
+
 
 def get_highest_word_score(word_list):
     pass
