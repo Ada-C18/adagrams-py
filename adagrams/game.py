@@ -1,6 +1,6 @@
 import string
 from random import sample
-# from collections import Counter
+from collections import Counter
 
 def draw_letters():
 
@@ -48,7 +48,23 @@ def draw_letters():
 
 
 def uses_available_letters(word, letter_bank):
-    pass
+
+    word = word.upper()
+
+    for letter in word:
+        if letter not in letter_bank:
+            return False
+
+    count_word = Counter(word)
+    count_letter_bank = Counter(letter_bank)
+
+    for k, v in count_word.items():
+        if k in count_letter_bank:
+            if v <= count_letter_bank[k]:
+                return True
+
+    return False
+
 
 def score_word(word):
     pass
