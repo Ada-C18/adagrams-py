@@ -62,7 +62,7 @@ LETTER_VALUES = {"A": 1,
 
 def draw_letters() -> list:
     """
-    Returns a list with ten letters chosen randomly from LETTER_POOL
+    Returns a list with ten letter-tiles chosen randomly from LETTER_POOL
     """
     letter_pool_copy = LETTER_POOL.copy()
     hand = []
@@ -90,4 +90,32 @@ def uses_available_letters(word: str, letter_bank: list) -> bool:
     return True
 
 
+def score_word(word: str) -> int:
+    score = 0
+    for letter in word:
+        score += LETTER_VALUES[letter.upper()]
+    if len(word) > 6:
+        score += 8
+    
+    return score
 
+
+def get_highest_word_score(word_list: list) -> tuple:
+    """
+    Returns a tuple (word, score) with the highest score
+    """
+    score = score_word
+    highest_score = ("", 0)
+
+    for word in word_list: 
+        if score(word) > highest_score[1]:
+            highest_score = (word, score(word))
+        elif score(word) == highest_score[1]: 
+            if len(highest_score[0]) == 10: 
+                highest_score = highest_score 
+            elif len(word) == 10: 
+                highest_score = (word, score(word))
+            elif len(word) < len(highest_score[0]):
+                highest_score = (word, score(word))
+                
+    return highest_score
