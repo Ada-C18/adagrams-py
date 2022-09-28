@@ -49,7 +49,7 @@ def draw_letters():
         if letter_bank_dict[letter] > 0:
             res_letters.append(letter)
             letter_bank_dict[letter] -= 1
-    print(res_letters)
+    #print(res_letters)
     return res_letters
 
 def create_dict(data):
@@ -80,11 +80,35 @@ def uses_available_letters(word, letter_bank):
                 return False        
     return True
 
-   
+#def update_dict(key, value, score_dict):
+#    return score_dict.update(dict.fromkeys([key], value))
+     
 
+def score_word(word):   
+# word as string
+# variable stores the final score
+# if len(word) >= 7 and <= 10, add 8 points
+# loop thru each element of in word
+# add points based on the value of the key
 
-def score_word(word):
-    pass
+    total_score = 0
+    word = word.upper()
+    if len(word) >= 7 and len(word) <= 10:
+        total_score += 8
+    
+    score_dict = dict.fromkeys(['A', 'E', 'I', 'O', 'U', 'L', 'N', 'R', 'S', 'T'], 1)
+    score_dict.update(dict.fromkeys (['D', 'G'], 2))
+    score_dict.update(dict.fromkeys(['B', 'C', 'M', 'P'], 3))
+    score_dict.update(dict.fromkeys (['F', 'H', 'V', 'W', 'Y'], 4))
+    score_dict.update(dict.fromkeys (['K'], 5))
+    score_dict.update(dict.fromkeys (['J', 'X'], 8))
+    score_dict.update(dict.fromkeys (['Q','Z'], 10))
+        
+    for letter in word:
+        if letter in score_dict.keys():
+            total_score += score_dict[letter]
+    return total_score
+
 
 def get_highest_word_score(word_list):
     pass
