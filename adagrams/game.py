@@ -40,14 +40,14 @@ def draw_letters():
     return hand
 
 def uses_available_letters(word, letter_bank):
+    word = word.upper()
     letter_frequency={}
     
     for letter in word:
-        #if letter.upper() or letter.lower():
-            if letter in letter_frequency:
-                letter_frequency[letter]+=1
-            else:
-                letter_frequency[letter]=1
+        if letter in letter_frequency:
+            letter_frequency[letter]+=1
+        else:
+            letter_frequency[letter]=1
     if letter_frequency[letter] <= letter_bank.count(letter):
         return True
     else:
