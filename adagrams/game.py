@@ -30,9 +30,12 @@ LETTER_POOL = {
     'Z': 1
 }
 
+##    Main Function #1    ##
 def draw_letters():
     letters = []
         
+
+#   RANGE(11) is not always returning the amount of letters we need,
     for i in range(11):
         random_letter = random.choice(list(LETTER_POOL.keys()))
         # print(f"RL: {random_letter}")
@@ -44,6 +47,9 @@ def draw_letters():
     return letters
 
 
+
+
+# Helper Function
 def convert_to_ignore_case(word, letter_bank):
     # convert all letters in word and letter_bank to ignore case
     # use casefold() method to remove all distinctions in string (similar to .lower() but more "aggresive")
@@ -60,6 +66,9 @@ def convert_to_ignore_case(word, letter_bank):
     
     return word, letter_bank
 
+
+
+# Helper Function: 
 def check_word_in_letter_bank(word, letter_bank):
     # check each letter in word if it is in letter bank
     # create variable to count each time letter is found in letter bank
@@ -88,10 +97,13 @@ def check_word_in_letter_bank(word, letter_bank):
 
 # print(check_word_in_letter_bank("DOGF", ["D", "O", "G", "X", "X", "X", "X", "X", "X", "X"]))
 
+
+
+##    Main Function #2   ##
 def uses_available_letters(word, letter_bank):
     pass
 
-#   Check if word is in random 10 letter list (Helper Funct)
+#   Check if word is only using random 10 letter list (Helper Funct)
 #       - it ignores letter case
 #   Make sure that each letter is only used as many times as
 #       it appears on the list of random letters.
