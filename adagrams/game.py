@@ -104,10 +104,9 @@ def get_highest_word_score(word_list):
     for word in highest_scoring_words:
         if (len(word) == 10):
             return (word, score_word(word))
-        else:
-            if len(word) < shortest_word_len:
-                shortest_word_len = len(word)
-                shortest_word = word
+        elif len(word) < shortest_word_len:
+            shortest_word_len = len(word)
+            shortest_word = word
     return (shortest_word, score_word(shortest_word))    
 
 LETTER_POOL = {
