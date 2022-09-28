@@ -1,4 +1,11 @@
 # AdaGrams
+Nina goes to bed at 9PM, so prefer not to work after then. Any extra working can happen in the morning. 
+
+Alma's learning style like to know and understand the theory first and then apply second. Nina's learning style is to learn slowly and revisit many times.
+
+Alma prefers the feedback directly and honestly. Also to have feedback respond in the moment, rather than after the moment. Nina also prefers direct feedback. 
+
+Alma wants to improve more active communication, rather than listening the whole time. Nina wants to improve her driving skills by actively listening. 
 
 ## Skills Assessed
 
