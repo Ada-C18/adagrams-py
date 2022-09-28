@@ -98,15 +98,21 @@ def score_word(word):
     return score
 
 
-    
-
-
-
-
-
-
-
-
-
 def get_highest_word_score(word_list):
-    pass
+    ''' reads a word_list and scores each word
+    finds highest scoring word
+    returns tuple of word and score
+    tie breakers:
+        word with fewest letters OR
+        word with 10 letters OR
+        first one in list for multiple
+    '''
+    highest_score = 0
+    top_word = ""
+    for word in word_list:
+        score = score_word(word)
+        if score > highest_score:
+            highest_score = score
+            top_word = word
+    the_winner = (top_word, highest_score)
+    return the_winner
