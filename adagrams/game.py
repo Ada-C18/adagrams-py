@@ -101,4 +101,26 @@ def score_word(word):
 
 
 def get_highest_word_score(word_list):
-    pass
+    tuple = ()
+    winner_score = 0
+    word_score = {}
+    winner_word = ''
+    for word in word_list:
+        word_score[word] = score_word(word)
+    for key, value in word_score.items():
+        if value > winner_score:
+            winner_score = value
+            winner_word = key
+        if value == winner_score:
+            if len(key) < len(winner_word):
+                winner_word = key
+
+        tuple = (winner_word, winner_score)
+    return tuple
+    # winner = ()
+    # word_score = {}
+    # for word in word_list:
+    #     word_score[word] = score_word(word)
+    # for key, value in word_score.items():
+    #     winner + max(value),key
+    # return winner

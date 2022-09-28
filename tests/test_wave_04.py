@@ -2,7 +2,7 @@ import pytest
 
 from adagrams.game import score_word, get_highest_word_score
 
-@pytest.mark.skip
+#@pytest.mark.skip
 def test_get_highest_word_score_accurate():
     # Arrange
     words = ["X", "XX", "XXX", "XXXX"]
@@ -15,7 +15,7 @@ def test_get_highest_word_score_accurate():
     assert best_word[0] == "XXXX"
     assert best_word[1] == 32
 
-@pytest.mark.skip
+#@pytest.mark.skip
 def test_get_highest_word_score_accurate_unsorted_list():
     # Arrange
     words = ["XXX", "XXXX", "XX", "X"]
@@ -27,7 +27,7 @@ def test_get_highest_word_score_accurate_unsorted_list():
     assert best_word[0] == "XXXX"
     assert best_word[1] == 32
 
-@pytest.mark.skip
+#@pytest.mark.skip
 def test_get_highest_word_tie_prefers_shorter_word():
     # Arrange
     words = ["MMMM", "WWW"]
