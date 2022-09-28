@@ -87,6 +87,9 @@ def uses_available_letters(word, letter_bank):
           return False
 
 def score_word(word):
+  if type(word) is not str:
+    return 0
+  
   score = 0
   if len(word) > 6:
     score += 8
