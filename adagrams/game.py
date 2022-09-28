@@ -37,10 +37,10 @@ def draw_letters():
     # randomly draw 10 from temp letter pool and assign to hand 
     hand = []
     for i in range(10):
-        piece = random.randint(0,len(draw_pool)-1)
-        selection = draw_pool[piece]
-        hand.append(selection)
-        draw_pool.remove(selection)
+        piece_index = random.randint(0,len(draw_pool)-1)
+        piece = draw_pool[piece_index]
+        hand.append(piece)
+        draw_pool.remove(piece)
     return hand
 
 def uses_available_letters(word, letter_bank):
