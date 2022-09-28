@@ -1,5 +1,7 @@
+from operator import length_hint
 import random
 from lib2to3.pgen2.pgen import DFAState
+from urllib.parse import MAX_CACHE_SIZE
 
 # initiate the empty list 
 # to keep the original pool - make a copy of dictionary
@@ -138,5 +140,29 @@ def score_word(word):
 
 
 def get_highest_word_score(word_list):
-    # return tuple (word, total_score)
+    # return tuple (word, max_score)
     
+    max_score = 0
+    final_word_dict = {}
+    for word in word_list:
+        word_score = score_word(word)
+        if word_score > max_score:
+            max_score = word_score
+    for word in word_list:
+        if score_word(word) == max_score:
+            final_word_dict[word] = len(word)
+    print(final_word_dict)
+
+
+    if len(final_word_dict) == 1:
+        return final_word_dict[word], max_score
+    else:
+        if 10 in final_word_dict.values():
+            name = [k for k, v in final_word_dict.items() if v == 10]   
+            return (name, max_score)    
+        elif 10 not in final_word_dict.values():
+            name = min(final_word_dict, key=final_word_dict.get)
+            return (name, max_score)
+        #else: #there two same length
+
+            #return the first one 
