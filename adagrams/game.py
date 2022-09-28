@@ -77,7 +77,7 @@ def draw_letters():
 
 def uses_available_letters(word, letter_bank):
     word = word.upper()
-    # make deep copy of letter bank after importing copy module
+    # make copy of letter bank 
     letters_copy = letter_bank.copy()
 
     for letter in word:
