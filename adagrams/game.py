@@ -30,6 +30,36 @@ LETTER_POOL = {
     'Z': 1
 }
 
+SCORE_CHART = {
+    'A': 1, 
+    'B': 3, 
+    'C': 3, 
+    'D': 2, 
+    'E': 1, 
+    'F': 4, 
+    'G': 2, 
+    'H': 4, 
+    'I': 1, 
+    'J': 8, 
+    'K': 5, 
+    'L': 1, 
+    'M': 3, 
+    'N': 1, 
+    'O': 1, 
+    'P': 3, 
+    'Q': 10, 
+    'R': 1, 
+    'S': 1, 
+    'T': 1, 
+    'U': 1, 
+    'V': 4, 
+    'W': 4, 
+    'X': 8, 
+    'Y': 4, 
+    'Z': 10
+}
+
+
 ##    Main Function #1    ##
 def draw_letters():
     letters = []
@@ -91,7 +121,7 @@ def draw_letters():
 
 #     return False
 
-# print(check_word_in_letter_bank("DOGF", ["D", "O", "G", "X", "X", "X", "X", "X", "X", "X"]))
+
 
 
 
@@ -109,9 +139,11 @@ def uses_available_letters(word, letter_bank):
     return True
 
 
-
 def score_word(word):
-    pass
+#   word = string of characters
+#   each letter has a point value based on the table
+#   if length of word is 7+, the total adds 8 additiona points
+#   returns an integer w/ number of points
 
 def get_highest_word_score(word_list):
     pass
