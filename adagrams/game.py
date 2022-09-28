@@ -50,9 +50,8 @@ def draw_letters():
     bag_of_letters = dict_to_list(LETTER_POOL)
     hand_as_numbers = []
     hand_as_letters = []
-    
-    # 0(n)
-    while len(hand_as_letters) < 10:
+
+    while len(hand_as_letters) < 10: # O(1)
         index = random.randint(0,len(bag_of_letters)-1)
         if index not in hand_as_numbers: # 0(n)
             hand_as_numbers.append(index) # n(1)
@@ -125,8 +124,8 @@ def score_word(word):
     3. Return score
     '''
     score = 0
-    for letter in word.upper():
-        score += SCORING[letter]
+    for letter in word.upper(): # O(n)
+        score += SCORING[letter] # 0(1)
         
     if 7 <= len(word) <= 10:
         score += 8
@@ -148,36 +147,20 @@ def get_highest_word_score(word_list):
     Ariam
     '''
     words_and_scores = {}
-    # O(n)
-    for word in word_list:
-        words_and_scores[word] = score_word(word)
-    # O(n)
-    highest_score = max(words_and_scores.values())
+    for word in word_list: # O(n)
+        words_and_scores[word] = score_word(word) # O(1)
+    
+    highest_score = max(words_and_scores.values()) # O(n)
+    highest_scoring_words = [word for word, score in words_and_scores.items() if score == highest_score] # O(n)
+    winning_word = highest_scoring_words[0] # 0(1)
 
-    highest_scores = []
-    # O(n)
-    for word, score in words_and_scores.items():
-        if score == highest_score:
-            highest_scores.append(word)
-
-    winning_word = highest_scores[0]
-
-    # worse case scenario: O(n + n + n + n) = O(4n) = O(n) ****************************** WORK ON THIS ***************************
-    if len(highest_scores) != 1:
+    # worse case scenario: O(n + n + n) = O(3n) = O(n) ****************************** WORK ON THIS ***************************
+    if len(highest_scoring_words) != 1:
         # tie-handling: check if there is string with 10 characters, otherwise return string with fewest characters
-        # O(n)
-        words_with_10 = [word for word in highest_scores if len(word) == 10]
-        # O(n)
-        if words_with_10:
-            target_length = 10
-        else:
-            # O(n)
-            target_length = len(min(highest_scores, key=len))
-
-        # O(n)
-        for word in highest_scores:
-            if len(word) == target_length:
-                winning_word = word
-                break 
+        words_with_10 = [word for word in highest_scoring_words if len(word) == 10] # O(n)
+        try:
+            winning_word = words_with_10[0] # 0(1)
+        except:
+            winning_word = min(highest_scoring_words, key=len) # O(n)
     
     return (winning_word, words_and_scores[winning_word])
