@@ -105,33 +105,44 @@ def score_word(word):
     return score
 
 def get_highest_word_score(word_list):
-    high_score = 0 
-    high_score_word = None
-    high_score_words = []
+    word_data_list = []
+    # created a dictionary to access the data keep score and word
     for word in word_list:
-        if high_score < score_word(word):
-            high_score = score_word(word)
-            high_score_word = word
+        word_dic = {}
+        word_dic["word"] = word
+        word_dic["score"] = score_word(word)
+        word_dic["length"] = len(word)
+        word_data_list.append(word_dic)
 
-    for word in word_list:
-        if score_word(word) == high_score:
-            high_score_words.append(word)
-    highest_word_length = 0 
+    highest_score = 0 
+    highest_score_words = []
+    # Iterated over the dictionary to compare each string in the dictionary 
+    for word_dic in word_data_list: 
+        if word_dic["score"] > highest_score:
+            highest_score = word_dic["score"]
+            highest_score_words = [word_dic]
+        elif word_dic["score"] == highest_score:
+            highest_score_words.append(word_dic)
+    
+    if len(highest_score_words) == 1:
+        return (highest_score_words[0]["word"],highest_score)
+    else: 
+        fewest_length = highest_score_words[0]["length"]
+        fewest_length_words = []
+        for dic in highest_score_words:
+            if dic["length"] == 10:
+                high_score_word = dic["word"]
+                break
+            else:
+                # compare the dictionarys, length of word
+                for word_dic in highest_score_words:
+                    if word_dic['length'] < fewest_length:
+                        fewest_length = word_dic["length"]
+                        fewest_length_words = [word_dic]
+                    elif word_dic["length"] == fewest_length:
+                        fewest_length_words.append(word_dic)
+            high_score_word = fewest_length_words[0]["word"]
 
-    for word in high_score_words:
-        if len(word) == 10:
-            high_score_word = word
-            return "Winner"
 
-    word_value_dic = {}
-    for word in high_score_word:
-        word[word] = len(word)
-        if len(word) > high_score_words:
-            min(word_value_dic.values())
-                return word_value_dic
-            
-            
-
-
-        return(high_score_word , high_score)
+        return(high_score_word, highest_score)
         
