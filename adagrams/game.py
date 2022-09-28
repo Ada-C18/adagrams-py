@@ -37,27 +37,26 @@ SCORE_CHART = {"A": 1, "E": 1, "I": 1, "O": 1, "U": 1, "L": 1, "N": 1 , "R": 1, 
 
 def draw_letters():
 
-
-    letters=[]
-    letter_bank=[]
+    letters = []
+    letter_bank = []
     for letter in LETTER_POOL.items():
         letters.extend(repeat(letter[0],letter[1]))
     
-    while len(letter_bank)<10:
-        random_letter=random.choice(letters)
+    while len(letter_bank) < 10:
+        random_letter = random.choice(letters)
         letter_bank.append(random_letter)
         letters.remove(random_letter)
-        if len(letter_bank)==10:
+        if len(letter_bank) == 10:
             break
 
     return letter_bank
 
 def uses_available_letters(word, letter_bank):
     
-    letter_bank_copy=letter_bank.copy()
-    upper_word=word.upper()
+    letter_bank_copy = letter_bank.copy()
+    upper_word = word.upper()
     
-    if len(upper_word)>len(letter_bank_copy):
+    if len(upper_word) > len(letter_bank_copy):
         return False
     for letter in upper_word:
         if letter not in letter_bank_copy:
@@ -69,14 +68,13 @@ def uses_available_letters(word, letter_bank):
 
 def score_word(word):
     word = word.upper()
-    bonus_len = [7, 8, 9, 10]
     score = 0
     if len(word):
         for letter in word:
             if letter in SCORE_CHART:
                 score += SCORE_CHART[letter]
 
-        if len(word) in bonus_len:
+        if len(word) > 6:
             score += 8
         return score
     return 0
@@ -106,5 +104,3 @@ def get_highest_word_score(word_list):
             winner = key, value
             return winner
     
-    
-get_highest_word_score(["AAAAAAAAAA", "BBBBBB"])
