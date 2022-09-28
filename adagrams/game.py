@@ -57,6 +57,7 @@ def uses_available_letters(word, letter_bank):
             letter_bank_copy.remove(letter)
     return True
 
+### Wave 3: score_word
 
 def score_word(word):
     points_dict = {
@@ -96,46 +97,6 @@ def score_word(word):
         total_points += 8 
     return total_points
 
+### Wave 4: get_highest_word_score
 def get_highest_word_score(word_list):
-    list_scoring = []
-    winning_words_list = []
-
-    
-    for word in word_list:
-        # print('word', word)
-        list_scoring.append(word)
-        list_scoring.append(int(score_word(word)))
-    
-    highest_score = max(list_scoring[1::2])
-
-                
-
-    print('list', list_scoring)
-
-    
-    
-    index_of_highest = list_scoring.index(highest_score)
-    index_word_of_highest_score = index_of_highest - 1
-    word_of_highest_score = list_scoring[index_word_of_highest_score]
-    winning_words_list.append(word_of_highest_score)
-    winning_words_list.append(highest_score)
-    
-    tiebreaker_list = []
-    print('type', type(winning_words_list))
-    print('len', len(winning_words_list))
-    print('list', winning_words_list)
-
-    if len(winning_words_list) > 2:
-
-        highest_score_tie = min(len(winning_words_list[0::2]))
-        print('>>>', highest_score_tie)
-        for word in winning_words_list:
-            if len(word) == highest_score_tie:
-                tiebreaker_list.append(word)
-                tiebreaker_list.append(highest_score)
-        return tiebreaker_list
-
-    else: 
-        return tuple(winning_words_list)
-    
-    #list_tuple =tuple(list_scoring)
+    pass
