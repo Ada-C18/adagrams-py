@@ -128,13 +128,13 @@ def get_highest_word_score_lisa_play(word_list):
         # populating new dict with words and score
         word_score_dict["word"] = word
         word_score_dict["score"] = score_of_word
+        word_score_dict["len"] = len(word_score_dict["word"])
         list_scores.append(word_score_dict)
-
-        
+                 
     # print(list_scores)    
     highest_word_score = max(list_scores, key = lambda word: word["score"])
         
     print(tuple([highest_word_score["word"], highest_word_score["score"]]))
     return tuple([highest_word_score["word"], highest_word_score["score"]])
 
-get_highest_word_score_lisa_play(["AAAAAAAAAA", "BBBBBB"])
+get_highest_word_score_lisa_play(["XZ", "OOOOOOOOOO"])
