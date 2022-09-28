@@ -117,40 +117,60 @@ def get_highest_word_score(word_list):
     Input: word_list, which is a list of strings
     Output: tuple of highest scoring word (word, score)
     '''
-
-    words_score = {}
+    
+    highest_score = 0
+    tie_words = []
     for word in word_list:
-        score = score_word(word)
-        words_score[word] = score
+        if highest_score < score_word(word):
+            highest_score = score_word(word)
+    
+    for word in word_list:
+        if score_word(word) == highest_score:
+            if len(word) == 10:
+                return (word,score_word(word))
 
-    highest_score = max(words_score.values())
+            elif 
+    
+            
 
     tie_dict = {}
     for key,value in words_score.items():
         if value == highest_score:
             tie_dict[key] = len(key)
-    print(tie_dict)
     most_letters = max(tie_dict.values())
     fewest_letters = min(tie_dict.values())
 
-    
-    # if length == most_letters and most_letters == 10:
     if most_letters == 10 :
         for word in tie_dict.keys():
             if tie_dict[word] == 10 :
-                return (word, words_score[word])    
-
-        
-            # print(length)
-            # print(most_letters)
-            # print((word, words_score[word]))
-            # return (word, words_score[word])
+                return (word, words_score[word])   
     else:
-        #  length == fewest_letters :
-            # return (word, words_score[word])
         for word in tie_dict.keys():
             if tie_dict[word] == fewest_letters:
                 return (word, words_score[word])
+    # words_score = {}
+    # for word in word_list:
+    #     score = score_word(word)
+    #     words_score[word] = score
+
+    # highest_score = max(words_score.values())
+
+    # tie_dict = {}
+    # for key,value in words_score.items():
+    #     if value == highest_score:
+    #         tie_dict[key] = len(key)
+    # print(tie_dict)
+    # most_letters = max(tie_dict.values())
+    # fewest_letters = min(tie_dict.values())
+
+    # if most_letters == 10 :
+    #     for word in tie_dict.keys():
+    #         if tie_dict[word] == 10 :
+    #             return (word, words_score[word])   
+    # else:
+    #     for word in tie_dict.keys():
+    #         if tie_dict[word] == fewest_letters:
+    #             return (word, words_score[word])
 
         
     
