@@ -36,14 +36,31 @@ def uses_available_letters(word, letter_bank):
     return True
 
 def score_word(word):
-    # initialize score = 0
     # initialize dictionary w/ each letter's value
+    LETTER_VALUES = {
+        'A': 1, 'B': 3, 'C': 3, 'D': 2, 'E': 1,
+        'F': 4, 'G': 2, 'H': 4, 'I': 1, 'J': 8,
+        'K': 5, 'L': 1, 'M': 3, 'N': 1, 'O': 1,
+        'P': 3, 'Q': 10, 'R': 1, 'S': 1, 'T': 1,
+        'U': 1, 'V': 4, 'W': 4, 'X': 8, 'Y': 4, 'Z': 10
+    }
+    # initialize score = 0
+    score = 0
+    
     # make sure word is in all caps and remove non-alphabetic characters
+    formatted_word = ""
+    for letter in word:
+        if letter.upper() in "ABCDEFGHIJKLMNOPQRSTUVWXYZ":
+            formatted_word += letter.upper()
+            
+    # iterate through all letters in word
+    for letter in formatted_word:
+    # look each letter up in score dict and add each letter's value to score
+        score += LETTER_VALUES[letter]
+
     # if length of word >= 7 and <= 10
     # add 8 points to score
-    # iterate through all letters in word
-    # look each letter up in score dict
-    # add each letter's value to score
+
     # return score
     pass
 
