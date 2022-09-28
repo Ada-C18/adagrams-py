@@ -74,57 +74,6 @@ def draw_letters():
 
 
 
-
-# # Helper Function
-# def convert_to_ignore_case(word, letter_bank):
-#     # convert all letters in word and letter_bank to ignore case
-#     # use casefold() method to remove all distinctions in string (similar to .lower() but more "aggresive")
-#     # use list comprehensions to use casefold() on each letter in letter_bank
-    
-#     # print(f"word before converting: {word}")
-#     # print(f"letter_bank before converting: {letter_bank}, \n")
-
-#     word = word.casefold()
-#     letter_bank = [letter.casefold() for letter in letter_bank]
-
-#     # print(f"word after converting: {word}")
-#     # print(f"letter_bank after converting: {letter_bank}, \n")
-    
-#     return word, letter_bank
-
-
-
-# # Helper Function: 
-# def check_word_in_letter_bank(word, letter_bank):
-#     # check each letter in word if it is in letter bank
-#     # create variable to count each time letter is found in letter bank
-#     # compare count to len(word)
-#     # if count and len(word) are equal return True
-#     # if not equal, return False
-
-#     word, letter_bank = convert_to_ignore_case(word, letter_bank)
-
-#     print(f"word is: {word}")
-#     print(f"letter bank is: {letter_bank}")
-
-#     letter_count = 0
-
-#     for letter in word:
-#         if letter in letter_bank:
-#             letter_count +=1
-
-#     print(f"letter count: {letter_count}")
-#     print(f"word lenth: {len(word)}")
-
-#     if letter_count == len(word):
-#         return True
-
-#     return False
-
-
-
-
-
 ##    Main Function #2   ##
 def uses_available_letters(word, letter_bank):
     available_letters = letter_bank[:]
@@ -139,11 +88,21 @@ def uses_available_letters(word, letter_bank):
     return True
 
 
+
 def score_word(word):
-#   word = string of characters
-#   each letter has a point value based on the table
-#   if length of word is 7+, the total adds 8 additiona points
-#   returns an integer w/ number of points
+    score = 0
+    upper_word = word.upper()
+
+    for letter in upper_word:
+        if letter in SCORE_CHART:
+            score += SCORE_CHART[letter]
+
+    if len(word) >= 7:
+        score += 8
+
+    return score
+
+
 
 def get_highest_word_score(word_list):
     pass
