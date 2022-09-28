@@ -1,13 +1,12 @@
 import random
 
-letter_dict = {
+def draw_letters():
+    letter_dict = {
                 "A" : 9 , "N" : 6, "B" : 2, "O" : 8, "C" : 2, "P" : 2, "D" : 4, "Q" : 1,
                 "E" : 12, "R" : 6, "F": 2, "S" : 4, "G" : 3, "T" : 6, "H" : 2, "U" : 4,
                 "I" : 9, "V" : 2, "J" : 1, "W" : 2, "K" : 1, "X" : 1, "L" : 4, "Y" : 2,
                 "M" : 2, "Z" : 1 
-                }    
-
-def draw_letters():    
+                }     
     letter_pool = []
     for letter in letter_dict:
         letter_pool += list(letter) * letter_dict[letter]
@@ -34,17 +33,13 @@ def score_word(word):
                      'M': 3, 'P': 3, 'F': 4, 'H': 4, 'V': 4, 'W': 4, 'Y': 4,
                      'K': 5, 'J': 8, 'X': 8, 'Q': 10, 'Z': 10
                      }
-    score = 0
-    for letter in word.upper():
-        try:
-            score += letter_scores[letter]
-        except:
-            pass
+    total_points = 0
+    for letter in word:
+        points = letter_scores[letter]
+        total_points = total_points + points
     
-    if len(word) >= 7:
-        score += 8
-    
-    return score
+    return total_points
 
 def get_highest_word_score(word_list):
-    pass
+    # scores = [(word, score_word(word)) for word in word_list]
+    # return max(scores)[1]
