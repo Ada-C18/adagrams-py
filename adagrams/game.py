@@ -55,7 +55,7 @@ def draw_letters():
 
   user_letter_pool = []
   
-  for r in range(0,10):
+  while len(user_letter_pool) < 10:
     draw = random.randint(0, (len(letter_soup)-1))
     drawn_letter = letter_soup[draw]
 
@@ -63,7 +63,7 @@ def draw_letters():
       if letter['letter'] == drawn_letter:
         max_count = letter['quantity']
 
-    if user_letter_pool.count(drawn_letter) < max_count:
+    if user_letter_pool.count(drawn_letter) < letter_soup.count(drawn_letter):
       user_letter_pool.append(drawn_letter)
 
   return user_letter_pool
