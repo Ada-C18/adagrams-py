@@ -5,13 +5,13 @@ import string
 import random
 
 quantity_data = {1: ['Z', 'X', 'K', 'Q', 'J'],
-                 2: ['B','C','F','H','M', 'P','V','W','Y'],
-                 3: ['G'],
-                 4: ['D', 'L', 'S', 'U'],
-                 6: ['N', 'R', 'T'],
-                 8: ['O'],
-                 9: ['A', 'I'],
-                 12: ['E']}
+                  2: ['B','C','F','H','M', 'P','V','W','Y'],
+                  3: ['G'],
+                  4: ['D', 'L', 'S', 'U'],
+                  6: ['N', 'R', 'T'],
+                  8: ['O'],
+                  9: ['A', 'I'],
+                  12: ['E']}
 
 value_data = {1: ['A', 'E', 'I', 'O', 'U', 'L', 'N', 'R', 'S', 'T'],
               2: ['D','G'],
@@ -48,22 +48,22 @@ def draw_letters():
   letter_soup = []
 
   for data in alphabet_data_list:
-    for keys, values in data.items():
-      runner = 0
-      while runner < data['quantity']:
-        letter_soup.append(data['letter'])
-        runner += 1
+    runner = 0
+    while runner < data['quantity']:
+      letter_soup.append(data['letter'])
+      runner += 1
 
-  max_range = len(letter_soup) - 1
   user_letter_pool = []
   
-  for r in range(0,9):
-    draw = random.randint(0, max_range)
+  for r in range(0,10):
+    draw = random.randint(0, (len(letter_soup)-1))
     drawn_letter = letter_soup[draw]
 
-    if user_letter_pool.count(drawn_letter) == letter_soup.count(drawn_letter):
-      pass
-    else:
+    for letter in alphabet_data_list:
+      if letter['letter'] == drawn_letter:
+        max_count = letter['quantity']
+
+    if user_letter_pool.count(drawn_letter) < max_count:
       user_letter_pool.append(drawn_letter)
 
   return user_letter_pool
