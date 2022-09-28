@@ -1,5 +1,4 @@
 import random
-from collections import Counter
 
 # Lee Reyes and Aviva Gars Adagrams Project 
 LETTER_POOL =  {
@@ -36,36 +35,17 @@ def draw_letters():
     user_letter_list = []
     #changed from a constant 
     pool_of_letters = LETTER_POOL.copy()
-    # adagrams_pool = []
-    # adagrams_letter = []
-    # adagrams_number = []
-    # for let in pool_of_letters:
-    #     adagrams_letter.append(let)
-    # for num in pool_of_letters:
-    #     adagrams_number.append(pool_of_letters[num])
+    adagrams_pool = []
+    for key,value in pool_of_letters.items():
+        for i in range(value):
+            adagrams_pool.append(key)
 
-
-    # for letter in adagrams_letter:
-    #     letter_index = adagrams_letter.index(letter)
-    # for i in range (0, adagrams_number[letter_index]):
-    #     adagrams_pool.append(adagrams_letter[letter_index])
-
-
-    # for num in range(10):
-    #     choice = random.choice(adagrams_pool)
-    #     user_letter_list.append(choice)
-    #     # if adagrams_pool != 0:
-    #     #     user_letter_list.append(choice)
-    #     # del choice
-    # return user_letter_list
 
     for num in range(10):
-        choice = random.choice(list(pool_of_letters.keys()))
-        if pool_of_letters[choice] != 0:
-            user_letter_list.append(choice)
-            pool_of_letters[choice] -= 1
-            if pool_of_letters[choice] == 0:
-                del pool_of_letters[choice]
+        choice = random.choice(adagrams_pool)
+        user_letter_list.append(choice)
+        adagrams_pool.remove(choice)
+
 
     return user_letter_list
     
@@ -152,7 +132,7 @@ def get_highest_word_score(word_list):
         if winner == value:
          winner_list.append((key, value))
          
-    winner_list.sort(reverse = True, key = lambda x:x[1])
+    winner_list.sort(reverse = True, key = lambda tie:tie[1])
     max_val = winner_list[0][1]
     tie_list = [tie for tie in winner_list if tie[1]==max_val]
     tie_list.sort(key = lambda tie:len(tie[0]))
