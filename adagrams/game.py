@@ -92,4 +92,16 @@ def score_word(word):
     return score
 
 def get_highest_word_score(word_list):
-    pass
+    highest_score = ("",0)
+    for word in word_list:
+        current_tuple = (word, score_word(word))
+        if current_tuple[1] > highest_score[1]:
+            highest_score = current_tuple
+        elif current_tuple[1] == highest_score[1]:
+            if len(highest_score[0]) == 10 or len(current_tuple[0]) == len(highest_score[0]):
+                continue
+            elif len(current_tuple[0]) == 10 or len(current_tuple[0]) < len(highest_score[0]):
+                highest_score = current_tuple
+            
+    return highest_score
+    
