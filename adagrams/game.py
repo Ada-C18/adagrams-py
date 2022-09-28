@@ -1,40 +1,41 @@
 import random
 
+# letters with point value and distribution
+LETTERS = {
+    "A" : [1, 9],
+    "B" : [3, 2],
+    "C" : [3, 2],
+    "D" : [2, 4],
+    "E" : [1, 12],
+    "F" : [4, 2],
+    "G" : [2, 3],
+    "H" : [4, 2],
+    "I" : [1, 9],
+    "J" : [8, 1],
+    "K" : [5, 1],
+    "L" : [1, 4],
+    "M" : [3, 2],
+    "N" : [1, 6],
+    "O" : [1, 8],
+    "P" : [3, 2],
+    "Q" : [10, 1],
+    "R" : [1, 6],
+    "S" : [1, 4],
+    "T" : [1, 6],
+    "U" : [1, 4],
+    "V" : [4, 2],
+    "W" : [4, 2],
+    "X" : [8, 1],
+    "Y" : [4, 2],
+    "Z" : [10, 1]
+}
+
 def draw_letters():
-    
-    LETTER_DISTRIBUTION = {
-        "A" : 9,
-        "B" : 2,
-        "C" : 2,
-        "D" : 4,
-        "E" : 12,
-        "F" : 2,
-        "G" : 3,
-        "H" : 2,
-        "I" : 9,
-        "J" : 1,
-        "K" : 1,
-        "L" : 4,
-        "M" : 2,
-        "N" : 6,
-        "O" : 8,
-        "P" : 2,
-        "Q" : 1,
-        "R" : 6,
-        "S" : 4,
-        "T" : 6,
-        "U" : 4,
-        "V" : 2,
-        "W" : 2,
-        "X" : 1,
-        "Y" : 2,
-        "Z" : 1
-    }
 
     letter_pool = []
 
-    for key, value in LETTER_DISTRIBUTION.items():
-        letter_pool += key * value
+    for key, value in LETTERS.items():
+        letter_pool += key * value[1]
     
     user_letters = random.sample(letter_pool, k=10)
 
@@ -60,25 +61,12 @@ def uses_available_letters(word, letter_bank):
     return True
 
 def score_word(word):
-    
-    # we could make one dictionary outside of the functions that holds
-    # letter distribution and letter scores
-
-    score_chart = {
-        1 : ["A", "E", "I", "O", "U", "L", "N", "R", "S", "T"],
-        2 : ["D", "G"],
-        3 : ["B", "C", "M", "P"],
-        4 : ["F", "H", "V", "W", "Y"],
-        5 : ["K"],
-        8 : ["J", "X"],
-        10 : ["Q", "Z"]
-    }
 
     score = 0
     for letter in word.upper():
-        for key, value in score_chart.items():
-            if letter in value:
-                score += key
+        for key, value in LETTERS.items():
+            if letter == key:
+                score += value[0]
 
     if len(word) >= 7:
         score += 8
