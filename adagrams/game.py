@@ -91,7 +91,7 @@ def score_word(word):
             if letter in letter_list:
                 points += point
 
-    if len(word) > 6 and len(word) < 11: ##### MADE CHANGE HEREEEEEE #######
+    if len(word) > 6 and len(word) < 11:
         points += 8
 
     return points
