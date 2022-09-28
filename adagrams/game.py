@@ -77,25 +77,26 @@ def score_word(word):
 
 
 def get_highest_word_score(word_list):
-    winning_word = ("string", 5)
-    # sort word_list by str length 
-    # if 
-    # return winning_word
-
+    # sort word_list by str length
     # Jamie's pseudocode:
+    compare_words_list = []
     for word in word_list:
         word_score = score_word(word)
-        word_and_score = (word, word_score)
-        winning_word = word_and_score[0]
-        # might be easier to do this as a dict?
-        # word_and_score = {word, word_score}
-        compare_words_list = []
-        compare_words_list.append(word_and_score)
-        if len(word_and_score) == 1:
-            return word_and_score[0]
-        if len(word_and_score) > 1:
-            for word in word_and_score
-
+        word_and_score_dict = {"word":word,"word_score":word_score}       
+        compare_words_list.append(word_and_score_dict)
+        
+    winning_word = compare_words_list[0]
+    winning_word_list = []
+    for word in compare_words_list:
+        print(word)
+        # if compare_words_list["word_score"]>winning_word['word_score']:
+        #     winning_word = word
+        #     winning_word_list.clear()
+        #     winning_word_list.append(word)
+        # elif compare_words_list[word]==winning_word_list[0]:
+        #     winning_word_list.append(word)
+                  
+get_highest_word_score(['dog','zoo','dog','aaaaazqpoi'])
 
     # Emily's pseudo code:
     # So we want to look at the word_list
