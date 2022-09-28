@@ -101,6 +101,7 @@ def uses_available_letters(word, letter_bank):
         ****TO DO: handle instances of multiple letters in the word not in the letter bank better
 
     """
+    
     letter_bank_copy = letter_bank.copy()
     for letter in word.upper():
         if letter not in letter_bank_copy:
@@ -109,6 +110,29 @@ def uses_available_letters(word, letter_bank):
             letter_bank_copy.remove(letter)
     
     return True
+
+def build_score_chart():
+    """
+    |Letter                        | Value|
+    |:----------------------------:|:----:|
+    |A, E, I, O, U, L, N, R, S, T  |   1  |
+    |D, G                          |   2  |
+    |B, C, M, P                    |   3  |
+    |F, H, V, W, Y                 |   4  |
+    |K                             |   5  |
+    |J, X                          |   8  |
+    |Q, Z                          |   10 |
+    """
+    score_chart = {
+        ("A", "E", "I", "O", "U", "L", "N", "R", "S", "T"): 1,
+        ("D", "G"): 2,
+        ("B", "C", "M", "P"): 3,
+        ("F", "H", "V", "W", "Y"): 4,
+        ("K"): 5,
+        ("J", "X"): 8,
+        ("Q", "Z"): 10
+        }
+    return score_chart
 
 def score_word(word):
     """returns an int of points
@@ -121,7 +145,49 @@ def score_word(word):
             if char in letters:
                 total_score += points
     """
-    pass
+    score_chart = build_score_chart()
+    score = 0
+    if 7 <= len(word) <= 10:
+        score += 8
+    for letters, points in score_chart.items():
+        for char in word.upper():
+            if char in letters:
+                score += points
+
+    return score
+
 
 def get_highest_word_score(word_list):
-    pass
+    highest_word_score = ("", 0)
+    
+    for word in word_list:
+        current_word_score = (word, score_word(word))
+        if current_word_score[1] > highest_word_score[1]:
+            highest_word_score = current_word_score
+        
+        # tie breakers
+        if current_word_score[1] == highest_word_score[1]:
+            # if they're the same length
+            if len(current_word_score[0]) == len(highest_word_score[0]):
+                continue
+
+            #if one has a length of 10
+            elif len(current_word_score[0]) == 10:
+                highest_word_score = current_word_score
+            
+            elif len(highest_word_score[0]) == 10:
+                continue
+
+            # pick the word with the fewest letters
+            else:
+                if len(current_word_score[0]) < len(highest_word_score[0]):
+                    highest_word_score = current_word_score
+    
+    return highest_word_score
+
+print(get_highest_word_score(["AAAAAAAAAA", "BBBBBB"]))
+
+"""- In the case of tie in scores, use these tie-breaking rules:
+    - prefer the word with the fewest letters...
+    - ...unless one word has 10 letters. If the top score is tied between multiple words and one is 10 letters long, choose the one with 10 letters over the one with fewer tiles
+    - If the there are multiple words that are the same score and the same length, pick the first one in the supplied list"""

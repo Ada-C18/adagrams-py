@@ -13,7 +13,7 @@ def wave_1_run_game():
         display_retry_instructions()
         continue_input = input()
         game_continue = continue_input == "y"
-   
+
     display_goodbye_message()
 
 def wave_2_run_game():
@@ -33,7 +33,7 @@ def wave_2_run_game():
         display_retry_instructions()
         continue_input = input()
         game_continue = continue_input == "y"
-   
+
     display_goodbye_message()
 
 def wave_3_run_game():
