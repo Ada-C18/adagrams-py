@@ -98,6 +98,8 @@ def draw_letters():
 ##    Main Function #2   ##
 def uses_available_letters(word, letter_bank):
     available_letters = letter_bank
+    print(letter_bank.id())
+    print(available_letters.id())
     upper_word = word.upper()
 
     for letter in upper_word:
@@ -107,24 +109,14 @@ def uses_available_letters(word, letter_bank):
         if letter not in available_letters:
             return False
         else:
-            if letter in available_letters:
-                available_letters.remove(letter)
+            available_letters.remove(letter)
         
+
+#   NEED TO FIX:
+#   - function changes the letter_bank--needs to remain the same length
+#   - is not correctly ignoring letter case (???)
+
     return True
-
-# FUNCTION CALL TO RUN IN TERMINAL: 
-# letter_bank = draw_letters()
-# print(uses_available_letters('hello', letter_bank))
-
-
-
-# PSEUDOCODE:
-#   Check if word is only using random 10 letter list (Helper Funct)
-#       - it ignores letter case
-#   Make sure that each letter is only used as many times as
-#       it appears on the list of random letters.
-
-#   Returns True or False
 
 
 
