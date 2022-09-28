@@ -83,8 +83,17 @@ def get_highest_word_score(word_list):
         if score_word(word) > highest_score:
             highest_score = score_word(word)
             words_with_scores.append(word)
-            if len(word) == 10:
-                return ([word,highest_score])
+    for word in words_with_scores:
+        if len(word) == 10:
+            return ([word,highest_score])
+        # elif len(word) < 10:
+        #     least_words = min(words_with_scores, key = len)
+        #     print(least_words)  
+        #     return (least_words,highest_score)
+        # else:
+        #     return (words_with_scores[0], highest_score)
+      
+    #print(words_with_scores)
 
     return ([word,highest_score])
     
