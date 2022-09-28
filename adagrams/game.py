@@ -34,8 +34,9 @@ def draw_letters():
 
     letter_pool = []
 
-    for key, value in LETTERS.items():
-        letter_pool += key * value[1]
+    for letter, stats in LETTERS.items():
+        letter_distribution = stats[1]
+        letter_pool += letter * letter_distribution
     
     user_letters = random.sample(letter_pool, k=10)
 
@@ -63,10 +64,11 @@ def uses_available_letters(word, letter_bank):
 def score_word(word):
 
     score = 0
-    for letter in word.upper():
-        for key, value in LETTERS.items():
-            if letter == key:
-                score += value[0]
+    for character in word.upper():
+        for letter, stats in LETTERS.items():
+            letter_value = stats[0]
+            if character == letter:
+                score += letter_value
 
     if len(word) >= 7:
         score += 8
