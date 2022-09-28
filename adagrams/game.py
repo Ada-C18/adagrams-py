@@ -1,10 +1,10 @@
-def draw_letters():
-    LETTER_POOL = {
+LETTER_POOL = {
     'A': 9, 'B': 2, 'C': 2,'D': 4, 'E': 12, 'F': 2, 'G': 3, 'H': 2, 'I': 9, 
     'J': 1, 'K': 1, 'L': 4, 'M': 2, 'N': 6, 'O': 8, 'P': 2,  'Q': 1, 'R': 6, 
     'S': 4, 'T': 6, 'U': 4, 'V': 2, 'W': 2, 'X': 1, 'Y': 2, 'Z': 1
 }
 
+def draw_letters():
     letters_not_drawn = list(LETTER_POOL.keys())
     letters_drawn = []
     letter_count = 0
@@ -15,8 +15,41 @@ def draw_letters():
             letter_count += 1
     return letters_drawn
 
+### Wave 2: use_available_letters
+
+# Next, you need a way to check if an input word (a word a player submits)
+#  only uses characters that are contained within a collection (or hand) of drawn letters. 
+# Essentially, you need a way to check if the word is an anagram of some or all of the given 
+# letters in the hand.
+
+# To do so, implement the function called `uses_available_letters` in `game.py`. 
+# This function should have the following properties:
+
+# - Has two parameters:
+#    - `word`, the first parameter, describes some input word, and is a string
+#    - `letter_bank`, the second parameter, describes an array of drawn letters in a hand. 
+# You can expect this to be an array of ten strings, with each string representing a letter
+# - Returns either `True` or `False`
+# - Returns `True` if every letter in the `input` word is available (in the right quantities) 
+# in the `letter_bank`
+# - Returns `False` if not; if there is a letter in `input` that is not present in the
+#  `letter_bank` or has too much of compared to the `letter_bank`
+
 def uses_available_letters(word, letter_bank):
-    pass
+    word = word.upper()
+    word_dict = {}
+    is_valid = False
+    letter_count = 0
+
+    for letter in word:
+        if letter in letter_bank and letter_count <= LETTER_POOL[letter] and word.count(letter) <= letter_bank.count(letter):
+            word_dict[letter] = True
+            letter_count += 1
+            is_valid = True
+        elif not letter in letter_bank:
+            word_dict[letter] = False
+            is_valid = False
+    return is_valid
 
 def score_word(word):
     pass
