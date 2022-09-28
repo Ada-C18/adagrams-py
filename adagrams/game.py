@@ -144,16 +144,16 @@ def score_word(word):
 
 
 
-def get_highest_word_score(word_list):
-    word_tuple_list = []
-    highest_score = word_tuple_list[0][1]
-    for word in word_list:
-        score = score_word(word)
-        length = len(word)
-        tuple = (word, score, length)
-        word_tuple_list.append(tuple)
-        if tuple[1] > highest_score:
-            highest_score = tuple[1]
+# def get_highest_word_score(word_list):
+#     word_tuple_list = []
+#     highest_score = word_tuple_list[0][1]
+#     for word in word_list:
+#         score = score_word(word)
+#         length = len(word)
+#         tuple = (word, score, length)
+#         word_tuple_list.append(tuple)
+#         if tuple[1] > highest_score:
+#             highest_score = tuple[1]
 
 # work in progress *******
 def get_highest_word_score(word_list):
