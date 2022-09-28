@@ -46,8 +46,6 @@ def draw_letters():
         random_letter_index = random.randint(0,len(the_letters)-1)
         the_hand.append(the_letters[random_letter_index])
         the_letters.remove(the_letters[random_letter_index])
-
-
     # use random in my owm words----  
     # create a dict 
     
