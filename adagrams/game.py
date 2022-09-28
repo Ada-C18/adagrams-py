@@ -30,8 +30,13 @@ LETTER_POOL = {
     'Z': 1
 }
 
+#WAVE ONE
 def dict_to_list(dict):
+    '''
+    Hannah
+    '''
     bag_of_letters = []
+    # O(n)
     for key, value in dict.items():
         new_letters = [key] * value
         bag_of_letters.extend(new_letters)
@@ -43,30 +48,33 @@ def draw_letters():
     hand_as_numbers = []
     hand_as_letters = []
     
+    # 0(n)
     while len(hand_as_letters) < 10:
         index = random.randint(0,len(bag_of_letters)-1)
-        if index not in hand_as_numbers:
-            hand_as_numbers.append(index)
-            hand_as_letters.append(bag_of_letters[index])
+        if index not in hand_as_numbers: # 0(n)
+            hand_as_numbers.append(index) # n(1)
+            hand_as_letters.append(bag_of_letters[index]) # n(1)
     
     return hand_as_letters
 
 
-
 #WAVE TWO
 def uses_available_letters(word, letter_bank):
+    '''
+    Ariam
+    '''
     copy_of_letter_bank = copy.deepcopy(letter_bank)
     word = word.upper()
-    for letter in word:
-        if letter not in copy_of_letter_bank:
+    # 0(n * (2n)) = O(n^2) ****************************** WORK ON THIS ***************************
+    for letter in word: # O(n)
+        if letter not in copy_of_letter_bank: # O(n)
             return False
         else:
-            copy_of_letter_bank.remove(letter)
+            copy_of_letter_bank.remove(letter) # O(n)
     return True
 
 
 #WAVE THREE
-
 SCORING = {
     1: ['A', 'E', 'I', 'O', 'U', 'L', 'N', 'R', 'S', 'T'],
     2: ['D', 'G'],
@@ -78,12 +86,16 @@ SCORING = {
 }
 
 def score_word(word):
+    '''
+    Hannah
+    '''
     score = 0
     word = word.upper()
 
-    if len(word) >= 7:
+    if 7 <= len(word) <= 10:
         score += 8
 
+    # O(n^3) ****************************** WORK ON THIS ***************************
     for letter in word:
         for key, value in SCORING.items():
             if letter in value:
@@ -91,29 +103,43 @@ def score_word(word):
 
     return score
 
+
+#WAVE FOUR
 def get_highest_word_score(word_list):
+    '''
+    Ariam
+    '''
     words_and_scores = {}
+    # O(n)
     for word in word_list:
         words_and_scores[word] = score_word(word)
-
+    # O(n)
     highest_score = max(words_and_scores.values())
 
-    words_with_highest_scores = []
+    highest_scores = []
+    # O(n)
     for word, score in words_and_scores.items():
         if score == highest_score:
-            words_with_highest_scores.append(word)
+            highest_scores.append(word)
 
-    winning_word = words_with_highest_scores[0]
-    if len(words_with_highest_scores) != 1:
+    winning_word = highest_scores[0]
+
+    # worse case scenario: O(n + n + n + n) = O(4n) = O(n) ****************************** WORK ON THIS ***************************
+    if len(highest_scores) != 1:
         # tie-handling: check if there is string with 10 characters, otherwise return string with fewest characters
-        words_with_10 = [word for word in words_with_highest_scores if len(word) == 10]
+        # O(n)
+        words_with_10 = [word for word in highest_scores if len(word) == 10]
+        # O(n)
         if words_with_10:
             target_length = 10
         else:
-            target_length = len(min(words_with_highest_scores, key=len))
+            # O(n)
+            target_length = len(min(highest_scores, key=len))
 
-        for word in words_with_highest_scores:
+        # O(n)
+        for word in highest_scores:
             if len(word) == target_length:
                 winning_word = word
                 break 
+    
     return (winning_word, words_and_scores[winning_word])
