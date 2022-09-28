@@ -87,6 +87,9 @@ def uses_available_letters(word, letter_bank):
           return False
 
 def score_word(word):
+  if type(word) is not str:
+    return 0
+  
   score = 0
   if len(word) > 6:
     score += 8
@@ -114,12 +117,12 @@ def get_highest_word_score(word_list):
 
   tie_breaker = []
 
-  for word in range(len(word_list)):
+  for word in word_list:
     test_score = score_word(word) #all errors are referring to previous function score_word. Maybe because reusing variables, score already calculated
-    if score_word > winning_score:
+    if test_score > winning_score:
       test_score = winning_score
       word = winning_word
-    if score_word == winning_score:
+    if test_score == winning_score:
       tie_breaker.append(winning_word)
       tie_breaker.append(word)
  #list comprehension for above code block, zip lists
