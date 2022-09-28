@@ -114,4 +114,4 @@ def get_highest_word_score(word_list):
             higest_score_list= higest_score_list.clear()
             higest_score_list.append(word)
     
-    print("-------",higest_score_list)
+    print("HIGHEST SCORE LIST HEREp-------",higest_score_list)
