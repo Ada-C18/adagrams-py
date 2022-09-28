@@ -57,7 +57,16 @@ def draw_letters():
 
 
 def uses_available_letters(word, letter_bank):
-    pass
+    #copy letter_bank to track what letters are still available to use
+    available_letters = [i for i in letter_bank]
+    # check if each letter in the word is available
+    for letter in word:
+        # use .upper() to make sure lowercase input is still tracked
+        if letter.upper() in available_letters:
+            available_letters.remove(letter.upper())
+        else:
+            return False
+    return True
 
 def score_word(word):
     pass
