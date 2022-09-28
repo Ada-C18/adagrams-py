@@ -27,13 +27,7 @@ def draw_letters():
         all_letters.remove(random_letter)
         random_letters.append(random_letter)
 
-
     return random_letters
-    
-    
-    
-
-
 
 
 def uses_available_letters(word, letter_bank):
@@ -45,7 +39,7 @@ def uses_available_letters(word, letter_bank):
         except:
             return False
     return True
-    
+
 
 def score_word(word):
     letter_score = {
@@ -61,39 +55,33 @@ def score_word(word):
         "J" : 8, 	"W" : 4,
         "K" : 5, 	"X" : 8,
         "L" : 1, 	"Y" : 4,
-        "M" : 3, 	"Z" : 10, 
+        "M" : 3, 	"Z" : 10,
     }
+
     total = 0
     for letter in word:
-        letter = letter.upper()
-        total += letter_score[letter]
-    if len(word) == 0:
-            return total
-    elif len(word) >= 7 and len(word) <= 10:
+        total += letter_score[letter.upper()]
+    if len(word) >= 7 and len(word) <= 10:
         total += 8
     return total
-   
-        
-    
+
 
 def get_highest_word_score(word_list):
-    words_with_scores = []
     highest_score = 0
     for word in word_list:
         if score_word(word) > highest_score:
             highest_score = score_word(word)
-            words_with_scores.append(word)
-    for word in words_with_scores:
+
+    highest_scoring_words = []
+    for word in word_list:
+        if score_word(word) == highest_score:
+            highest_scoring_words.append(word)
+
+    for word in highest_scoring_words:
         if len(word) == 10:
             return ([word,highest_score])
-        # elif len(word) < 10:
-        #     least_words = min(words_with_scores, key = len)
-        #     print(least_words)  
-        #     return (least_words,highest_score)
-        # else:
-        #     return (words_with_scores[0], highest_score)
-      
-    #print(words_with_scores)
+        if len(word) < 10:
+            least_words = min(highest_scoring_words, key = len)
 
-    return ([word,highest_score])
+    return ([least_words,highest_score])
     
