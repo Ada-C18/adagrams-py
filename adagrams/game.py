@@ -112,5 +112,29 @@ def get_highest_word_score(word_list):
                 highest_word = word
         print(score_of_word)
     return tuple([highest_word, highest_score])
+
+
+
+def get_highest_word_score_lisa_play(word_list):
+    list_scores = []
+
+    # checking for empty word_list input
+    if not word_list:
+        return None
     
-get_highest_word_score(["AAAAAAAAAA", "BBBBBB"])
+    for word in word_list:
+        word_score_dict = {}
+        score_of_word = int(score_word(word))
+        # populating new dict with words and score
+        word_score_dict["word"] = word
+        word_score_dict["score"] = score_of_word
+        list_scores.append(word_score_dict)
+
+        
+    # print(list_scores)    
+    highest_word_score = max(list_scores, key = lambda word: word["score"])
+        
+    print(tuple([highest_word_score["word"], highest_word_score["score"]]))
+    return tuple([highest_word_score["word"], highest_word_score["score"]])
+
+get_highest_word_score_lisa_play(["AAAAAAAAAA", "BBBBBB"])
