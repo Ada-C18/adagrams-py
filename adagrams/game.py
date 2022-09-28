@@ -33,16 +33,12 @@ LETTER_POOL = {
 ##    Main Function #1    ##
 def draw_letters():
     letters = []
-        
 
-#   RANGE(11) is not always returning the amount of letters we need,
-    for i in range(11):
+    while len(letters) < 10:
         random_letter = random.choice(list(LETTER_POOL.keys()))
-        # print(f"RL: {random_letter}")
         
         if letters.count(random_letter) < LETTER_POOL[random_letter]:
             letters.append(random_letter)
-            # print("letter count: ", letters.count(random_letter), "\n")
 
     return letters
 
