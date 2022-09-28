@@ -135,5 +135,6 @@ def get_highest_word_score(word_list):
 
     return shortest_word
     
+    Print("Hi")
 
 
