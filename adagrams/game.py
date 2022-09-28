@@ -66,8 +66,47 @@ def uses_available_letters(word, letter_bank):
             return False
     return True
 
+
+
 def score_word(word):
-    pass
+
+    ''' word is a str of characters
+    returns an int representing the number of points
+    each letter within word has a point value..
+    total score = number of points of all words
+    if len(word) == 7,8,9,19 then score additional 8 points
+    '''
+
+# dict 
+    score = 0
+    the_score_dict = { 1: ['A','E','I','O','U','L','N','R','S','T'],
+    2 : ['D','G'],
+    3 : ['B','C','M','P'],
+    4: ['F','H','V','W','Y'],
+    5: ['K'],
+    8: ['J','X'],
+    10: ['Q','Z']
+    }
+    
+    for letter in word:
+        for key, value in the_score_dict.items():
+            if letter.upper() in value:
+                score += key
+    if len(word) >= 7:
+        score += 8
+    
+    return score
+
+
+    
+
+
+
+
+
+
+
+
 
 def get_highest_word_score(word_list):
     pass
