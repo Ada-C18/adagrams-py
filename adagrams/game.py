@@ -123,11 +123,7 @@ def get_highest_word_score(word_list):
         if len(word)== 10:
             return (word,highest_score)
         elif len(word)< len_fewest_letter:
-            fewest_letter= word
-            len_fewest_letter= len(word)
-    return (highest_score_list[0],highest_score)
-    
-    
-    
-    
-    print("HIGHEST SCORE LIST HEREp-------",highest_score_list)
+            fewest_letter = word
+            len_fewest_letter = len(word)
+
+    return (fewest_letter,highest_score)
