@@ -69,48 +69,22 @@ def draw_letters():
   return user_letter_pool
 
 def uses_available_letters(word, letter_bank):
-#need to account for letter over use (letter can only be used one time)
-#need to account for lowercase and capital letters for test case five 
-
    # user_letter_dict = {}
 
     if len(word) > 10: 
      return False
     
-    # for letters in letter_bank:
-    #   if letters not in user_letter_dict:
-    #     user_letter_dict[letters] = 1
-    #   else:
-    #     user_letter_dict[letters] + 1
-    for letter in word:
-      if letter not in letter_bank: 
+    for letter in word.upper():
+      if letter not in letter_bank: #using if not letter not in letter_bank passes 3
           return False
     return True
 
+#add lower or upper so its not case sensitive
 
     for letters in letter_bank:
       for used_letters in word:
         if letter_bank.count(letters) != word.count(letters):
           return False
-    
-   
-       
-    
-
- 
-
-
-    # for l in word: # loop through each letter in word
-    #   if word.count(l) > user_letter_dict["letter"]: #check to see if the count is higher than dict value
-    #     return False #return false
-  
-    for letters in word:
-       if letters not in letter_bank: # if word letters > letter_bank letters = false (loop through word)
-         return False  #need to keep count of each letter for each loop and compare it to the letter_bank, if letter exceeds letter_bank return false
-    return True #can make a dictionary for each letter and count, store number of each letter, conditional if letter>letter_count
-
-
-
 
 def score_word(word):
   score = 0
@@ -148,7 +122,7 @@ def get_highest_word_score(word_list):
     if score_word == winning_score:
       tie_breaker.append(winning_word)
       tie_breaker.append(word)
- 
+ #list comprehension for above code block, zip lists
  # max_score =  max_score = max(word_list)
   #find max_score of multiple values (find ties)
   #tie_breaker = [t for t in word_list if word_list == max_score]
