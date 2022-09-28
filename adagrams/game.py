@@ -74,9 +74,9 @@ def draw_letters():
     return letter_list
 
 def uses_available_letters(word, letter_bank):
-    upper_case_word = word.upper() # O(N)
+    upper_case_word = word.upper() # O(n)
     print(upper_case_word)
-    letter_bank_count = Counter(letter_bank) # O(N)
+    letter_bank_count = Counter(letter_bank) # O(n)
     # letter_bank_count = {}
     # for letter in letter_bank:
     #     if letter in letter_bank_count:
@@ -93,29 +93,25 @@ def uses_available_letters(word, letter_bank):
     return True
 
 def score_word(word):
-    upper_case_word = word.upper()
+    upper_case_word = word.upper() #O(n)
     score_total = 0
-    if len(upper_case_word) >= 7:
-        score_total += 8
+    if len(upper_case_word) >= 7: #O(1)
+        score_total += 8 #O(1)
     # for letter in upper_case_word:
     #     for key in SCORE_CHART:
     #         if letter == key:
     #             score_total += SCORE_CHART[key]
     # return score_total
-    for letter in upper_case_word:
-        if letter in SCORE_CHART:
-            score_total += SCORE_CHART[letter]
+    for letter in upper_case_word: #O(n)
+        if letter in SCORE_CHART: #O(1)
+            score_total += SCORE_CHART[letter] #O(1)
     return score_total
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> e02206d1bc21820ae185f63fa93022d51b5e627a
-def get_highest_word_score(word_list):
+def get_highest_word_score(word_list):  #O（n^2）
     best_word = []
-    for i in range(len(word_list)):
-        score = score_word(word_list[i])
-        if len(best_word) == 0:
+    for i in range(len(word_list)): # O(n)
+        score = score_word(word_list[i])# O(n)
+        if len(best_word) == 0: 
             best_word.append(word_list[i])
             best_word.append(score)
         elif score > best_word[1]:
@@ -123,10 +119,10 @@ def get_highest_word_score(word_list):
             best_word[1] = score
         elif score == best_word[1]:  
             if len(best_word[0]) == len(word_list[i]) or len(best_word[0]) == 10:
-                continue    
+                continue    #O(1)
             elif len(best_word[0]) > len(word_list[i]) or len(word_list[i]) == 10:  
                 best_word[0] = word_list[i] 
             elif len(best_word[0]) < len(word_list[i]):
                 continue
-    return best_word
+    return best_word # no time complexity
     
