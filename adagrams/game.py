@@ -37,6 +37,7 @@ def uses_available_letters(word, letter_bank):
 
 def score_word(word):
     # initialize dictionary w/ each letter's value
+    score = 0
     LETTER_VALUES = {
         'A': 1, 'B': 3, 'C': 3, 'D': 2, 'E': 1,
         'F': 4, 'G': 2, 'H': 4, 'I': 1, 'J': 8,
@@ -44,42 +45,47 @@ def score_word(word):
         'P': 3, 'Q': 10, 'R': 1, 'S': 1, 'T': 1,
         'U': 1, 'V': 4, 'W': 4, 'X': 8, 'Y': 4, 'Z': 10
     }
-    # initialize score = 0
-    score = 0
-    
     # make sure word is in all caps and remove non-alphabetic characters
     formatted_word = ""
     for letter in word:
         if letter.upper() in "ABCDEFGHIJKLMNOPQRSTUVWXYZ":
             formatted_word += letter.upper()
             
-    # iterate through all letters in word
-    for letter in formatted_word:
     # look each letter up in score dict and add each letter's value to score
+    for letter in formatted_word:
         score += LETTER_VALUES[letter]
 
-    # if length of word >= 7 and <= 10
     if len(formatted_word) >= 7: 
-    # add 8 points to score
         score += 8
     return score
 
-    # return score
-    pass
-
 def get_highest_word_score(word_list):
-    # highest score = -1
-    # shortest length = 999
-    # shortest words = []
-    # iterate over words in word_list
-    # get word's score using score_word()
-    # if score > highest score
-    # highest score = score
-    # if length of word < shortest length
-    # shortest length = length
+    highest_score = -1
+    shortest_length = 999
+    winning_words = []
 
-    # iterate over word_list again
-    # if a word's score == highest score and length == 10, it wins immediately
-    # else if score == highest score and length == shortest length, add word to shortest words list
-    # first entry in shortest words list wins
-    pass
+    for word in word_list:
+        word_score = score_word(word)
+        # gets the highest score out of all words
+        if word_score > highest_score:
+            highest_score = word_score
+        # gets the shortest length out of all words
+        if len(word) < shortest_length:
+            shortest_length = len(word)
+
+    for word in word_list:
+        if score_word(word) == highest_score and len(word) == 10:
+            return (word, score_word(word)) #automatic win condition
+
+        # adds highest scoring words to list of winning words
+        elif score_word(word) == highest_score:
+            winning_words.append(word)
+
+    # if there is more than one winning word, pick the first one with the fewest characters
+    if len(winning_words) > 1:
+        for word in winning_words:
+            if len(word) == shortest_length:
+                return (word, score_word(word))
+    # otherwise, return the winner
+    else:
+        return (winning_words[0], score_word(winning_words[0]))
