@@ -45,51 +45,51 @@ def draw_letters():
 
 
 
-# Helper Function
-def convert_to_ignore_case(word, letter_bank):
-    # convert all letters in word and letter_bank to ignore case
-    # use casefold() method to remove all distinctions in string (similar to .lower() but more "aggresive")
-    # use list comprehensions to use casefold() on each letter in letter_bank
+# # Helper Function
+# def convert_to_ignore_case(word, letter_bank):
+#     # convert all letters in word and letter_bank to ignore case
+#     # use casefold() method to remove all distinctions in string (similar to .lower() but more "aggresive")
+#     # use list comprehensions to use casefold() on each letter in letter_bank
     
-    # print(f"word before converting: {word}")
-    # print(f"letter_bank before converting: {letter_bank}, \n")
+#     # print(f"word before converting: {word}")
+#     # print(f"letter_bank before converting: {letter_bank}, \n")
 
-    word = word.casefold()
-    letter_bank = [letter.casefold() for letter in letter_bank]
+#     word = word.casefold()
+#     letter_bank = [letter.casefold() for letter in letter_bank]
 
-    # print(f"word after converting: {word}")
-    # print(f"letter_bank after converting: {letter_bank}, \n")
+#     # print(f"word after converting: {word}")
+#     # print(f"letter_bank after converting: {letter_bank}, \n")
     
-    return word, letter_bank
+#     return word, letter_bank
 
 
 
-# Helper Function: 
-def check_word_in_letter_bank(word, letter_bank):
-    # check each letter in word if it is in letter bank
-    # create variable to count each time letter is found in letter bank
-    # compare count to len(word)
-    # if count and len(word) are equal return True
-    # if not equal, return False
+# # Helper Function: 
+# def check_word_in_letter_bank(word, letter_bank):
+#     # check each letter in word if it is in letter bank
+#     # create variable to count each time letter is found in letter bank
+#     # compare count to len(word)
+#     # if count and len(word) are equal return True
+#     # if not equal, return False
 
-    word, letter_bank = convert_to_ignore_case(word, letter_bank)
+#     word, letter_bank = convert_to_ignore_case(word, letter_bank)
 
-    print(f"word is: {word}")
-    print(f"letter bank is: {letter_bank}")
+#     print(f"word is: {word}")
+#     print(f"letter bank is: {letter_bank}")
 
-    letter_count = 0
+#     letter_count = 0
 
-    for letter in word:
-        if letter in letter_bank:
-            letter_count +=1
+#     for letter in word:
+#         if letter in letter_bank:
+#             letter_count +=1
 
-    print(f"letter count: {letter_count}")
-    print(f"word lenth: {len(word)}")
+#     print(f"letter count: {letter_count}")
+#     print(f"word lenth: {len(word)}")
 
-    if letter_count == len(word):
-        return True
+#     if letter_count == len(word):
+#         return True
 
-    return False
+#     return False
 
 # print(check_word_in_letter_bank("DOGF", ["D", "O", "G", "X", "X", "X", "X", "X", "X", "X"]))
 
@@ -97,8 +97,28 @@ def check_word_in_letter_bank(word, letter_bank):
 
 ##    Main Function #2   ##
 def uses_available_letters(word, letter_bank):
-    pass
+    available_letters = letter_bank
+    upper_word = word.upper()
 
+    for letter in upper_word:
+        print(f"BANK: {letter_bank}")
+        print(f'LETTER: {letter}')
+
+        if letter not in available_letters:
+            return False
+        else:
+            if letter in available_letters:
+                available_letters.remove(letter)
+        
+    return True
+
+# FUNCTION CALL TO RUN IN TERMINAL: 
+# letter_bank = draw_letters()
+# print(uses_available_letters('hello', letter_bank))
+
+
+
+# PSEUDOCODE:
 #   Check if word is only using random 10 letter list (Helper Funct)
 #       - it ignores letter case
 #   Make sure that each letter is only used as many times as
