@@ -46,7 +46,20 @@ def draw_letters():
         letters.remove(rand_letter)
     return hand 
 
+def uses_available_letters(word, letter_bank):
+    available_letters = []
 
+    for letter in letter_bank:
+        letter_capitalize = letter.capitalize()
+        available_letters.append(letter_capitalize)
+
+    for letter in word:
+        letter_capitalize = letter.capitalize()
+        if letter_capitalize in available_letters:
+            available_letters.remove(letter_capitalize)
+        else:
+            return False
+    return True
 
 def score_word(word):
     pass
