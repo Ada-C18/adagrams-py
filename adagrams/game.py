@@ -59,7 +59,10 @@ def score_word(word):
         score += LETTER_VALUES[letter]
 
     # if length of word >= 7 and <= 10
+    if len(formatted_word) >= 7: 
     # add 8 points to score
+        score += 8
+    return score
 
     # return score
     pass
