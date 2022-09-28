@@ -114,12 +114,13 @@ def get_highest_word_score(word_list):
 
   tie_breaker = []
 
+  
   for word in range(len(word_list)):
     test_score = score_word(word) #all errors are referring to previous function score_word. Maybe because reusing variables, score already calculated
-    if score_word > winning_score:
+    if test_score > winning_score:
       test_score = winning_score
       word = winning_word
-    if score_word == winning_score:
+    if score_word > winning_score:
       tie_breaker.append(winning_word)
       tie_breaker.append(word)
  #list comprehension for above code block, zip lists
@@ -128,16 +129,16 @@ def get_highest_word_score(word_list):
   #tie_breaker = [t for t in word_list if word_list == max_score]
   
   #check length of tie_breaker list, if it has one value return a tuple of the list
-  if len(tie_breaker) == 0:
-    return tuple(tie_breaker)
+  # if len(tie_breaker) == 0:
+  #   return tuple(tie_breaker)
 
-  else: 
-    if len(tie_breaker[0]) == 10 and len(tie_breaker[1]) != 10:
-      return tuple(tie_breaker[0])
-    if tie_breaker[1] == 10 and tie_breaker[0] != 10:
-      return tuple(tie_breaker[1])
-    if len(tie_breaker[0]) == len(tie_breaker[1]):
-      return tuple(tie_breaker[0])
+  # else: 
+  #   if len(tie_breaker[0]) == 10 and len(tie_breaker[1]) != 10:
+  #     return tuple(tie_breaker[0])
+  #   if tie_breaker[1] == 10 and tie_breaker[0] != 10:
+  #     return tuple(tie_breaker[1])
+  #   if len(tie_breaker[0]) == len(tie_breaker[1]):
+  #     return tuple(tie_breaker[0])
 
     
 
