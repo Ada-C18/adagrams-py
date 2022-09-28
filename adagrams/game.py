@@ -28,8 +28,8 @@ def draw_letters():
 
 def uses_available_letters(word, letter_bank):
     word = word.upper()
+    letter_bank_copy = letter_bank.copy()
     for letter in word:
-        letter_bank_copy = letter_bank.copy()
         try:
             letter_bank_copy.remove(letter)
         except ValueError:
