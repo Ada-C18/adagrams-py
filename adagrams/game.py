@@ -1,6 +1,10 @@
 import random
 
 def draw_letters():
+    """
+    input: nothing
+    output: 10 random tiles in a list randomly taken from alphabet dictionary.
+    """
     allletters = []
     alphabet = {
     'A': 9, 
@@ -48,6 +52,10 @@ def draw_letters():
 
 
 def uses_available_letters(word, letter_bank):
+    """
+    input: word, letter_bank
+    output: True if word contains all letters in the letterbank, False if the word contains a letter not in the letterbank.
+    """
     letter_bank_copy = letter_bank[:]
     for letter in word:
         letter = letter.capitalize()
@@ -60,6 +68,10 @@ def uses_available_letters(word, letter_bank):
 ### Wave 3: score_word
 
 def score_word(word):
+    """
+    input: word
+    output: the calculated points per word.
+    """
     points_dict = {
     'A': 1, 
     'B': 3, 
@@ -99,4 +111,39 @@ def score_word(word):
 
 ### Wave 4: get_highest_word_score
 def get_highest_word_score(word_list):
-    pass
+    """
+    This function takes in an input of word_list containing all the entered words. It calculates the score of each word
+    using score_word() and then finds the highest score from all the scores. Finally it returns all of the words that
+    equal to that highest score. If there is a tie with multiple highest-scoring words, then our function returns the first
+    shortest word unless the length of the word is equal to 10 letters, than our functions returns that 10-letter word.
+
+    input: word_list
+    output: winning_words_list
+    """
+    winning_words_list = []
+    maximum_score = 0
+    for word in word_list:
+        if int(score_word(word)) > maximum_score:
+            maximum_score = int(score_word(word))
+            winning_words_list = [word]
+        elif int(score_word(word)) == maximum_score:
+            winning_words_list.append(word)
+   
+    if len(winning_words_list) == 1:
+        winning_words_list.append(maximum_score)
+        return tuple(winning_words_list)
+   
+    else:
+        length_word = 10
+        for word in winning_words_list:
+            if len(word) == 10:
+                winning_words_list = [word]
+                winning_words_list.append(maximum_score)
+                return tuple(winning_words_list)
+            elif len(word) < length_word:
+                length_word = len(word)
+                winning_words_list = [word]
+                winning_words_list.append(maximum_score)
+        return tuple(winning_words_list)
+
+ 
