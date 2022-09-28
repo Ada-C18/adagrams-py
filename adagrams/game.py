@@ -97,24 +97,14 @@ def draw_letters():
 
 ##    Main Function #2   ##
 def uses_available_letters(word, letter_bank):
-    available_letters = letter_bank
-    print(letter_bank.id())
-    print(available_letters.id())
+    available_letters = letter_bank[:]
     upper_word = word.upper()
 
     for letter in upper_word:
-        print(f"BANK: {letter_bank}")
-        print(f'LETTER: {letter}')
-
         if letter not in available_letters:
             return False
         else:
             available_letters.remove(letter)
-        
-
-#   NEED TO FIX:
-#   - function changes the letter_bank--needs to remain the same length
-#   - is not correctly ignoring letter case (???)
 
     return True
 
