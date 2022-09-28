@@ -1,4 +1,4 @@
-# AdaGrams
+# AdaGrams for Erika and Galina
 
 ## Skills Assessed
 
