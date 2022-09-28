@@ -1,5 +1,4 @@
 import random
-import string
 
 def draw_letters():
     letter_dict={
@@ -16,14 +15,11 @@ def draw_letters():
         'K' : 1, 'X' : 1,
         'L' : 4, 'Y' : 2,
         'M' : 2, 'Z' : 1 }
-    letter_list=[letter for letter in string.ascii_uppercase]
     representative_letter_list=[]
-    for chara in letter_list:
-        for counter in range(letter_dict[chara]):
-            representative_letter_list.append(chara)
-    return_list=[]
-    for count in range(10):
-        return_list.append(representative_letter_list.pop(random.randint(0,len(representative_letter_list)-1)))
+    for letter,value in letter_dict.items():
+        for counter in range(value):
+            representative_letter_list.append(letter)
+    return_list=random.sample(representative_letter_list,k=10)
     return return_list
 
 def uses_available_letters(word, letter_bank):
@@ -57,17 +53,16 @@ def score_word(word):
     }
     total=0
     word=word.upper()
-    for chara in word:
-        if ord(chara)>64 and ord(chara)<91:
-            try:
-                total+=letter_dict[chara]
-            except:
+    for letter in word:
+        if letter >= "A" and letter <= "Z":
+            if letter in letter_dict.keys():
+                total+=letter_dict[letter]
+            else:
                 total+=1
-        else:
-            continue
     if len(word)>6:
         total+=8
     return total
+
 
 def get_highest_word_score(word_list):
     highest_word_score = ("", 0)
