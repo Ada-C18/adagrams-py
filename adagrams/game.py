@@ -33,6 +33,7 @@ def uses_available_letters(word, letter_bank):
             is_valid = False
     return is_valid
 
+
 def score_word(word):
     score = 0
     word = word.upper()
