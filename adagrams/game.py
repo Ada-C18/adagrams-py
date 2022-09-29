@@ -1,6 +1,5 @@
 import random
 import copy
-#from tkinter import E
 
 LETTER_POOL = {
     'A': 9, 
@@ -40,9 +39,9 @@ def dict_to_list(dict):
     3. Return the list.
     '''
     bag_of_letters = []
-    for key, value in dict.items(): # O(k), where k = len(dict)
-        new_letters = [key] * value # O(1)
-        bag_of_letters.extend(new_letters) # O(n), where n = len(bag_of_letters)
+    for key, value in dict.items(): 
+        new_letters = [key] * value 
+        bag_of_letters.extend(new_letters) 
     
     return bag_of_letters
 
@@ -58,11 +57,11 @@ def draw_letters():
     hand_as_numbers = []
     hand_as_letters = []
 
-    while len(hand_as_letters) < 10: # O(1)
-        index = random.randint(0,len(bag_of_letters)-1) # O(1)
-        if index not in hand_as_numbers: # O(n)
-            hand_as_numbers.append(index) # O(1)
-            hand_as_letters.append(bag_of_letters[index]) # O(1)
+    while len(hand_as_letters) < 10: 
+        index = random.randint(0,len(bag_of_letters)-1) 
+        if index not in hand_as_numbers: 
+            hand_as_numbers.append(index) 
+            hand_as_letters.append(bag_of_letters[index]) 
     
     return hand_as_letters
 
@@ -74,30 +73,19 @@ def uses_available_letters(word, letter_bank):
     1.Returns `True` if every letter in the `input` word is available in the `letter_bank`
     2.Returns `False` if not; if there is a letter in `input` that is not present in the `letter_bank` 
     or has too much of compared to the `letter_bank`
-  
     '''
     copy_of_letter_bank = copy.deepcopy(letter_bank)
     word = word.upper()
-    # O(n * k) = n? ****************************** WORK ON THIS ***************************
-    for letter in word: # O(n), where n = len(word)
+
+    for letter in word: 
         try:
-            copy_of_letter_bank.remove(letter) # O(k), where k = len(copy_of_letter_bank)
+            copy_of_letter_bank.remove(letter) 
         except:
             return False 
     return True
 
 
 #WAVE THREE
-# SCORING = {
-#     1: ['A', 'E', 'I', 'O', 'U', 'L', 'N', 'R', 'S', 'T'],
-#     2: ['D', 'G'],
-#     3: ['B', 'C', 'M', 'P'],
-#     4: ['F', 'H', 'V', 'W', 'Y'],
-#     5: ['K'],
-#     8: ['J', 'X'],
-#     10: ['Q', 'Z']
-# }
-
 SCORING = {
     'A': 1,
     'E': 1,
@@ -135,21 +123,13 @@ def score_word(word):
     3. Return score
     '''
     score = 0
-    for letter in word.upper(): # O(n)
-        score += SCORING[letter] # O(1)
+    for letter in word.upper(): 
+        score += SCORING[letter] 
         
-    if 7 <= len(word) <= 10: # O(1)
-        score += 8 # O(1)
+    if 7 <= len(word) <= 10: 
+        score += 8 
     
     return score
-
-    # O(n^3) ****************************** WORK ON THIS ***************************
-    # for letter in word:
-    #     for key, value in SCORING.items():
-    #         if letter in value:
-    #             score += key
-
-    # return score
 
 
 #WAVE FOUR
@@ -164,19 +144,18 @@ def get_highest_word_score(word_list):
 
     '''
     words_and_scores = {}
-    for word in word_list: # O(n)
-        words_and_scores[word] = score_word(word) # O(1) ?
+    for word in word_list:
+        words_and_scores[word] = score_word(word) 
     
-    highest_score = max(words_and_scores.values()) # O(n)
-    highest_scoring_words = [word for word, score in words_and_scores.items() if score == highest_score] # O(n)
-    winning_word = highest_scoring_words[0] # O(1)
+    highest_score = max(words_and_scores.values()) 
+    highest_scoring_words = [word for word, score in words_and_scores.items() if score == highest_score] 
+    winning_word = highest_scoring_words[0] 
 
-    # worse case scenario: O(n + n + n) = O(3n) = O(n) ****************************** WORK ON THIS ***************************
     if len(highest_scoring_words) != 1:
-        words_with_10 = [word for word in highest_scoring_words if len(word) == 10] # O(n)
+        words_with_10 = [word for word in highest_scoring_words if len(word) == 10] 
         try:
-            winning_word = words_with_10[0] # O(1)
+            winning_word = words_with_10[0] 
         except:
-            winning_word = min(highest_scoring_words, key=len) # O(n)
+            winning_word = min(highest_scoring_words, key=len) 
     
     return (winning_word, words_and_scores[winning_word])
