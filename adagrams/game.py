@@ -29,10 +29,8 @@ def uses_available_letters(word, letter_bank):
     else:
         return False
 
-    
-    
 
-    def score_word(word):
+def score_word(word):
         tile_points = {
         'A': 1,
         'E': 1,
@@ -60,7 +58,7 @@ def uses_available_letters(word, letter_bank):
         'X': 8,
         'Q': 10,
         'Z': 10
-        }
+    }
         word_points = 0
         upper_word = word.upper()
         for letter in upper_word:
@@ -74,7 +72,6 @@ def uses_available_letters(word, letter_bank):
 def get_highest_word_score(word_list):
 
     score_list = []
-    highest_score = 0
 
     for word in word_list:
         score = score_word(word)
@@ -82,13 +79,16 @@ def get_highest_word_score(word_list):
 
     highest_score_index = 0
     highest_score = 0
-    for index in range in len(word_list):
+    for index in range (len(word_list)):
         word = word_list[index]
         score = score_list[index]
         if score > highest_score:
             highest_score = score
             highest_score_index = index
-        return [word_list[highest_score_index], highest_score]
+
+    
+
+    return [word_list[highest_score_index], highest_score]
 
     # for score in score_list:
     #     if score > highest_score:
@@ -99,5 +99,5 @@ def get_highest_word_score(word_list):
     # get list of scores
     #find highest score
     #return highest score
-    pass
+    
 
