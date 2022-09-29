@@ -1,6 +1,6 @@
 from random import sample
 from collections import Counter
-import pprint
+# import pprint
 
 
 LETTER_POOL = {
@@ -107,19 +107,16 @@ def uses_available_letters(word, letter_bank):
 def score_word(word):
     score_total = 0
     extra_points = 8
-    length_of_word = len(word)
     word = word.upper()
 
     letters_from_word = list(word)
 
-    if 7 <= length_of_word <= 10:    
+    if 7 <= len(word) <= 10:    
         score_total += extra_points
 
     for letter in letters_from_word: 
         if letter in SCORE_CHART.keys():
             score_total += SCORE_CHART[letter]
-
-    print(score_total)
 
     return(score_total)
     
@@ -132,7 +129,6 @@ def _high_score_key_helper(word):
     word_len = -len(word)
 
     result = (cur_score, has_10, word_len)
-    print("result", word, result)
     return result 
 
 
@@ -141,7 +137,6 @@ def get_highest_word_score(word_list):
     # use our helper function to find the highest ranked
     # word using max
     high_word = max(word_list, key=_high_score_key_helper)
-    print("high_word", high_word)
 
     return (high_word, score_word(high_word))
 
