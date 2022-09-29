@@ -1,5 +1,5 @@
 import random
-from typing import Counter
+
 letter_bank = {
     'A': 9, 
     'B': 2, 
@@ -30,7 +30,7 @@ letter_bank = {
 }
 
 def draw_letters():
-    letter_pool = [key for key, val in letter_bank.items() for i in range(val)]
+    letter_pool = list(letter_bank.keys())
     last_index = len(letter_pool) - 1
     hand = []
     
@@ -41,7 +41,7 @@ def draw_letters():
         
     for i in range(10):
         hand.append(letter_pool[i])
-    return hand
+    return hand 
 def uses_available_letters(word, letter_bank):
 
     word_letter_frequency = {}
@@ -69,7 +69,6 @@ def uses_available_letters(word, letter_bank):
 
 
 def score_word(word):
-
     score_chart = {
         1: 'AEIOULNRST',
         2: 'DG',
@@ -97,20 +96,15 @@ def get_highest_word_score(word_list):
     words_score_dict = {}
     for word in word_list:
         score = score_word(word)
-
         words_score_dict[word] = score
+    
     highest_score = max(words_score_dict.values())
 
     for word,score in words_score_dict.items():
         if len(word) == 10 and score == highest_score:
             return word, highest_score
-    # if len(highest_scoring_words) > 1:
-    #     return min(highest_scoring_words), score
-    
-    # for word, score in words_score_dict.items():
-    #     if score == sorted_scores[-1]:
-        # return word, score
+
     return max(words_score_dict.items()) 
-    # for score in score_list:
+
 
 
