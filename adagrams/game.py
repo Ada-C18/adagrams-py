@@ -56,7 +56,6 @@ def uses_available_letters(word, letter_bank):
         elif letter.upper() in case_word:
             letter_bank_copy.remove(letter)
     return True
-    
 
 def score_word(word):
     
@@ -97,7 +96,6 @@ def score_word(word):
     if n in {7, 8, 9, 10}:
         sum_list.append(8)
     return sum(sum_list)
-
 
 def get_highest_word_score(word_list):
     word_list.sort()
