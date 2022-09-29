@@ -30,33 +30,33 @@ LETTER_POOL = {
     'Z': 1,
 }
 
-LETTER_VALUES = {"A": 1,
-                 "B": 3,
-                 "C": 3,
-                 "D": 2,
-                 "E": 1,
-                 "F": 4,
-                 "G": 2,
-                 "H": 4,
-                 "I": 1,
-                 "J": 1,
-                 "K": 5,
-                 "L": 1,
-                 "M": 3,
-                 "N": 1,
-                 "O": 1,
-                 "P": 3,
-                 "Q": 10,
-                 "R": 1,
-                 "S": 1,
-                 "T": 1,
-                 "U": 1,
-                 "V": 4,
-                 "W": 4,
-                 "X": 8,
-                 "Y": 4,
-                 "Z": 10,
-                 
+LETTER_VALUES = {
+    "A": 1,
+    "B": 3,
+    "C": 3,
+    "D": 2,
+    "E": 1,
+    "F": 4,
+    "G": 2,
+    "H": 4,
+    "I": 1,
+    "J": 1,
+    "K": 5,
+    "L": 1,
+    "M": 3,
+    "N": 1,
+    "O": 1,
+    "P": 3,
+    "Q": 10,
+    "R": 1,
+    "S": 1,
+    "T": 1,
+    "U": 1,
+    "V": 4,
+    "W": 4,
+    "X": 8,
+    "Y": 4,
+    "Z": 10,                 
 }
 
 
@@ -80,13 +80,13 @@ def uses_available_letters(word: str, letter_bank: list) -> bool:
     Returns True if all letters from word are available in letter_bank, else returs False. 
     """
     letters_count = Counter(letter_bank)
-    word = word.upper()
     for letter in word:
-        if letters_count[letter] > 0:
-            letters_count[letter] -= 1
+        if letters_count[letter.upper()] > 0:
+            letters_count[letter.upper()] -= 1
             continue
         else:
             return False
+
     return True
 
 
@@ -102,9 +102,10 @@ def score_word(word: str) -> int:
 
 def get_highest_word_score(word_list: list) -> tuple:
     """
-    Returns a tuple (word, score) with the highest score
+    Returns a tuple (word, score) with the highest score. 
+    If there is a tie, it will be solved depending on the length of the words.
     """
-    score = score_word
+    score = score_word 
     highest_score = ("", 0)
 
     for word in word_list: 
