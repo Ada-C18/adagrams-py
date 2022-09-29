@@ -58,7 +58,7 @@ def uses_available_letters(word, letter_bank):
         else:
             word_letter_frequency[letter] += 1
         
-    if all((k in letter_bank_frequency and letter_bank_frequency[k] == v) for k,v in word_letter_frequency.items()):
+    if all((word in letter_bank_frequency and letter_bank_frequency[word] == score) for word,score in word_letter_frequency.items()):
         return True
     return False
 
@@ -90,10 +90,6 @@ def get_highest_word_score(word_list):
     for word,score in words_score_dict.items():
         if len(word) == 10 and score == highest_score:
             return word, highest_score
-<<<<<<< HEAD
-
-=======
->>>>>>> 5a76467a42a9bc85166b6b6d8513497ab0335476
     return max(words_score_dict.items()) 
 
 
