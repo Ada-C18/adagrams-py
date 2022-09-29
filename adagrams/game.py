@@ -104,30 +104,30 @@ def score_word(word):
     return score
 
 def get_highest_word_score(word_list):
-    """
-    input:word_list, which is a list of strings
-    output: dictionary of word and scores
-    """
-    words_score = {}
-    for word in word_list:
-        score = score_word(word)
-        words_score[word] = score
-
-    highest_score = max(words_score.values())
-
-    tie_dictionary = {}
-    for key, value in words_score.items():
-        if value == highest_score:
-            tie_dictionary[key] = len(key)
     
-    most_letters = max(tie_dictionary.values())
-    fewest_letters = min(tie_dictionary.values())
+    best_word_and_score = [] #did not start with tuple beacuse tuple are immutable
+    word_and_score = {}
 
-    if most_letters == 10:
-        for word in tie_dictionary.keys():
-            if tie_dictionary[word]== 10:
-                return(word, words_score[word])
-    else:
-        for word in tie_dictionary.keys():
-            if tie_dictionary[word] == fewest_letters:
-                return(word, words_score[word])
+    #poulate dictonary with word string as key and score as value
+    for word in range(len(word_list)):
+        score = score_word(word_list[word])
+        word_and_score[word_list[word]] = score
+    
+    #iterate through word_and_scores dictinary to determine best word and score
+    #called best_word_and_score
+    for word, score in word_and_score.items():
+        if not best_word_and_score:
+            best_word_and_score.append(word)
+            best_word_and_score.append(score)
+        elif score > best_word_and_score[1]:
+            best_word_and_score[1] = score
+            best_word_and_score[0] = word
+        
+        elif score == best_word_and_score[1] and len(word)< len(best_word_and_score[0]) and len(best_word_and_score[0]) != 10:
+            best_word_and_score[1] = score
+            best_word_and_score[0] = word
+        
+        elif score == best_word_and_score[1] and len(word) == 10 and len(word) != len(best_word_and_score[0]):
+            best_word_and_score[1] = score
+            best_word_and_score[0] = word
+    return tuple(best_word_and_score)
