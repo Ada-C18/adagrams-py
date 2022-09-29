@@ -100,6 +100,7 @@ def score_word(word):
 
 
 def get_highest_word_score(word_list):
+    word_list.sort()
     highest_score = 0
     highest_score_list = []
     best_word = []
@@ -111,7 +112,6 @@ def get_highest_word_score(word_list):
             best_word.append(word)
 
     max_score = (max(highest_score_list))
-    print(max_score)
     combination = zip(best_word, highest_score_list)
     combination_list = (list(combination))
 
@@ -122,13 +122,12 @@ def get_highest_word_score(word_list):
         if len(score[0]) == 10:
             return score 
 
-    min_length = 1000
-    for score in winning_score:
-        if len(score[0])<min_length:
-            min_length = len(score[0])
-            shortest_word = score
-
-    return shortest_word
+    # min_length = 1000
+    # for score in winning_score:
+    #     if len(score[0])<min_length:
+    #         min_length = len(score[0])
+    #         shortest_word = score
+    return score
     
 
 
