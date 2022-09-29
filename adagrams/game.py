@@ -113,13 +113,16 @@ def get_highest_word_score(word_list):
 
     word_score_tuple = list(zip(word_list, score_list))
 
-    # winning_word = max(word_score_tuple)
-
     sorted_tuple = sorted(word_score_tuple, key=lambda t: t[1], reverse = True)
-
     winning_word = sorted_tuple[0]
+    if sorted_tuple[0][1] == sorted_tuple[1][1]:
+        if len(sorted_tuple[0][0]) == 10:
+            winning_word = sorted_tuple[0]
+        elif len(sorted_tuple[1][0]) == 10:
+            winning_word = sorted_tuple[1]
+        elif len(sorted_tuple[0][0]) > len(sorted_tuple[1][0]):
+            winning_word = sorted_tuple[1]
+        elif len(sorted_tuple[0][0]) < len(sorted_tuple[1][0]):
+            winning_word = sorted_tuple[0]    
 
-    return winning_word
-
-    
     return winning_word
