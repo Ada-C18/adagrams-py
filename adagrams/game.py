@@ -33,96 +33,64 @@ LETTER_POOL = {
 # ================================
 
 def draw_letters():
-    # takes in no parameter
-    letters = [] # the "hand" with 10 letters that we return
+    
+    letters = []
     
     count = 0
     
-    new_dict = LETTER_POOL.copy()
+    new_letter_dict = LETTER_POOL.copy()
 
-    # print("BEFORE: list of letters = ", letters)
-    # print("BEFORE: dictionary = ", new_dict)
-
-    # create a list that's 10 letters long
-    # random drawing from letters in dictionary — import random module
     while len(letters) < 10:
-        random_letter = random.choice(list(new_dict.keys()))
-
-        # ... conditional statement ...
-        for k, v in new_dict.items():
-            if k == random_letter and v > 1:
-                # print("BEFORE change ", k, v)
+        random_letter = random.choice(list(new_letter_dict.keys()))
+        for letter, points in new_letter_dict.items():
+            if letter == random_letter and points > 1:
                 letters.append(random_letter)
-                v -= 1 # this creates a new value for v
-                new_dict[k] = v # this syntax adds updates the value of the dictionary w/in the loop
-                # print("AFTER change = ", k, v)
+                points -= 1
+                new_letter_dict[letter] = points
             else:
                 continue
-        count += 1 # we need to make this change to the dictionary
-    # print("Letters list = ", letters)
+        count += 1 
+    
     return letters
-
 
 # =========== WAVE TWO ===========
 # ================================
 
-
 def uses_available_letters(word, letter_bank):
-
-    # check input-word only uses letters in hand
-    # word = "string"
-    # letter_bank = ["list", "of", "strings", "ie letters"]
 
     word = word.upper()
 
-    word_letters = list(word)
-    print("List of letters from WORD = ", word_letters)
-    print("Letter Bank = ", letter_bank)
+    list_of_words = list(word)
 
-    frequency = {}
+    frequency_in_word = {}
 
-    for letter in word_letters:
-        if letter in frequency:
-            frequency[letter] += 1
+    for letter in list_of_words:
+        if letter in frequency_in_word:
+            frequency_in_word[letter] += 1
         else:
-            frequency[letter] = 1
-    print("Frequency of Letters in Word = ", frequency)
+            frequency_in_word[letter] = 1
 
-    frequency2 = {}
+    frequency_in_bank = {}
 
     for letter in letter_bank:
-        if letter in frequency2:
-            frequency2[letter] += 1
+        if letter in frequency_in_bank:
+            frequency_in_bank[letter] += 1
         else:
-            frequency2[letter] = 1
-    print("Frequency of letters in Bank = ", frequency2)
-    
-    # REFACTOR: can we refactor these two loops into one?
+            frequency_in_bank[letter] = 1
 
-    # if every letter in word is in letter_bank
-    # return True
 
-    common = frequency.items() & frequency2.items() 
-    print("Len of COMMON_key:values dict = ", len(common))
-    print("Len of HAND dict = ",len(frequency))
-    print("Len of LETTER_BANK dict = ", len(frequency2))
+    common = frequency_in_word.items() & frequency_in_bank.items() 
 
-    if len(common) == len(frequency):
+    if len(common) == len(frequency_in_word):
         return True
-    # if every letter in word is NOT in letter_bank
-    # return False
     else:
         return False
-
-
 
 # =========== WAVE THREE ===========
 # ==================================
 
-
 def score_word(word):
 
-    # POINTS
     score_chart = {
     'A': 1,
     'E': 1,
@@ -152,80 +120,44 @@ def score_word(word):
     'Z': 10,
     }
 
-    # GOAL: return the score of given word defined by Adagram
-    # word = "string of characters"
     word = word.upper()
-    # print("Word list = ", word, ",", type(word), len(word))
-    # if the word is 1 letter, return the point
-
+    
     sum = 0
-    # print("Sum = ", sum)
 
-    # if length of word is 7, 8, 9, or 10 -->
-        # then the word gets 8 extra points
     if len(word) >= 7 and len(word) <= 10:
         sum += 8
 
-    # each letter within word has a point value
-    # sum up the total number of points for the word
-
     for letter in word:
         if letter in score_chart.keys():
-            # print("BEFORE: sum changes", sum)
             sum += score_chart[letter]
-            # print("The letter's value = ", letter, score_chart[letter])
-            # print("AFTER: sum changes", sum)
-    # return an integer representing the number of points
-    # return <int>
     return sum
-    # print("Total after iteration = ", sum)
-
-
 
 # =========== WAVE FOUR ===========
 # =================================
 
-# I think I want to rename the variables in this project for consistency :)
-
 def get_highest_word_score(word_list):
     
-    # print(word_list)
-    # score_list = []
-    score_dict = {}
+    scores_dict = {}
 
     for word in word_list:
-        word_score = score_word(word)
-        # score_list.append((word, word_score))
-        score_dict[word] = word_score
-    print("Score Dict = ", score_dict)
-    # print(score_list)
+        score_of_word = score_word(word)
+        scores_dict[word] = score_of_word
 
-    max_score = max(score_dict.values())
-    print("Max Score = ", max_score)
+    max_score = max(scores_dict.values())
 
+    highest_tied_scores = []
+    for word, score in scores_dict.items():
+        if score == max_score:
+            best_word = (word, score)
+            highest_tied_scores.append(best_word)
 
-    tied_scores = []
-    for k, v in score_dict.items():
-        if v == max_score:
-            best_word = (k, v)
-            # return best_word
-            tied_scores.append(best_word)
-    # print(tied_scores)
+    sorted_highest_tied_scores = sorted(highest_tied_scores)
 
-    sort_ties = sorted(tied_scores)
-    print("Shorted List = ", sort_ties)
-    shortest = max(sort_ties) # this is kind of confusing me??
-    highest = min(sort_ties) # would we use key=len?
-    print("Shorest Char Score = ", shortest)
-    print("Highest Char Score = ", highest)
+    # longest = max(sorted_highest_tied_scores, key=lambda scores: len(scores[0]))
+    shortest = min(sorted_highest_tied_scores, key=lambda scores: len(scores[0]))
 
-
-    for scores in sort_ties:
-
+    for scores in sorted_highest_tied_scores:
         if len(scores[0]) == 10:
-            print(scores)
             return scores
-
         elif scores == shortest:
-            print(scores)
             return scores
