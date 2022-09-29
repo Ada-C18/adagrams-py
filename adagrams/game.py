@@ -45,18 +45,6 @@ def draw_letters():
     return hand
 
 def uses_available_letters(word, letter_bank):
-    # letters_count = 0
-    # letters = []
-
-    # for letter in word:
-    #   letter = letter.upper() or letter.lower()
-    #   if letter in letter_bank:
-    #     if letter not in letters:
-    #         letters_count += 1
-    #         letters.append(letter)
-    # if letters_count == len(word):
-    #     return True
-    # return False
     letters = {}
     word = word.upper()
 
@@ -73,8 +61,6 @@ def uses_available_letters(word, letter_bank):
     return True
 
 def score_word(word):
-    # change this to a constant big O rather than linear by looking up by key (changing key to the letter)
-    # because looking it up by key is constant whereas looking it up by value and returning the key linear
     score_chart = {
     'A': 1, 
     'B': 3, 
@@ -116,32 +102,11 @@ def score_word(word):
     return score
 
 def get_highest_word_score(word_list):
-#   score_list = {}
-#   highest_score = []
-#   for word in word_list:
-#     word_value = score_word(word)
-#     score_list[word] = word_value
-#   print(score_list)
-#   for key,value in score_list.items():
-#     val = max(score_list.values())
-#     if value == val:
-#         value = value
-#         highest_score.append(key)
-        
-
-    
-#   print(word)
-#   print(highest_score)
-#   print(val)
-# #   return highest_score
     word_dict = create_word_score_dict(word_list)
 
     max_score = max(word_dict)
     winning_word_list = word_dict[max_score]
 
-    # if len(winning_word_list) == 1:
-    #     highest_score = winning_word_list[0], max_score
-    # else:
     for word in winning_word_list:
         if len(word) == 10:
             highest_score = word, max_score
