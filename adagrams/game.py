@@ -36,12 +36,8 @@ def draw_letters():
         for i in range(value):
             the_letters.append(key)
 
-    # use random to pick an index of the length of the_letters 
-    the_hand = random.sample(the_letters, 10)
-    
+    the_hand = random.sample(the_letters, 10)  
     return the_hand
-
-
 
 def uses_available_letters(word, letter_bank):
     #copy letter_bank to track what letters are still available to use
@@ -54,8 +50,6 @@ def uses_available_letters(word, letter_bank):
         else:
             return False
     return True
-
-
 
 def score_word(word):
     score = 0
@@ -81,6 +75,7 @@ def score_word(word):
 def get_highest_word_score(word_list):
     highest_score = 0
     top_word = ""
+    
     tie_list = []
     for word in word_list:
         score = score_word(word)
