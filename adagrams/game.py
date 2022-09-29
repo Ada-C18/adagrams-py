@@ -1,4 +1,3 @@
-from ast import Or
 import random
 
 LETTER_DISTRIBUTION = {
@@ -83,68 +82,29 @@ def score_word(word):
     return total_score
 
 def get_highest_word_score(word_list):
-    word_dict = {}
-    highest_score = tuple([None, 0])
-    word_info = []
-    # NOTE: could this be 3 lists and zip?
+    word_info = [{"word": word, "score": score_word(word), "length": len(word)}
+                for word in word_list]
+    print(word_info)    
 
-    for word in word_list:
-        word_score = score_word(word)
-        word_info.append(
-            {"word": word,
-            "score": word_score,
-            "length": len(word)
-            }
-        )
-        if word_score > highest_score[1]:
-            highest_score = (word, word_score)
+    highest_score = max(word_info, key=lambda word_info: word_info["score"])
     
-    tie_breaker = [word for word, score in word_dict.items()
-                    if score == highest_score[1]]
-    tie_breaker_word_length = [len(word) for word in tie_breaker]
+    word_info = list(filter(lambda word_dict: word_dict["score"]
+                            == highest_score["score"], word_info))
+    # We also came up with this implementation for line 91-92:
+    # for word_dict in word_info:
+    #     print("the score is:")
+    #     print(word_dict["score"])
+    #     if word_dict["score"] != highest_score["score"]:
+    #         word_info.remove(word_dict)
+    
+    smallest_length = min(word_info, key=lambda word_info: word_info["length"])
 
-    if len(tie_breaker) > 1:
-        smallest_word_len = min(tie_breaker_word_length)
-        for word in tie_breaker:
-            if len(word) == 10:
-                highest_score = word, word_dict[word]
-                break
-            elif len(word) == smallest_word_len:
-                highest_score = word, word_dict[word]
+    for word_dict in word_info:
+        if word_dict["length"] == 10:
+            return word_dict["word"], word_dict["score"]
 
-    return highest_score
+    for word_dict in word_info:
+        if word_dict["length"] == smallest_length["length"]:
+            return word_dict["word"], word_dict["score"]
 
-    word_list[word] = [word_score(word), len(word)]
-
-# idea for storing variables:
-
-list = [
-    {
-        "word": "apple",
-        "score": 5,
-        "length": len("apple")
-},
-    {
-        # another dict here
-    }]
-
-or
-
-tuple = tuple(
-    {
-        "word": "apple",
-        "score": 5,
-        "length": len("apple")
-},
-    {
-        # another dict here
-    })
-
-or
-
-variable = {
-    "apple": tuple(5, len),
-    "apple": [5, len]
-}
-
-word_list[word] = [word_score(word), len(word)]
+get_highest_word_score(["MMMM", "WWW"])
