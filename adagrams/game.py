@@ -1,3 +1,4 @@
+from hashlib import new
 import random
 from collections import Counter
 # import string
@@ -126,5 +127,63 @@ def score_word(word):
 
 
 
+# def get_highest_word_score(word_list):
+#     final_word = ""
+#     score = 0
+#     # print("\n \n next\n")
+#     print(word_list)
+#     for word in word_list:  
+#         if score_word(word) > score:  
+#             final_word = word
+#             score = score_word(word)  
+#         elif score_word(word) == score:   
+#             if len(word) == 10 and len(final_word) == 10: 
+#                 continue
+#             elif len(final_word) != 10 and len(word) == 10 or len(word) < len(final_word):
+#                 final_word = word
+#                 score = score_word(word)
+#         # print(final_word)
+
 def get_highest_word_score(word_list):
-    pass
+    final_word = ""
+    score = 0
+
+    for word in word_list:
+        if score_word(word) > score:
+            final_word = word
+            score = score_word(word)
+        elif score_word(word) == score:
+            if len(final_word)== 10 and len(word) ==10:
+              continue
+            elif len(final_word) == 10:
+              continue
+            elif len(word) == 10:
+              final_word = word
+              score = score_word(word)
+            elif len(word) < len(final_word):
+              final_word = word
+              score = score_word(word)
+
+    return final_word, score
+
+
+    
+   
+    
+       
+            
+            
+
+
+
+
+
+
+
+
+                
+  
+   
+
+       
+    
