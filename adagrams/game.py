@@ -121,17 +121,28 @@ def get_highest_word_score(word_list):
 
     # takes word with highest score from dictionary and
     #       appends it to highest_scoring as a tuple.
-    max_value = max(word_scores.values())
-    print(f"MAX: {max_value}")
-    for key, value in word_scores.items():
-        if value == max_value:
-            highest_scoring.append((key, value))
+    max_score = max(word_scores.values())
+    print(f"MAX: {max_score}")
+    for word, score in word_scores.items():
+        if score == max_score:
+            highest_scoring.append((word, score))
+
+    # sort highest scores by word length 
+    highest_scoring.sort(key=lambda x: len(x[0]))
+
+    # loop through highest_scoring after sorting
+    # first item will always be the shortest length
+    # if lenghth isn't 10, return first item (either shortest or first of the tie)
+    for i in range(len(highest_scoring)):
+        word = highest_scoring[i][0]
+
+        if len(word) == 10:
+            return highest_scoring[i]
+
+    return highest_scoring[0]
 
 # NEED TO BREAK TIES!
 # NEED TO RETURN A SINGLE TUPLE
-
-    return highest_scoring
-
 
 # for programmers testing use
 print(get_highest_word_score(["X", "XX", "JJH", "XXW", "QQ"]))
