@@ -66,25 +66,33 @@ SCORE_POOL = {
     'Z': 10    
 }
 
-def copy_letter_from_original(pool):
+def copy_dictionary(pool):
+    """
+    Returns a copy of a dictionary.
+    """
     pool_dict_copy = {}
     for key, value in pool.items():
         pool_dict_copy[key] = value
     return pool_dict_copy
 
-def draw_letters():   
+def draw_letters(): 
+    """
+    Returns an array of ten random strings from letter pool.
+    """  
     res_letters = []
-    letter_bank_dict = copy_letter_from_original(LETTER_POOL)
+    letter_bank_dict = copy_dictionary(LETTER_POOL)
     while len(res_letters) < 10:   
         letter = random.choice(list(letter_bank_dict.keys()))
         if letter_bank_dict[letter] > 0:
             res_letters.append(letter)
             letter_bank_dict[letter] -= 1
-    #print(res_letters)
     return res_letters
 
 def create_dict(data):
-    # initiatite word_dict 
+    """
+    Returns dictionary with key "element" and
+    with value equal to the frequency of the element.
+    """
     data_dict = {}
     for element in data:
         if element not in data_dict:
@@ -94,11 +102,10 @@ def create_dict(data):
     return data_dict
 
 def uses_available_letters(word, letter_bank):
-    # convert word to capital
-    # for each key, value in word dict.items()
-    # check if key of word_dict <= key of letetr_bank dict
-    # return True
-    # else: return False
+    """
+    Returns True if every letter from word 
+    belongs to the letter bank, otherwise False.
+    """
     word = word.upper()
     word_dict = create_dict(word)
     letter_bank_dict = create_dict(letter_bank)
@@ -111,13 +118,10 @@ def uses_available_letters(word, letter_bank):
                 return False        
     return True    
 
-def score_word(word):   
-# word as string
-# variable stores the final score
-# if len(word) >= 7 and <= 10, add 8 points
-# loop thru each element of in word
-# add points based on the value of the key
-
+def score_word(word):  
+    """
+    Returns the score of the given word.
+    """
     total_score = 0
     word = word.upper()
     if len(word) >= 7 and len(word) <= 10:
@@ -128,33 +132,39 @@ def score_word(word):
     return total_score
 
 def get_highest_word_score(word_list):
-    # return tuple (word, max_score)   
+    """
+    Returns a tuple of a winning word and it's score.
+    """  
     max_score = 0
-    max_name = ""
-    final_word_dict = {}
+    win_name = ""
+    tie_word_dict = {}
     for word in word_list:
         word_score = score_word(word)
         if word_score > max_score:
             max_score = word_score
-            max_name = word           
+            win_name = word           
+    
     for word in word_list:
         if score_word(word) == max_score:
-            final_word_dict[word] = len(word)
-    if len(final_word_dict) == 1:
-        return max_name, max_score
+            tie_word_dict[word] = len(word)
     
-    #if len = 10, this word win
-    for word, length in final_word_dict.items():
+    # check if only one word in tie_word_dict
+    if len(tie_word_dict) == 1:
+        return win_name, max_score
+    
+    #check if len of word in tie_word_dict = 10, this word win
+    for word, length in tie_word_dict.items():
         while length == 10:
             return (word, max_score)                
-    #len != 10, word with fewest len win 
-    #same length -> choose the first occurence
+    
+    #check if len of word != 10, word with fewest len win 
+    #and if words with the same length -> pick the first one in tie_word_dict
     else:
         mini_length = 10
-        for word, length in final_word_dict.items():  
+        for word, length in tie_word_dict.items():  
             if length < mini_length:
                 mini_length = length
-        key_list = list(final_word_dict.keys())
-        val_list = list(final_word_dict.values())
-        best_name = key_list[val_list.index(mini_length)]        
-    return (best_name, max_score)        
+        key_list = list(tie_word_dict.keys())
+        val_list = list(tie_word_dict.values())
+        win_name = key_list[val_list.index(mini_length)]        
+    return (win_name, max_score)        
