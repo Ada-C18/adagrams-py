@@ -105,4 +105,30 @@ def score_word(word):
 
 
 def get_highest_word_score(word_list):
-    pass
+#   word_list = list of strings
+#   Which word in word_list has highest score?
+#   Apply tie-breaking logic:
+#       - prefer word with fewest letters (unless it has 10 letters)
+#       - if tied words have same score and length, pick first appearance in word_list.
+#   return tuple ('winning_word', score)
+
+    word_scores = {}
+    highest_scoring = []
+
+    # fills dictionary with word and its score.
+    for word in word_list:
+        word_scores[word] = score_word(word)
+
+    # takes word with highest score from dictionary
+    max_value = max(word_scores.values())
+    print(f"MAX: {max_value}")
+    for key, value in word_scores.items():
+        print(f"k: {key}, v: {value}")
+        if value == max_value:
+            highest_scoring.append(key)
+
+    return highest_scoring
+
+
+
+print(get_highest_word_score(["X", "XX", "XXX", "XXXX"]))
