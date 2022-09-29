@@ -59,8 +59,6 @@ def uses_available_letters(word, letter_bank):
 
 
 def score_word(word):
-    # pass
-    total_points = 0
     point_value = [["A", "E", "I", "O", "U", "L", "N", "R", "S", "T"],
     ["D", "G"],
     ["B", "C", "M", "P"],
@@ -71,6 +69,11 @@ def score_word(word):
 
     if len(word) >= 7:
         total_points = 8
+    else:
+        total_points = 0
+    #refactored above code
+    #total_points = 8 if len(word) >= 7 else 0
+
     for letter in word.upper():
         if letter in point_value[0]:
             total_points += 1
@@ -91,7 +94,6 @@ def score_word(word):
 
 
 def get_highest_word_score(word_list):
-    #pass
     highest_score = 0
     tuple_list = []
     #tie_list = []
@@ -102,10 +104,22 @@ def get_highest_word_score(word_list):
     for item in tuple_list:
         if item[1] > highest_score:
             highest_score = item[1]
-            
+        if item[1] == highest_score:
+            tie_list.append(item)
+    
+    
+    shortest_word = ()
+    min_length = min(len(tie_list[0]))
+
+    for item in tie_list:
+        if len(item[0]) == 10:
+            return item
+        if len(item[0]) == min_length:
+            # test_length == len(item[0])
+            shortest_word = item
+
     for item in tuple_list:
+        if tie_list:
+            return shortest_word
         if item[1] == highest_score:
             return item
-    
-
-    
