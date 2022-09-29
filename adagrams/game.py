@@ -145,7 +145,7 @@ def get_highest_word_score(word_list):
     # list to store tuples
     word_tuple_list = []
     # make a tuple with word, score and length
-    # append the tuples to word_tuple_list
+    # append the tuple to word_tuple_list
     for word in word_list:
         score = score_word(word)
         length = len(word)
@@ -157,8 +157,6 @@ def get_highest_word_score(word_list):
     
     # element[1] is score in each tuple
     # element[2] is len of each word in each tuple
-    # determine highest tuple
-    # loops over each tuple in word tuple list
     for element in word_tuple_list:
         # element has score higher than current highest score
         if element[1] > highest_score:
@@ -166,21 +164,11 @@ def get_highest_word_score(word_list):
             highest_score_tuple = element
         # tie breaker
         elif element[1] == highest_score:
-            # one word has 10 tiles; 10 tiles wins
             if element[2] == 10 or highest_score_tuple[2] == 10:
-                # highest score tuple remains unchanged (first option) if
-                # highest score tuple and element both have 10 tiles
                 if highest_score_tuple[2] == 10:
                     continue
                 else:
                     highest_score_tuple = element
-            # no word has 10 tiles; shorter word wins
             elif element[2] < highest_score_tuple[2]:
                 highest_score_tuple = element    
-            # obligatory else; highest score tuple remains unchanged
-            else:    
-                continue
-        # obligatory else; highest score tuple remains unchanged
-        else:
-            continue
     return highest_score_tuple
