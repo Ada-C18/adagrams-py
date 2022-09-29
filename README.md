@@ -275,7 +275,7 @@ Implement the function `score_word` in `game.py`. This method should have the fo
 
 ### Wave 4: get_highest_word_score
 
-After several hands have been drawn, words have been submitted, checked, scored, and played, you need a way to find the highest scoring word. This function looks at the list of `word_list` and calculates which of these words has the highest score, applies any tie-breaking logic, and returns the winning word in a special data structure.
+After several hands have been drawn, words have been submitted, checked, scored, and played, you need a way to find the highest scoring word. This function looks at the list of `word_list` and calculates which of these words has the highest score, applies any tie-breaking logic, and returns the winning word in a special data structure..
 
 Implement a function called `get_highest_word_score` in `game.py`. This method should have the following properties:
 
