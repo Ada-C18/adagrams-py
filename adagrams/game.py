@@ -106,8 +106,23 @@ def get_highest_word_score(word_list):
         score_dict[word] = score
 
     highest_score_value = max(score_dict.values())
-    highest_score_key = max(score_dict, key=score_dict.get)
+    #highest_score_key = max(score_dict, key=score_dict.get)
     
-    word_tupl = (highest_score_key, highest_score_value) 
+    highest_scores = []
     
-    return word_tupl
+    for dict in score_dict.items():
+        if dict[1] == highest_score_value:
+            highest_scores.append(dict)
+            
+    shortest_word_length = len(highest_scores[0][0])
+    shortest_word = highest_scores[0][0] 
+    
+    if len(highest_scores) > 1:
+        for word, score in highest_scores:
+            if len(word) < shortest_word_length:
+                shortest_word_length = len(word)
+                shortest_word = word 
+            
+    #word_tupl = (highest_score_key, highest_score_value) 
+    
+    return (shortest_word, highest_score_value)
