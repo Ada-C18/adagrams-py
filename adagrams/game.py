@@ -1,3 +1,4 @@
+from ast import Or
 import random
 
 LETTER_DISTRIBUTION = {
@@ -101,3 +102,38 @@ def get_highest_word_score(word_list):
                 highest_score = word, word_dict[word]
 
     return highest_score
+
+    word_list[word] = [word_score(word), len(word)]
+
+# idea for storing variables:
+
+list = [
+    {
+        "word": "apple",
+        "score": 5,
+        "length": len("apple")
+},
+    {
+        # another dict here
+    }]
+
+or
+
+tuple = tuple(
+    {
+        "word": "apple",
+        "score": 5,
+        "length": len("apple")
+},
+    {
+        # another dict here
+    })
+
+or
+
+variable = {
+    "apple": tuple(5, len),
+    "apple": [5, len]
+}
+
+word_list[word] = [word_score(word), len(word)]
