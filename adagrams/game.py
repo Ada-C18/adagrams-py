@@ -45,6 +45,8 @@ def draw_letters():
     for letter, count in LETTER_DISTRIBUTION.items():
         for i in range(count):
             letter_pool.append(letter)
+    # NOTE: can we rewrite 45-47 with list comprehension? or move to helper function?:
+    # letter_pool = [[letter] * count for letter, count in LETTER_DISTRIBUTION.items()]
     for letter in range(10):
         random_letter = random.choice(letter_pool)
         letter_bank.append(random_letter)
@@ -53,6 +55,7 @@ def draw_letters():
 
 def uses_available_letters(word, letter_bank):
     bank_dict = {}
+    # NOTE: I think we can rewrite this using dictionary comprehension?
     for item in letter_bank:
         if item not in bank_dict:
             bank_dict[item] = 1
@@ -81,9 +84,17 @@ def score_word(word):
 def get_highest_word_score(word_list):
     word_dict = {}
     highest_score = tuple([None, 0])
+    word_info = []
+    # NOTE: could this be 3 lists and zip?
+
     for word in word_list:
         word_score = score_word(word)
-        word_dict[word] = word_score
+        word_info.append(
+            {"word": word,
+            "score": word_score,
+            "length": len(word)
+            }
+        )
         if word_score > highest_score[1]:
             highest_score = (word, word_score)
     
