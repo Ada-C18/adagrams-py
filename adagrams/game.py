@@ -78,26 +78,37 @@ def get_highest_word_score(word_list):
         score_list.append(score)
 
     highest_score_index = 0
-    highest_score = 0
     for index in range (len(word_list)):
-        word = word_list[index]
         score = score_list[index]
-        if score > highest_score:
-            highest_score = score
+        if score > score_list[highest_score_index]:
             highest_score_index = index
 
-    
+    for index in range (len(word_list)):
+        score = score_list[index]
+        current_word = word_list[index]
+        high_score = score_list[highest_score_index]
+        high_score_word = word_list[highest_score_index]
+        if score == high_score and len(current_word) < len(high_score_word):
+            highest_score_index = index 
 
-    return [word_list[highest_score_index], highest_score]
+    for index in range (len(word_list)):
+        score = score_list[index]
+        current_word = word_list[index]
+        high_score = score_list[highest_score_index]
+        high_score_word = word_list[highest_score_index]
+        if score == high_score and len(current_word) == 10:
+            highest_score_index = index
 
-    # for score in score_list:
-    #     if score > highest_score:
-    #         highest_score = score
-    #     return highest_score
+    for index in range (len(word_list)):
+        score = score_list[index]
+        current_word = word_list[index]
+        high_score = score_list[highest_score_index]
+        high_score_word = word_list[highest_score_index]
+        if score == high_score and len(current_word) == len(high_score_word):
+            highest_score_index = index
+            word_list[0]
+            break
 
-    #get scores for words
-    # get list of scores
-    #find highest score
-    #return highest score
+    return [word_list[highest_score_index],score_list[highest_score_index]]
     
 
