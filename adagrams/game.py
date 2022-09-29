@@ -190,8 +190,7 @@ def score_word(word):
 def get_highest_word_score(word_list):
     
     # print(word_list)
-
-    # # score_list = []
+    # score_list = []
     score_dict = {}
 
     for word in word_list:
