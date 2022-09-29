@@ -60,9 +60,9 @@ def draw_letters():
 
     while len(hand_as_letters) < 10: # O(1)
         index = random.randint(0,len(bag_of_letters)-1) # O(1)
-        if index not in hand_as_numbers: # 0(n)
-            hand_as_numbers.append(index) # n(1)
-            hand_as_letters.append(bag_of_letters[index]) # n(1)
+        if index not in hand_as_numbers: # O(n)
+            hand_as_numbers.append(index) # O(1)
+            hand_as_letters.append(bag_of_letters[index]) # O(1)
     
     return hand_as_letters
 
@@ -74,7 +74,7 @@ def uses_available_letters(word, letter_bank):
     '''
     copy_of_letter_bank = copy.deepcopy(letter_bank)
     word = word.upper()
-    # 0(n * k) = n? ****************************** WORK ON THIS ***************************
+    # O(n * k) = n? ****************************** WORK ON THIS ***************************
     for letter in word: # O(n), where n = len(word)
         try:
             copy_of_letter_bank.remove(letter) # O(k), where k = len(copy_of_letter_bank)
@@ -132,7 +132,7 @@ def score_word(word):
     '''
     score = 0
     for letter in word.upper(): # O(n)
-        score += SCORING[letter] # 0(1)
+        score += SCORING[letter] # O(1)
         
     if 7 <= len(word) <= 10: # O(1)
         score += 8 # O(1)
@@ -155,18 +155,18 @@ def get_highest_word_score(word_list):
     '''
     words_and_scores = {}
     for word in word_list: # O(n)
-        words_and_scores[word] = score_word(word) # O(1)
+        words_and_scores[word] = score_word(word) # O(1) ?
     
     highest_score = max(words_and_scores.values()) # O(n)
     highest_scoring_words = [word for word, score in words_and_scores.items() if score == highest_score] # O(n)
-    winning_word = highest_scoring_words[0] # 0(1)
+    winning_word = highest_scoring_words[0] # O(1)
 
     # worse case scenario: O(n + n + n) = O(3n) = O(n) ****************************** WORK ON THIS ***************************
     if len(highest_scoring_words) != 1:
         # tie-handling: check if there is string with 10 characters, otherwise return string with fewest characters
         words_with_10 = [word for word in highest_scoring_words if len(word) == 10] # O(n)
         try:
-            winning_word = words_with_10[0] # 0(1)
+            winning_word = words_with_10[0] # O(1)
         except:
             winning_word = min(highest_scoring_words, key=len) # O(n)
     
