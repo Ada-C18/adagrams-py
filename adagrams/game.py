@@ -93,3 +93,37 @@ def get_highest_word_score(word_list):
         else:
             winning_tuple = list(highest_word_dict.items())[0]
     return winning_tuple
+
+# def get_highest_word_score(word_list):
+#     word_to_score_dict = {}
+#     for word in word_list:
+#         word_score = score_word(word)
+#         word_to_score_dict[word] = word_score
+    
+#     highest_scoring_word = ()
+
+#     for word, word_score in word_to_score_dict.items():
+#         highest_scoring_word = (word, word_score)
+#         # by putting [1] i am accessing the score 0
+#         if word_score > highest_scoring_word[1]:
+#             highest_scoring_word = (word, word_score)
+#             return (highest_scoring_word)
+#         elif word_score == highest_scoring_word[1]:
+#             if len(highest_scoring_word[0]) == 10:
+#                 return highest_scoring_word
+#             elif len(word) == 10:
+#                 highest_scoring_word = (word, word_to_score_dict[word])
+#                 return highest_scoring_word
+#             elif len(highest_scoring_word[0]) <= len(word):
+#                 return highest_scoring_word
+#             elif len(highest_scoring_word[0]) > len(word):
+#                 highest_scoring_word = (word, word_to_score_dict[word])
+#                 return highest_scoring_word
+#         else:
+#             continue
+
+
+    
+    
+
+    
