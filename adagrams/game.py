@@ -38,12 +38,14 @@ def get_highest_word_score(word_list):
 
     for word in word_list:
         score = score_word(word)
+        high_word_length = len(highest_score_word)
+        word_length = len(word)
         if score > highest_score:
             highest_score = score
             highest_score_word = word 
         elif score == highest_score:
-            if len(highest_score_word) == 10 and len(word) < len(highest_score_word) or len(word) == len(highest_score_word):
+            if high_word_length == 10 and word_length < high_word_length or word_length == high_word_length:
                 continue
-            elif len(word) < len(highest_score_word) or len(word) == 10:
+            elif word_length < high_word_length or word_length == 10:
                 highest_score_word = word
     return (highest_score_word, highest_score)
