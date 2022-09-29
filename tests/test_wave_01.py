@@ -82,10 +82,7 @@ def test_chi_square_frequencies():
 
     # normalize LETTER_POOL frequencies
     pool_sum = sum(LETTER_POOL.values())
-    pool_freqs = {}
-    for letter, value in LETTER_POOL.items():
-        pool_freqs[letter] = value / pool_sum
-    
+    pool_freqs = {letter : (value / pool_sum) for letter,value in LETTER_POOL.items()}    
 
     # collect our sample
     sample_counter = Counter()
