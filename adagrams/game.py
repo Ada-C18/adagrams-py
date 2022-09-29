@@ -216,7 +216,7 @@ def get_highest_word_score(word_list):
     sort_ties = sorted(tied_scores)
     print("Shorted List = ", sort_ties)
     shortest = max(sort_ties) # this is kind of confusing me??
-    highest = min(sort_ties)
+    highest = min(sort_ties) # would we use key=len?
     print("Shorest Char Score = ", shortest)
     print("Highest Char Score = ", highest)
 
