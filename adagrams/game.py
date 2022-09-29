@@ -47,23 +47,8 @@ def uses_available_letters(word, letter_bank):
 
     word_letter_frequency = Counter(word.upper())
     letter_bank_frequency = Counter(letter_bank)
-
-<<<<<<< HEAD
-    for letter in letter_bank:
-        if letter not in letter_bank_frequency:
-            letter_bank_frequency[letter] = 1
-        else:
-            letter_bank_frequency[letter] += 1
-    for letter in word.upper():
-        if letter not in word_letter_frequency:
-            word_letter_frequency[letter] = 1
-        else:
-            word_letter_frequency[letter] += 1
         
     if all((word in letter_bank_frequency and letter_bank_frequency[word] == score) for word,score in word_letter_frequency.items()):
-=======
-    if all((k in letter_bank_frequency and letter_bank_frequency[k] == v) for k,v in word_letter_frequency.items()):
->>>>>>> ec58fc64940518fd7c8b1e629c934dacb34df35a
         return True
     return False
 
