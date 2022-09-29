@@ -115,4 +115,34 @@ def score_word(word):
     return total_sum
 
 def get_highest_word_score(word_list):
-    pass
+    highest_score=0
+    words=[]
+    word_scored={}
+    
+    for word in word_list:
+        word_scored[word]=score_word(word)
+    for value in word_scored.values():
+        if value > highest_score:
+            highest_score=value
+    
+    #get words with highest_score        
+    for word in word_list:
+      if word_scored[word]==highest_score:
+        words.append(word)
+    
+    #evaluate tie-breaks
+    if len(words) > 1:
+      shortest_word_len = 10
+      shortest_word = ''
+      for word in words:
+        if len(word) == 10:
+          return (word, highest_score)
+        elif len(word) < shortest_word_len:
+          shortest_word_len = len(word)
+          shortest_word = word
+      return (shortest_word, highest_score)    
+    
+    #only one winner   
+    else:
+      
+      return (words[0], highest_score)
