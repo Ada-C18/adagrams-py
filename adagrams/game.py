@@ -32,18 +32,22 @@ LETTER_POOL = {
 def draw_letters():
     letters = []
     letter_pool_dict = LETTER_POOL.copy()
+    
+    # generates list of letters for each letter amount in values
+    letter_list = [key for key, value in letter_pool_dict.items() for value in range(value)]
+    print(letter_list)
+
     while len(letters) < 10:
-        # get one random letter in the letter pool
-        letter = random.choice(list(letter_pool_dict.keys()))
-        for key in letter_pool_dict:
-            # find the letter in letter pool and check if the value greater than 0
-            if key == letter and letter_pool_dict[key] > 0:
-                # add the letter to letters
-                letters.append(letter)
-                # decrese one in that letter's value 
-                letter_pool_dict[key] -= 1
+        # get one random letter in the letter list
+        letter = random.choice(letter_list)
+        # adds random letter to letters
+        letters.append(letter)
+        # removes letter from letter_list
+        letter_list.remove(letter)
+
     return letters
 
+draw_letters()
 def uses_available_letters(word, letter_bank):
     word_list = list(word.upper())
     letter_bank_copy = letter_bank.copy()
