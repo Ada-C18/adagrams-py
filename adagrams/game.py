@@ -62,11 +62,11 @@ def uses_available_letters(word, letter_bank):
 
 def score_word(word):
     total_score = 0
-    letter_freq = dict(Counter(word.upper()))
-    for letter in letter_freq:
+    letter_count = dict(Counter(word.upper()))
+    for letter in letter_count:
         for score, letters in score_table.items():
             if letter in letters:
-                total_score += score * letter_freq[letter]
+                total_score += score * letter_count[letter]
     if len(word) >= 7:
         total_score += 8
     return total_score
@@ -75,6 +75,7 @@ def score_word(word):
 def get_highest_word_score(word_list):
     highest_score = 0
     winning_word = None
+
     for word in word_list:
         if score_word(word) > highest_score:
             highest_score = score_word(word)
@@ -87,5 +88,4 @@ def get_highest_word_score(word_list):
                 winning_word = word
             elif len(word) < len(winning_word):
                 winning_word = word
-    best_word = (winning_word, highest_score)
-    return best_word
+    return (winning_word, highest_score)
