@@ -35,7 +35,7 @@ def dict_to_list(dict):
     '''
     Create a list using the key-value pairs from the inputted dictionary.
     1. Start with an empty list.
-    2. Iterating through each key-value pair, adding the key to the list n times, with n being the associated value to the key. 
+    2. Iterate through each key-value pair, adding the key to the list n times, with n being the associated value to the key. 
     3. Return the list.
     '''
     bag_of_letters = []
@@ -48,9 +48,10 @@ def dict_to_list(dict):
 def draw_letters():
     '''
     Return a list of ten randomized letters, drawn from the bag_of_letters.
-    1. Create a bag_of_letters list with appropriate distribution by passing through LETTER_POOL dictionary
-    2. Use the random.randint generator to select a unique integer, which represents the index of the letter to be drawn from the bag_of_letters list
-    3. Repeat step #2 until, 10 letters have been randomized.
+    1. Create a bag_of_letters list with appropriate distribution by passing through LETTER_POOL dictionary.
+    2. Use the random.randint generator to select a unique integer, which represents the index of the letter 
+    to be drawn from the bag_of_letters list.
+    3. Repeat step #2 until 10 letters have been randomized.
     4. Return the ten letters in a list format.
     '''
     bag_of_letters = dict_to_list(LETTER_POOL)
@@ -70,9 +71,9 @@ def draw_letters():
 def uses_available_letters(word, letter_bank):
     '''
     Check if the word is an anagram of some or all of the given letters in the hand
-    1.Returns `True` if every letter in the `input` word is available in the `letter_bank`
-    2.Returns `False` if not; if there is a letter in `input` that is not present in the `letter_bank` 
-    or has too much of compared to the `letter_bank`
+    1. Iterate through every letter in word to check if every letter in the `input` word is available in the letter_bank.
+    2. Return False if there is a letter in `input` that is not present in the `letter_bank` 
+    or has too much of compared to the letter_bank. Otherwise, return True.
     '''
     copy_of_letter_bank = copy.deepcopy(letter_bank)
     word = word.upper()
@@ -118,9 +119,9 @@ SCORING = {
 def score_word(word):
     '''
     Calculate the score of the word
-    1. Iterate through each character in the word, adding the associated value of each letter per the SCORING dictionary
-    2. If the length of the word is 7, 8, 9, or 10, add an additional 8 points to the score
-    3. Return score
+    1. Iterate through each character in the word, adding the associated value of each letter per the SCORING dictionary.
+    2. If the length of the word is 7, 8, 9, or 10, add an additional 8 points to the score.
+    3. Return score.
     '''
     score = 0
     for letter in word.upper(): 
@@ -136,12 +137,12 @@ def score_word(word):
 def get_highest_word_score(word_list):
     '''
     Find the highest scoring word
-    1.Function looks at the list of `word_list` and calculates which of these words has the highest score.
-    2.In the case of tie in scores,check if there is string with 10 characters, 
-    otherwise return string with fewest characters.
-    -prefer the word with the fewest letters if tie in scores 
-    3.Returns a tuple that represents the data of a winning word and it's score
-
+    1. Create a dictionary words_and_scores. Populate it with the key being every word in word_list and value being the associated score.
+    2. Calculate the highest score, and create a list highest_scoring_words with words that have the highest score.
+    3. In the case of no ties, assign winning_word as the first and only item in the highest_scoring_words.
+    2. In the case of tie in scores, check if there is string with 10 characters, otherwise assign the 
+    winning_word as that with fewest characters.
+    3. Return a tuple that represents the data of a winning_word and its score.
     '''
     words_and_scores = {}
     for word in word_list:
