@@ -31,7 +31,6 @@ LETTER_POOL = {
 }
 
 def draw_letters():
-
     letter_list = []
     letter_freq = defaultdict(int)
 
@@ -39,19 +38,14 @@ def draw_letters():
         letter = random.choice(list(LETTER_POOL.keys()))
         if letter_freq[letter] < LETTER_POOL[letter]:
             letter_list.append(letter)
-
             if letter in letter_freq:
                 letter_freq[letter] += 1
-            else:
-                letter_freq[letter] = 1
 
     return letter_list
 
 def uses_available_letters(word, letter_bank):
     is_anagram = True
-
     copy_letter_bank = letter_bank[:]
-
     word = word.upper()
 
     for letter in word:
@@ -59,12 +53,12 @@ def uses_available_letters(word, letter_bank):
             is_anagram = False
         else:
             copy_letter_bank.remove(letter)
+            
     return is_anagram
 
 def score_word(word):
     score = 0
     word = word.upper()
-
     score_chart = {
         1: ["A", "E", "I", "O", "U", "L", "N", "R", "S", "T"],
         2: ["D", "G"],
@@ -79,7 +73,6 @@ def score_word(word):
         for key in score_chart:
             if letter in score_chart[key]:
                 score += key
-
     if len(word) >= 7:
         score += 8
 
@@ -87,11 +80,6 @@ def score_word(word):
 
 
 def get_highest_word_score(word_list):
-    # word_scores = []
-    # for word in word_list:
-    #     word_scores.append(score_word(word))
-    # words_and_scores = zip(word_list, word_scores)
-
     word_scores_dict = {}
     max_scores_dict = {}
 
@@ -108,17 +96,10 @@ def get_highest_word_score(word_list):
         for key, value in max_scores_dict.items(): 
             return key, value
 
-    max_scores_dict_lengths = []
-    for word in max_scores_dict.keys():
-        max_scores_dict_lengths.append(len(word))
-    shortest_max_score_word = min(max_scores_dict_lengths)
-
     for key, value in max_scores_dict.items(): 
         if len(key) == 10:
             return key, value
 
     for key, value in max_scores_dict.items():
-        if len(key) == shortest_max_score_word:
+        if key == min(max_scores_dict.keys(), key = len):
                 return key, value
-
-    
