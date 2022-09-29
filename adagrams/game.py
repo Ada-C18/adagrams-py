@@ -124,36 +124,24 @@ def score_word(word):
     return(score_total)
     
 
+def _high_score_key_helper(word):
+    # returns a tuple (score, has_10, -length)
+
+    cur_score = score_word(word)
+    has_10 = len(word) == 10 # True if word length is 10.
+    word_len = -len(word)
+
+    result = (cur_score, has_10, word_len)
+    print("result", word, result)
+    return result 
+
+
 def get_highest_word_score(word_list):
-    # iterate over the wordlist
-    #   calculate score
-    #   create a tuple
-    #   track highest score
-    #   save touples with highest score to a list
 
-    highest_scoring_words = [(word_list[0], score_word(word_list[0]))]
+    # use our helper function to find the highest ranked
+    # word using max
+    high_word = max(word_list, key=_high_score_key_helper)
+    print("high_word", high_word)
 
-    for word in word_list:
-        current_score = score_word(word)
-        if current_score > highest_scoring_words[0][1]:
-            highest_scoring_words = [(word, current_score)]
-        elif current_score == highest_scoring_words[0][1]:
-            highest_scoring_words.append( (word, current_score) )
+    return (high_word, score_word(high_word))
 
-
-    if len(highest_scoring_words) == 1:
-        return highest_scoring_words[0]
-    #############################
-    # Tiebreaker logic 
-    #############################
-    tiebreaker_list = []
-    for word_tuple in highest_scoring_words:
-        if len(word_tuple[0]) == 10:
-            print(word_tuple)
-        
-        if not tiebreaker_list:
-            return tiebreaker_list[0]
-    
-
-
-    
