@@ -60,7 +60,8 @@ LETTER_POINTS = {
 def draw_letters():
     from random import sample
 
-    return sample(LETTER_POOL.keys(), counts=LETTER_POOL.values(), k=10)
+    pool = "".join(letter * count for letter, count in LETTER_POOL.items())
+    return sample(pool, k=10)
 
 
 def uses_available_letters(word, letter_bank):
