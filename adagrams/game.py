@@ -46,7 +46,26 @@ def draw_letters():
     
 
 def uses_available_letters(word, letter_bank):
-    pass
+    #word is string describes some input word
+#letter_bank is list of drawn leters in hand(10 string)
+#if every letter in input is avilable in letter_bank return Tru
+#if not letter in input in letter bank or has to much compare to letter bank return False
+    upper_letter = word.upper()
+    dict = {}
+    for letter in letter_bank:
+        # print(letter)
+        if letter in dict:
+            dict[letter]+=1
+        dict[letter]=1
+    
+    for letter in upper_letter:
+        if letter in dict and dict[letter] > 0:
+            dict[letter] -=1
+            continue
+        else:
+            return False
+
+    return True
 
 def score_word(word):
     pass
