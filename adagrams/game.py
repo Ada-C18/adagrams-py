@@ -188,42 +188,97 @@ def score_word(word):
 
 
 def get_highest_word_score(word_list):
-
-    #This function looks at Word List(list of string) and calculates the highest scored word
-    # word list can be more than one word
     
-    # WE CREATE A DICTIONARY WITH THE WORD:SCORE PAIRS
-    word_score_dict = {}
-    print("Given Word List = ", word_list)
+    # print(word_list)
+
+    # # score_list = []
+    score_dict = {}
 
     for word in word_list:
-        # print(word)
-        test = score_word(word)
-        # print("Test = ", test)
-        word_score_dict[word] = test
-    print("Word-Score Dictionary = ", word_score_dict)
+        word_score = score_word(word)
+        # score_list.append((word, word_score))
+        score_dict[word] = word_score
+    print("Score Dict = ", score_dict)
+    # print(score_list)
+
+    max_score = max(score_dict.values())
+    print("Max Score = ", max_score)
 
 
-    # CREATE A LIST OF TUPLES - not necessary
-    tup_high_score = max(word_score_dict.items())
-    # print(tup_high_score)
-    return tup_high_score
-    int_high_score = int(tup_high_score[1])
-    # print("High Score Integar = ", int_high_score, type(int_high_score))
-    return int_high_score
+    tied_scores = []
+    for k, v in score_dict.items():
+        if v == max_score:
+            best_word = (k, v)
+            # return best_word
+            tied_scores.append(best_word)
+    # print(tied_scores)
+
+    shortest = max(tied_scores)
+    print("Shorest Score = ", shortest)
+
+    for scores in tied_scores:
+        if scores == shortest:
+            print(scores)
+            return scores
 
 
-    # TIE BREAKER LOGIC
 
+
+
+
+
+
+    # sorted_scores = sorted(tied_scores, key=len)
+    # print("Sorted Scores = ", sorted_scores)    
+
+    # #This function looks at Word List(list of string) and calculates the highest scored word
+    # # word list can be more than one word
+    
+    # # WE CREATE A DICTIONARY WITH THE WORD:SCORE PAIRS
+    # word_score_dict = {}
+    # print("Given Word List = ", word_list)
+
+    # for word in word_list:
+    #     # print(word)
+    #     test = score_word(word)
+    #     # print("Test = ", test)
+    #     word_score_dict[word] = test
+    # print("Word-Score Dictionary = ", word_score_dict)
+
+
+    # # CREATE A LIST OF TUPLES - not necessary
+    # tup_high_score = max(word_score_dict.items())
+    # # return tup_high_score
+    # int_high_score = int(tup_high_score[1])
+    # # return int_high_score
+
+    # # TIE BREAKER LOGIC
+        
     # tie_breaker_list = []
-
     # # tie_breaker_dict = {}
-
-    # for k, v in word_score_dict.items(): # items returns word and value
-    #     print(k, v)
+    # for k, v in word_score_dict.items():
     #     if v == int_high_score:
-    #         tie_breaker_list.append(k, v)
-    # print(tie_breaker_list)
+    #         tie_breaker_list.append([k, v])
+    #         # tie_breaker_dict[k] = v
+    # print("Tie Breaker List = ", tie_breaker_list)
+    # # print("Tie Breaker Dict = ", tie_breaker_dict)
+
+    # shortest = min(tie_breaker_list, key=len)
+    # # print("Shortest String = ", shortest)
+
+    # for item in tie_breaker_list:
+
+    #     if len(tie_breaker_list[0]) == shortest:
+    #         tie1 = tuple(shortest)
+    #         print(tie1)
+    #         return tie1
+    #     elif len(k) == 10:
+    #         tie2 = tuple(k, v)
+    #         print(tie2)
+    #         return tie2
+        
+
+
 
     # # TIE BREAKER LOGIC
 
@@ -232,7 +287,6 @@ def get_highest_word_score(word_list):
     #         tie1 = tuple(k, v)
     #         print(tie1)
     #         return tie1
-
 
     # s = min(tie_breaker_dict, key=len)
     # l = max(tie_breaker_dict, key=len)
