@@ -72,18 +72,18 @@ def draw_letters():
 
 
 def uses_available_letters(word,letter_bank):
-    upper_case_word = word.upper()
-    for letter in upper_case_word:
+    for letter in word.upper():
         if letter not in letter_bank:
             return False
-        elif upper_case_word.count(letter) > letter_bank.count(letter):
+        elif word.upper().count(letter) > letter_bank.count(letter):
             return False
     
     return True
 
     
-    #### second solution:
+    #### second solution
 
+    # def uses_available_letters(word,letter_bank):
     # word_dict = dict(Counter(word.upper()))
     # letter_bank_dict = dict(Counter(letter_bank))
     # for k in word_dict:
@@ -95,10 +95,9 @@ def uses_available_letters(word,letter_bank):
     
 def score_word(word):
     score = 0
-    word = word.upper()
     if len(word) >= 7:
         score += 8
-    for letter in word:
+    for letter in word.upper():
         score += SCORE_CHART[letter]
     return score
 
@@ -132,7 +131,7 @@ def get_highest_word_score(word_list):
 
 
         
-# get_highest_word_score(["apple", "orange"])
+
 
     
     
