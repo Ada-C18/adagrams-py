@@ -15,28 +15,14 @@ def draw_letters():
             letter_count += 1
     return letters_drawn
 
-### Wave 2: use_available_letters
-
-# Next, you need a way to check if an input word (a word a player submits) only uses characters that are contained within a collection (or hand) of drawn letters. Essentially, you need a way to check if the word is an anagram of some or all of the given letters in the hand.
-
-# To do so, implement the function called `uses_available_letters` in `game.py`. This function should have the following properties:
-
-# - Has two parameters:
-#    - `word`, the first parameter, describes some input word, and is a string
-#    - `letter_bank`, the second parameter, describes an array of drawn letters in a hand. You can expect this to be an array of ten strings, with each string representing a letter
-# - Returns either `True` or `False`
-# - Returns `True` if every letter in the `input` word is available (in the right quantities) in the `letter_bank`
-# - Returns `False` if not; if there is a letter in `input` that is not present in the `letter_bank` or has too much of compared to the `letter_bank`
-
-
 def uses_available_letters(word, letter_bank):
-    # word = word.upper()
+    word = word.upper()
     word_dict = {}
     letter_count = 0
     is_valid = False
 
     for letter in word:
-        if letter in letter_bank and letter_count <= LETTER_POOL[letter]:
+        if letter in letter_bank and word.count(letter) <= letter_bank.count(letter):
             word_dict[letter] = True
             letter_count += 1
             is_valid = True
@@ -44,21 +30,30 @@ def uses_available_letters(word, letter_bank):
             word_dict[letter] = False
             is_valid = False
     return is_valid
-        # else:
-        #     return True
 
-    # def build_word_dict(snowman_word):
-    # """This function takes snowman_word as input and returns 
-    # a dictionary with a key-value pair for each letter in 
-    # snowman_word where the key is the letter and the value is `False`.
-    # """
-    # snowman_word_dict = {}
-    # for letter in snowman_word:
-    #     snowman_word_dict[letter] = False
-    # return snowman_word_dict
+### Wave 3: score_word
 
-    # if not snowman_dict[letter] 
+# Now you need a function returns the score of a given word as defined by the Adagrams game.
 
+# Implement the function `score_word` in `game.py`. This method should have the following properties:
+
+# - Has one parameter: `word`, which is a string of characters
+# - Returns an integer representing the number of points
+# - Each letter within `word` has a point value. The number of points of each letter is summed up to represent the total score of `word`
+# - Each letter's point value is described in the table below
+# - If the length of the word is 7, 8, 9, or 10, then the word gets an additional 8 points
+
+# #### Score chart
+
+# |Letter                        | Value|
+# |:----------------------------:|:----:|
+# |A, E, I, O, U, L, N, R, S, T  |   1  |
+# |D, G                          |   2  |
+# |B, C, M, P                    |   3  |
+# |F, H, V, W, Y                 |   4  |
+# |K                             |   5  |
+# |J, X                          |   8  |
+# |Q, Z                          |   10 |
 
 def score_word(word):
     pass
