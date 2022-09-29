@@ -62,12 +62,11 @@ def uses_available_letters(word, letter_bank):
 
 def score_word(word):
     total_score = 0
-    word = word.upper()
-    letter_count = dict(Counter(word))
-    for letter in letter_count:
+    letter_freq = dict(Counter(word.upper()))
+    for letter in letter_freq:
         for score, letters in score_table.items():
             if letter in letters:
-                total_score += score*letter_count[letter]
+                total_score += score * letter_freq[letter]
     if len(word) >= 7:
         total_score += 8
     return total_score
