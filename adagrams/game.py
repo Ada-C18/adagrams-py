@@ -69,23 +69,83 @@ def draw_letters():
   return user_letter_pool
 
 def uses_available_letters(word, letter_bank):
-   # user_letter_dict = {}
+    letter_count = {}
+    # word_uppercase = word.upper()
+      
+    for l in word:
+      letter = l.upper()
+      if letter not in letter_count:
+        letter_count[letter] = 0
 
-    if len(word) > 10: 
-     return False
-    
-    for letter in word.upper():
-      if letter not in letter_bank: #using if not letter not in letter_bank passes 3
-          return False
+      letter_count[letter] += 1
+      ct = letter_count[letter]
+
+      if ct > letter_bank.count(letter):
+        return False
+  
     return True
 
+
+
+
+
+
+
+   #  letter_count[letter] + 1
+    
+
+
+    # if len(word) > 10:
+    #   return False
+
+   
+      
+
+
+    # for letter in word.upper():
+    #   if letter in letter_bank: #using if not letter not in letter_bank passes 3
+    #     letter_bank.remove(letter)
+    #   if letter not in letter_bank:
+    #     return False
+   
+        
+    #     return False
+    # return True
+  
+    # for letters in letter_bank:
+    #   for new_word in word.upper():
+    #     if letter_bank.count(letters) == word.count(new_word):
+    #       return True
+    #     if letter_bank.count(letters) != word.count(new_word):
+    #       return False
+    #     # if letter_bank.count(letters) == word.count(letters):
+    #     #   return True
+      
+     
+
+
+    # for letter in word.upper():
+    #   if letter not in letter_bank: #using if not letter not in letter_bank passes 3
+    #     return False
+    # return True
+
+
+
+
+
+
+
+
+
+
+    # for letters in letter_bank:
+    #   for new_word_letters in word:
+    #     if letter_bank.count(letters) != word.count(letters):
+    #       return False
+
+  
+
 #add lower or upper so its not case sensitive
-
-    for letters in letter_bank:
-      for used_letters in word:
-        if letter_bank.count(letters) != word.count(letters):
-          return False
-
 def score_word(word):
   if type(word) is not str:
     return 0
@@ -109,30 +169,114 @@ def score_word(word):
   return score
 
 
+# given word_list, a list of strings
+# foo, bar, baz
 def get_highest_word_score(word_list):
+
+  # highest_word = None
+  # highest_word_score = 0
+
+  # for word in word_list:
+  #   score = score_word(word)
+  #   if score >= highest_word_score:
+  #     highest_word_score = score
+  #     highest_word = word
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   #find max score of word_list
 
-  winning_word = None
+  winning_words = []
   winning_score = 0
 
-  tie_breaker = []
+  #for word in range(len(word_list)):
+  for word in word_list:
+    value_of_word = score_word(word) #all errors are referring to previous function score_word. Maybe because reusing variables, score already calculate
+    print(word_list)
+    if value_of_word == winning_score: # if its a tie append it to list winning_words
+      winning_words.append(word)
+    else:
+      if value_of_word > winning_score: # encountered a new highest score
+        winning_score = value_of_word 
+        winning_words = [word]
+
+  for i in winning_words:
+    if len(i) == 1:
+      winner = winning_words[word]
+
+
+
+#function to print out winner/winners in tuple format
+# def print_highest_score(winning_words, winning_score):
+
+#     highest_word = winning_words
+#     highest_score = winning_score
+
+#     return (highest_word, highest_score)
 
   
-  for word in range(len(word_list)):
-    test_score = score_word(word) #all errors are referring to previous function score_word. Maybe because reusing variables, score already calculated
-    if test_score > winning_score:
-      test_score = winning_score
-      word = winning_word
-    if score_word > winning_score:
-      tie_breaker.append(winning_word)
-      tie_breaker.append(word)
- #list comprehension for above code block, zip lists
- # max_score =  max_score = max(word_list)
-  #find max_score of multiple values (find ties)
-  #tie_breaker = [t for t in word_list if word_list == max_score]
+
+
+
+
   
+  
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
   #check length of tie_breaker list, if it has one value return a tuple of the list
-  # if len(tie_breaker) == 0:
+  # if len(tie_breaker) == 1:
   #   return tuple(tie_breaker)
 
   # else: 
