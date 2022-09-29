@@ -1,5 +1,22 @@
 # AdaGrams
+<!-- 
+Pair Plan:
 
+Separately work on waves 1-3:
+Wave 1: Renee
+Wave 2: Pair
+Wave 3: Pair
+Wave 4: Yael
+
+Come together to go over waves 1-3 and pair program wave 4
+Wednesday
+
+
+Communication:
+Communicate via Slack for waves 1-3 unless video support needed
+
+
+ -->
 ## Skills Assessed
 
 - Following directions and reading comprehension
@@ -205,7 +222,9 @@ If, after you and your pair have taken some time to think through the problem an
 Your first task is to build a hand of 10 letters for the user. To do so, implement the function `draw_letters` in `game.py`. This method should have the following properties:
 
 - No parameters
-- Returns an array of ten strings
+<!-- return condition -->
+- Returns an array of ten strings 
+
   - Each string should contain exactly one letter
   - These represent the hand of letters that the player has drawn
 - The letters should be randomly drawn from a pool of letters
@@ -290,4 +309,8 @@ Implement a function called `get_highest_word_score` in `game.py`. This method s
 
 
 
-
+Returns
+Wave 1 draw_letters: array of 10 strings ["d","e","f" ... ]
+Wave 2 use_available_letters: expecting boolean based on validity of input (word and letter bank)
+Wave 3 score_word: returns integer value corresponding to points a word gets
+Wave 4 get_highest_word_score: returns a tuple that represents winning word and score
