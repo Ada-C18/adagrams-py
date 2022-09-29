@@ -18,8 +18,8 @@ def draw_letters():
 def uses_available_letters(word, letter_bank):
     word = word.upper()
     word_dict = {}
-    letter_count = 0
     is_valid = False
+    letter_count = 0
 
     for letter in word:
         if letter in letter_bank and word.count(letter) <= letter_bank.count(letter):
@@ -36,3 +36,23 @@ def score_word(word):
 
 def get_highest_word_score(word_list):
     pass
+# word list is a list of strings
+# 1. use score_word() to get the score of each word in word list:
+    # for word in word_list:
+        #word_score = score_word(word) -- 
+        # ~~ do we want to append this to a list of word scores?
+        # ~~ or make a dict with word : score as the key, value pair?
+
+# 2. get highest score using list or dict w/ highest scores
+        # for score in scores:
+            # something
+# 3. if tie: 
+    # if len(tied_word) > len(other_tied_word):
+        # tied_word wins!
+        # unless len(other_tied_word) > 10
+            # then 10 letter word wins
+        # if len(tied_word) == len(other_tied_word):
+        #   first one wins 
+        # ? ???? ? 
+        #    
+# return: tuple with two elements, ([highest scoring word], [score])
