@@ -76,14 +76,8 @@ def uses_available_letters(word, letter_bank):
 
 def score_word(word):
     total_score = sum([LETTER_POINTS.get(letter, 0) for letter in word.upper()])
-    if len(word) > 6:
-        total_score += 8
+    total_score += len(word) > 6 and 8
     return total_score
-
-
-# The tuple must contain the following elements:
-# index 0 ([0]): a string of a word
-# index 1 ([1]): the score of that word
 
 
 def break_tie(words):
