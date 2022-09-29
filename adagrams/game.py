@@ -125,4 +125,28 @@ def score_word(word):
     
 
 def get_highest_word_score(word_list):
-    pass
+    # iterate over the wordlist
+    #   calculate score
+    #   create a tuple
+    #   track highest score
+    #   save touples with highest score to a list
+
+    highest_scoring_words = [(word_list[0], score_word(word_list[0]))]
+
+    for word in word_list:
+        current_score = score_word(word)
+        if current_score > highest_scoring_words[0][1]:
+            highest_scoring_words = [(word, current_score)]
+        elif current_score == highest_scoring_words[0][1]:
+            highest_scoring_words.append( (word, current_score) )
+
+
+    #############################
+    # Tiebreaker logic 
+    #############################
+
+
+
+
+
+    
