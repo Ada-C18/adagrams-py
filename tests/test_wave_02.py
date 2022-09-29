@@ -57,3 +57,4 @@ def test_uses_available_letters_ignores_case():
     assert uses_available_letters("fad", letters)
     assert uses_available_letters("a", letters)
     assert not uses_available_letters("aA", letters)
+
