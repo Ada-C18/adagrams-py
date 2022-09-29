@@ -73,7 +73,32 @@ def score_word(word):
         return word_points        
 
 def get_highest_word_score(word_list):
+
+    score_list = []
+    highest_score = 0
+
+    for word in word_list:
+        score = score_word(word)
+        score_list.append(score)
+
+    highest_score_index = 0
+    highest_score = 0
+    for index in range in len(word_list):
+        word = word_list[index]
+        score = score_list[index]
+        if score > highest_score:
+            highest_score = score
+            highest_score_index = index
+        return [word_list[highest_score_index], highest_score]
+
+    # for score in score_list:
+    #     if score > highest_score:
+    #         highest_score = score
+    #     return highest_score
+
+    #get scores for words
+    # get list of scores
+    #find highest score
+    #return highest score
     pass
 
-#this is a message
-    pass
