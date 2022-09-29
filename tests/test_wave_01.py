@@ -11,7 +11,7 @@ LETTER_POOL = {
     'F': 2, 
     'G': 3, 
     'H': 2, 
-    'I': 9, 
+    'I': 9,
     'J': 1, 
     'K': 1, 
     'L': 4, 
@@ -54,14 +54,13 @@ def test_letter_not_selected_too_many_times():
     for i in range(1000):
         # Arrange/Act
         letters = draw_letters()
-
         letter_freq = {}
         for letter in letters:
             if letter in letter_freq:
                 letter_freq[letter] += 1
             else:
                 letter_freq[letter] = 1
-        
+
         # Assert
         for letter in letters:
             assert letter_freq[letter] <= LETTER_POOL[letter]
