@@ -1,4 +1,7 @@
 # AdaGrams
+<!-- Presley - Discussed when to meet next: Tuesday, what we want to accomplish in the meantime: read and pseudocode first wave and learning goals: Finish Wave 1 & 2 by Wednesday-->
+
+Meet September 27th in the morgning and during coworking
 
 ## Skills Assessed
 
