@@ -140,9 +140,9 @@ def get_highest_word_score(word_list):
     1. Create a dictionary words_and_scores. Populate it with the key being every word in word_list and value being the associated score.
     2. Calculate the highest score, and create a list highest_scoring_words with words that have the highest score.
     3. In the case of no ties, assign winning_word as the first and only item in the highest_scoring_words.
-    2. In the case of tie in scores, check if there is string with 10 characters, otherwise assign the 
+    4. In the case of tie in scores, check if there is string with 10 characters, otherwise assign the 
     winning_word as that with fewest characters.
-    3. Return a tuple that represents the data of a winning_word and its score.
+    5. Return a tuple that represents the data of a winning_word and its score.
     '''
     words_and_scores = {}
     for word in word_list:
