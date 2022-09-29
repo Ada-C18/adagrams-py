@@ -75,4 +75,30 @@ def score_word(word):
 
 
 def get_highest_word_score(word_list):
-    pass
+    
+    tie_breaker = []
+    highest_score = 0
+
+    for word in word_list:
+        score = score_word(word)
+        if score > highest_score:
+            highest_score = score
+            tie_breaker = [(word, score)]
+        elif score == highest_score:
+            tie_breaker.append((word, score))
+
+    shortest_word = 11
+    winner = ("", 0)
+  
+    for each_word in tie_breaker:
+        winner_result = len(each_word[0])
+        if winner_result == 10:
+            winner = each_word 
+            break
+        elif winner_result < shortest_word:
+            shortest_word = winner_result
+            winner = each_word
+    return winner
+
+
+
