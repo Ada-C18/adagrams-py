@@ -47,6 +47,13 @@ def dict_to_list(dict):
     return bag_of_letters
 
 def draw_letters():
+    '''
+    Return a list of ten randomized letters, drawn from the bag_of_letters.
+    1. Create a bag_of_letters list with appropriate distribution by passing through LETTER_POOL dictionary
+    2. Use the random.randint generator to select a unique integer, which represents the index of the letter to be drawn from the bag_of_letters list
+    3. Repeat step #2 until, 10 letters have been randomized.
+    4. Return the ten letters in a list format.
+    '''
     bag_of_letters = dict_to_list(LETTER_POOL)
     hand_as_numbers = []
     hand_as_letters = []
