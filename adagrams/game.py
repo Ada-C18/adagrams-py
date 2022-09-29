@@ -86,10 +86,27 @@ def score_word(word):
     return score
 
 def get_highest_word_score(word_list):
-    pass
+    # need to create a way of scoring each word in the list and returning the highest scoring word
+    # if there is a tie in scores, return the shorter word -> if words are same length, pick the first one in the supplied list
+    # if there is a tie and one of the words is 10 letters, return the 10 letter word instead of the shorter word
+
+    words_score_dict = {}
+    for word in word_list:
+        score = score_word(word)
+
+        words_score_dict[word] = score
+    highest_score = max(words_score_dict.values())
+
+    for word,score in words_score_dict.items():
+        if len(word) == 10 and score == highest_score:
+            return word, highest_score
+    # if len(highest_scoring_words) > 1:
+    #     return min(highest_scoring_words), score
     
+    # for word, score in words_score_dict.items():
+    #     if score == sorted_scores[-1]:
+        # return word, score
+    return max(words_score_dict.items()) 
+    # for score in score_list:
 
-        
 
-
-    
