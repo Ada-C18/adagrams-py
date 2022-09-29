@@ -113,7 +113,7 @@ def score_word(word):
 def get_highest_word_score(word_list):
     word_info = []
     for word in word_list:
-        word_dict = []
+        word_dict = {}
         word_dict["word"] = word
         word_dict["score"] = score_word(word)
         word_dict["length"] = len(word)
@@ -123,14 +123,14 @@ def get_highest_word_score(word_list):
     max_score = 0
 
     for word_dict in word_info:
-        if word_dict ["score"] ==  max_score:
-            max_words.append(word_dict ["word"])
-        elif word_dict ["score"] > max_score: 
-            max_score =  word_dict ["score"]
+        if word_dict["score"] ==  max_score:
+            max_words.append(word_dict["word"])
+        elif word_dict["score"] > max_score: 
+            max_score =  word_dict["score"]
             max_words.clear()
-            max_words.append(word_dict ["word"])
+            max_words.append(word_dict["word"])
     if len(max_words) == 1:
-        result = (max_words[0], score_word[max_words[0]])
+        result = (max_words[0], score_word(max_words[0]))
         return result
 
 
