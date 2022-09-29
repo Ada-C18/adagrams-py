@@ -98,11 +98,11 @@ def get_highest_word_score(word_list):
             highest_score = score
             highest_score_word = word 
         elif score == highest_score:
-            if len(highest_score_word) == 10 and len(word) < len(highest_score_word):
+            if len(highest_score_word) == 10 and len(word) < len(highest_score_word) or len(word) == len(highest_score_word):
                 continue
-            elif len(word) < len(highest_score_word):
+            elif len(word) < len(highest_score_word) or len(word) == 10:
                 highest_score_word = word
-            elif len(word) == 10:
-                highest_score_word = word
+            # elif len(word) == 10:
+            #     highest_score_word = word
     
     return (highest_score_word, highest_score)
