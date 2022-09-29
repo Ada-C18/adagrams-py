@@ -34,11 +34,28 @@ def score_word(word):
                      'K': 5, 'J': 8, 'X': 8, 'Q': 10, 'Z': 10
                      }
     total_points = 0
-    for letter in word:
-        points = letter_scores[letter]
-        total_points = total_points + points
+    for letter in word.upper():
+        try:
+            total_points += letter_scores[letter]
+        except:
+            pass
+    
+    if len(word) >= 7:
+        total_points += 8
     
     return total_points
 
 def get_highest_word_score(word_list):
-    pass
+    list_of_scores = [(word, score_word(word)) for word in word_list]
+    
+    highest_score = list_of_scores[0]
+    for score in list_of_scores: 
+
+        if score[1] > highest_score[1]:
+            highest_score = score
+
+        if score[1] == highest_score[1]:
+            if (len(score[0]) < len(highest_score[0]) or len(score[0]) == 10) and len(highest_score[0]) < 10:
+                highest_score = score
+                
+    return highest_score
