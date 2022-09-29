@@ -70,7 +70,11 @@ def draw_letters():
 #WAVE TWO
 def uses_available_letters(word, letter_bank):
     '''
-    Ariam
+    Check if the word is an anagram of some or all of the given letters in the hand
+    1.Returns `True` if every letter in the `input` word is available in the `letter_bank`
+    2.Returns `False` if not; if there is a letter in `input` that is not present in the `letter_bank` 
+    or has too much of compared to the `letter_bank`
+  
     '''
     copy_of_letter_bank = copy.deepcopy(letter_bank)
     word = word.upper()
@@ -151,7 +155,13 @@ def score_word(word):
 #WAVE FOUR
 def get_highest_word_score(word_list):
     '''
-    Ariam
+    Find the highest scoring word
+    1.Function looks at the list of `word_list` and calculates which of these words has the highest score.
+    2.In the case of tie in scores,check if there is string with 10 characters, 
+    otherwise return string with fewest characters.
+    -prefer the word with the fewest letters if tie in scores 
+    3.Returns a tuple that represents the data of a winning word and it's score
+
     '''
     words_and_scores = {}
     for word in word_list: # O(n)
@@ -163,7 +173,6 @@ def get_highest_word_score(word_list):
 
     # worse case scenario: O(n + n + n) = O(3n) = O(n) ****************************** WORK ON THIS ***************************
     if len(highest_scoring_words) != 1:
-        # tie-handling: check if there is string with 10 characters, otherwise return string with fewest characters
         words_with_10 = [word for word in highest_scoring_words if len(word) == 10] # O(n)
         try:
             winning_word = words_with_10[0] # O(1)
