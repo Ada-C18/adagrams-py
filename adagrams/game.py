@@ -56,7 +56,7 @@ def score_word(word):
         
         # find the score for each letter in word, and add score to total_score
         for point, letters in score_chart.items():
-            for letter in str.upper(word):
+            for letter in word.upper():
                 if letter in letters:
                     total_score += point
 
