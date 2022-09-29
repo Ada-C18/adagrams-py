@@ -1,4 +1,10 @@
 # AdaGrams
+## Pair Plan
+Tatiana - busy Wed 5-6, 7-9 ideal
+Sierra - relatively open, not here Tuesday
+Meet Tuesday Evening, Wednesday Evening, Zoom
+Try both Driver/Nav, ping pong
+
 
 ## Skills Assessed
 
