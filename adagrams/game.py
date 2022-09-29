@@ -62,12 +62,5 @@ def get_highest_word_score(word_list):
                 pass
                 
     return highest_score
-    
-    # conditional if tie
-    # 10 letters long > few letters
-    # return highest score and highest in
-    # assert best_word[0] == "XXXX"
-    # assert best_word[1] == 32
-
-    # find highest score 
+ 
     
