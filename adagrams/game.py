@@ -125,22 +125,23 @@ def get_highest_word_score(word_list):
   winning_words = []
   winning_score = 0
 
-  #for word in range(len(word_list)):
-  for word in word_list:
-    value_of_word = score_word(word) #
+
+  for word in (word_list):
+    value_of_word = score_word(word) 
     
 
     if value_of_word == winning_score: # if its a tie append it to list winning_words
       winning_words.append(word)
 
-    else:
-      if value_of_word > winning_score: # encountered a new highest score
+    # else: #if winning score = 0 does every new element in the list become the greatest value because they are all greater than 0 ?
+    #   if value_of_word > winning_score: # encountered a new highest score
+    elif value_of_word > winning_score:
         winning_score = value_of_word 
         winning_words = [word]
 
 
   if (len(winning_words)) == 1: # if the length of the list is one than return winning words, no tie 
-    return winning_words, winning_score
+    return (winning_words[0], winning_score)
   
   shortest_word = None #assign value of none 
   shortest_length = None #assign value of none
@@ -150,75 +151,15 @@ def get_highest_word_score(word_list):
 
     # if word is 10 letters, return word_2, will return first in list automaticaly
     if word_length == 10:
-      return word_2
+      return word_2, winning_score
 
     # Othwerwise, find which word has shortest length
     if shortest_length == None: # initialize the value of shortest_length 
-      shortest_length = word_length 
+      shortest_length = word_length
+      shortest_word = word_2
     else:
       if word_length < shortest_length: # if the length of the word is less than shortest_length
         shortest_length = word_length # the shortest_length word is equal to word_length
-        shortest_word = word_2 # shortest word is assigned to word_2 in winning_words list, or shortest word in the list
+        shortest_word = word_2 # shortest_word is word_2 
     
-  print(shortest_word)
-
-  return shortest_word, winning_score
-
-#function to print out winner/winners in tuple format
-# def print_highest_score(winning_words, winning_score):
-
-#     highest_word = winning_words
-#     highest_score = winning_score
-
-#     return (highest_word, highest_score)
-
-  
-
-  
-
-
-
-
-  
-  
-
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   
-
-  #check length of tie_breaker list, if it has one value return a tuple of the list
-  # if len(tie_breaker) == 1:
-  #   return tuple(tie_breaker)
-
-  # else: 
-  #   if len(tie_breaker[0]) == 10 and len(tie_breaker[1]) != 10:
-  #     return tuple(tie_breaker[0])
-  #   if tie_breaker[1] == 10 and tie_breaker[0] != 10:
-  #     return tuple(tie_breaker[1])
-  #   if len(tie_breaker[0]) == len(tie_breaker[1]):
-  #     return tuple(tie_breaker[0])
-
-    
-
-
-
-
+  return shortest_word, winning_score 
