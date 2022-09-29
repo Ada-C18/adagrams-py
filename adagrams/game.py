@@ -133,6 +133,13 @@ def get_highest_word_score(word_list):
         elif score > highest_score:
             return_word = word
             highest_score = score
+        elif score == highest_score and len(word) < len(return_word) and len(return_word) != 10:
+            return_word = word
+            highest_score = score
+        elif score == highest_score and len(word) == 10 and len(word) != len(return_word):
+            return_word = word
+            highest_score = score
+    return (return_word, highest_score)
     
     # highest_score = 0
     # tie_words = []
