@@ -45,8 +45,9 @@ def draw_letters():
     for letter, count in LETTER_DISTRIBUTION.items():
         for i in range(count):
             letter_pool.append(letter)
-    # NOTE: can we rewrite 45-47 with list comprehension? or move to helper function?:
-    # letter_pool = [[letter] * count for letter, count in LETTER_DISTRIBUTION.items()]
+    # Should we rewrite 45-47 with list comprehension? This is what we tried:
+    # letter_pool = [[letter] * count
+    #               for letter, count in LETTER_DISTRIBUTION.items()]
     for letter in range(10):
         random_letter = random.choice(letter_pool)
         letter_bank.append(random_letter)
@@ -55,7 +56,10 @@ def draw_letters():
 
 def uses_available_letters(word, letter_bank):
     bank_dict = {}
-    # NOTE: I think we can rewrite this using dictionary comprehension?
+    # We tried to implement dictionary comprehension for this,
+    # but are unsure if it's possible:
+    # alt_bank_dict = {letter, 1 for letter in letter_bank
+    #                  if item not in alt_bank_dict else letter, + 1}
     for item in letter_bank:
         if item not in bank_dict:
             bank_dict[item] = 1
@@ -106,5 +110,3 @@ def get_highest_word_score(word_list):
     for word_dict in word_info:
         if word_dict["length"] == smallest_length["length"]:
             return word_dict["word"], word_dict["score"]
-
-get_highest_word_score(["MMMM", "WWW"])
