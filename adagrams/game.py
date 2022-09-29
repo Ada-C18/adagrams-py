@@ -1,4 +1,5 @@
 import random
+from webbrowser import get
 
 LETTER_POOL = {
     'A': 9, 
@@ -79,7 +80,6 @@ def score_word(word):
     return score
 
 def get_highest_word_score(word_list):
-    word_list.sort()
     # create a dict which has word as key and its socre as value
     word_score_dict = {}
     for word in word_list:
@@ -91,9 +91,11 @@ def get_highest_word_score(word_list):
     highest_dict = {word: word_score_dict[word] for word, value in word_score_dict.items() if value == highest_score}
     # get a word has the min len in highest dict
     min_len_word = min(list(highest_dict.keys()), key=len)
-    # check every word in dict and return ten letters word first or the shorter word if no ten letters
+    # check every word in dict and return ten letters word
     for k, v in highest_dict.items():
         if len(k) == 10:
             return k, v
-        elif k == min_len_word:
+    # check every word in dic and return the shortest word
+    for k, v in highest_dict.items():
+        if k == min_len_word:
             return k, v
