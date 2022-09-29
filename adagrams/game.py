@@ -38,7 +38,7 @@ def uses_available_letters(word, letter_bank):
     word = word.upper()
     available_bank = Counter(letter_bank)
     for letter in word:
-        if letter in letter_bank and available_bank[letter] > 0:
+        if letter in letter_bank and available_bank[letter]:
             available_bank[letter] -= 1
             available = True
         else:
@@ -58,14 +58,13 @@ def score_word(word):
     }
     score = 0
     for letter in word:
-        for key, point in point_system.items():
+        for key in point_system:
             if letter in key:
-                score += point
+                score += point_system[key]
     if 6 < len(word) <= 10:
         score += 8
     return score
 def get_highest_word_score(word_list):
-    #get list = [X, XX, XXX, XXXX] 
     score_list = [(word,score_word(word)) for word in word_list]
     highest_word = max(score_list, key = lambda score:score[1])
     tie_list=[word for word in score_list if word[1] == highest_word[1]]
