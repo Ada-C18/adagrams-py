@@ -68,7 +68,66 @@ def uses_available_letters(word, letter_bank):
     return True
 
 def score_word(word):
-    pass
+    SCORE_CHART= {
+    'A': 1, 
+    'B': 3, 
+    'C': 3, 
+    'D': 2, 
+    'E': 1, 
+    'F': 4, 
+    'G': 2, 
+    'H': 4, 
+    'I': 1, 
+    'J': 8, 
+    'K': 5, 
+    'L': 1, 
+    'M': 3, 
+    'N': 1, 
+    'O': 1,  
+    'P': 3, 
+    'Q': 10, 
+    'R': 1, 
+    'S': 1, 
+    'T': 1, 
+    'U': 1, 
+    'V': 4, 
+    'W': 4, 
+    'X': 8, 
+    'Y': 4, 
+    'Z': 10
+}
+    score = 0
+    for letter in word.upper():
+        score += SCORE_CHART[letter]
+    if len(word) > 6:
+        score += 8
+    return score
 
 def get_highest_word_score(word_list):
-    pass
+    """
+    input:word_list, which is a list of strings
+    output: dictionary of word and scores
+    """
+    words_score = {}
+    for word in word_list:
+        score = score_word(word)
+        words_score[word] = score
+
+    highest_score = max(words_score.values())
+
+    tie_dictionary = {}
+    for key, value in words_score.items():
+        if value == highest_score:
+            tie_dictionary[key] = len(key)
+    
+    most_letters = max(tie_dictionary.values())
+    fewest_letters = min(tie_dictionary.values())
+
+    if most_letters == 10:
+        for word in tie_dictionary.keys():
+            if tie_dictionary[word]== 10:
+                return(word, words_score[word])
+    else:
+        for word in tie_dictionary.keys():
+            if tie_dictionary[word] == fewest_letters:
+                return(word, words_score[word])
