@@ -58,11 +58,9 @@ def uses_available_letters(word, letter_bank):
         else:
             word_letter_frequency[letter] += 1
         
-
     if all((k in letter_bank_frequency and letter_bank_frequency[k] == v) for k,v in word_letter_frequency.items()):
         return True
-    else:
-        return False
+    return False
 
 def score_word(word):
 
@@ -76,37 +74,23 @@ def score_word(word):
         10: 'QZ'
     }
     score = 0
-    if len(word) >= 7:
+    if len(word) > 6:
         score += 8
-
-    for points, letters in score_chart.items():
-        for char in word.upper():
-            if char in letters:
-                score += points
+    score += sum([points for points, letters in score_chart.items() for char in word if char.upper() in letters])
     return score
 
 def get_highest_word_score(word_list):
-    # need to create a way of scoring each word in the list and returning the highest scoring word
-    # if there is a tie in scores, return the shorter word -> if words are same length, pick the first one in the supplied list
-    # if there is a tie and one of the words is 10 letters, return the 10 letter word instead of the shorter word
 
     words_score_dict = {}
     for word in word_list:
         score = score_word(word)
-
         words_score_dict[word] = score
     highest_score = max(words_score_dict.values())
 
     for word,score in words_score_dict.items():
         if len(word) == 10 and score == highest_score:
             return word, highest_score
-    # if len(highest_scoring_words) > 1:
-    #     return min(highest_scoring_words), score
-    
-    # for word, score in words_score_dict.items():
-    #     if score == sorted_scores[-1]:
-        # return word, score
     return max(words_score_dict.items()) 
-    # for score in score_list:
+
 
 
