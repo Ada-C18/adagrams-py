@@ -60,7 +60,7 @@ SCORE_CHART = {
 }
 
 
-##    Main Function #1    ##
+
 def draw_letters():
     letters = []
 
@@ -74,7 +74,6 @@ def draw_letters():
 
 
 
-##    Main Function #2   ##
 def uses_available_letters(word, letter_bank):
     available_letters = letter_bank[:]
     upper_word = word.upper()
@@ -105,34 +104,21 @@ def score_word(word):
 
 
 def get_highest_word_score(word_list):
-#   word_list = list of strings
-#   Which word in word_list has highest score?
-#   Apply tie-breaking logic:
-#       - prefer word with fewest letters (unless it has 10 letters)
-#       - if tied words have same score and length, pick first appearance in word_list.
-#   return tuple ('winning_word', score)
 
     word_scores = {}
     highest_scoring = []
 
-    # fills dictionary with word and its score.
     for word in word_list:
         word_scores[word] = score_word(word)
 
-    # takes word with highest score from dictionary and
-    #       appends it to highest_scoring as a tuple.
     max_score = max(word_scores.values())
     print(f"MAX: {max_score}")
     for word, score in word_scores.items():
         if score == max_score:
             highest_scoring.append((word, score))
 
-    # sort highest scores by word length 
     highest_scoring.sort(key=lambda x: len(x[0]))
 
-    # loop through highest_scoring after sorting
-    # first item will always be the shortest length
-    # if lenghth isn't 10, return first item (either shortest or first of the tie)
     for i in range(len(highest_scoring)):
         word = highest_scoring[i][0]
 
@@ -140,9 +126,3 @@ def get_highest_word_score(word_list):
             return highest_scoring[i]
 
     return highest_scoring[0]
-
-# NEED TO BREAK TIES!
-# NEED TO RETURN A SINGLE TUPLE
-
-# for programmers testing use
-print(get_highest_word_score(["X", "XX", "JJH", "XXW", "QQ"]))
