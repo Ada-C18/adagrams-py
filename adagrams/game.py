@@ -105,4 +105,21 @@ def score_word(word):
     return word_value
 
 def get_highest_word_score(word_list):
-    pass
+
+    score_list = []
+    for word in word_list:
+        score = score_word(word)
+        score_list.append(score)
+
+    word_score_tuple = list(zip(word_list, score_list))
+
+    # winning_word = max(word_score_tuple)
+
+    sorted_tuple = sorted(word_score_tuple, key=lambda t: t[1], reverse = True)
+
+    winning_word = sorted_tuple[0]
+
+    return winning_word
+
+    
+    return winning_word
