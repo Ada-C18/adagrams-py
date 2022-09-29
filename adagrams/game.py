@@ -155,11 +155,11 @@ def score_word(word):
     # GOAL: return the score of given word defined by Adagram
     # word = "string of characters"
     word = word.upper()
-    print("Word list = ", word, ",", type(word), len(word))
+    # print("Word list = ", word, ",", type(word), len(word))
     # if the word is 1 letter, return the point
 
     sum = 0
-    print("Sum = ", sum)
+    # print("Sum = ", sum)
 
     # if length of word is 7, 8, 9, or 10 -->
         # then the word gets 8 extra points
@@ -171,14 +171,14 @@ def score_word(word):
 
     for letter in word:
         if letter in score_chart.keys():
-            print("BEFORE: sum changes", sum)
+            # print("BEFORE: sum changes", sum)
             sum += score_chart[letter]
-            print("The letter's value = ", letter, score_chart[letter])
-            print("AFTER: sum changes", sum)
+            # print("The letter's value = ", letter, score_chart[letter])
+            # print("AFTER: sum changes", sum)
     # return an integer representing the number of points
     # return <int>
     return sum
-    print("Total after iteration = ", sum)
+    # print("Total after iteration = ", sum)
 
 
 
@@ -187,16 +187,70 @@ def score_word(word):
 
 
 
-
 def get_highest_word_score(word_list):
-#This function looks at Word List(list of string) and calculates the highest scored word
+
+    #This function looks at Word List(list of string) and calculates the highest scored word
+    # word list can be more than one word
+    
+    # WE CREATE A DICTIONARY WITH THE WORD:SCORE PAIRS
+    word_score_dict = {}
+    print("Given Word List = ", word_list)
+
+    for word in word_list:
+        # print(word)
+        test = score_word(word)
+        # print("Test = ", test)
+        word_score_dict[word] = test
+    print("Word-Score Dictionary = ", word_score_dict)
 
 
-#we will use tie breaking logic
-# the tie will prefer the shorter word- unless the word is 10 letters then 10 is preferred. if\
-# it is the same length and score, pick the first one in the list
+    # CREATE A LIST OF TUPLES - not necessary
+    tup_high_score = max(word_score_dict.items())
+    # print(tup_high_score)
+    return tup_high_score
+    int_high_score = int(tup_high_score[1])
+    # print("High Score Integar = ", int_high_score, type(int_high_score))
+    return int_high_score
+
+
+    # TIE BREAKER LOGIC
+
+    # tie_breaker_list = []
+
+    # # tie_breaker_dict = {}
+
+    # for k, v in word_score_dict.items(): # items returns word and value
+    #     print(k, v)
+    #     if v == int_high_score:
+    #         tie_breaker_list.append(k, v)
+    # print(tie_breaker_list)
+
+    # # TIE BREAKER LOGIC
+
+    # for k, v in tie_breaker_dict.items():
+    #     if len(k) == 10:
+    #         tie1 = tuple(k, v)
+    #         print(tie1)
+    #         return tie1
+
+
+    # s = min(tie_breaker_dict, key=len)
+    # l = max(tie_breaker_dict, key=len)
+
+    # for k, v in tie_breaker_dict.items():
+        
+    #     if k == s:
+    #         print(k)
+    # # we have to sort the dictionary for this to work?
+    #     if len(k) == 10:
+    #         print(k)
+
+    # # how are we finding the length of the keys?
 
 
 
-#return Tuple = () that represents the data of a winning word and it's score- includes index 0\
-#string of a word and index 1 the score of that word
+    # # TIE BREAKING LOGIC
+    # # find minimum length word and max word and return the shorter length word or if else statement
+    # # the tie will prefer the shorter word- unless the word is 10 letters then 10 is preferred. if\
+    # # it is the same length and score, pick the first one in the list
+    # #return Tuple = ('WORD', SCORE=00)
