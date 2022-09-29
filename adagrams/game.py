@@ -47,8 +47,6 @@ def uses_available_letters(word, letter_bank):
     word_letter_frequency = {}
     letter_bank_frequency = {}
 
-    # need to build a dictionary to count the letters in word and in the letter bank
-    # function casefold to check and ignore if cases are different.
     for letter in letter_bank:
         if letter not in letter_bank_frequency:
             letter_bank_frequency[letter] = 1
@@ -65,8 +63,6 @@ def uses_available_letters(word, letter_bank):
         return True
     else:
         return False
-
-
 
 def score_word(word):
 
@@ -91,3 +87,9 @@ def score_word(word):
 
 def get_highest_word_score(word_list):
     pass
+    
+
+        
+
+
+    
