@@ -51,11 +51,10 @@ def draw_letters():
 
 
 def uses_available_letters(word, letter_bank):
-    copy_letter_bank = copy.deepcopy(letter_bank)
-    word = word.upper()
-    for letter in word:
-        if letter in copy_letter_bank:
-            copy_letter_bank.remove(letter)
+    letter_bank_copy = copy.deepcopy(letter_bank)
+    for letter in word.upper():
+        if letter in letter_bank_copy:
+            letter_bank_copy.remove(letter)
         else:
             return False
     return True
