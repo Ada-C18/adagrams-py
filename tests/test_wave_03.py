@@ -5,6 +5,8 @@ from adagrams.game import score_word
 
 # @pytest.mark.skip
 def test_score_word_accurate():
+    # Act
+    
     # Assert
     assert score_word("A") == 1
     assert score_word("DOG") == 5

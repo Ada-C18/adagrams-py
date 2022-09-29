@@ -1,14 +1,7 @@
-def draw_letters():
+import random
 
-    # Create empty list
-    # Create empty counter dictionary
-    # Use for loop i in range(10)
-    # Use a built in funciton to draw random letter random.choice()
-    #
-    # Use if statement to check if random letter is not drawn more
-    # than dict value comparing values from counter dict
-    # Append to empty list
-    # Return list of 10 letters(strings)
+
+def draw_letters():
     LETTER_POOL = {
         "A": 9,
         "B": 2,
@@ -44,17 +37,17 @@ def draw_letters():
         for i in range(LETTER_POOL[letter]):
             pool_list.append(letter)
     letter_list = random.sample(pool_list, 10)
-    print(letter_list)
+    return letter_list
 
 
 def uses_available_letters(word, letter_bank):
-    word_dict = {}
+    pass
+    letter_bank_copy = letter_bank.copy()
+    word = word.upper()
     for letter in word:
-        word_dict[letter.upper()] = (
-            word_dict.get(letter, 0) + 1
-        )  # using .get to make dict
-    for letter in word_dict.keys():
-        if word_dict[letter] > letter_bank.count(letter):
+        if letter in letter_bank_copy:
+            letter_bank_copy.remove(letter)
+        else:
             return False
     return True
 
@@ -100,17 +93,21 @@ def score_word(word):
 
 
 def get_highest_word_score(word_list):
-    # create a dictionary score_dict={}
-    # for every word in word_list, get score by using score_word()
-    # put word:score pair in score_dict={word1:score1, word2:score2...}
-    # find max score and store it in a list;
-    # if len(max_scores)==1, return tuple at end of function
-    # else, if a word = len(10), return that tuple
-    # if no word has 10 letters, return the shortest one
-    # return word,score
+
     score_dict = {}
     for word in word_list:
         score_dict[word.upper()] = score_word(word)
+    # list comprehension to score max keys to a list
+    max_keys = [
+        key for key, value in score_dict.items() if value == max(score_dict.values())
+    ]
 
-
-# get_highest_word_score(["X", "XX", "XXX", "XXXX"])
+    if len(max_keys) > 1:  # if there's a tie
+        for word in max_keys:  # loop through to check length
+            if len(word) == 10:  # if word has 10 letters
+                return word, score_dict[word]  # return word with 10 letters
+        return (
+            min(max_keys, key=len),
+            score_dict[min(max_keys, key=len)],
+        )  # return shortest word
+    return max_keys[0], score_dict[max_keys[0]]
