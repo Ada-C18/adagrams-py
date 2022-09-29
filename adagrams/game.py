@@ -44,26 +44,35 @@ def generate_alphabet_data_list(quantity_data, value_data):
 
 alphabet_data_list = generate_alphabet_data_list(quantity_data, value_data)
 
-def draw_letters():
+def letter_soup(letter_data):
   letter_soup = []
 
-  for data in alphabet_data_list:
+  for data in letter_data:
     runner = 0
     while runner < data['quantity']:
       letter_soup.append(data['letter'])
       runner += 1
+  
+  return letter_soup
+
+todays_soup = letter_soup(alphabet_data_list)
+
+def draw_letters():
+  # letter_soup = []
+
+  # for data in alphabet_data_list:
+  #   runner = 0
+  #   while runner < data['quantity']:
+  #     letter_soup.append(data['letter'])
+  #     runner += 1
 
   user_letter_pool = []
   
   while len(user_letter_pool) < 10:
-    draw = random.randint(0, (len(letter_soup)-1))
-    drawn_letter = letter_soup[draw]
+    draw = random.randint(0, (len(todays_soup)-1))
+    drawn_letter = todays_soup[draw]
 
-    for letter in alphabet_data_list:
-      if letter['letter'] == drawn_letter:
-        max_count = letter['quantity']
-
-    if user_letter_pool.count(drawn_letter) < letter_soup.count(drawn_letter):
+    if user_letter_pool.count(drawn_letter) < todays_soup.count(drawn_letter):
       user_letter_pool.append(drawn_letter)
 
   return user_letter_pool
@@ -79,7 +88,7 @@ def uses_available_letters(word, letter_bank):
           return False
     return True
 
-#add lower or upper so its not case sensitive
+#add lower or upper so its not case sensitive #
 
     for letters in letter_bank:
       for used_letters in word:
@@ -101,10 +110,8 @@ def score_word(word):
 
   for i in range(len(word_breakdown)):
     for data in alphabet_data_list:
-      for keys, values in data.items():
-        if data['letter'] == word_breakdown[i]:
-          add_it = data['value']
-    score += add_it
+      if data['letter'] == word_breakdown[i]:
+        score += data['value']
 
   return score
 
@@ -112,14 +119,14 @@ def score_word(word):
 def get_highest_word_score(word_list):
   #find max score of word_list
 
-  winning_word = None
+  winning_word = word_list[0]
   winning_score = 0
 
   tie_breaker = []
 
   for word in word_list:
     test_score = score_word(word) #all errors are referring to previous function score_word. Maybe because reusing variables, score already calculated
-    if test_score > winning_score:
+    if test_score < winning_score:
       test_score = winning_score
       word = winning_word
     if test_score == winning_score:
@@ -132,7 +139,7 @@ def get_highest_word_score(word_list):
   
   #check length of tie_breaker list, if it has one value return a tuple of the list
   if len(tie_breaker) == 0:
-    return tuple(tie_breaker)
+    return tuple(winning_word)
 
   else: 
     if len(tie_breaker[0]) == 10 and len(tie_breaker[1]) != 10:
