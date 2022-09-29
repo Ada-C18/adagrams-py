@@ -141,7 +141,7 @@ def get_highest_word_score(word_list):
                         fewest_length_words = [word_dic]
                     elif word_dic["length"] == fewest_length:
                         fewest_length_words.append(word_dic)
-            high_score_word = fewest_length_words[0]["word"]
+                high_score_word = fewest_length_words[0]["word"]
 
 
         return(high_score_word, highest_score)
