@@ -71,6 +71,8 @@ def score_word(word):
         total_points = 8
     else:
         total_points = 0
+    #refactored above code
+    #total_points = 8 if len(word) >= 7 else 0
 
     for letter in word.upper():
         if letter in point_value[0]:
@@ -104,10 +106,20 @@ def get_highest_word_score(word_list):
             highest_score = item[1]
         if item[1] == highest_score:
             tie_list.append(item)
+    
+    
+    shortest_word = ()
+    min_length = min(len(tie_list[0]))
+
+    for item in tie_list:
+        if len(item[0]) == 10:
+            return item
+        if len(item[0]) == min_length:
+            # test_length == len(item[0])
+            shortest_word = item
 
     for item in tuple_list:
+        if tie_list:
+            return shortest_word
         if item[1] == highest_score:
             return item
-            
-
-    
