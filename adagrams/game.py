@@ -1,5 +1,5 @@
 import random
-
+from typing import Counter
 letter_bank = {
     'A': 9, 
     'B': 2, 
@@ -30,7 +30,8 @@ letter_bank = {
 }
 
 def draw_letters():
-    letter_pool = list(letter_bank.keys())
+    
+    letter_pool = [key for key, val in letter_bank.items() for i in range(val)]
     last_index = len(letter_pool) - 1
     hand = []
     
@@ -41,12 +42,13 @@ def draw_letters():
         
     for i in range(10):
         hand.append(letter_pool[i])
-    return hand 
+    return hand
 def uses_available_letters(word, letter_bank):
 
-    word_letter_frequency = {}
-    letter_bank_frequency = {}
+    word_letter_frequency = Counter(word.upper())
+    letter_bank_frequency = Counter(letter_bank)
 
+<<<<<<< HEAD
     for letter in letter_bank:
         if letter not in letter_bank_frequency:
             letter_bank_frequency[letter] = 1
@@ -59,10 +61,14 @@ def uses_available_letters(word, letter_bank):
             word_letter_frequency[letter] += 1
         
     if all((word in letter_bank_frequency and letter_bank_frequency[word] == score) for word,score in word_letter_frequency.items()):
+=======
+    if all((k in letter_bank_frequency and letter_bank_frequency[k] == v) for k,v in word_letter_frequency.items()):
+>>>>>>> ec58fc64940518fd7c8b1e629c934dacb34df35a
         return True
     return False
 
 def score_word(word):
+
     score_chart = {
         1: 'AEIOULNRST',
         2: 'DG',
@@ -84,7 +90,6 @@ def get_highest_word_score(word_list):
     for word in word_list:
         score = score_word(word)
         words_score_dict[word] = score
-    
     highest_score = max(words_score_dict.values())
 
     for word,score in words_score_dict.items():
