@@ -48,7 +48,8 @@ def draw_letters():
 
 def generate_letter_list():
     '''
-    helper function returns letter pool list
+    helper function - returns a list that contains every instance 
+    of the letters in the LETTER_POOL dict, including duplicates
     '''
     letter_list = []
 
@@ -61,8 +62,8 @@ def generate_letter_list():
 
 def uses_available_letters(word, letter_bank):
     '''
-    takes 2 arguments word and letter_bank and 
-    checks that all letters in word are in letter_bank
+    takes 2 parameters word and letter_bank(the player's hand) 
+    and checks that all letters in word are in letter_bank
     returns boolean value
     '''
     hand_dict = {}
@@ -72,7 +73,6 @@ def uses_available_letters(word, letter_bank):
         if letter not in hand_dict.keys():
             hand_dict[letter] = 0
         hand_dict[letter] += 1
-    #print("hand_dict1: ", hand_dict)
 
     for letter in word:
         if letter not in letter_bank or hand_dict[letter] == 0:
@@ -110,22 +110,19 @@ def score_word(word):
 
     return final_score
 
-
-
-
 def get_highest_word_score(word_list):
     '''
     returns a tuple that contains highest scoring word
     and its corresponding score. contains logic to 
-    account for ties
+    resolve ties
     '''
     word_score_list = get_high_score_tuple(word_list)
     score = 0
     final_word = ""
-    final_list = []
+    final_score_list = []
 
     for score_tuple in word_score_list:
-        #tie resolution
+        # tie resolution
         if score_tuple[1] == score:
             if len(score_tuple[0]) == 10 and len(final_word) != 10:
                 final_word = score_tuple[0]
@@ -133,31 +130,26 @@ def get_highest_word_score(word_list):
             elif len(score_tuple[0]) < len(final_word) and len(final_word) != 10:
                 final_word = score_tuple[0]
                 score = score_tuple[1]
+        # updates final_word and score variables with highest scoring word and score
         elif score_tuple[1] > score:
                 final_word = score_tuple[0]
                 score = score_tuple[1]
 
-    while len(final_list) < 2:
-        final_list.append(final_word)
-        final_list.append(score)
+    while len(final_score_list) < 2:
+        final_score_list.append(final_word)
+        final_score_list.append(score)
     
-    return tuple(final_list)
+    return tuple(final_score_list)
 
 def get_high_score_tuple(word_list):
     '''
     helper function - returns list of tuples, tuples contain word 
     from word_list and score of that word
     '''
-    
     word_score_list = []
 
     for word in word_list:
-        score_list = []
         word_score = score_word(word)
-        while len(score_list) < 2:
-            score_list.append(word)
-            score_list.append(word_score)
-        score_tuple = tuple(score_list)
-        word_score_list.append(score_tuple)
+        word_score_list.append((word, word_score))
     
     return word_score_list
