@@ -92,11 +92,9 @@ def score_word(word):
     case_word = word.upper()
     sum_list = []
     for letter in case_word:
-        for key, value in SCORE_DICT.items():
-            if letter == key:
-                sum_list.append(value)
+        sum_list.extend(value for key, value in SCORE_DICT.items() if letter == key)
     n = len(case_word)
-    if n == 7 or n==8 or n==9 or n==10:
+    if n in {7, 8, 9, 10}:
         sum_list.append(8)
     return sum(sum_list)
 
@@ -117,16 +115,13 @@ def get_highest_word_score(word_list):
     combination = zip(best_word, highest_score_list)
     combination_list = (list(combination))
 
-    winning_score =[]
-    for num in combination_list:
-        if num[1] == max_score:
-            winning_score.append(num)
-    # print(winning_score)
+    winning_score = [num for num in combination_list if num[1] == max_score]
+
 
     for score in winning_score:
         if len(score[0]) == 10:
             return score 
-    
+
     min_length = 1000
     for score in winning_score:
         if len(score[0])<min_length:
@@ -135,6 +130,6 @@ def get_highest_word_score(word_list):
 
     return shortest_word
     
-    Print("Hi")
+
 
 
