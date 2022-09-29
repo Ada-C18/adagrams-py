@@ -53,7 +53,7 @@ def uses_available_letters(word, letter_bank):
             is_anagram = False
         else:
             copy_letter_bank.remove(letter)
-            
+
     return is_anagram
 
 def score_word(word):
