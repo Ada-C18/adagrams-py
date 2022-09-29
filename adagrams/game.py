@@ -87,65 +87,6 @@ def uses_available_letters(word, letter_bank):
 
 
 
-
-
-
-
-   #  letter_count[letter] + 1
-    
-
-
-    # if len(word) > 10:
-    #   return False
-
-   
-      
-
-
-    # for letter in word.upper():
-    #   if letter in letter_bank: #using if not letter not in letter_bank passes 3
-    #     letter_bank.remove(letter)
-    #   if letter not in letter_bank:
-    #     return False
-   
-        
-    #     return False
-    # return True
-  
-    # for letters in letter_bank:
-    #   for new_word in word.upper():
-    #     if letter_bank.count(letters) == word.count(new_word):
-    #       return True
-    #     if letter_bank.count(letters) != word.count(new_word):
-    #       return False
-    #     # if letter_bank.count(letters) == word.count(letters):
-    #     #   return True
-      
-     
-
-
-    # for letter in word.upper():
-    #   if letter not in letter_bank: #using if not letter not in letter_bank passes 3
-    #     return False
-    # return True
-
-
-
-
-
-
-
-
-
-
-    # for letters in letter_bank:
-    #   for new_word_letters in word:
-    #     if letter_bank.count(letters) != word.count(letters):
-    #       return False
-
-  
-
-#add lower or upper so its not case sensitive
 def score_word(word):
   if type(word) is not str:
     return 0
@@ -169,72 +110,52 @@ def score_word(word):
   return score
 
 
-# given word_list, a list of strings
-# foo, bar, baz
 def get_highest_word_score(word_list):
 
-  # highest_word = None
-  # highest_word_score = 0
-
-  # for word in word_list:
-  #   score = score_word(word)
-  #   if score >= highest_word_score:
-  #     highest_word_score = score
-  #     highest_word = word
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  #find max score of word_list
+  if (len(word_list)) == 0:
+    return None
 
   winning_words = []
   winning_score = 0
 
   #for word in range(len(word_list)):
   for word in word_list:
-    value_of_word = score_word(word) #all errors are referring to previous function score_word. Maybe because reusing variables, score already calculate
-    print(word_list)
+    value_of_word = score_word(word) #
+    
+
     if value_of_word == winning_score: # if its a tie append it to list winning_words
       winning_words.append(word)
+
     else:
       if value_of_word > winning_score: # encountered a new highest score
         winning_score = value_of_word 
         winning_words = [word]
 
-  for i in winning_words:
-    if len(i) == 1:
-      winner = winning_words[word]
 
+  if (len(winning_words)) == 1: # if the length of the list is one than return winning words, no tie 
+    return winning_words, winning_score
+  
+  shortest_word = None #assign value of none 
+  shortest_length = None #assign value of none
+  
+  for word_2 in winning_words:   # loop through winning_words again
+    word_length = len(word_2) # determine the length of each word and assign it to variable word_length
 
+    # if word is 10 letters, return word_2, will return first in list automaticaly
+    if word_length == 10:
+      return word_2
+
+    # Othwerwise, find which word has shortest length
+    if shortest_length == None: # initialize the value of shortest_length 
+      shortest_length = word_length 
+    else:
+      if word_length < shortest_length: # if the length of the word is less than shortest_length
+        shortest_length = word_length # the shortest_length word is equal to word_length
+        shortest_word = word_2 # shortest word is assigned to word_2 in winning_words list, or shortest word in the list
+    
+  print(shortest_word)
+
+  return shortest_word, winning_score
 
 #function to print out winner/winners in tuple format
 # def print_highest_score(winning_words, winning_score):
@@ -243,6 +164,8 @@ def get_highest_word_score(word_list):
 #     highest_score = winning_score
 
 #     return (highest_word, highest_score)
+
+  
 
   
 
