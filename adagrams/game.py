@@ -45,17 +45,17 @@ def draw_letters():
     my_ten_letters = [] 
 
     for letter in LETTER_POOL:
-        for num in range(0,(LETTER_POOL[letter])): #letter_pool[letter] accesses the integer values of each letter
+        for num in range(0,(LETTER_POOL[letter])): 
             letter_pool_list.append(letter)
 
 
-    while len(my_ten_letters) < 10: #loop will not stop until we have a ten letter string 
+    while len(my_ten_letters) < 10:  
         for num in range(0,10):
-            random_letter = random.choice(letter_pool_list) #selects a random letter from letter pool 
-            my_ten_letters.append(random_letter) # adds the random letter to a list 
-            my_string_count = my_ten_letters.count(random_letter) #counts how many times our random letter appears in our ten letter string
-            word_pool_count = letter_pool_list.count(random_letter) # counts how many times our random letter appears in our letter pool
-            if my_string_count > word_pool_count: # if the count for a letter in our ten letter strings exceeds the count for the same letter in letter pool we remove it. 
+            random_letter = random.choice(letter_pool_list)  
+            my_ten_letters.append(random_letter)  
+            my_string_count = my_ten_letters.count(random_letter) 
+            word_pool_count = letter_pool_list.count(random_letter) 
+            if my_string_count > word_pool_count: 
                 my_ten_letters.remove(random_letter) 
 
     return my_ten_letters
@@ -66,7 +66,7 @@ def uses_available_letters(word, letter_bank):
     letter_results = [] 
     for letter in word:
         if letter not in letter_bank:
-            letter_results.append("f") # "f" in my head stands for false 
+            letter_results.append("f") 
             if "f" in letter_results:
                 return False
             else:
@@ -79,9 +79,6 @@ def uses_available_letters(word, letter_bank):
             return False
         else:
             return True
-    
-    # word_all_caps = word.upper() 
-    # return word_all_caps 
 
 def score_word(word):
     word_score = 0
@@ -103,11 +100,11 @@ def get_highest_word_score(word_list):
 
     score_dict = {}  
     for word in word_list:
-        score = score_word(word) #this returns an int 
+        score = score_word(word) 
         score_dict[word] = score
 
     highest_score_value = max(score_dict.values())
-    #highest_score_key = max(score_dict, key=score_dict.get)
+    
     
     highest_scores = []
     
@@ -120,10 +117,12 @@ def get_highest_word_score(word_list):
     
     if len(highest_scores) > 1:
         for word, score in highest_scores:
-            if len(word) < shortest_word_length:
+            if len(word) >= 10:
+                shortest_word = word
+                return (shortest_word, highest_score_value)
+            elif len(word) < shortest_word_length:
                 shortest_word_length = len(word)
-                shortest_word = word 
-            
-    #word_tupl = (highest_score_key, highest_score_value) 
+                shortest_word = word
+    
     
     return (shortest_word, highest_score_value)
