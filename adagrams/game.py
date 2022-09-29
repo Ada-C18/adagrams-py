@@ -15,25 +15,6 @@ def draw_letters():
             letter_count += 1
     return letters_drawn
 
-### Wave 2: use_available_letters
-
-# Next, you need a way to check if an input word (a word a player submits)
-#  only uses characters that are contained within a collection (or hand) of drawn letters. 
-# Essentially, you need a way to check if the word is an anagram of some or all of the given 
-# letters in the hand.
-
-# To do so, implement the function called `uses_available_letters` in `game.py`. 
-# This function should have the following properties:
-
-# - Has two parameters:
-#    - `word`, the first parameter, describes some input word, and is a string
-#    - `letter_bank`, the second parameter, describes an array of drawn letters in a hand. 
-# You can expect this to be an array of ten strings, with each string representing a letter
-# - Returns either `True` or `False`
-# - Returns `True` if every letter in the `input` word is available (in the right quantities) 
-# in the `letter_bank`
-# - Returns `False` if not; if there is a letter in `input` that is not present in the
-#  `letter_bank` or has too much of compared to the `letter_bank`
 
 def uses_available_letters(word, letter_bank):
     word = word.upper()
@@ -42,7 +23,8 @@ def uses_available_letters(word, letter_bank):
     letter_count = 0
 
     for letter in word:
-        if letter in letter_bank and letter_count <= LETTER_POOL[letter] and word.count(letter) <= letter_bank.count(letter):
+        if letter in letter_bank and \
+            word.count(letter) <= letter_bank.count(letter):
             word_dict[letter] = True
             letter_count += 1
             is_valid = True
@@ -52,7 +34,47 @@ def uses_available_letters(word, letter_bank):
     return is_valid
 
 def score_word(word):
-    pass
+    score = 0
+    word = word.upper()
+    points = {
+        1:["A", "E", "I", "O", "U","L", "N", "R", "S", "T"], 
+        2:["D", "G"], 
+        3:["B", "C", "M", "P"], 
+        4:["F", "H", "V", "W", "Y" ],
+        5:["K"],
+        8:["J", "X"],
+        10: ["Q", "Z"] 
+        }
+
+    for letter in word:    
+        for key, value in points.items():
+            if letter in value:
+                score += key    
+    
+    if len(word) >= 7:
+        score += 8
+    return score 
+
 
 def get_highest_word_score(word_list):
     pass
+# word list is a list of strings
+# 1. use score_word() to get the score of each word in word list:
+    # for word in word_list:
+        #word_score = score_word(word) -- 
+        # ~~ do we want to append this to a list of word scores?
+        # ~~ or make a dict with word : score as the key, value pair?
+
+# 2. get highest score using list or dict w/ highest scores
+        # for score in scores:
+            # something
+# 3. if tie: 
+    # if len(tied_word) > len(other_tied_word):
+        # tied_word wins!
+        # unless len(other_tied_word) > 10
+            # then 10 letter word wins
+        # if len(tied_word) == len(other_tied_word):
+        #   first one wins 
+        # ? ???? ? 
+        #    
+# return: tuple with two elements, ([highest scoring word], [score])
