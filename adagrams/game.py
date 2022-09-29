@@ -37,18 +37,7 @@ def draw_letters():
             the_letters.append(key)
 
     # use random to pick an index of the length of the_letters 
-    # the element is in the list then remove it -- add it to the hand and remove it from letters
-
-    #the_hand = [random.choice(list(the_letters)) for i in range(10)]
-    # where in the letters list we are going to pull from
-    the_hand = []
-    for i in range(10):
-        random_letter_index = random.randint(0,len(the_letters)-1)
-        the_hand.append(the_letters[random_letter_index])
-        the_letters.remove(the_letters[random_letter_index])
-    # use random in my owm words----  
-    # create a dict 
-    
+    the_hand = random.sample(the_letters, 10)
     
     return the_hand
 
@@ -69,15 +58,6 @@ def uses_available_letters(word, letter_bank):
 
 
 def score_word(word):
-
-    ''' word is a str of characters
-    returns an int representing the number of points
-    each letter within word has a point value..
-    total score = number of points of all words
-    if len(word) == 7,8,9,19 then score additional 8 points
-    '''
-
-# dict 
     score = 0
     the_score_dict = { 1: ['A','E','I','O','U','L','N','R','S','T'],
     2 : ['D','G'],
@@ -99,14 +79,6 @@ def score_word(word):
 
 
 def get_highest_word_score(word_list):
-    ''' reads a word_list and scores each word
-    finds highest scoring word
-    returns tuple of word and score
-    tie breakers:
-        word with fewest letters OR
-        word with 10 letters OR
-        first one in list for multiple
-    '''
     highest_score = 0
     top_word = ""
     tie_list = []
@@ -115,8 +87,6 @@ def get_highest_word_score(word_list):
         if score > highest_score:
             highest_score = score
             top_word = word
-        # if score == highest_score:
-        #     tie_list.append(word)
     for word in word_list:
         score = score_word(word)
         if score == highest_score:
