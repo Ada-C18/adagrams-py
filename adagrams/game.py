@@ -44,26 +44,35 @@ def generate_alphabet_data_list(quantity_data, value_data):
 
 alphabet_data_list = generate_alphabet_data_list(quantity_data, value_data)
 
-def draw_letters():
+def letter_soup(letter_data):
   letter_soup = []
 
-  for data in alphabet_data_list:
+  for data in letter_data:
     runner = 0
     while runner < data['quantity']:
       letter_soup.append(data['letter'])
       runner += 1
+  
+  return letter_soup
+
+todays_soup = letter_soup(alphabet_data_list)
+
+def draw_letters():
+  # letter_soup = []
+
+  # for data in alphabet_data_list:
+  #   runner = 0
+  #   while runner < data['quantity']:
+  #     letter_soup.append(data['letter'])
+  #     runner += 1
 
   user_letter_pool = []
   
   while len(user_letter_pool) < 10:
-    draw = random.randint(0, (len(letter_soup)-1))
-    drawn_letter = letter_soup[draw]
+    draw = random.randint(0, (len(todays_soup)-1))
+    drawn_letter = todays_soup[draw]
 
-    for letter in alphabet_data_list:
-      if letter['letter'] == drawn_letter:
-        max_count = letter['quantity']
-
-    if user_letter_pool.count(drawn_letter) < letter_soup.count(drawn_letter):
+    if user_letter_pool.count(drawn_letter) < todays_soup.count(drawn_letter):
       user_letter_pool.append(drawn_letter)
 
   return user_letter_pool
@@ -102,10 +111,8 @@ def score_word(word):
 
   for i in range(len(word_breakdown)):
     for data in alphabet_data_list:
-      for keys, values in data.items():
-        if data['letter'] == word_breakdown[i]:
-          add_it = data['value']
-    score += add_it
+      if data['letter'] == word_breakdown[i]:
+        score += data['value']
 
   return score
 
