@@ -15,19 +15,11 @@ def draw_letters():
     return hand
 
 def uses_available_letters(word, letter_bank):
-    correct_letters = []
-    for char in word:
-        if char in letter_bank:
-            correct_letters.append(char)
-            letter_bank.remove(char)
-    if len(word) == len(correct_letters):
-        return True
-    else:
-        return False
+    
     
     
 
-def score_word(word):
+    def score_word(word):
         tile_points = {
         'A': 1,
         'E': 1,
