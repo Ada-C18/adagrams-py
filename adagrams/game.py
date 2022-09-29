@@ -61,6 +61,11 @@ LETTER_VALUES = {
 }
 
 def draw_letters():
+    '''
+    (1-1) create letter bank from LETTER_POOL
+    (1-2) letter cannot repeat greater than quantity of LETTER_POOL
+    '''
+
     letters = []
     while len(letters) < 10:
         letter = random.choice(list(LETTER_POOL.keys()))
@@ -103,6 +108,17 @@ def score_word(word):
     return score
 
 def get_highest_word_score(word_list):
+    '''
+    (1) dictionay of word:score
+    (2) get word(s) in dict with highest score
+    (3) convert (2) into tuple (requirement!)
+    (4) list of multiple max scored words
+    (5-1) if (4) is single: return the tuple of max scored word   
+    (5-2) if (4) is multiple: return winner
+    (5-2-a) winner rule for multiple: with fewest number of letters unless 10 letters 
+                                    or if words have same number, then return first occurrence
+    '''
+
     words_with_scores = {}
     for word in word_list:
         score = score_word(word)
@@ -119,7 +135,7 @@ def get_highest_word_score(word_list):
             multiple_max_score_words.append(key)
 
     if len(multiple_max_score_words) == 1:
-        current_winner = max_score_tuple
+        return max_score_tuple
     else:
         for i in range(0, len(multiple_max_score_words)):
             if len(multiple_max_score_words[i]) == 10:
@@ -130,11 +146,3 @@ def get_highest_word_score(word_list):
                 current_winner = (multiple_max_score_words[i], words_with_scores[multiple_max_score_words[i]])
 
     return current_winner   
-
-    
-
-
-
-
-
-
