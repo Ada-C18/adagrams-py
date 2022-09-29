@@ -1,4 +1,4 @@
-# AdaGrams
+# AdaGrams Brooke and Valentina
 
 ## Skills Assessed
 
