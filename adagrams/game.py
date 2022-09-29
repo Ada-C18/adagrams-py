@@ -93,4 +93,3 @@ def get_highest_word_score(word_list):
         return result[length_list.index(10)]
 
     return sorted_scores_list[0]
-    # HOW TO COMPARE SAME SCORE BUT DIFFERENT LEGNTHS
