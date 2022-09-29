@@ -213,11 +213,21 @@ def get_highest_word_score(word_list):
             tied_scores.append(best_word)
     # print(tied_scores)
 
-    shortest = max(tied_scores)
-    print("Shorest Score = ", shortest)
+    sort_ties = sorted(tied_scores)
+    print("Shorted List = ", sort_ties)
+    shortest = max(sort_ties)
+    highest = min(sort_ties)
+    print("Shorest Char Score = ", shortest)
+    print("Highest Char Score = ", highest)
 
-    for scores in tied_scores:
-        if scores == shortest:
+
+    for scores in sort_ties:
+
+        if len(scores[0]) == 10:
+            print(scores)
+            return scores
+
+        elif scores == shortest:
             print(scores)
             return scores
 

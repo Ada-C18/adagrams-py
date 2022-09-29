@@ -68,7 +68,7 @@ def test_get_highest_word_tie_prefers_ten_letters():
     assert best_word[0] == "AAAAAAAAAA"
     assert best_word[1] == 18
 
-@pytest.mark.skip()
+# @pytest.mark.skip()
 def test_get_highest_word_tie_prefers_ten_letters_unsorted_list():
     # Arrange
     words = ["BBBBBB", "AAAAAAAAAA"]
