@@ -93,5 +93,20 @@ def score_word(word):
             
     return score
 
+
 def get_highest_word_score(word_list):
-    pass
+    winning_word=["", 0]
+    for word in word_list:
+        score= score_word(word)
+        if score > winning_word[1]:
+            winning_word[0]=word
+            winning_word[1]=score
+        elif score == winning_word[1]:
+            if len(winning_word[0])==10:
+                pass
+            elif len(word) == 10 or len(word) < len(winning_word[0]):
+                winning_word[0]= word
+                winning_word[1]= score
+    
+    return tuple(winning_word)
+            
