@@ -93,6 +93,43 @@ def score_word(word):
     'Y': 4, 
     'Z': 10
     }
-    
+
+    word = word.upper()
+
+    score = 0
+    for letter in word:
+        for key in score_chart:
+            if letter == key:
+                score += score_chart[key]
+    if len(word) >= 7:
+        score += 8
+    return score
 
 def get_highest_word_score(word_list):
+
+    word_dict = create_word_score_dict(word_list)
+
+    max_score = max(word_dict)
+    winning_word_list = word_dict[max_score]
+
+    for word in winning_word_list:
+        if len(word) == 10:
+            highest_score = word, max_score
+            break
+        else:
+            winning_word = min(winning_word_list, key = len)
+            highest_score = winning_word, max_score
+
+    return highest_score
+
+def create_word_score_dict(word_list):
+    word_dict = {}
+
+    for word in word_list:
+        score = score_word(word)
+        if score not in word_dict:
+            word_dict[score] = [word]
+        else:
+            word_dict[score].append(word)
+
+    return word_dict
