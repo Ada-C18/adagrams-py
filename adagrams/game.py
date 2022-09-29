@@ -141,12 +141,19 @@ def get_highest_word_score(word_list):
             highest_scoring_words.append( (word, current_score) )
 
 
+    if len(highest_scoring_words) == 1:
+        return highest_scoring_words[0]
     #############################
     # Tiebreaker logic 
     #############################
-
-
-
+    tiebreaker_list = []
+    for word_tuple in highest_scoring_words:
+        if len(word_tuple[0]) == 10:
+            print(word_tuple)
+        
+        if not tiebreaker_list:
+            return tiebreaker_list[0]
+    
 
 
     
