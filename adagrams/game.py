@@ -30,6 +30,7 @@ LETTER_POOL = {
 import random
 import string
 
+
 def draw_letters():
     hand = []
     keep_going = True
@@ -45,18 +46,7 @@ def draw_letters():
     return hand
 
 def uses_available_letters(word, letter_bank):
-    # letters_count = 0
-    # letters = []
-
-    # for letter in word:
-    #   letter = letter.upper() or letter.lower()
-    #   if letter in letter_bank:
-    #     if letter not in letters:
-    #         letters_count += 1
-    #         letters.append(letter)
-    # if letters_count == len(word):
-    #     return True
-    # return False
+    
     letters = {}
     word = word.upper()
 
@@ -104,66 +94,5 @@ def score_word(word):
     'Z': 10
     }
     
-    # score_chart_2 = {        
-    # 1:["A", "E", "I", "O", "U", "L", "N", "R", "S", "T"],
-    # 2:["D", "G"],
-    # 3: ["B", "C", "M", "P"],
-    # 4: ["F", "H", "V", "W", "Y"],
-    # 5: ["K"],
-    # 8: ["J", "X"],
-    # 10: ["Q", "Z"]
-    # }
-
-    word = word.upper()
-
-    # score = []
-    # if len(word) == 0:
-
-    #     score.append(0)
-    # if len(word) > 6:
-    #     score.append(8)
-    # # for letter in word:
-    # #     for key, value in score_chart.items():
-    # #         if letter in value:
-    # #             score.append(key)   
-
-    # # return sum(score)
-
-    score = 0
-    for letter in word:
-        for key in score_chart.keys():
-            if letter == key:
-                score += score_chart[key]
-    if len(word) >= 7:
-        score += 8
-    return score
-
-    # for letter in word:
-    #     for key, value in score_chart.items():
-    #         if letter in value:
-    #             score += key
-    # if len(word)>= 7:
-    #     score += 8
-    # return score
-
 
 def get_highest_word_score(word_list):
-#   score_list = {}
-#   highest_score = []
-#   for word in word_list:
-#     word_value = score_word(word)
-#     score_list[word] = word_value
-#   print(score_list)
-#   for key,value in score_list.items():
-#     val = max(score_list.values())
-#     if value == val:
-#         value = value
-#         highest_score.append(key)
-        
-
-    
-#   print(word)
-#   print(highest_score)
-#   print(val)
-# #   return highest_score
-    pass
