@@ -1,4 +1,4 @@
-# AdaGrams
+# AdaGrams 
 
 ## Skills Assessed
 
@@ -191,6 +191,10 @@ In addition to submitting your Pull Request, submit a reflection the the pair pr
 ### Setup a Pair Plan
 
 First, come up with a "plan of action" for how you want to work as a pair. Discuss your learning style, how you prefer to receive feedback, and one team communication skill you want to improve with this experience.
+
+Neida: Hurricane coming up in Florida - may lose access to internet. Learning style - reading and trying it on her own, drawing things out. Can accept feedback in anyway - perfers spoken feedback over written feedback and examples if its written. Asking for help earlier on. 
+
+Rahel: hands on learning learning, examples, visuals. Very open to feeback.
 
 We recommend spending at least a portion of the time pair programming and working collaboratively from the same machine.  Zoom and screen sharing or [VSCode Live Share](https://code.visualstudio.com/learn/collaboration/live-share) are good tools to consider.  Some teams will choose to pair program and work collaboratively from the same machine for the entire project.  Some teams will choose to divide a portion of the work and combine their code using git. 
 
