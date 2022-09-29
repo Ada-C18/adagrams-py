@@ -1,4 +1,5 @@
 # AdaGrams
+Kat was here!
 
 ## Skills Assessed
 
@@ -9,6 +10,7 @@
 - Practicing pair-programming techniques
 
 ## Goal
+We Got This!!
 
 An [anagram](https://en.wikipedia.org/wiki/Anagram) is a word or phrase formed by rearranging the letters of a different word or phrase. In this project you and your partner will be creating _Adagrams_, a game in which a player is given a random set of letters and must make an anagram using those letters.  Each submitted word will score points.
 
