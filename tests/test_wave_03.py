@@ -17,6 +17,7 @@ def test_score_word_accurate_ignores_case():
 def test_score_zero_for_empty():
     # Assert
     assert score_word("") == 0
+    assert score_word("MMMM") == 12
 
 def test_score_extra_points_for_seven_or_longer():
     # Assert
