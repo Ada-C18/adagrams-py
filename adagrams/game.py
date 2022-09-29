@@ -1,6 +1,3 @@
-import random
-
-
 def draw_letters():
 
     # Create empty list
@@ -48,8 +45,6 @@ def draw_letters():
             pool_list.append(letter)
     letter_list = random.sample(pool_list, 10)
     print(letter_list)
-
-    return letter_list
 
 
 def uses_available_letters(word, letter_bank):
