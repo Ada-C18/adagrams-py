@@ -30,6 +30,7 @@ LETTER_POOL = {
 import random
 import string
 
+
 def draw_letters():
     hand = []
     keep_going = True
