@@ -110,7 +110,7 @@ def get_highest_word_score(word_list):
     '''
 
     words_score = {}
-    return_word = []
+    return_word = ''
     highest_score = 0
 
     for word in word_list:
