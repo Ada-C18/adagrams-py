@@ -50,7 +50,6 @@ def get_highest_word_score(word_list):
     
     highest_score = list_of_scores[0]
     for score in list_of_scores: 
-
         if score[1] > highest_score[1]:
             highest_score = score
 
