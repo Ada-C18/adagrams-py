@@ -46,9 +46,7 @@ score_table = {
 def draw_letters():
     random_list = []
     for letter, frequency in LETTER_POOL.items():
-        string = (letter * frequency)
-        tiles = list(string)
-        random_list += tiles
+        random_list += list(letter * frequency)
     return random.sample(random_list, 10)
 
 
