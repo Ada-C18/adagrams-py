@@ -1,4 +1,5 @@
 from operator import length_hint
+from platform import win32_edition
 import random
 from lib2to3.pgen2.pgen import DFAState
 from urllib.parse import MAX_CACHE_SIZE
@@ -122,47 +123,39 @@ def score_word(word):
     word = word.upper()
     if len(word) >= 7 and len(word) <= 10:
         total_score += 8
-    '''
-    # time complexity :O(n)
-    score_dict = dict.fromkeys(['A', 'E', 'I', 'O', 'U', 'L', 'N', 'R', 'S', 'T'], 1)
-    score_dict.update(dict.fromkeys (['D', 'G'], 2))
-    score_dict.update(dict.fromkeys(['B', 'C', 'M', 'P'], 3))
-    score_dict.update(dict.fromkeys (['F', 'H', 'V', 'W', 'Y'], 4))
-    score_dict.update(dict.fromkeys (['K'], 5))
-    score_dict.update(dict.fromkeys (['J', 'X'], 8))
-    score_dict.update(dict.fromkeys (['Q','Z'], 10))
-    '''
-
     for letter in word:
         if letter in SCORE_POOL.keys():
             total_score += SCORE_POOL[letter]
     return total_score
 
-
 def get_highest_word_score(word_list):
-    # return tuple (word, max_score)
-    
+    # return tuple (word, max_score)   
     max_score = 0
+    max_name = ""
     final_word_dict = {}
     for word in word_list:
         word_score = score_word(word)
         if word_score > max_score:
             max_score = word_score
+            max_name = word           
     for word in word_list:
         if score_word(word) == max_score:
             final_word_dict[word] = len(word)
-    print(final_word_dict)
-
-
     if len(final_word_dict) == 1:
-        return final_word_dict[word], max_score
+        return max_name, max_score
+    
+    #if len = 10, this word win
+    for word, length in final_word_dict.items():
+        while length == 10:
+            return (word, max_score)                
+    #len != 10, word with fewest len win 
+    #same length -> choose the first occurence
     else:
-        if 10 in final_word_dict.values():
-            name = [k for k, v in final_word_dict.items() if v == 10]   
-            return (name, max_score)    
-        elif 10 not in final_word_dict.values():
-            name = min(final_word_dict, key=final_word_dict.get)
-            return (name, max_score)
-        #else: #there two same length
-
-            #return the first one 
+        mini_length = 10
+        for word, length in final_word_dict.items():  
+            if length < mini_length:
+                mini_length = length
+        key_list = list(final_word_dict.keys())
+        val_list = list(final_word_dict.values())
+        best_name = key_list[val_list.index(mini_length)]        
+    return (best_name, max_score)        
