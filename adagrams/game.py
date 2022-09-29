@@ -36,13 +36,13 @@ def dict_to_list(dict):
     '''
     Create a list using the key-value pairs from the inputted dictionary.
     1. Start with an empty list.
-    2. Add each key-value pair, add the key to the list n times, with n being the associated value to the key. 
+    2. Iterating through each key-value pair, adding the key to the list n times, with n being the associated value to the key. 
     3. Return the list.
     '''
     bag_of_letters = []
-    for key, value in dict.items():
-        new_letters = [key] * value
-        bag_of_letters.extend(new_letters)
+    for key, value in dict.items(): # O(k), where k = len(dict)
+        new_letters = [key] * value # O(1)
+        bag_of_letters.extend(new_letters) # O(n), where n = len(bag_of_letters)
     
     return bag_of_letters
 
@@ -52,7 +52,7 @@ def draw_letters():
     hand_as_letters = []
 
     while len(hand_as_letters) < 10: # O(1)
-        index = random.randint(0,len(bag_of_letters)-1)
+        index = random.randint(0,len(bag_of_letters)-1) # O(1)
         if index not in hand_as_numbers: # 0(n)
             hand_as_numbers.append(index) # n(1)
             hand_as_letters.append(bag_of_letters[index]) # n(1)
@@ -67,12 +67,12 @@ def uses_available_letters(word, letter_bank):
     '''
     copy_of_letter_bank = copy.deepcopy(letter_bank)
     word = word.upper()
-    # 0(n * (2n)) = O(n^2) ****************************** WORK ON THIS ***************************
-    for letter in word: # O(n)
-        if letter not in copy_of_letter_bank: # O(n)
-            return False
-        else:
-            copy_of_letter_bank.remove(letter) # O(n)
+    # 0(n * k) = n? ****************************** WORK ON THIS ***************************
+    for letter in word: # O(n), where n = len(word)
+        try:
+            copy_of_letter_bank.remove(letter) # O(k), where k = len(copy_of_letter_bank)
+        except:
+            return False 
     return True
 
 
@@ -127,8 +127,8 @@ def score_word(word):
     for letter in word.upper(): # O(n)
         score += SCORING[letter] # 0(1)
         
-    if 7 <= len(word) <= 10:
-        score += 8
+    if 7 <= len(word) <= 10: # O(1)
+        score += 8 # O(1)
     
     return score
 
