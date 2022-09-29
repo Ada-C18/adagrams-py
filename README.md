@@ -194,6 +194,16 @@ First, come up with a "plan of action" for how you want to work as a pair. Discu
 
 We recommend spending at least a portion of the time pair programming and working collaboratively from the same machine.  Zoom and screen sharing or [VSCode Live Share](https://code.visualstudio.com/learn/collaboration/live-share) are good tools to consider.  Some teams will choose to pair program and work collaboratively from the same machine for the entire project.  Some teams will choose to divide a portion of the work and combine their code using git. 
 
+PAIR PLAN:
+- whenever we can, working collaboratively from the same machine (using VS Code Live Share)
+- Miranda's Learning Style: pair programming, hands-on learning
+- Tara's Learning Style: collaborative in addition to private research
+- plan is to work drive-navigator style on wave 1 & 2, work individually on Wave 3&4 and come back together to discuss code and decide on final code to push to remote repo
+- Miranda wants to improve on expressing her opinion about coding
+- Tara wants to work on reigning in her opinion when it comes to be a driver
+- timeline: Work on one wave per day, finalize code on Thursday in coworking time or afterwards depending on progress
+
+
 ### Get Familiar
 
 Take time to read through the Wave 1 implementation requirements and the tests for wave 1. Write down your questions, and spend some time going through your understanding of the requirements and tests with your pair. Make sure you both can run `$ pytest` and see the tests fail.
@@ -287,6 +297,15 @@ Implement a function called `get_highest_word_score` in `game.py`. This method s
     - prefer the word with the fewest letters...
     - ...unless one word has 10 letters. If the top score is tied between multiple words and one is 10 letters long, choose the one with 10 letters over the one with fewer tiles
     - If the there are multiple words that are the same score and the same length, pick the first one in the supplied list
+
+TRANSLATION
+- input is a list of strings
+- find the score of each string, then find the highest score
+- returns tuple  --->  ("string", score)
+- in the case of a tie:
+    - word with 10 letters wins
+    - if not, then word with fewest tiles wins
+    - if not (words are same score and length), then the word with the lower index in the list wins
 
 
 
