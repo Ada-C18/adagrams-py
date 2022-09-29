@@ -41,5 +41,4 @@ def score_word(word):
     return total_points
 
 def get_highest_word_score(word_list):
-    # scores = [(word, score_word(word)) for word in word_list]
-    # return max(scores)[1]
+    pass
