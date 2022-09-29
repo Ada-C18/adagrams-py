@@ -116,18 +116,27 @@ def get_highest_word_score(word_list):
     combination_list = (list(combination))
 
     winning_score = [num for num in combination_list if num[1] == max_score]
-
-
+    
+    #^^^^refactored version of the following code:
+    #    winning_score = []
+    #    for num in combination_list:
+    #       if num[1] == max_score:
+    #         winning_score.append(num)
+    
     for score in winning_score:
         if len(score[0]) == 10:
             return score 
+
+    return score
 
     # min_length = 1000
     # for score in winning_score:
     #     if len(score[0])<min_length:
     #         min_length = len(score[0])
     #         shortest_word = score
-    return score
+
+    #^^^This code was written before implementing word_list.sort()
+    
     
 
 
