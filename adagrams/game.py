@@ -36,15 +36,15 @@ def draw_letters():
     Input: Letter pool which include all the letters and their frequency
     Output: Return 10 random letters from the letter pool
     """
-    list_1= [k*v for k,v in LETTER_POOL.items()]
-    letter_pool_list=[]
+    list_1 = [key*value for key,value in LETTER_POOL.items()]
+    letter_pool_list = []
     for string in list_1:
         for letter in string:
             letter_pool_list.append(letter)
     
     
     print(letter_pool_list)
-    user_hand= (random.sample(letter_pool_list,10))
+    user_hand = (random.sample(letter_pool_list,10))
 
     return user_hand 
     
@@ -64,9 +64,8 @@ def uses_available_letters(word, letter_bank):
                 return False
             elif character in letter_bank: #and character == string:
                 if word.count(character) > letter_bank.count(string):
-                    # print('False')
                     return False
-    # print('True')
+                
     return True
 
 def score_word(word):
@@ -102,18 +101,18 @@ def score_word(word):
     'Y': 4, 
     'Z': 10
 }
-    word=word.upper()
-    word_list=[letter for letter in word]
-    score=0
-    if len(word_list)<7:
-        score=0
+    word = word.upper()
+    word_list = [letter for letter in word]
+    score = 0
+    if len(word_list) < 7:
+        score = 0
         
     else:
         score += 8
     
     for letter in word_list:
         if letter in SCORE_CHART:
-            score+= SCORE_CHART[letter]
+            score += SCORE_CHART[letter]
     
     return score
             
@@ -123,24 +122,24 @@ def get_highest_word_score(word_list):
     Input: word_list
     Output: word and score in tuple type
     """
-    highest_score=0
-    highest_score_list= []
+    highest_score = 0
+    highest_score_list = []
     for word in word_list:
         score= score_word(word) 
         if score > highest_score:
-            highest_score= score
+            highest_score = score
             highest_score_list.clear()
             highest_score_list.append(word)
         elif score == highest_score:
             highest_score_list.append(word)
 
     fewest_letter = highest_score_list[0]
-    len_fewest_letter= len(highest_score_list[0])
+    len_fewest_letter = len(highest_score_list[0])
 
     for word in highest_score_list:
-        if len(word)== 10:
+        if len(word) == 10:
             return (word,highest_score)
-        elif len(word)< len_fewest_letter:
+        elif len(word) < len_fewest_letter:
             fewest_letter = word
             len_fewest_letter = len(word)
 
