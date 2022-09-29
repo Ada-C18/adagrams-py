@@ -107,15 +107,13 @@ def get_highest_word_score(word_list):
         if item[1] == highest_score:
             tie_list.append(item)
     
-    
+    test_length = 10
     shortest_word = ()
-    min_length = min(len(tie_list[0]))
-
     for item in tie_list:
         if len(item[0]) == 10:
             return item
-        if len(item[0]) == min_length:
-            # test_length == len(item[0])
+        elif len(item[0]) < 10:
+            test_length == len(item[0])
             shortest_word = item
 
     for item in tuple_list:
