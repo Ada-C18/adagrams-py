@@ -129,10 +129,22 @@ def get_highest_word_score(word_list):
             max_score =  word_dict["score"]
             max_words.clear()
             max_words.append(word_dict["word"])
+# CASE 1
     if len(max_words) == 1:
-        result = (max_words[0], score_word(max_words[0]))
-        return result
+        return (max_words[0], score_word(max_words[0]))
 
+# CASE 2
+
+    min_letter_count = 10
+    shortest_word = None
+
+    for word in max_words:
+        if len(word) == 10:
+            return (word, score_word(word))
+        elif len(word) < min_letter_count:
+            min_letter_count = len(word)
+            shortest_word = word
+    return (shortest_word, score_word(shortest_word))
 
 # word_info:
 # {“word”: word,
