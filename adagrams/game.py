@@ -20,7 +20,6 @@ def uses_available_letters(word, letter_bank):
     word_dict = {}
     is_valid = False
     letter_count = 0
-
     for letter in word:
         if letter in letter_bank and word.count(letter) <= letter_bank.count(letter):
             word_dict[letter] = True
@@ -48,30 +47,41 @@ def score_word(word):
         for key, value in points.items():
             if letter in value:
                 score += key    
-    
     if len(word) >= 7:
         score += 8
     return score
 
 def get_highest_word_score(word_list):
-    pass
-# word list is a list of strings
-# 1. use score_word() to get the score of each word in word list:
-    # for word in word_list:
-        #word_score = score_word(word) -- 
-        # ~~ do we want to append this to a list of word scores?
-        # ~~ or make a dict with word : score as the key, value pair?
+    scores_dict = {}
+    for word in word_list:
+        scores_dict[word] = score_word(word)
+    highest_score = max(scores_dict.values())
+    highest_scoring_words = []
+    for word, score in scores_dict.items():
+        if score == highest_score:
+            highest_scoring_words.append(word)
+    longest_word = max(highest_scoring_words, key=len)
+    shortest_word = min(highest_scoring_words, key=len)
+    winning_word = []
+    if len(longest_word) >= 10:
+        winning_word.append(longest_word)
+        winning_word.append(score_word(longest_word))
+    else:
+        winning_word.append(shortest_word)
+        winning_word.append(score_word(shortest_word))
+    return tuple(winning_word)
+    
 
-# 2. get highest score using list or dict w/ highest scores
-        # for score in scores:
-            # something
-# 3. if tie: 
-    # if len(tied_word) > len(other_tied_word):
-        # tied_word wins!
-        # unless len(other_tied_word) > 10
-            # then 10 letter word wins
-        # if len(tied_word) == len(other_tied_word):
-        #   first one wins 
-        # ? ???? ? 
-        #    
-# return: tuple with two elements, ([highest scoring word], [score])
+
+
+
+
+
+
+
+
+
+
+
+
+
