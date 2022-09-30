@@ -1,6 +1,7 @@
 
 import random
 
+
 LETTER_POOL = {
     'A': 9, 
     'B': 2, 
@@ -35,12 +36,14 @@ def draw_letters():
     hand = []
 
     while len(hand) < 10:
-        random_letter = random.choice(list(pool))
+        choices = "".join([letter * pool[letter] for letter in pool])
+        random_letter = random.choice(list(choices))
         avail = pool.get(random_letter)
 
         if avail > 0:
             hand.append(random_letter)
             pool[random_letter] -= 1
+
     return hand
 
 def uses_available_letters(word, letter_bank):
@@ -52,12 +55,7 @@ def uses_available_letters(word, letter_bank):
             return False
 
     return True
-
-
-    
         
-        
-
 
 def score_word(word):
  
@@ -101,7 +99,7 @@ def score_word(word):
 
 
 def get_highest_word_score(word_list):
-#we are creating a score_dict 
+
     scores=[]
     score_dict = {}
     for word in word_list:
