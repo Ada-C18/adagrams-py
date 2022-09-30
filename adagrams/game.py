@@ -61,6 +61,7 @@ score_chart = {
     'Z': 10
 }
 
+# Wave 1
 
 def draw_letters():
     new_list =[]
@@ -72,6 +73,7 @@ def draw_letters():
         
     return(new_list)
 
+# Wave 2
 
 def uses_available_letters(word, letter_bank):
     letter_bank_copy = letter_bank.copy()
@@ -85,67 +87,19 @@ def uses_available_letters(word, letter_bank):
 
     return True
 
+# Wave 3
 
 def score_word(word):
 
-    word = str(word).upper()
+    score = 0
+    if 7 <= len(word) <= 10:
+        score += 8
+    for letter in word.upper():
+        if letter.isalpha():
+            score += score_chart.get(letter)
+    return score
 
-    SCORE_1 = ('A', 'E', 'I', 'O', 'U', 'L', 'N', 'R', 'S', 'T' )
-    SCORE_2 = ('D', 'G')
-    SCORE_3 = ('B', 'C', 'M', 'P')
-    SCORE_4 = ('F', 'H', 'V', 'W', 'Y')
-    SCORE_5 ='K'
-    SCORE_8 = ('J', 'X')
-    SCORE_10 = ('Q', 'Z')
-
-    LETTER_SCORE = {
-        SCORE_1:1,
-        SCORE_2:2,
-        SCORE_3:3,
-        SCORE_4:4,
-        SCORE_5:5,
-        SCORE_8:8,
-        SCORE_10:10
-
-    }
-
-    score = []
-
-
-    for i in range(len(word)):
-        letter = list(word)[i]
-        if letter in SCORE_1:
-            score.append(LETTER_SCORE[SCORE_1])
-        elif letter in SCORE_4:
-            score.append(LETTER_SCORE[SCORE_4])
-        elif letter in SCORE_3:
-            score.append(LETTER_SCORE[SCORE_3])
-        elif letter in SCORE_2:
-            score.append(LETTER_SCORE[SCORE_2])
-        elif letter in SCORE_8:
-            score.append(LETTER_SCORE[SCORE_8])
-        elif letter in SCORE_10:
-            score.append(LETTER_SCORE[SCORE_10])
-        else:
-            score.append(LETTER_SCORE[SCORE_5])
-    
-    if len(score) >= 7:
-        score = sum(score) +8
-    else:
-        score = sum(score)
-    
-    return(score)
-
-# def score_word(word):
-
-#     score = 0
-#     if 7 <= len(word) <= 10:
-#         score += 8
-#     for letter in word.upper():
-#         if letter.isalpha():
-#             score += score_chart.get(letter)
-#     return score
-
+# Wave 4
 
 def get_highest_word_score(word_list):
 
