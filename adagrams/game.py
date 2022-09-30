@@ -125,8 +125,8 @@ def _high_score_key_helper(word):
     # returns a tuple (score, has_10, -length)
 
     cur_score = score_word(word)
-    has_10 = len(word) == 10 # True if word length is 10.
     word_len = -len(word)
+    has_10 = word_len == -10 # True if word length is 10.
 
     result = (cur_score, has_10, word_len)
     return result 
