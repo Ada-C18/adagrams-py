@@ -33,7 +33,7 @@ def draw_letters():
         for i in range(frequency):
           draw_pool.append(letter)
     hand = []
-    for i in range(10):
+    for i in range(10): # wish I had known about .sample before submitting!
         piece_index = random.randint(0,len(draw_pool)-1)
         piece = draw_pool[piece_index]
         hand.append(piece)
