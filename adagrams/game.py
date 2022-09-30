@@ -72,7 +72,11 @@ def draw_letters():
     return hand
 
 def uses_available_letters(word, letter_bank):
-    formatted_word = word.upper()
+    try:
+        formatted_word = word.upper()
+    except AttributeError:
+        return False
+    
     for letter in formatted_word:
         if formatted_word.count(letter) > letter_bank.count(letter):
             return False
