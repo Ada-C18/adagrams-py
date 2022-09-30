@@ -91,17 +91,26 @@ def score_word(word):
     return score
 
 def get_highest_word_score(word_list):
-    winner = [word_list[0], score_word(word_list[0])]
+    winning_word = word_list[0]
+    winning_score = score_word(winning_word)
+
     for word in word_list:
-        if score_word(word) > winner[1]:
-            winner = [word, score_word(word)]
-        if score_word(word) == winner[1]:
-            if len(winner[0]) == 10:
-                pass
-            elif len(word) == 10:
-                winner = [word, score_word(word)]
-            elif len(winner[0]) < len(word):
-                pass
-            elif len(word) < len(winner[0]):
-                winner = [word, score_word(word)]
-    return tuple(winner)
+        current_score = score_word(word)
+        if current_score > winning_score:
+            winning_word = word
+            winning_score = current_score
+        elif current_score == winning_score:
+            winning_word = tie_breaker(winning_word, word)
+            winning_score = score_word(winning_word)
+    
+    return (winning_word, winning_score)
+
+def tie_breaker(first, second):
+    for word in [first, second]:
+        if len(word) == 10:
+            return word
+    if len(first) < len(second):
+        return first
+    elif len(second) < len(first):
+        return second
+    return first
