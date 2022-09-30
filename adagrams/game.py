@@ -21,10 +21,10 @@ value_data = {1: ['A', 'E', 'I', 'O', 'U', 'L', 'N', 'R', 'S', 'T'],
               8: ['J', 'X'],
               10: ['Q', 'Z']}
 
-
+#Takes the two inputs and stores them in one dictionary 
 def generate_alphabet_data_list(quantity_data, value_data):
   all_letters = string.ascii_uppercase
-  results = []
+  results = [] #dictionaries stored in results
   for letter in range(len(all_letters)):
     generate_dict = {}
     generate_dict['letter'] = all_letters[letter]
@@ -43,7 +43,7 @@ def generate_alphabet_data_list(quantity_data, value_data):
   
 
 alphabet_data_list = generate_alphabet_data_list(quantity_data, value_data)
-
+#makes a list that generates the numbers of letters so its proportionate to the probability of getting a certain letter
 def letter_soup(letter_data):
   letter_soup = []
 
@@ -56,7 +56,7 @@ def letter_soup(letter_data):
   return letter_soup
 
 todays_soup = letter_soup(alphabet_data_list)
-
+#Returns letters to user
 def draw_letters():
   # letter_soup = []
 
@@ -77,25 +77,26 @@ def draw_letters():
 
   return user_letter_pool
 
+# Checks that letters being used in words are letters in a users letter bank
 def uses_available_letters(word, letter_bank):
+
     letter_count = {}
-    # word_uppercase = word.upper()
-      
+  
+# loop through word, convert all letters to uppercase, add count to letter_count
     for l in word:
       letter = l.upper()
       if letter not in letter_count:
         letter_count[letter] = 0
-
+     
       letter_count[letter] += 1
-      ct = letter_count[letter]
+      l_count = letter_count[letter] 
 
-      if ct > letter_bank.count(letter):
+      if l_count > letter_bank.count(letter):
         return False
   
     return True
 
-
-
+# Scores each user word
 def score_word(word):
   if type(word) is not str:
     return 0
@@ -116,7 +117,7 @@ def score_word(word):
 
   return score
 
-
+# Finds highest score in list of words 
 def get_highest_word_score(word_list):
 
   if (len(word_list)) == 0:
@@ -125,41 +126,37 @@ def get_highest_word_score(word_list):
   winning_words = []
   winning_score = 0
 
-
   for word in (word_list):
     value_of_word = score_word(word) 
     
-
     if value_of_word == winning_score: # if its a tie append it to list winning_words
       winning_words.append(word)
 
-    # else: #if winning score = 0 does every new element in the list become the greatest value because they are all greater than 0 ?
-    #   if value_of_word > winning_score: # encountered a new highest score
     elif value_of_word > winning_score:
         winning_score = value_of_word 
         winning_words = [word]
 
-
-  if (len(winning_words)) == 1: # if the length of the list is one than return winning words, no tie 
+  # if length of word is one than no tie breaker neede
+  if (len(winning_words)) == 1:
     return (winning_words[0], winning_score)
   
-  shortest_word = None #assign value of none 
-  shortest_length = None #assign value of none
+  shortest_word = None 
+  shortest_length = None 
   
-  for word_2 in winning_words:   # loop through winning_words again
-    word_length = len(word_2) # determine the length of each word and assign it to variable word_length
+  for word_2 in winning_words:  
+    word_length = len(word_2) #determine each words length
 
-    # if word is 10 letters, return word_2, will return first in list automaticaly
+    # If word is 10 letters return it as the winner, will return first item in list
     if word_length == 10:
       return word_2, winning_score
 
-    # Othwerwise, find which word has shortest length
-    if shortest_length == None: # initialize the value of shortest_length 
+    # Find which word has shortest length, initialize shortest length == None
+    if shortest_length == None: 
       shortest_length = word_length
       shortest_word = word_2
     else:
-      if word_length < shortest_length: # if the length of the word is less than shortest_length
-        shortest_length = word_length # the shortest_length word is equal to word_length
-        shortest_word = word_2 # shortest_word is word_2 
+      if word_length < shortest_length: 
+        shortest_length = word_length
+        shortest_word = word_2 
     
   return shortest_word, winning_score 
