@@ -99,8 +99,6 @@ def get_highest_word_score(word_list):
             high_word = highest_word[0]
             if len(high_word) == 10:
                 continue
-            elif len(word) == 10:
-                highest_word[0] = word
-            elif len(word) < len(high_word):
+            elif len(word) == 10 or len(word) < len(high_word):
                 highest_word[0] = word
     return tuple(highest_word)
