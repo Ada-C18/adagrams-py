@@ -32,19 +32,21 @@ def draw_letters():
     remaining_letters_pool = {}
     
     if len(letters) < 11:
+    #getting the remaining amount of letters in the letter pool
         for dict in LETTER_POOL:
             for key, value in dict.items():
                 if key not in remaining_letters_pool and value > 0:
-                    remaining_letters_pool[key] = value
+                 remaining_letters_pool[key] = value
+    #adding random letter to the length of the letter list if it's less than ten
     while len(letters) < 10:
         random_letter = random.choice(list(remaining_letters_pool))
+    ##Removing the used letter from the remaining letter pool  
         for letter in list(remaining_letters_pool):
             if remaining_letters_pool[letter] == 0:
                 remaining_letters_pool.pop(letter)
             elif random_letter == letter:
                 remaining_letters_pool[letter]-= 1
-                letters.append(random_letter)
-                
+                letters.append(random_letter)            
     return letters
 
 
@@ -53,11 +55,10 @@ def uses_available_letters(word, letter_bank):
     word=word.upper()
     word_list=[]
     values_dict=[]
-    
-    for letter in word:
-        dict_word[letter]=False
+    #Creating a list of each letter that is a string
     for letter in word:
         word_list.append(letter)
+    #Assigning a boolean to each letter if it appears in the list
     for letter in word_list:
         if letter in letter_bank:
             freq_letter=word_list.count(letter)
@@ -70,15 +71,18 @@ def uses_available_letters(word, letter_bank):
                 dict_word[letter]=True
         else:
             dict_word[letter]=False
+    #Adding all of the booleans values for the given word to a list
     for key,value in dict_word.items():
         values_dict.append(value)
     if False in values_dict:
+    #if there are any False values in the dict then return False
         return False
     else:
         return True
 
 
 def score_word(word):
+    #creating a new dictionary assinging values to each letter
     letter_value={'A': 1, 
     'B': 3, 
     'C': 3, 
@@ -107,10 +111,11 @@ def score_word(word):
     'Z': 10,}
 
     total_sum=0
-    wordy=word.upper()
+    #Test case sensitivity
+    cap_word=word.upper()
     if len(word) > 6:
         total_sum=8
-    for letter in wordy:
+    for letter in cap_word:
         total_sum+=letter_value[letter]
     return total_sum
 
@@ -118,9 +123,10 @@ def get_highest_word_score(word_list):
     highest_score=0
     words=[]
     word_scored={}
-    
+    #Creating a dictionary for each word with the key pair value word and score
     for word in word_list:
         word_scored[word]=score_word(word)
+    #Getting highest score
     for value in word_scored.values():
         if value > highest_score:
             highest_score=value
