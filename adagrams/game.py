@@ -36,7 +36,19 @@ def draw_letters():
 
 
 def uses_available_letters(word, letter_bank):
-    pass
+    for letter in word:
+        if letter in letter_bank:
+            return True
+        elif letter not in letter_bank or len(word) > len(letter_bank):
+            return False
+    
+    # if every letter in the word is not in the letter_bank or
+    # exceedes the len() of the letter_bank:
+    # if every letter in the word is found in the letter_bank:
+    # return True
+    # if every letter in the word is not in the letter_bank or
+    # exceedes the len() of the letter_bank:
+    # return False
 
 def score_word(word):
     pass
