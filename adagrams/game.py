@@ -72,6 +72,7 @@ def score_word(word):
             score += 8
     return score
 
+#CODED_BY_YUN:
 def get_highest_word_score(word_list):
     sorted_word_list = sorted(word_list, key=len)
     score_list = []
@@ -94,33 +95,43 @@ def get_highest_word_score(word_list):
             winning_tuple = list(highest_word_dict.items())[0]
     return winning_tuple
 
+#CODED_BY_IS
 # def get_highest_word_score(word_list):
 #     word_to_score_dict = {}
 #     for word in word_list:
 #         word_score = score_word(word)
 #         word_to_score_dict[word] = word_score
-    
+#     winning_words = []
 #     highest_scoring_word = ()
-
+#     highest_scoring_word = (word, word_score)
+    
 #     for word, word_score in word_to_score_dict.items():
-#         highest_scoring_word = (word, word_score)
-#         # by putting [1] i am accessing the score 0
+#         if highest_scoring_word == ():
+#             highest_scoring_word = (word, word_score)
+#             continue
 #         if word_score > highest_scoring_word[1]:
 #             highest_scoring_word = (word, word_score)
-#             return (highest_scoring_word)
-#         elif word_score == highest_scoring_word[1]:
+#             winning_words.append(highest_scoring_word)
+        
+#         if word_score == highest_scoring_word[1]:
 #             if len(highest_scoring_word[0]) == 10:
+#                 winning_words.append(highest_scoring_word)
 #                 return highest_scoring_word
-#             elif len(word) == 10:
+
+#             if len(word) == 10 and len(highest_scoring_word[0]) <= len(word):
 #                 highest_scoring_word = (word, word_to_score_dict[word])
+#                 winning_words.append(highest_scoring_word)
 #                 return highest_scoring_word
-#             elif len(highest_scoring_word[0]) <= len(word):
-#                 return highest_scoring_word
-#             elif len(highest_scoring_word[0]) > len(word):
+#             if len(highest_scoring_word[0]) > len(word):
 #                 highest_scoring_word = (word, word_to_score_dict[word])
-#                 return highest_scoring_word
-#         else:
-#             continue
+#             elif len(highest_scoring_word[0]) == len(word):
+#                 highest_scoring_word = (word, word_to_score_dict[word])
+            
+#             winning_words.append(highest_scoring_word)
+#             return highest_scoring_word
+            
+            
+        
 
 
     
