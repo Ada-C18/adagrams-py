@@ -15,21 +15,31 @@ def draw_letters():
         }
     # start with an empty list of available letters to use
     hand_available = []
-    # maybe the selection of the random word can go here?
-    # selection = random.choice(list(available_letters.keys()))
+    """
+    THIS IS WHAT THE INSTRUCTOR HELPED ME TO ACOMPLISH
+    for _ in range(10):
+        letters = []
+        for letter, quantity in available_letters.items():
+            for _ in range(quantity):
+                letters.append(letter)
+
+        selection = random.choice(letters)
+        hand_available.append(selection)
+        available_letters[selection] = available_letters[selection] - 1
+    """
 
     # iterate through the length of dictionary of letters/quantity available (key:value)
     for letter, quantity in available_letters.items():
-    # randomly choose a letter in the dictionary using keys
-        # selection = random.choice(list(available_letters.keys()))
+    # # randomly choose a letter in the dictionary using keys
+        # selection = random.choice(list(available_letters.keys()) -I was unable to get this to work in the loop-
         selection = random.choice(letter)
     # if the user list has < 10 letters
         if len(hand_available) < 10:
-    # if the quantity of the letter is not 0 (value)
+    # # if the quantity of the letter is not 0 (value)
             if quantity != 0:
-    # add the letter to the empty list 
+    # # add the letter to the empty list 
                 hand_available.append(selection)
-    # subtract that number from the amounts available
+    # # subtract that number from the amounts available
                 quantity -= 1
 
     return hand_available
@@ -42,8 +52,6 @@ def uses_available_letters(word, letter_bank):
         elif letter not in letter_bank or len(word) > len(letter_bank):
             return False
     
-    # if every letter in the word is not in the letter_bank or
-    # exceedes the len() of the letter_bank:
     # if every letter in the word is found in the letter_bank:
     # return True
     # if every letter in the word is not in the letter_bank or
