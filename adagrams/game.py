@@ -26,7 +26,7 @@ def draw_letters():
             continue
         
         # If a letter can be drawn successfully, we append the letter to the output_list
-        # and substract one from its value in the letter_dict
+        # and subtract one from its value in the letter_dict
         else:
             output_list.append(letter_list[index])
             letter_dict[letter_list[index]] -= 1
@@ -34,11 +34,10 @@ def draw_letters():
 
 def uses_available_letters(word, letter_bank):
     """ 
-    Returns True if every letter in the input word is available 
-    (in the right quantities) in the letter_bank.
-    Returns False if not; if there is a letter in input that 
-    is not present in the letter_bank or has too much of compared 
-    to the letter_bank.
+    Returns True if every letter in the (input string) "word" is available 
+    (in the right quantities) in the "letter_bank" (list).
+    Returns False if there is a letter in input that is not present in the
+    letter_bank or has too much of compared to the letter_bank.
     """
     # create a dictionary to calculate the quantity 
     # of each letter in the given letter_bank.
