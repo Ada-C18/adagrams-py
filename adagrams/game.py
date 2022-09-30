@@ -1,3 +1,4 @@
+
 import random
 
 LETTER_POOL = {
@@ -40,7 +41,6 @@ def draw_letters():
         if avail > 0:
             hand.append(random_letter)
             pool[random_letter] -= 1
-    
     return hand
 
 def uses_available_letters(word, letter_bank):
@@ -53,18 +53,14 @@ def uses_available_letters(word, letter_bank):
 
     return True
 
+
     
         
         
 
 
 def score_word(word):
-
-# we have a dictionary of letters corresponding to point values. 
-
-
-
-
+ 
     score_chart = {
     'A': 1, 
     'B': 3, 
@@ -96,7 +92,7 @@ def score_word(word):
     score = 0
     for letter in word.upper():
         if letter in score_chart:
-            score += score_chart.get(letter) #get method returns the value of specified key, values() would return a list of values
+            score += score_chart.get(letter)
     if len(word) >= 7:
         score += 8
     return score
@@ -104,9 +100,75 @@ def score_word(word):
 
 
 
-
-
-
-
 def get_highest_word_score(word_list):
-    pass
+#we are creating a score_dict 
+    scores=[]
+    score_dict = {}
+    for word in word_list:
+        score = score_word(word) #called in our score_word function 
+        scores.append(score) #created a list of our scores
+        score_dict[word] = score #made it to a dictionary. ex. {'X': 8, 'XX': 16, 'XXX': 24, 'XXXX': 32}
+
+   
+    max_score = scores[0]
+    for i,score in enumerate(scores):
+        if score > max_score:
+            max_score = score 
+
+    new_key = ""
+    list_equal_points_and_len = []
+    max_keys = [word for word, score in score_dict.items() if score == max(score_dict.values())] 
+    new_key = min(max_keys, key = len) 
+    for words_max_points in max_keys:
+        if len(words_max_points) == 10:
+            new_key = words_max_points
+            list_equal_points_and_len.append(new_key)
+            new_key = list_equal_points_and_len[0]
+
+    return(new_key, max_score)
+
+
+
+    
+
+
+
+
+    
+
+
+                
+            
+        
+      
+                
+                
+            
+
+            
+        
+        
+            
+            
+               
+
+            
+
+            
+            
+             
+    
+
+
+        
+
+
+
+        
+       
+
+
+   
+
+
+   
