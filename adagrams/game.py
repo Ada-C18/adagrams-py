@@ -76,8 +76,6 @@ def uses_available_letters(word, letter_bank):
     for letter in formatted_word:
         if formatted_word.count(letter) > letter_bank.count(letter):
             return False
-        if letter not in letter_bank:
-            return False
     return True
 
 def score_word(word):
