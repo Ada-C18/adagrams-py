@@ -32,19 +32,10 @@ def draw_letters():
         'Y': 2, 
         'Z': 1
     }
-# APPROACH # 1
-    # letters = string.ascii_lowercase
-    # drawn_letters = random.choices(letters,k=10)
 
-    # count = Counter(drawn_letters)
-    
-    # for each_letter in drawn_letters:
-    #     if count[each_letter] > letter_pool[each_letter]:
-    #         drawn_letters = random.choices(letters,k=10)
+    letter_bank = sample(LETTER_POOL.keys(), k=10, counts=LETTER_POOL.values())
 
-    drawn_letters = sample(LETTER_POOL.keys(), k=10, counts=LETTER_POOL.values())
-
-    return drawn_letters
+    return letter_bank
 
 
 def uses_available_letters(word, letter_bank):
@@ -111,18 +102,18 @@ def get_highest_word_score(word_list):
         score = score_word(word)
         score_list.append(score)
 
-    word_score_tuple = list(zip(word_list, score_list))
+    word_score_tuples = list(zip(word_list, score_list))
 
-    sorted_tuple = sorted(word_score_tuple, key=lambda t: t[1], reverse = True)
-    winning_word = sorted_tuple[0]
-    if sorted_tuple[0][1] == sorted_tuple[1][1]:
-        if len(sorted_tuple[0][0]) == 10:
-            winning_word = sorted_tuple[0]
-        elif len(sorted_tuple[1][0]) == 10:
-            winning_word = sorted_tuple[1]
-        elif len(sorted_tuple[0][0]) > len(sorted_tuple[1][0]):
-            winning_word = sorted_tuple[1]
-        elif len(sorted_tuple[0][0]) < len(sorted_tuple[1][0]):
-            winning_word = sorted_tuple[0]    
+    sorted_tuples = sorted(word_score_tuples, key=lambda t: -t[1])
+    winning_word = sorted_tuples[0]
+    if sorted_tuples[0][1] == sorted_tuples[1][1]:
+        if len(sorted_tuples[0][0]) == 10:
+            winning_word = sorted_tuples[0]
+        elif len(sorted_tuples[1][0]) == 10:
+            winning_word = sorted_tuples[1]
+        elif len(sorted_tuples[0][0]) > len(sorted_tuples[1][0]):
+            winning_word = sorted_tuples[1]
+        elif len(sorted_tuples[0][0]) < len(sorted_tuples[1][0]):
+            winning_word = sorted_tuples[0]    
 
     return winning_word
