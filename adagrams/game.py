@@ -1,3 +1,4 @@
+import random
 LETTER_POOL = {
     'A': 9, 
     'B': 2, 
@@ -28,11 +29,18 @@ LETTER_POOL = {
 }
 def draw_letters():
     letter_list = []
+    hand = []
+
     for letter in LETTER_POOL.keys():
         for num in range(LETTER_POOL[letter]):
             letter_list.append(letter)
+    
+    for draw in range(10):
+        index = random.randint(0, (len(letter_list) -1))
+        hand.append(letter_list[index])
+        letter_list.pop(index)
 
-    pass
+    return hand
 
 def uses_available_letters(word, letter_bank):
     pass
