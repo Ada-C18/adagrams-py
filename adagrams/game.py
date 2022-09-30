@@ -1,8 +1,62 @@
+import random
+
 def draw_letters():
-    pass
+    #available letters should be in a dictionary
+    available_letters = { 
+        "A": 9, "B": 2, "C": 2, 
+        "D" : 4, "E": 12, "F": 2,        
+        "G": 3, "H": 2, "I": 9,
+        "J": 1, "K": 1, "L":4,
+        "M": 2, "N": 6, "O": 8,
+        "P": 2, "Q": 1, "R": 6,
+        "S": 4, "T": 6, "U": 4,
+        "V": 2, "W":2, "X": 1,
+        "Y": 2, "Z": 1
+        }
+    # start with an empty list of available letters to use
+    hand_available = []
+    """
+    THIS IS WHAT THE INSTRUCTOR HELPED ME TO ACOMPLISH
+    for _ in range(10):
+        letters = []
+        for letter, quantity in available_letters.items():
+            for _ in range(quantity):
+                letters.append(letter)
+
+        selection = random.choice(letters)
+        hand_available.append(selection)
+        available_letters[selection] = available_letters[selection] - 1
+    """
+
+    # iterate through the length of dictionary of letters/quantity available (key:value)
+    for letter, quantity in available_letters.items():
+    # # randomly choose a letter in the dictionary using keys
+        # selection = random.choice(list(available_letters.keys()) -I was unable to get this to work in the loop-
+        selection = random.choice(letter)
+    # if the user list has < 10 letters
+        if len(hand_available) < 10:
+    # # if the quantity of the letter is not 0 (value)
+            if quantity != 0:
+    # # add the letter to the empty list 
+                hand_available.append(selection)
+    # # subtract that number from the amounts available
+                quantity -= 1
+
+    return hand_available
+
 
 def uses_available_letters(word, letter_bank):
-    pass
+    for letter in word:
+        if letter in letter_bank:
+            return True
+        elif letter not in letter_bank or len(word) > len(letter_bank):
+            return False
+    
+    # if every letter in the word is found in the letter_bank:
+    # return True
+    # if every letter in the word is not in the letter_bank or
+    # exceedes the len() of the letter_bank:
+    # return False
 
 def score_word(word):
     pass
