@@ -27,6 +27,11 @@ LETTER_POOL = {
     'Z': 1
 }
 def draw_letters():
+    letter_list = []
+    for letter in LETTER_POOL.keys():
+        for num in range(LETTER_POOL[letter]):
+            letter_list.append(letter)
+
     pass
 
 def uses_available_letters(word, letter_bank):
