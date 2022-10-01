@@ -129,7 +129,33 @@ def get_highest_word_score(word_list):
             
 #             winning_words.append(highest_scoring_word)
 #             return highest_scoring_word
-            
+
+# Sept 30, Yun: Hey Intersar. I tried to fix the bugs but followed your idea of using only tuple 
+#  \and only iterate over once in the highest_scoring_word dict. 
+# \please see below code and I believe it should work now, for Wave 4.
+
+# word_to_score_dict = {}
+#     for word in word_list:
+#         word_score = score_word(word)
+#         word_to_score_dict[word] = word_score
+    
+#     highest_scoring_word = list(word_to_score_dict.items())[0]
+    
+#     for word, word_score in word_to_score_dict.items():
+#         if word_score > highest_scoring_word[1]:
+#             highest_scoring_word = (word, word_score)
+
+#         elif word_score == highest_scoring_word[1]:
+#             if len(highest_scoring_word[0]) == 10 and len(word) <= 10:
+#                 continue
+#             elif len(word) == 10 and len(highest_scoring_word[0]) <= 10:
+#                 highest_scoring_word = (word, word_score)
+#             elif len(word) < len(highest_scoring_word[0]):
+#                 highest_scoring_word = (word, word_score)
+#             elif len(highest_scoring_word[0]) < len(word):
+#                 continue
+#     return highest_scoring_word
+# 
             
         
 
