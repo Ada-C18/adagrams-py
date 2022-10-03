@@ -85,3 +85,6 @@ def test_get_highest_word_tie_same_length_prefers_first():
     assert score_word(words[1]) == 18
     assert best_word[0] == words[0]
     assert best_word[1] == 18
+
+    # Pair Programming Comment Section
+    # ----------------------------------

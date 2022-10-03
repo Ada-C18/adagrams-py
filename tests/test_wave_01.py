@@ -65,3 +65,7 @@ def test_letter_not_selected_too_many_times():
         # Assert
         for letter in letters:
             assert letter_freq[letter] <= LETTER_POOL[letter]
+
+
+# Pair Programming Comment Section
+# ----------------------------------
