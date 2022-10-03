@@ -1,5 +1,32 @@
 # AdaGrams
 
+## Plan of Action
+
+# Access needs
+Work on project during the hours of 9am-5pm-ish
+If you receive a message and don’t have time to reply because it’s late, just let your partner know you will reply the next day
+
+# Your learning style
+Trial and error
+Learn by doing
+Both of us have similar learning styles as outlined above
+
+# How you prefer to receive feedback
+Detailed feedback is nice
+Really honest feedback
+
+# One team communication skill you want to improve with this experience
+Giving and receiving non-sugar coated feedback
+Be able to talk about code well; using correct software terms
+Timely responses, communicating often and efficiently
+
+# Other Communication:
+If it’s past 4-5 hours, it’s fine to double-ping
+If it’s late, just reply saying you saw the message and will reply the next day
+Will attend most co-working sessions outlined in the calendar
+Try to keep a work schedule (9-5) to allow for breaks/positive work-life balance
+
+
 ## Skills Assessed
 
 - Following directions and reading comprehension
