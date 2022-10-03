@@ -87,17 +87,14 @@ def score_word(word):
 
 def get_highest_word_score(word_list):
     word_info = [{"word": word, "score": score_word(word), "length": len(word)}
-                for word in word_list]
-    print(word_info)    
+                for word in word_list] 
 
     highest_score = max(word_info, key=lambda word_info: word_info["score"])
     
     word_info = list(filter(lambda word_dict: word_dict["score"]
                             == highest_score["score"], word_info))
-    # We also came up with this implementation for line 91-92:
+    # We also came up with this implementation for lines 94-95:
     # for word_dict in word_info:
-    #     print("the score is:")
-    #     print(word_dict["score"])
     #     if word_dict["score"] != highest_score["score"]:
     #         word_info.remove(word_dict)
     
