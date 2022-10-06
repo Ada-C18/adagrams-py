@@ -103,3 +103,5 @@ def get_highest_word_score(word_list):
     for key, value in max_scores_dict.items():
         if key == min(max_scores_dict.keys(), key = len):
                 return key, value
+
+#test comment
