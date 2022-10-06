@@ -74,6 +74,7 @@ def draw_letters():
     return letter_list   
 
 def uses_available_letters(word, letter_bank):
+<<<<<<< HEAD
     upper_case_word = word.upper() # O(n)
     print(upper_case_word)
     letter_bank_count = Counter(letter_bank) # O(n)
@@ -85,6 +86,11 @@ def uses_available_letters(word, letter_bank):
     #         letter_bank_count[letter] = 1
             
     for letter in upper_case_word: # O(n)
+=======
+    upper_case_word = word.upper() 
+    letter_bank_count = Counter(letter_bank) 
+    for letter in upper_case_word: 
+>>>>>>> db69b0c7ee644a98e2036417c5d127769b7aaa1c
         if letter in letter_bank_count and letter_bank_count[letter] > 0:
             letter_bank_count[letter] -= 1
             continue
@@ -108,7 +114,11 @@ def score_word(word):
             score_total += SCORE_CHART[letter] #O(1)
     return score_total
 
+<<<<<<< HEAD
 def get_highest_word_score(word_list):  #O（n^2）
+=======
+def get_highest_word_score(word_list):
+>>>>>>> db69b0c7ee644a98e2036417c5d127769b7aaa1c
     best_word = []
     for i in range(len(word_list)): # O(n)
         score = score_word(word_list[i])# O(n)
