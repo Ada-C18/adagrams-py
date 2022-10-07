@@ -33,37 +33,24 @@ def draw_letters():
     
     letter_pool = [key for key, val in letter_bank.items() for i in range(val)]
     last_index = len(letter_pool) - 1
-    hand = []
-    
+
     while last_index > 0:
         rand_index = random.randint(0, last_index)
         letter_pool[last_index], letter_pool[rand_index] = letter_pool[rand_index], letter_pool[last_index]
         last_index -= 1
         
-    for i in range(10):
-        hand.append(letter_pool[i])
-    return hand
+    return letter_pool[:10]
+
 def uses_available_letters(word, letter_bank):
 
     word_letter_frequency = Counter(word.upper())
     letter_bank_frequency = Counter(letter_bank)
+    
+    # if all((word in letter_bank_frequency and letter_bank_frequency[word] == score) for word,score in word_letter_frequency.items()):
+    #     return True
+    # return False
 
-<<<<<<< HEAD
-    for letter in letter_bank:
-        if letter not in letter_bank_frequency:
-            letter_bank_frequency[letter] = 1
-        else:
-            letter_bank_frequency[letter] += 1
-    for letter in word.upper():
-        if letter not in word_letter_frequency:
-            word_letter_frequency[letter] = 1
-        else:
-            word_letter_frequency[letter] += 1
-        
-    if all((word in letter_bank_frequency and letter_bank_frequency[word] == score) for word,score in word_letter_frequency.items()):
-=======
-    if all((k in letter_bank_frequency and letter_bank_frequency[k] == v) for k,v in word_letter_frequency.items()):
->>>>>>> ec58fc64940518fd7c8b1e629c934dacb34df35a
+    if word_letter_frequency | letter_bank_frequency == letter_bank_frequency:
         return True
     return False
 
