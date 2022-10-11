@@ -69,9 +69,9 @@ def uses_available_letters(word, letter_bank): #wave 2
 
 
 #-----wave 03 ------------ #
-     #LP's version (with coworking!)
+    #LP's version (with coworking!)
 
-def score_word(word):
+def score_word(word):#THIS IS MAKING THE DICTIONARY FOR EVERY WORD.  MAKE THIS A GLOBAL VARIABLE INSTEAD, AND JUST CALL THE FUNCTION ONCE.
     letter_scores = make_score_dict()
     score = get_score(word.upper(), letter_scores)
     return score
@@ -103,6 +103,7 @@ def get_score(word, letter_scores):
     #loop through the word, adding up the value associated with the letter (key) of the dict!
     score = 0
     for char in word:
+        char = char.upper()
         #look for the character in the keys of letter_scores.
         #add the associated value to score
         score += letter_scores[char]
@@ -112,21 +113,64 @@ def get_score(word, letter_scores):
             
     return score
 
-# def score_word(word): #Abby
-#     score_values = []
-#     score_dict = { 1: ["A","E", "I", "O", "U", "L", "N", "R", "S", "T"], 2: ["D", "G"], 3: ["B", "C", "M", "P"], 4: ["F","H", "V", "W", "Y"], 5: ["K"], 8: ["J", "X"], 10: ["Q", "Z"]}
-#     word = word.upper()
+#--------------- New code from class --------------- 10/7/22 ---------
+#testing
+# letter_scores = make_score_dict()
+# print(get_score("za", letter_scores))
 
-#     if len(word) >= 7: 
-#         score_values.append(8)
-#     for character in word:
-#         for letter_value, letters in score_dict.items():
-#             for letter in letters:
-#                 if letter == character: 
-#                     score_values.append(letter_value)
-    
-#     return sum(score_values)
+# def max_with_ties_for_score(data):  #my function below should work for this as well. 
+#     best = []
+#     best_score = None
+#     for item in data:
+#         score = score_word(item)
+#         if best_score == None or score > best_score:
+#             best = [item] #throw out the old list!  start a new list.
+#             best_score = score
+#         elif score == best_score:
+#             best.append(item)
+#     return best
 
+#testing
+# words = ['hello', 'za', 'today', 'qi']
+# print(max_with_ties_for_score(words))
+
+# def max_with_ties_for_len(data):  #let's change a few things to make this about length. 
+#     best = []
+#     best_score = None
+#     for item in data:
+#         score = len(item)  #this is the only line that has changed so far!
+#         if best_score == None or score > best_score:
+#             best = [item] #throw out the old list!  start a new list.
+#             best_score = score
+#         elif score == best_score:
+#             best.append(item)
+#     return best
+
+#testing
+# words = ['hello', 'za', 'today', 'qi']
+# print(max_with_ties_for_len(words))
+
+#note : THE FUNCTIONS ABOVE ARE DUPLICATES OF EACH OTHER!!  TOO BUSY!!  le'ts get it together. 
+#let's replace this with higher order function!!
+#WE CAN USE THE FOLLOWING FUNCTION IN A LOT OF DIFFERENT CONTEXTS, JUST USING HIGHER ORDER FUNCTIONS.
+#this code is much more flexible. :) 
+
+#this behaves a lot like python's max.  Max is also flexible because it has an optional key argument.
+def max_with_ties(data, scorer):  #we'll pass in a function called scorer. #do all the logic with this function. 
+    best = []
+    best_score = None
+    for item in data:
+        score = scorer(item)  #this is the only line that has changed so far!
+        if best_score == None or score > best_score:
+            best = [item] #throw out the old list!  start a new list.
+            best_score = score
+        elif score == best_score:
+            best.append(item)
+    return best
+
+words = ['hello', 'za', 'today', 'qi']
+print(max_with_ties(words, score_word))  #notice: we don't put () following the name of the function.
+print(max_with_ties(words, len))
 #-------------end wave 3---------
 
 
@@ -145,7 +189,9 @@ def get_highest_word_score(word_list):
     sorted_words_scores_list = sorted(words_scores_list, key=itemgetter(1), reverse=True)
 
     max_score = sorted_words_scores_list[0][1]
+    #we find the max score
     potential_winners = []
+    # set up a list of all the things that have the best score. 
     for word, score in sorted_words_scores_list:
         if score == max_score:
             potential_winners.append((word, score, len(word)))
