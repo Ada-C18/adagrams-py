@@ -96,4 +96,20 @@ def score_word(word):
 
 
 def get_highest_word_score(word_list):
-    return ("foobar", 0)
+    # print(word_list)
+    word_scores = []
+    for word in word_list:
+        word_scores.append((word, score_word(word)))
+    high_score = 0
+    for i in range(len(word_scores)):
+        if word_scores[i][1] > high_score:
+            winner = word_scores[i]
+            high_score = winner[1]
+        elif word_scores[i][1] == high_score:
+            if len(winner[0]) == 10:
+                break
+            elif len(word_scores[i][0]) < len(winner[0]) or len(word_scores[i][0]) == 10:
+                winner = word_scores[i]
+                high_score = winner[1]
+            
+    return winner
