@@ -61,13 +61,13 @@ def score_word(word):
 def get_highest_word_score(word_list):
     scores = [(word, score_word(word)) for word in word_list]
     
-    highest_score = scores[0]
-    for score in scores: 
-        if score[1] > highest_score[1]:
-            highest_score = score
+    high_score = scores[0]
+    for score in scores[1:]: 
+        if score[1] > high_score[1]:
+            high_score = score
 
-        if score[1] == highest_score[1]:
-            if len(highest_score[0]) < 10 and (len(score[0]) == 10 or len(score[0]) < len(highest_score[0])):
-                highest_score = score
+        if score[1] == high_score[1]:
+            if len(high_score[0]) < 10 and (len(score[0]) == 10 or len(score[0]) < len(high_score[0])):
+                high_score = score
                 
-    return highest_score
+    return high_score
