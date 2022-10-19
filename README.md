@@ -1,5 +1,11 @@
 # AdaGrams
 
+Team 6 
+- It is helpful to take some time beforehand to gather our thoughts and thoroughly read the instructions before collaborating. 
+- Use Slack to communicate when not coworking together.
+- Team communication skills to improve - working together and talking through code together, explaining code and coding choices.
+- We are 2 hours apart
+
 ## Skills Assessed
 
 - Following directions and reading comprehension
