@@ -1,3 +1,10 @@
+# Pair Plan:
+1) Access needs: Tuesday: we'll meet in the morning at 8am and meet after class in the afternoon.
+2) Your learning style: Visual learners. We will need white boarding a lot
+3) How you prefer to receive feedback: Open communication, feedback as we go. Constructive feedback for growth opportunities.
+4) One team communication skill you want to improve with this experience: (Minh) Algorithm thinking and explaining my thinking.(Melissa) quicker reflect in term of communicating 
+
+
 # AdaGrams
 
 ## Skills Assessed
@@ -249,6 +256,13 @@ To do so, implement the function called `uses_available_letters` in `game.py`. T
 - Returns `True` if every letter in the `input` word is available (in the right quantities) in the `letter_bank`
 - Returns `False` if not; if there is a letter in `input` that is not present in the `letter_bank` or has too much of compared to the `letter_bank`
 
+##Pseudocode wave2
+Create user_availavle_letters function with 'word' and 'letter bank' are parameters
+Create a variable called 'letter bank' and call draw_letter function
+Capitalize the word
+Create a word list, split all charactera from that word and store the characters in the list
+iterate character from the word list and compare it against letter_bank list. If all letters are in letter_bank with <= the counts for the allowed character, return 'True', otherwise return False
+
 ### Wave 3: score_word
 
 Now you need a function returns the score of a given word as defined by the Adagrams game.
@@ -260,6 +274,16 @@ Implement the function `score_word` in `game.py`. This method should have the fo
 - Each letter within `word` has a point value. The number of points of each letter is summed up to represent the total score of `word`
 - Each letter's point value is described in the table below
 - If the length of the word is 7, 8, 9, or 10, then the word gets an additional 8 points
+
+#Pseudocde Wave 3
+-Create a function score_word with word as a parameter.
+-create a dictionary with a key as letters and value is the associated points.
+-create a counter score and set it up to zero
+-word list split the word into a list. 
+-iterate in word list and get the value for each letter 
+-Add the value to the counter score.
+
+
 
 #### Score chart
 
@@ -287,6 +311,22 @@ Implement a function called `get_highest_word_score` in `game.py`. This method s
     - prefer the word with the fewest letters...
     - ...unless one word has 10 letters. If the top score is tied between multiple words and one is 10 letters long, choose the one with 10 letters over the one with fewer tiles
     - If the there are multiple words that are the same score and the same length, pick the first one in the supplied list
+
+    #Pseudocode
+    -Create a variable set_core. Set it uo to zero.
+    -Empty list higest-score_list=[]
+    -For loop to iterarte in every word in wors_list
+    -call the function score_word for each word to get the score
+    -compare the score of the word with higest_score.
+    - if score > higest_score. Then, higest_score= score
+    -Clear the list before appending the word to the higest_score_list
+    Handeling tie!
+    - Create variable smallest_word. Assumes is the first item in higest_score_list
+    -Create a variable smallet_word_len. Assumes is the len of the first item in hisgest_score_list
+    -iterate in higest_score_list 
+    - if the len(word)== 10. The word wins
+    - if the len(word)< smallest_word_len. Replace smallest_word= word
+    
 
 
 
