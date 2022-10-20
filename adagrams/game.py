@@ -59,12 +59,12 @@ def uses_available_letters(word, letter_bank):
     word_list = [letter for letter in word]
     print(word_list)
     for character in word:
-        for string in letter_bank:
-            if character not in letter_bank:
+        # for string in letter_bank:
+        if character not in letter_bank:
+            return False
+        elif character in letter_bank: #and character == string:
+            if word.count(character) > letter_bank.count(character):
                 return False
-            elif character in letter_bank: #and character == string:
-                if word.count(character) > letter_bank.count(string):
-                    return False
                 
     return True
 

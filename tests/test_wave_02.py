@@ -57,3 +57,14 @@ def test_uses_available_letters_ignores_case():
     assert uses_available_letters("fad", letters)
     assert uses_available_letters("a", letters)
     assert not uses_available_letters("aA", letters)
+    
+def test_uses_available_letters_true_word_in_letter_bank_kendall():
+    # Arrange
+    letters = ["A","R","E","R"]
+    word = "RARE"
+    
+    # Act
+    is_valid = uses_available_letters(word, letters)
+
+    # Assert
+    assert is_valid == True
