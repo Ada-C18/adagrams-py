@@ -1,36 +1,43 @@
-from random import randint
-from copy import deepcopy
+from random import sample
+
+LETTER_POOL = {
+    'A': 9, 
+    'B': 2, 
+    'C': 2, 
+    'D': 4, 
+    'E': 12, 
+    'F': 2, 
+    'G': 3, 
+    'H': 2, 
+    'I': 9, 
+    'J': 1, 
+    'K': 1, 
+    'L': 4, 
+    'M': 2, 
+    'N': 6, 
+    'O': 8, 
+    'P': 2, 
+    'Q': 1, 
+    'R': 6, 
+    'S': 4, 
+    'T': 6, 
+    'U': 4, 
+    'V': 2, 
+    'W': 2, 
+    'X': 1, 
+    'Y': 2, 
+    'Z': 1
+}
+
+LETTER_LIST = list()
 
 def draw_letters():
     """
     Returns an array of ten strings from LETTER_POOL.
     """
-    # Create a deep copy of LETTER_POOL dictionary to be able to update the quantity as letters are drawn
-    letter_dict = deepcopy(LETTER_POOL)
-    
-    # Create a letter_list to store the pool of letters at individual index
-    letter_list = []
-    for k, v in LETTER_POOL.items():
-        for num in range(v):
-            letter_list.append(k)
-    
-    # Initialize an output list and append letters drawn
-    output_list = []
-    while len(output_list) < 10:
-
-        # Generate a random index between 0 and length of the letter_list - 1 (both inclusive)
-        index = randint(0, len(letter_list)-1)
-
-        # If we have already used up this letter in the LETTER_POOL, we skip to the next drawing   
-        if letter_dict[letter_list[index]] == 0:
-            continue
-        
-        # If a letter can be drawn successfully, we append the letter to the output_list
-        # and subtract one from its value in the letter_dict
-        else:
-            output_list.append(letter_list[index])
-            letter_dict[letter_list[index]] -= 1
-    return output_list
+    if len(LETTER_LIST) == 0:
+        build_letter_list(LETTER_POOL)
+    return sample(LETTER_LIST, 10)
 
 def uses_available_letters(word, letter_bank):
     """ 
@@ -124,34 +131,10 @@ def get_highest_word_score(word_list):
         elif len(word) < shortest_word_len:
             shortest_word_len = len(word)
             shortest_word = word
-    return (shortest_word, score_word(shortest_word))    
+    return (shortest_word, score_word(shortest_word))
 
-#***==================================================***
-LETTER_POOL = {
-    'A': 9, 
-    'B': 2, 
-    'C': 2, 
-    'D': 4, 
-    'E': 12, 
-    'F': 2, 
-    'G': 3, 
-    'H': 2, 
-    'I': 9, 
-    'J': 1, 
-    'K': 1, 
-    'L': 4, 
-    'M': 2, 
-    'N': 6, 
-    'O': 8, 
-    'P': 2, 
-    'Q': 1, 
-    'R': 6, 
-    'S': 4, 
-    'T': 6, 
-    'U': 4, 
-    'V': 2, 
-    'W': 2, 
-    'X': 1, 
-    'Y': 2, 
-    'Z': 1
-}
+#### Helper Functions ####
+def build_letter_list(letter_dict):
+    for letter in letter_dict:
+        for i in range(letter_dict[letter]):
+            LETTER_LIST.append(letter)
