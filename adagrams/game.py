@@ -1,4 +1,3 @@
-from multiprocessing import current_process
 import random
 LETTER_POOL = {
     'A': 9, 
@@ -58,7 +57,7 @@ def draw_letters():
     return my_ten_letters
 
     #original solution 
-    
+
     # while len(my_ten_letters) < 10:  
     #     for num in range(0,10):
     #         random_letter = random.choice(letter_pool_list)  
@@ -71,22 +70,39 @@ def draw_letters():
 def uses_available_letters(word, letter_bank):
     
     word = word.upper()
-    letter_results = [] 
-    for letter in word:
-        if letter not in letter_bank:
-            letter_results.append("f") 
-            if "f" in letter_results:
-                return False
-            else:
-                return True
-
+    # Claire's suggestion -combine the foor loops 
     for letter in word:
         count_pool_letter = letter_bank.count(letter)
         count_word_letter = word.count(letter)
-        if count_word_letter > count_pool_letter:
+        if letter not in letter_bank:
             return False
-        else:
-            return True
+        if count_word_letter > count_pool_letter:
+            return False 
+        else: 
+            continue 
+    return True 
+
+
+    # original for solution
+    # word = word.upper()
+    # letter_results = []
+    # for letter in word:
+    #     if letter not in letter_bank:
+    #         letter_results.append("f") 
+    #         if "f" in letter_results:
+    #             return False
+    #         else:
+    #             return True
+
+    # for letter in word:
+    #     count_pool_letter = letter_bank.count(letter)
+    #     count_word_letter = word.count(letter)
+    #     if count_word_letter > count_pool_letter:
+    #         return False
+    #     else:
+    #         return True
+
+
 
 def score_word(word):
     word_score = 0
