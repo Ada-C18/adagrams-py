@@ -37,8 +37,6 @@ SCORE_CHART = {
     ('Q', 'Z'): 10
 }
 
-
-
 def draw_letters():
     letter_pool_list = []
     my_ten_letters = [] 
@@ -53,7 +51,6 @@ def draw_letters():
         random_letter = random.choice(letter_pool_list)  
         my_ten_letters.append(random_letter)  
         letter_pool_list.remove(random_letter)
-
     return my_ten_letters
 
     #original solution 
@@ -70,7 +67,7 @@ def draw_letters():
 def uses_available_letters(word, letter_bank):
     
     word = word.upper()
-    # Claire's suggestion -combine the foor loops 
+    # Claire's suggestion to combine the foor loops 
     for letter in word:
         count_pool_letter = letter_bank.count(letter)
         count_word_letter = word.count(letter)
@@ -82,9 +79,7 @@ def uses_available_letters(word, letter_bank):
             continue 
     return True 
 
-
     # original for solution
-
     # word = word.upper()
     # letter_results = []
     # for letter in word:
@@ -131,7 +126,6 @@ def get_highest_word_score(word_list):
 
     highest_score_value = max(score_dict.values())
     
-    
     highest_scores = []
 
     #Claire's suggestion for more descriptive syntax
@@ -140,7 +134,6 @@ def get_highest_word_score(word_list):
             highest_scores.append([word,score])
 
     # original solution
-    
     # for dict in score_dict.items():
     #     if dict[1] == highest_score_value:
     #         highest_scores.append(dict)
@@ -156,12 +149,5 @@ def get_highest_word_score(word_list):
             elif len(word) < shortest_word_length:
                 shortest_word_length = len(word)
                 shortest_word = word
-
-    # find the score of a word 
-    # check if the score is the highest score
-    # if its equal check which has a shorter length or has length of 10 
-    # if none of this is true then loop moves to the next word
-    
-    
     return (shortest_word, highest_score_value)
 
