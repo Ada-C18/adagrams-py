@@ -84,6 +84,7 @@ def uses_available_letters(word, letter_bank):
 
 
     # original for solution
+
     # word = word.upper()
     # letter_results = []
     # for letter in word:
@@ -133,16 +134,16 @@ def get_highest_word_score(word_list):
     
     highest_scores = []
 
-    
-    for dict in score_dict.items():
-        if dict[1] == highest_score_value:
-            highest_scores.append(dict)
+    #Claire's suggestion for more descriptive syntax
+    for word, score in score_dict.items():
+        if score == highest_score_value:
+            highest_scores.append([word,score])
 
-    # Claire's suggestion
+    # original solution
+    
     # for dict in score_dict.items():
-    #     for word, score in score_dict.items():
-    #         if score == highest_score_value:
-    #             highest_scores.append(dict)
+    #     if dict[1] == highest_score_value:
+    #         highest_scores.append(dict)
             
     shortest_word_length = len(highest_scores[0][0])
     shortest_word = highest_scores[0][0] 
@@ -155,6 +156,12 @@ def get_highest_word_score(word_list):
             elif len(word) < shortest_word_length:
                 shortest_word_length = len(word)
                 shortest_word = word
+
+    # find the score of a word 
+    # check if the score is the highest score
+    # if its equal check which has a shorter length or has length of 10 
+    # if none of this is true then loop moves to the next word
     
     
     return (shortest_word, highest_score_value)
+
