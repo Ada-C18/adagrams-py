@@ -27,7 +27,7 @@ LETTER_POOL = {
     'Y': 2, 
     'Z': 1
 }
-score_chart ={
+SCORE_CHART = {
     ('A', 'E', 'I', 'O', 'U', 'L', 'N', 'R', 'S', 'T'): 1,
     ('D', 'G'): 2,
     ('B', 'C', 'M', 'P'): 3,
@@ -105,19 +105,20 @@ def uses_available_letters(word, letter_bank):
 
 
 def score_word(word):
-    word_score = 0
-    word = word.upper()
 
     if len(word) == 0:
-        return word_score
+        return 0
 
+    word_score = 0
+    word = word.upper()
+    
     if len(word) in range(7, 11):
         word_score += 8
     
     for letter in word:
-        for key in score_chart:
+        for key in SCORE_CHART:
             if letter in key:
-                word_score += score_chart.get(key)
+                word_score += SCORE_CHART.get(key)
     return word_score
 
 def get_highest_word_score(word_list):
@@ -131,10 +132,17 @@ def get_highest_word_score(word_list):
     
     
     highest_scores = []
+
     
     for dict in score_dict.items():
         if dict[1] == highest_score_value:
             highest_scores.append(dict)
+
+    # Claire's suggestion
+    # for dict in score_dict.items():
+    #     for word, score in score_dict.items():
+    #         if score == highest_score_value:
+    #             highest_scores.append(dict)
             
     shortest_word_length = len(highest_scores[0][0])
     shortest_word = highest_scores[0][0] 
