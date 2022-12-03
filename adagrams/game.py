@@ -48,17 +48,25 @@ def draw_letters():
         for num in range(0,(LETTER_POOL[letter])): 
             letter_pool_list.append(letter)
 
+    #Claire's suggestion for a while loop 
 
     while len(my_ten_letters) < 10:  
-        for num in range(0,10):
-            random_letter = random.choice(letter_pool_list)  
-            my_ten_letters.append(random_letter)  
-            my_string_count = my_ten_letters.count(random_letter) 
-            word_pool_count = letter_pool_list.count(random_letter) 
-            if my_string_count > word_pool_count: 
-                my_ten_letters.remove(random_letter) 
+        random_letter = random.choice(letter_pool_list)  
+        my_ten_letters.append(random_letter)  
+        letter_pool_list.remove(random_letter)
 
     return my_ten_letters
+
+    #original solution 
+    
+    # while len(my_ten_letters) < 10:  
+    #     for num in range(0,10):
+    #         random_letter = random.choice(letter_pool_list)  
+    #         my_ten_letters.append(random_letter)  
+    #         my_string_count = my_ten_letters.count(random_letter) 
+    #         word_pool_count = letter_pool_list.count(random_letter) 
+    #         if my_string_count > word_pool_count: 
+    #             my_ten_letters.remove(random_letter) 
 
 def uses_available_letters(word, letter_bank):
     
