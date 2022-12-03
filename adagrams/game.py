@@ -47,7 +47,8 @@ def draw_letters():
 
     #Claire's suggestion for a while loop 
 
-    while len(my_ten_letters) < 10:  
+    
+    for i in range(10):
         random_letter = random.choice(letter_pool_list)  
         my_ten_letters.append(random_letter)  
         letter_pool_list.remove(random_letter)
