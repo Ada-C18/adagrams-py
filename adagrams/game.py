@@ -107,9 +107,12 @@ def get_highest_word_score(word_list):
             high_score = winner[1]
         elif word_scores[i][1] == high_score:
             if len(winner[0]) == 10:
-                break
+                pass
             elif len(word_scores[i][0]) < len(winner[0]) or len(word_scores[i][0]) == 10:
                 winner = word_scores[i]
                 high_score = winner[1]
             
     return winner
+
+words = ["AAAAAAAAAA", "EEEEEEEEEE", "ZZZZZZZZZZ"]
+print(get_highest_word_score(words))
