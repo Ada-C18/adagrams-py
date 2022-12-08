@@ -113,6 +113,3 @@ def get_highest_word_score(word_list):
                 high_score = winner[1]
             
     return winner
-
-words = ["AAAAAAAAAA", "EEEEEEEEEE", "ZZZZZZZZZZ"]
-print(get_highest_word_score(words))
