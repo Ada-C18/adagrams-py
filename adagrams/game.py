@@ -1,142 +1,125 @@
-from random import sample
-from collections import Counter
-# import pprint
-
-
-LETTER_POOL = {
-    'A': 9, 
-    'B': 2, 
-    'C': 2, 
-    'D': 4, 
-    'E': 12, 
-    'F': 2, 
-    'G': 3, 
-    'H': 2, 
-    'I': 9, 
-    'J': 1, 
-    'K': 1, 
-    'L': 4, 
-    'M': 2, 
-    'N': 6, 
-    'O': 8, 
-    'P': 2, 
-    'Q': 1, 
-    'R': 6, 
-    'S': 4, 
-    'T': 6, 
-    'U': 4, 
-    'V': 2, 
-    'W': 2, 
-    'X': 1, 
-    'Y': 2, 
-    'Z': 1
-}
-
-SCORE_CHART = {
-    'A': 1, 
-    'B': 3, 
-    'C': 3, 
-    'D': 2, 
-    'E': 1, 
-    'F': 4, 
-    'G': 2, 
-    'H': 4, 
-    'I': 1, 
-    'J': 8, 
-    'K': 5, 
-    'L': 1, 
-    'M': 3, 
-    'N': 1, 
-    'O': 1, 
-    'P': 3, 
-    'Q': 10, 
-    'R': 1, 
-    'S': 1, 
-    'T': 1, 
-    'U': 1, 
-    'V': 4, 
-    'W': 4, 
-    'X': 8, 
-    'Y': 4, 
-    'Z': 10
-}
-
-def draw_letters():
-    # use random.sample to draw 10 letters from the 
-    # letter bank.
-
-    # get the lists of letter and count for each letter
-    # as list (preferred by random.sample)
-    letter_list = list(LETTER_POOL.keys())
-    letter_count = list(LETTER_POOL.values())
-
-    # sample draws k items from the list using counts 
-    # to determine the frequency of each item. 
-    # https://docs.python.org/3/library/random.html#random.sample
-    # requires python version 3.9 or greater 
-    this_hand = sample(letter_list, k=10, counts=letter_count)
-
-    # print('-----------------')
-    # print(this_hand)
-    # print('-----------------')
-
-
-    return this_hand
-
-def uses_available_letters(word, letter_bank):
-    word = word.upper()
-
-    # create a counter for letter_bank
-    letter_bank_counts = Counter()
-
-    for letter in letter_bank:
-        letter_bank_counts[letter] += 1
-    # print("Loaded counter: ", letter_bank_counts)
-
-    for letter in list(word):
-        if letter_bank_counts[letter] == 0:
-            return False
-        else:
-            letter_bank_counts[letter] -= 1
+def mystery(numbers):
+    index = 0
+    while index < len(numbers):
+        numbers[index] *= 2
+        index += 1
     
-    return True
+    return numbers
+
+nums = [1, 2, 3, 4, 5]
+mystery(nums)
+
+print(nums[3])
 
 
-# print(uses_available_letters)
-
-def score_word(word):
-    score_total = 0
-    extra_points = 8
-    word = word.upper()
-
-    letters_from_word = list(word)
-
-    if 7 <= len(word) <= 10:    
-        score_total += extra_points
-
-    for letter in letters_from_word: 
-        if letter in SCORE_CHART.keys():
-            score_total += SCORE_CHART[letter]
-
-    return(score_total)
-    
-
-def _high_score_key_helper(word):
-    # returns a tuple (score, has_10, -length)
-
-    cur_score = score_word(word)
-    has_10 = len(word) == 10 # True if word length is 10.
-    word_len = -len(word)
-
-    result = (cur_score, has_10, word_len)
-    return result 
 
 
-def get_highest_word_score(word_list):
 
-    # use our helper function to find the highest ranked
-    # word using max
-    high_word = max(word_list, key=_high_score_key_helper)
 
-    return (high_word, score_word(high_word))
+# def get_fire_students(students):
+#     '''
+#     INPUT: A list of dictionaries with the "name" and "class" key-value pairs.
+#     Example:  get_fire_students([{ "name": "Ada", "class": "fire"}, { "name": "Taylor", "class": "earth" }])
+#     RETURN VALUE: A list of dictionaries with **only** the students in the "fire" class.
+#     '''
+#     temp = []
+#     students = students.copy() 
+#     
+#     while students:
+#         student = students.pop()
+#         if student["class"] == "fire":
+#             temp.append(student)
+# # 
+# #     while temp:
+# #         students.append(temp.pop())
+#     print(students)
+#     return students
+# 
+# 
+# get_fire_students([{ "name": "Ada", "class": "fire"}, { "name": "Taylor", "class": "earth" }])
 
+
+# def hamming_distance(strand1, strand2):
+#     count_of_differences = 0
+#     index = 0
+#     
+# 
+#     if len(strand1) == 0 or len(strand2) == 0:
+#         raise ValueError("One of your inputs is invalid, please try again.")
+#         
+#       
+#     for letter in strand2:
+# #       if letter[index] not in strand2[index]: 
+#         count_of_differences += 1
+#         index += 1  
+#         
+#             
+#     return count_of_differences  
+# 
+# print(hamming_distance("GAGCCTACTAACGGGAT", "CATCGTAATGACGGCCT"))
+# print(hamming_distance("GAG", "GAG"))
+# print(hamming_distance("GAG", ""))
+
+
+# def score(word):  
+# 
+#     point_system = {
+#       ("A", "E", "I", "O", "U", "L", "N", "R", "S", "T"): 1,
+#       ("D", "G"): 2,
+#       ("B", "C", "M", "P"): 3,
+#       ("F", "H", "V", "W", "Y"): 4,
+#       "K": 5,
+#       ("J", "X"): 8,
+#       ("Q", "Z"): 10
+#     }
+#     
+#     total_score = 0
+# 
+#     try: 
+#         word = word.upper()
+#     except AttributeError as err:
+#         return "You've entered a number, please enter a letter and try again."
+#     except Exception:
+#         print("You've entered a number, please enter a letter and try again.")
+#         raise 
+#     
+#     letters_of_word = list(word)
+#     
+#     if len(letters_of_word) == 0:
+#         return None
+#     
+#     else:
+#         for letter in letters_of_word:
+#             for key,value in point_system.items():
+#                 if letter in key:
+#                     total_score += value
+#     return total_score
+# 
+# 
+# # print(score("Dog"))
+# # print(score(123))
+# print(score("supercalifragilisticexpialidocious"))
+# print(score(''))
+
+
+# example input 1: "supercalifragilisticexpialidocious"
+# expected output 1: 56
+
+# example input 2: "Français"
+# expected output 2:
+# 
+# def test_ridiculous_words():
+#     # arrange
+#     word = "supercalifragilisticexpialidocious"
+#     # act
+#     result = score(word)
+#     # assert
+#     assert result = 56
+# 
+# def test_letter_not_in_English():
+#     # arrange
+#     word = "Français"
+#     # act
+#     result = score(word)
+#     # assert
+#     result = 
