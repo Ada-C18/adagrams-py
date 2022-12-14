@@ -38,6 +38,9 @@ print(nums[3])
 # 
 # get_fire_students([{ "name": "Ada", "class": "fire"}, { "name": "Taylor", "class": "earth" }])
 
+    cur_score = score_word(word)
+    word_len = -len(word)
+    has_10 = word_len == -10 # True if word length is 10.
 
 # def hamming_distance(strand1, strand2):
 #     count_of_differences = 0
