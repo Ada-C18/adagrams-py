@@ -58,13 +58,6 @@ def letter_soup(letter_data):
 todays_soup = letter_soup(alphabet_data_list)
 #Returns letters to user
 def draw_letters():
-  # letter_soup = []
-
-  # for data in alphabet_data_list:
-  #   runner = 0
-  #   while runner < data['quantity']:
-  #     letter_soup.append(data['letter'])
-  #     runner += 1
 
   user_letter_pool = []
   
@@ -84,6 +77,7 @@ def uses_available_letters(word, letter_bank):
   
 # loop through word, convert all letters to uppercase, add count to letter_count
     for l in word:
+      
       letter = l.upper()
       if letter not in letter_count:
         letter_count[letter] = 0
@@ -136,7 +130,7 @@ def get_highest_word_score(word_list):
         winning_score = value_of_word 
         winning_words = [word]
 
-  # if length of word is one than no tie breaker neede
+  # if length of word is one than no tie breaker needed
   if (len(winning_words)) == 1:
     return (winning_words[0], winning_score)
   
