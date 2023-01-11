@@ -13,6 +13,8 @@ def test_uses_available_letters_true_word_in_letter_bank():
     # Assert
     assert is_valid == True
 
+    # Passes 
+
 def test_uses_available_letters_false_word_in_letter_bank():
     # Arrange
     letters = ["D", "O", "X", "X", "X", "X", "X", "X", "X", "X"]
@@ -23,6 +25,8 @@ def test_uses_available_letters_false_word_in_letter_bank():
 
     # Assert
     assert is_valid == False
+
+    # Passes 
 
 def test_uses_available_letters_false_word_overuses_letter():
     # Arrange
