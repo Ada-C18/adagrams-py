@@ -1,7 +1,7 @@
 import copy
 
 LETTER_POOL = {
-    'A': 9, 
+    'A': 10, 
     'B': 2, 
     'C': 2, 
     'D': 4, 
